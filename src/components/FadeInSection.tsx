@@ -1,41 +1,48 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { motion, type Variants } from "framer-motion";
+import { type ReactNode } from "react";
 
 interface Props {
   children: ReactNode;
   className?: string;
   delay?: number;
+  direction?: "up" | "down" | "left" | "right";
 }
 
-const FadeInSection = ({ children, className = "", delay = 0 }: Props) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
+const directionMap = {
+  up: { y: 40 },
+  down: { y: -40 },
+  left: { x: 40 },
+  right: { x: -40 },
+};
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
+const FadeInSection = ({ children, className = "", delay = 0, direction = "up" }: Props) => {
+  const offset = directionMap[direction];
+
+  const variants: Variants = {
+    hidden: { opacity: 0, ...offset, filter: "blur(4px)" },
+    visible: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      filter: "blur(0px)",
+      transition: {
+        duration: 0.7,
+        delay: delay / 1000,
+        ease: [0.25, 0.4, 0.25, 1],
       },
-      { threshold: 0.12 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
+    },
+  };
 
   return (
-    <div
-      ref={ref}
+    <motion.div
       className={className}
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(28px)",
-        transition: `opacity 0.7s ease ${delay}ms, transform 0.7s ease ${delay}ms`,
-      }}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-60px" }}
+      variants={variants}
     >
       {children}
-    </div>
+    </motion.div>
   );
 };
 

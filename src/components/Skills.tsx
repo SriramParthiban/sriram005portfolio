@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import FadeInSection from "./FadeInSection";
 import { Target, Bot, Plug, LineChart, Code, Users } from "lucide-react";
+import { motion } from "framer-motion";
 
 const categories = [
   {
@@ -36,38 +37,52 @@ const categories = [
 ];
 
 const Skills = () => (
-  <section id="skills" className="px-6 py-28">
-    <div className="mx-auto max-w-3xl">
+  <section id="skills" className="relative px-6 py-32">
+    <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-accent/[0.02] to-transparent" />
+
+    <div className="relative mx-auto max-w-3xl">
       <FadeInSection>
-        <div className="flex items-center gap-3 mb-3">
-          <div className="h-1 w-8 rounded-full bg-primary" />
-          <span className="text-sm font-semibold uppercase tracking-widest text-primary">Expertise</span>
+        <div className="flex items-center gap-3 mb-4">
+          <div className="h-1 w-10 rounded-full bg-gradient-to-r from-primary to-accent" />
+          <span className="text-sm font-display font-semibold uppercase tracking-[0.2em] text-primary">Expertise</span>
         </div>
-        <h2 className="text-3xl font-bold text-foreground sm:text-4xl">Technical Skills</h2>
+        <h2 className="text-3xl font-display font-bold text-foreground sm:text-4xl lg:text-5xl">
+          Technical <span className="gradient-text">Skills</span>
+        </h2>
       </FadeInSection>
 
-      <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {categories.map((cat, idx) => {
           const Icon = cat.icon;
           return (
-            <FadeInSection key={cat.title} delay={idx * 80}>
-              <div className="group rounded-2xl border border-border/60 bg-card p-5 transition-all duration-300 hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                    <Icon className="h-4 w-4" />
+            <FadeInSection key={cat.title} delay={idx * 100}>
+              <motion.div
+                whileHover={{ y: -4, scale: 1.01 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="group relative overflow-hidden rounded-2xl border border-border/50 bg-card/60 p-6 backdrop-blur-sm card-hover"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] to-accent/[0.03] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+                <div className="relative flex items-center gap-3 mb-5">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary/10 to-accent/5 text-primary transition-all duration-500 group-hover:from-primary group-hover:to-accent group-hover:text-primary-foreground group-hover:shadow-lg group-hover:shadow-primary/20">
+                    <Icon className="h-5 w-5" />
                   </div>
-                  <h3 className="text-sm font-bold text-foreground">
+                  <h3 className="text-sm font-display font-bold text-foreground">
                     {cat.title}
                   </h3>
                 </div>
-                <div className="flex flex-wrap gap-1.5">
+                <div className="relative flex flex-wrap gap-2">
                   {cat.skills.map((s) => (
-                    <Badge key={s} variant="secondary" className="text-xs font-normal">
+                    <Badge
+                      key={s}
+                      variant="secondary"
+                      className="bg-secondary/60 border border-border/30 text-xs font-medium transition-all duration-300 group-hover:border-primary/15 group-hover:bg-primary/5"
+                    >
                       {s}
                     </Badge>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             </FadeInSection>
           );
         })}
