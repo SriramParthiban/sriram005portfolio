@@ -3,27 +3,43 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Linkedin, Github, Send, ArrowUpRight, CheckCircle2, Loader2 } from "lucide-react";
+import { Mail, Linkedin, Github, Send, ArrowUpRight, Loader2 } from "lucide-react";
 import FadeInSection from "./FadeInSection";
 import { motion } from "framer-motion";
+import { z } from "zod";
+
+const contactSchema = z.object({
+  name: z.string().trim().min(1, "Name is required").max(100),
+  email: z.string().trim().email("Invalid email").max(255),
+  message: z.string().trim().min(1, "Message is required").max(2000),
+});
 
 const Contact = () => {
   const { toast } = useToast();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [sending, setSending] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const result = contactSchema.safeParse(form);
+    if (!result.success) {
+      const fieldErrors: Record<string, string> = {};
+      result.error.errors.forEach((err) => {
+        if (err.path[0]) fieldErrors[err.path[0] as string] = err.message;
+      });
+      setErrors(fieldErrors);
+      return;
+    }
+    setErrors({});
     setSending(true);
 
-    // Use mailto as fallback — opens email client with pre-filled fields
     const subject = encodeURIComponent(`Portfolio inquiry from ${form.name}`);
     const body = encodeURIComponent(
       `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
     );
     window.location.href = `mailto:sriramparthiban1970@gmail.com?subject=${subject}&body=${body}`;
 
-    // Brief delay for UX
     await new Promise((r) => setTimeout(r, 800));
     setSending(false);
     toast({
@@ -34,24 +50,9 @@ const Contact = () => {
   };
 
   const links = [
-    {
-      href: "mailto:sriramparthiban1970@gmail.com",
-      icon: Mail,
-      label: "sriramparthiban1970@gmail.com",
-      external: false,
-    },
-    {
-      href: "https://www.linkedin.com/in/sriram-parthiban-0500q/",
-      icon: Linkedin,
-      label: "LinkedIn",
-      external: true,
-    },
-    {
-      href: "https://github.com/SriramParthiban",
-      icon: Github,
-      label: "GitHub",
-      external: true,
-    },
+    { href: "mailto:sriramparthiban1970@gmail.com", icon: Mail, label: "sriramparthiban1970@gmail.com", external: false },
+    { href: "https://www.linkedin.com/in/sriram-parthiban-0500q/", icon: Linkedin, label: "LinkedIn", external: true },
+    { href: "https://github.com/SriramParthiban", icon: Github, label: "GitHub", external: true },
   ];
 
   return (
@@ -106,29 +107,41 @@ const Contact = () => {
             >
               <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-accent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
-              <Input
-                placeholder="Your name"
-                required
-                value={form.name}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="border-border/40 bg-background/80 transition-all duration-300 focus:border-primary/40 focus:bg-background"
-              />
-              <Input
-                type="email"
-                placeholder="Your email"
-                required
-                value={form.email}
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
-                className="border-border/40 bg-background/80 transition-all duration-300 focus:border-primary/40 focus:bg-background"
-              />
-              <Textarea
-                placeholder="Your message"
-                required
-                rows={4}
-                value={form.message}
-                onChange={(e) => setForm({ ...form, message: e.target.value })}
-                className="border-border/40 bg-background/80 transition-all duration-300 focus:border-primary/40 focus:bg-background resize-none"
-              />
+              <div>
+                <Input
+                  placeholder="Your name"
+                  required
+                  maxLength={100}
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  className="border-border/40 bg-background/80 transition-all duration-300 focus:border-primary/40 focus:bg-background"
+                />
+                {errors.name && <p className="mt-1 text-xs text-destructive">{errors.name}</p>}
+              </div>
+              <div>
+                <Input
+                  type="email"
+                  placeholder="Your email"
+                  required
+                  maxLength={255}
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  className="border-border/40 bg-background/80 transition-all duration-300 focus:border-primary/40 focus:bg-background"
+                />
+                {errors.email && <p className="mt-1 text-xs text-destructive">{errors.email}</p>}
+              </div>
+              <div>
+                <Textarea
+                  placeholder="Your message"
+                  required
+                  rows={4}
+                  maxLength={2000}
+                  value={form.message}
+                  onChange={(e) => setForm({ ...form, message: e.target.value })}
+                  className="border-border/40 bg-background/80 transition-all duration-300 focus:border-primary/40 focus:bg-background resize-none"
+                />
+                {errors.message && <p className="mt-1 text-xs text-destructive">{errors.message}</p>}
+              </div>
               <Button
                 type="submit"
                 disabled={sending}

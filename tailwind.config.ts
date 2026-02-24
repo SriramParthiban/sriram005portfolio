@@ -28,6 +28,10 @@ export default {
           DEFAULT: "hsl(var(--surface))",
           elevated: "hsl(var(--surface-elevated))",
         },
+        "dark-section": {
+          DEFAULT: "hsl(var(--dark-section))",
+          foreground: "hsl(var(--dark-section-foreground))",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

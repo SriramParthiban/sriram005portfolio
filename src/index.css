@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,14 +6,14 @@
 
 @layer base {
   :root {
-    --background: 225 20% 97%;
-    --foreground: 225 30% 8%;
+    --background: 40 20% 97%;
+    --foreground: 0 0% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 225 30% 8%;
+    --card-foreground: 0 0% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 225 30% 8%;
+    --popover-foreground: 0 0% 12%;
 
     --primary: 250 75% 57%;
     --primary-foreground: 0 0% 100%;
@@ -22,7 +22,7 @@
     --secondary-foreground: 225 25% 18%;
 
     --muted: 225 15% 92%;
-    --muted-foreground: 225 10% 44%;
+    --muted-foreground: 0 0% 45%;
 
     --accent: 165 60% 40%;
     --accent-foreground: 0 0% 100%;
@@ -37,8 +37,10 @@
     --radius: 0.875rem;
 
     --glow: 250 80% 65%;
-    --surface: 225 25% 99%;
+    --surface: 40 15% 98%;
     --surface-elevated: 0 0% 100%;
+    --dark-section: 0 0% 10%;
+    --dark-section-foreground: 0 0% 92%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -82,6 +84,8 @@
     --glow: 250 80% 70%;
     --surface: 225 25% 7%;
     --surface-elevated: 225 25% 10%;
+    --dark-section: 0 0% 6%;
+    --dark-section-foreground: 0 0% 92%;
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
@@ -101,7 +105,7 @@
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif;
   }
 
   html {
@@ -116,7 +120,7 @@
 
 @layer utilities {
   .font-display {
-    font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif;
+    font-family: 'Outfit', 'Space Grotesk', system-ui, sans-serif;
   }
 
   .glass {
@@ -170,6 +174,11 @@
       0 8px 16px -8px hsl(var(--foreground) / 0.05);
   }
 
+  .dark-section {
+    background: hsl(var(--dark-section));
+    color: hsl(var(--dark-section-foreground));
+  }
+
   .noise {
     position: relative;
   }
@@ -184,5 +193,14 @@
 
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* Marquee / ticker */
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .animate-ticker {
+    animation: ticker 30s linear infinite;
   }
 }

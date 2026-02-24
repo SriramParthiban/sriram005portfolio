@@ -1,5 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import TrustStats from "@/components/TrustStats";
+import SkillsTicker from "@/components/SkillsTicker";
 import About from "@/components/About";
 import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
@@ -8,13 +10,17 @@ import Education from "@/components/Education";
 import Certifications from "@/components/Certifications";
 import GitHubRepos from "@/components/GitHubRepos";
 import Contact from "@/components/Contact";
+import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
+import StickyMobileCTA from "@/components/StickyMobileCTA";
 
 const Index = () => (
   <>
     <Navbar />
     <main>
       <Hero />
+      <TrustStats />
+      <SkillsTicker />
       <About />
       <Experience />
       <Projects />
@@ -23,8 +29,10 @@ const Index = () => (
       <Certifications />
       <GitHubRepos />
       <Contact />
+      <FinalCTA />
     </main>
     <Footer />
+    <StickyMobileCTA />
   </>
 );
 
