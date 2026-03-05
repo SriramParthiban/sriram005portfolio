@@ -1,26 +1,29 @@
 import { Badge } from "@/components/ui/badge";
 import FadeInSection from "./FadeInSection";
-import { Zap, BarChart3, Database, Mail, ArrowUpRight, CheckCircle2, Play, ExternalLink } from "lucide-react";
+import { Zap, BarChart3, Database, Mail, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import dentbooksProof from "@/assets/dentbooks-email-proof.png";
+import multichannelDashboard from "@/assets/multichannel-dashboard.png";
+import kpiDashboard from "@/assets/kpi-tracking-dashboard.png";
+import dataIntegrationWorkflow from "@/assets/data-integration-workflow.png";
 
 const projects = [
   {
     title: "Multi-Channel Customer Requirements Automation Platform",
     description:
-      "AI-powered discovery and qualification system automating customer requirements gathering across voice, chat, and SMS channels.",
+      "AI-powered discovery and qualification system automating customer requirements gathering across voice, chat, and SMS channels. Built using Lovable.",
     metrics: [
       "Reduced documentation time by 70%",
       "99% data accuracy",
       "1,000+ interactions/day",
       "Real-time CRM sync",
     ],
-    tech: ["AI Agents", "n8n", "REST APIs", "CRM Integration", "NLP"],
+    tech: ["AI Agents", "n8n", "REST APIs", "CRM Integration", "NLP", "Lovable"],
     icon: Zap,
     accentColor: "from-primary to-primary/60",
-    loomUrl: "https://www.loom.com/share/269b2ff6729a4a10a064c4bab7414c56",
-    loomEmbed: "https://www.loom.com/embed/269b2ff6729a4a10a064c4bab7414c56",
+    proofImage: multichannelDashboard,
+    proofLabel: "✅ Live Dashboard — Final Output",
   },
   {
     title: "Automated KPI Tracking & Call Optimization Engine",
@@ -35,24 +38,24 @@ const projects = [
     tech: ["Python", "SQL", "Power BI", "Automation", "Analytics"],
     icon: BarChart3,
     accentColor: "from-accent to-accent/60",
-    loomUrl: "https://www.loom.com/share/cabd97316ed94b34821ad712fca1cf34",
-    loomEmbed: "https://www.loom.com/embed/cabd97316ed94b34821ad712fca1cf34",
+    proofImage: kpiDashboard,
+    proofLabel: "✅ Live Dashboard — Call Center Performance",
   },
   {
     title: "Intelligent Data Integration System",
     description:
-      "End-to-end email-to-system automation pipeline with intelligent routing, validation, and real-time alerting.",
+      "End-to-end data pipeline collecting via GoHighLevel and n8n webhooks, validating and syncing to monday.com with intelligent routing and real-time alerting.",
     metrics: [
       "Errors reduced by 80%",
       "Improved SLA compliance",
       "Real-time alerting",
       "Zero-touch processing",
     ],
-    tech: ["ETL", "Webhooks", "Email Parsing", "Data Validation", "Monitoring"],
+    tech: ["n8n", "monday.com", "GoHighLevel", "Webhooks", "Data Validation", "ETL"],
     icon: Database,
     accentColor: "from-primary to-accent",
-    loomUrl: "https://www.loom.com/share/936100f599814672a8459f11eea5aedf",
-    loomEmbed: "https://www.loom.com/embed/936100f599814672a8459f11eea5aedf",
+    proofImage: dataIntegrationWorkflow,
+    proofLabel: "✅ Live Workflow — n8n Automation Pipeline",
   },
   {
     title: "GoHighLevel Email Automation Workflow",
@@ -68,11 +71,11 @@ const projects = [
     icon: Mail,
     accentColor: "from-accent to-primary",
     proofImage: dentbooksProof,
+    proofLabel: "✅ Live Output — Automated Email Delivered",
   },
 ];
 
 const Projects = () => {
-  const [openVideo, setOpenVideo] = useState<string | null>(null);
   const [showProof, setShowProof] = useState<string | null>(null);
 
   return (
@@ -93,7 +96,6 @@ const Projects = () => {
         <div className="mt-14 space-y-6">
           {projects.map((p, idx) => {
             const Icon = p.icon;
-            const isVideoOpen = openVideo === p.title;
             const isProofOpen = showProof === p.title;
 
             return (
@@ -103,7 +105,6 @@ const Projects = () => {
                   transition={{ type: "spring", stiffness: 300, damping: 25 }}
                   className="group relative overflow-hidden rounded-2xl border border-border/50 bg-card/80 backdrop-blur-sm p-6 card-hover sm:p-8"
                 >
-                  {/* Top gradient bar */}
                   <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${p.accentColor} opacity-0 transition-opacity duration-500 group-hover:opacity-100`} />
 
                   <div className="relative flex items-start gap-5">
@@ -142,60 +143,18 @@ const Projects = () => {
                     ))}
                   </div>
 
-                  {/* Action buttons */}
-                  <div className="relative mt-6 flex flex-wrap gap-3 sm:pl-[76px]">
-                    {p.loomUrl && (
-                      <button
-                        onClick={() => setOpenVideo(isVideoOpen ? null : p.title)}
-                        className="inline-flex items-center gap-2 rounded-lg border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-medium text-primary transition-all duration-300 hover:bg-primary/10 hover:border-primary/40"
-                      >
-                        <Play className="h-4 w-4" />
-                        {isVideoOpen ? "Hide Demo" : "Watch Demo"}
-                      </button>
-                    )}
-                    {p.loomUrl && (
-                      <a
-                        href={p.loomUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 rounded-lg border border-border/30 bg-secondary/40 px-4 py-2 text-sm font-medium text-muted-foreground transition-all duration-300 hover:bg-secondary/80 hover:text-foreground"
-                      >
-                        <ExternalLink className="h-4 w-4" />
-                        Open in Loom
-                      </a>
-                    )}
-                    {p.proofImage && (
+                  {/* See proof button */}
+                  {p.proofImage && (
+                    <div className="relative mt-6 sm:pl-[76px]">
                       <button
                         onClick={() => setShowProof(isProofOpen ? null : p.title)}
                         className="inline-flex items-center gap-2 rounded-lg border border-accent/20 bg-accent/5 px-4 py-2 text-sm font-medium text-accent transition-all duration-300 hover:bg-accent/10 hover:border-accent/40"
                       >
                         <CheckCircle2 className="h-4 w-4" />
-                        {isProofOpen ? "Hide Proof" : "See It in Action"}
+                        {isProofOpen ? "Hide Output" : "See It in Action"}
                       </button>
-                    )}
-                  </div>
-
-                  {/* Inline Loom embed */}
-                  <AnimatePresence>
-                    {isVideoOpen && p.loomEmbed && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.4, ease: "easeInOut" }}
-                        className="relative overflow-hidden sm:pl-[76px]"
-                      >
-                        <div className="mt-6 aspect-video w-full overflow-hidden rounded-xl border border-border/30">
-                          <iframe
-                            src={p.loomEmbed}
-                            allowFullScreen
-                            className="h-full w-full"
-                            title={`${p.title} demo video`}
-                          />
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                    </div>
+                  )}
 
                   {/* Inline proof image */}
                   <AnimatePresence>
@@ -210,12 +169,12 @@ const Projects = () => {
                         <div className="mt-6 overflow-hidden rounded-xl border border-border/30 bg-card">
                           <div className="border-b border-border/30 bg-accent/5 px-4 py-2">
                             <span className="text-xs font-semibold uppercase tracking-wider text-accent">
-                              ✅ Live Output — Automated Email Delivered
+                              {p.proofLabel}
                             </span>
                           </div>
                           <img
                             src={p.proofImage}
-                            alt="Automation proof - automated email delivery"
+                            alt={`${p.title} - proof of work`}
                             className="w-full"
                           />
                         </div>
