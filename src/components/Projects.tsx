@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import FadeInSection from "./FadeInSection";
-import { Zap, BarChart3, Database, ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { Zap, BarChart3, Database, Mail, ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 
 const projects = [
