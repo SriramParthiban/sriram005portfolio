@@ -46,6 +46,20 @@ const projects = [
     icon: Database,
     accentColor: "from-primary to-accent",
   },
+  {
+    title: "GoHighLevel Email Automation Workflow",
+    description:
+      "Automated lead nurturing pipeline that triggers personalized email sequences when new opportunities or form submissions arrive — sending booking links and follow-ups based on configurable actions and lead status.",
+    metrics: [
+      "Instant lead response time",
+      "Automated booking link delivery",
+      "Trigger-based email sequences",
+      "Zero manual follow-up needed",
+    ],
+    tech: ["GoHighLevel", "Email Automation", "Workflows", "Lead Nurturing", "CRM"],
+    icon: Mail,
+    accentColor: "from-accent to-primary",
+  },
 ];
 
 const Projects = () => (
