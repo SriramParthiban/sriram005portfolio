@@ -68,7 +68,7 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        <motion.h1 variants={item} className="font-display text-5xl font-extrabold tracking-tight text-foreground sm:text-6xl lg:text-7xl text-balance">
+        <motion.h1 variants={item} className="font-display text-5xl font-extrabold tracking-tight text-white sm:text-6xl lg:text-7xl text-balance">
           Sriram{" "}
           <span className="gradient-text-warm">Parthiban</span>
         </motion.h1>
