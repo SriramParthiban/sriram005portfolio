@@ -113,8 +113,8 @@
   }
 
   ::selection {
-    background: hsl(var(--primary) / 0.15);
-    color: hsl(var(--foreground));
+    background: hsl(var(--primary) / 0.45);
+    color: hsl(0 0% 100%);
   }
 }
 

@@ -7,6 +7,10 @@ import dentbooksProof from "@/assets/dentbooks-email-proof.png";
 import multichannelDashboard from "@/assets/multichannel-dashboard.png";
 import kpiDashboard from "@/assets/kpi-tracking-dashboard.png";
 import dataIntegrationWorkflow from "@/assets/data-integration-workflow.png";
+import ghlWorkflowOverview from "@/assets/ghl-workflow-overview.png";
+import ghlWorkflowBranches from "@/assets/ghl-workflow-branches.png";
+import ghlEmailCompose from "@/assets/ghl-email-compose.png";
+import ghlPipelineStages from "@/assets/ghl-pipeline-stages.png";
 
 const projects = [
   {
