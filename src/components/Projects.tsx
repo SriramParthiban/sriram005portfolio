@@ -154,13 +154,25 @@ const Projects = () => {
                         transition={{ duration: 0.4, ease: "easeInOut" }}
                         className="relative overflow-hidden sm:pl-[76px]"
                       >
-                        <div className="mt-6 overflow-hidden rounded-xl border border-white/10 bg-white/5">
-                          <div className="border-b border-white/10 bg-accent/5 px-4 py-2">
-                            <span className="text-xs font-semibold uppercase tracking-wider text-accent">
-                              {p.proofLabel}
-                            </span>
+                        <div className="mt-6 space-y-4">
+                          <div className="overflow-hidden rounded-xl border border-white/10 bg-white/5">
+                            <div className="border-b border-white/10 bg-accent/5 px-4 py-2">
+                              <span className="text-xs font-semibold uppercase tracking-wider text-accent">
+                                {p.proofLabel}
+                              </span>
+                            </div>
+                            <img src={p.proofImage} alt={`${p.title} - proof of work`} className="w-full" />
                           </div>
-                          <img src={p.proofImage} alt={`${p.title} - proof of work`} className="w-full" />
+                          {"extraImages" in p && (p as any).extraImages?.map((img: { src: string; label: string }) => (
+                            <div key={img.label} className="overflow-hidden rounded-xl border border-white/10 bg-white/5">
+                              <div className="border-b border-white/10 bg-primary/5 px-4 py-2">
+                                <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+                                  📎 {img.label}
+                                </span>
+                              </div>
+                              <img src={img.src} alt={img.label} className="w-full" />
+                            </div>
+                          ))}
                         </div>
                       </motion.div>
                     )}
