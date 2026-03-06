@@ -10,12 +10,18 @@ const certs = [
 ];
 
 const Certifications = () => (
-  <section id="certifications" className="dark-section relative px-6 py-32 overflow-hidden">
+  <section id="certifications" className="dark-section relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      <div className="absolute top-0 right-20 h-[300px] w-[300px] rounded-full bg-primary/6 blur-[120px]" />
-      <div className="absolute bottom-20 -left-20 h-[250px] w-[250px] rounded-full bg-accent/5 blur-[100px]" />
+      <div className="absolute top-0 right-20 h-[150px] w-[150px] md:h-[300px] md:w-[300px] rounded-full bg-[#7C3AED]/6 blur-[80px] md:blur-[120px]" />
+      <div className="absolute bottom-20 -left-20 h-[125px] w-[125px] md:h-[250px] md:w-[250px] rounded-full bg-[#06B6D4]/5 blur-[60px] md:blur-[100px]" />
     </div>
     <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.02)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
+
+    {/* Decorative: </> watermark */}
+    <div className="pointer-events-none absolute bottom-16 left-6 text-5xl md:text-8xl font-display font-bold text-white/[0.04] select-none">&lt;/&gt;</div>
+    {/* Cyan glow orbs */}
+    <div className="pointer-events-none absolute top-10 left-10 h-[40px] w-[40px] md:h-[80px] md:w-[80px] rounded-full bg-[#06B6D4]/10 blur-[30px] md:blur-[50px]" />
+    <div className="pointer-events-none absolute bottom-10 right-10 h-[40px] w-[40px] md:h-[80px] md:w-[80px] rounded-full bg-[#06B6D4]/10 blur-[30px] md:blur-[50px]" />
 
     <div className="relative mx-auto max-w-3xl">
       <FadeInSection>
@@ -23,12 +29,12 @@ const Certifications = () => (
           <div className="h-1 w-10 rounded-full bg-gradient-to-r from-primary to-accent" />
           <span className="text-sm font-display font-semibold uppercase tracking-[0.2em] text-primary">Credentials</span>
         </div>
-        <h2 className="text-3xl font-display font-bold text-white sm:text-4xl lg:text-5xl">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-white md:text-4xl lg:text-5xl">
           Professional <span className="gradient-text">Certifications</span>
         </h2>
       </FadeInSection>
 
-      <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <div className="mt-10 sm:mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2">
         {certs.map((c, idx) => (
           <FadeInSection key={c.name} delay={idx * 120}>
             <motion.div

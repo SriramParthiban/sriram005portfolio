@@ -9,12 +9,16 @@ const highlights = [
 ];
 
 const About = () => (
-  <section id="about" className="dark-section relative px-6 py-32 overflow-hidden">
+  <section id="about" className="dark-section relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      <div className="absolute -top-20 right-0 h-[300px] w-[300px] rounded-full bg-primary/8 blur-[120px]" />
-      <div className="absolute bottom-0 -left-20 h-[250px] w-[250px] rounded-full bg-accent/6 blur-[100px]" />
+      <div className="absolute -top-20 right-0 h-[150px] w-[150px] md:h-[300px] md:w-[300px] rounded-full bg-[#7C3AED]/8 blur-[80px] md:blur-[120px]" />
+      <div className="absolute bottom-0 -left-20 h-[125px] w-[125px] md:h-[250px] md:w-[250px] rounded-full bg-[#06B6D4]/6 blur-[60px] md:blur-[100px]" />
     </div>
     <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.02)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
+
+    {/* Decorative curly braces */}
+    <div className="pointer-events-none absolute top-20 left-6 text-6xl md:text-9xl font-display font-bold text-white/[0.05] select-none">{"{"}</div>
+    <div className="pointer-events-none absolute bottom-20 right-6 text-6xl md:text-9xl font-display font-bold text-white/[0.05] select-none">{"}"}</div>
 
     <div className="relative mx-auto max-w-3xl">
       <FadeInSection>
@@ -22,13 +26,13 @@ const About = () => (
           <div className="h-1 w-10 rounded-full bg-gradient-to-r from-primary to-accent" />
           <span className="text-sm font-display font-semibold uppercase tracking-[0.2em] text-primary">About</span>
         </div>
-        <h2 className="text-3xl font-display font-bold text-white sm:text-4xl lg:text-5xl">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-white md:text-4xl lg:text-5xl">
           About <span className="gradient-text">Me</span>
         </h2>
       </FadeInSection>
 
       <FadeInSection delay={150}>
-        <div className="mt-10 space-y-5 text-base leading-[1.9] text-white/60">
+        <div className="mt-10 space-y-5 text-sm sm:text-base leading-[1.9] text-white/60">
           <p>
             I architect intelligent automation systems at the intersection of{" "}
             <strong className="text-white font-semibold">AI, revenue operations, and go-to-market strategy</strong>.
