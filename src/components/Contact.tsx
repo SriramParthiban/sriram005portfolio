@@ -35,17 +35,12 @@ const Contact = () => {
     setSending(true);
 
     const subject = encodeURIComponent(`Portfolio inquiry from ${form.name}`);
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`
-    );
+    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`);
     window.location.href = `mailto:sriramparthiban1970@gmail.com?subject=${subject}&body=${body}`;
 
     await new Promise((r) => setTimeout(r, 800));
     setSending(false);
-    toast({
-      title: "✉️ Email client opened!",
-      description: "Your message has been pre-filled. Just hit send!",
-    });
+    toast({ title: "✉️ Email client opened!", description: "Your message has been pre-filled. Just hit send!" });
     setForm({ name: "", email: "", message: "" });
   };
 
@@ -56,8 +51,12 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="relative px-6 py-32">
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.02] to-transparent" />
+    <section id="contact" className="dark-section relative px-6 py-32 overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -top-20 left-1/3 h-[350px] w-[350px] rounded-full bg-primary/8 blur-[130px]" />
+        <div className="absolute bottom-0 right-0 h-[250px] w-[250px] rounded-full bg-accent/6 blur-[100px]" />
+      </div>
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.02)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
       <div className="relative mx-auto max-w-3xl">
         <FadeInSection>
@@ -65,10 +64,10 @@ const Contact = () => {
             <div className="h-1 w-10 rounded-full bg-gradient-to-r from-primary to-accent" />
             <span className="text-sm font-display font-semibold uppercase tracking-[0.2em] text-primary">Connect</span>
           </div>
-          <h2 className="text-3xl font-display font-bold text-foreground sm:text-4xl lg:text-5xl">
+          <h2 className="text-3xl font-display font-bold text-white sm:text-4xl lg:text-5xl">
             Get in <span className="gradient-text">Touch</span>
           </h2>
-          <p className="mt-5 text-base leading-relaxed text-muted-foreground max-w-lg">
+          <p className="mt-5 text-base leading-relaxed text-white/50 max-w-lg">
             Interested in building scalable AI-driven automation systems? Let's connect and explore how I can help.
           </p>
         </FadeInSection>
@@ -85,7 +84,7 @@ const Contact = () => {
                   rel={link.external ? "noopener noreferrer" : undefined}
                   whileHover={{ y: -3 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="group flex items-center gap-3 rounded-2xl border border-border/50 bg-card/60 px-5 py-3.5 text-sm font-medium text-muted-foreground backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:text-foreground card-hover"
+                  className="group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-5 py-3.5 text-sm font-medium text-white/50 backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:text-white hover:bg-white/8"
                 >
                   <Icon className="h-4 w-4 transition-colors duration-300 group-hover:text-primary" />
                   <span className="truncate">{link.label}</span>
@@ -103,7 +102,7 @@ const Contact = () => {
             <motion.div
               whileHover={{ y: -2 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className="group relative overflow-hidden space-y-4 rounded-2xl border border-border/50 bg-card/80 backdrop-blur-sm p-6 card-hover"
+              className="group relative overflow-hidden space-y-4 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 transition-all duration-500 hover:border-primary/15"
             >
               <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-accent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
@@ -114,7 +113,7 @@ const Contact = () => {
                   maxLength={100}
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="border-border/40 bg-background/80 transition-all duration-300 focus:border-primary/40 focus:bg-background"
+                  className="border-white/10 bg-white/5 text-white placeholder:text-white/30 transition-all duration-300 focus:border-primary/40 focus:bg-white/8"
                 />
                 {errors.name && <p className="mt-1 text-xs text-destructive">{errors.name}</p>}
               </div>
@@ -126,7 +125,7 @@ const Contact = () => {
                   maxLength={255}
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="border-border/40 bg-background/80 transition-all duration-300 focus:border-primary/40 focus:bg-background"
+                  className="border-white/10 bg-white/5 text-white placeholder:text-white/30 transition-all duration-300 focus:border-primary/40 focus:bg-white/8"
                 />
                 {errors.email && <p className="mt-1 text-xs text-destructive">{errors.email}</p>}
               </div>
@@ -138,20 +137,12 @@ const Contact = () => {
                   maxLength={2000}
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="border-border/40 bg-background/80 transition-all duration-300 focus:border-primary/40 focus:bg-background resize-none"
+                  className="border-white/10 bg-white/5 text-white placeholder:text-white/30 transition-all duration-300 focus:border-primary/40 focus:bg-white/8 resize-none"
                 />
                 {errors.message && <p className="mt-1 text-xs text-destructive">{errors.message}</p>}
               </div>
-              <Button
-                type="submit"
-                disabled={sending}
-                className="w-full glow-sm font-semibold transition-all duration-300 hover:glow-md"
-              >
-                {sending ? (
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                ) : (
-                  <Send className="mr-2 h-4 w-4" />
-                )}
+              <Button type="submit" disabled={sending} className="w-full glow-sm font-semibold transition-all duration-300 hover:glow-md">
+                {sending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Send className="mr-2 h-4 w-4" />}
                 {sending ? "Opening..." : "Send Message"}
               </Button>
             </motion.div>
