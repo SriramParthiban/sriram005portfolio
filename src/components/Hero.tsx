@@ -110,7 +110,7 @@ const Hero = () => {
         </motion.div>
 
         {/* Micro trust */}
-        <motion.p variants={item} className="mt-8 text-xs font-medium text-muted-foreground/50 tracking-wide">
+        <motion.p variants={item} className="mt-8 text-xs font-medium text-white/30 tracking-wide">
           AI-First · Data-Driven · Results-Oriented
         </motion.p>
       </motion.div>
