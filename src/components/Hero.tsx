@@ -89,7 +89,7 @@ const Hero = () => {
           </AnimatePresence>
         </motion.div>
 
-        <motion.p variants={item} className="mx-auto mt-6 max-w-xl text-base leading-[1.8] text-muted-foreground/80">
+        <motion.p variants={item} className="mx-auto mt-6 max-w-xl text-base leading-[1.8] text-white/50">
           Designing intelligent automation systems that generate qualified pipeline,
           optimize GTM workflows, and build scalable AI-driven operations.
         </motion.p>
