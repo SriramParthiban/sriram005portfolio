@@ -33,16 +33,16 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pt-20">
+    <section className="dark-section relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pt-20">
       {/* Ambient background */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 h-[500px] w-[500px] rounded-full bg-primary/6 blur-[100px] animate-pulse-glow" />
-        <div className="absolute -bottom-40 -left-40 h-[400px] w-[400px] rounded-full bg-accent/6 blur-[100px] animate-pulse-glow" style={{ animationDelay: "1.5s" }} />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-primary/3 blur-[150px] animate-float-slow" />
+        <div className="absolute -top-20 -left-20 h-[400px] w-[400px] rounded-full bg-primary/10 blur-[120px]" />
+        <div className="absolute -bottom-20 -right-20 h-[400px] w-[400px] rounded-full bg-accent/10 blur-[120px]" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-primary/5 blur-[150px] animate-float-slow" />
       </div>
 
       {/* Grid pattern */}
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(var(--foreground)/0.02)_1px,transparent_1px),linear-gradient(90deg,hsl(var(--foreground)/0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.03)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
       <motion.div
         className="relative mx-auto max-w-3xl text-center"
@@ -52,7 +52,7 @@ const Hero = () => {
       >
         {/* Status badge */}
         <motion.div variants={item} className="mb-8">
-          <span className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-5 py-2 text-xs font-semibold text-primary backdrop-blur-sm">
+          <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-5 py-2 text-xs font-semibold text-primary backdrop-blur-sm">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
@@ -68,7 +68,7 @@ const Hero = () => {
           </div>
         </motion.div>
 
-        <motion.h1 variants={item} className="font-display text-5xl font-extrabold tracking-tight text-foreground sm:text-6xl lg:text-7xl text-balance">
+        <motion.h1 variants={item} className="font-display text-5xl font-extrabold tracking-tight text-white sm:text-6xl lg:text-7xl text-balance">
           Sriram{" "}
           <span className="gradient-text-warm">Parthiban</span>
         </motion.h1>
@@ -82,14 +82,14 @@ const Hero = () => {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -30, opacity: 0 }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="text-lg font-semibold text-muted-foreground sm:text-xl font-display"
+              className="text-lg font-semibold text-white/60 sm:text-xl font-display"
             >
               {roles[roleIdx]}
             </motion.p>
           </AnimatePresence>
         </motion.div>
 
-        <motion.p variants={item} className="mx-auto mt-6 max-w-xl text-base leading-[1.8] text-muted-foreground/80">
+        <motion.p variants={item} className="mx-auto mt-6 max-w-xl text-base leading-[1.8] text-white/50">
           Designing intelligent automation systems that generate qualified pipeline,
           optimize GTM workflows, and build scalable AI-driven operations.
         </motion.p>
@@ -101,7 +101,7 @@ const Hero = () => {
               View Experience
             </a>
           </Button>
-          <Button size="lg" className="bg-primary/20 border border-primary/40 text-primary hover:bg-primary/30 font-semibold text-[0.9rem] px-7 py-6 transition-all duration-300 hover:glow-sm" asChild>
+          <Button size="lg" className="bg-primary/20 border border-primary/40 text-primary hover:bg-primary/30 font-semibold text-[0.9rem] px-7 py-6 transition-all duration-300" asChild>
             <a href="#contact">
               <Mail className="mr-2 h-4 w-4" />
               Contact Me
@@ -110,7 +110,7 @@ const Hero = () => {
         </motion.div>
 
         {/* Micro trust */}
-        <motion.p variants={item} className="mt-8 text-xs font-medium text-muted-foreground/50 tracking-wide">
+        <motion.p variants={item} className="mt-8 text-xs font-medium text-white/30 tracking-wide">
           AI-First · Data-Driven · Results-Oriented
         </motion.p>
       </motion.div>
@@ -127,8 +127,8 @@ const Hero = () => {
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           className="flex flex-col items-center gap-2"
         >
-          <span className="text-[10px] font-medium tracking-widest text-muted-foreground/50 uppercase">Scroll</span>
-          <div className="h-8 w-5 rounded-full border-2 border-muted-foreground/20 p-1">
+          <span className="text-[10px] font-medium tracking-widest text-white/30 uppercase">Scroll</span>
+          <div className="h-8 w-5 rounded-full border-2 border-white/20 p-1">
             <motion.div
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
