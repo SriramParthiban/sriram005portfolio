@@ -52,28 +52,24 @@ const Navbar = () => {
         </a>
 
         {/* Desktop */}
-        <div className="hidden items-center gap-0.5 md:flex">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className={`relative rounded-lg px-3.5 py-2 text-sm font-medium transition-all duration-300 ${
-                activeSection === link.href.slice(1)
-                  ? "text-primary"
-                  : "text-white/60 hover:text-white"
-              }`}
-            >
-              {link.label}
-              {activeSection === link.href.slice(1) && (
-                <motion.span
-                  layoutId="nav-indicator"
-                  className="absolute inset-0 rounded-lg bg-primary/10"
-                  transition={{ type: "spring", bounce: 0.25, duration: 0.5 }}
-                />
-              )}
-            </a>
-          ))}
-          <Button size="sm" className="ml-5 glow-sm font-medium" asChild>
+        <div className="hidden items-center gap-1 md:flex">
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.href.slice(1);
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                className={`relative rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
+                  isActive
+                    ? "bg-primary text-white shadow-[0_0_20px_-4px_hsl(var(--primary)/0.4)]"
+                    : "text-white/60 hover:text-white hover:bg-white/10"
+                }`}
+              >
+                {link.label}
+              </a>
+            );
+          })}
+          <Button size="sm" className="ml-5 bg-gradient-to-r from-[#7C3AED] to-[#6D28D9] text-white font-medium shadow-[0_0_20px_-4px_hsl(var(--primary)/0.4)] hover:shadow-[0_0_30px_-4px_hsl(var(--primary)/0.5)] hover:brightness-110 transition-all duration-300" asChild>
             <a href="/resume.pdf" download>
               <Download className="mr-1.5 h-3.5 w-3.5" />
               Resume
@@ -112,20 +108,27 @@ const Navbar = () => {
             className="bg-[hsl(0_0%_8%/0.95)] backdrop-blur-xl overflow-hidden border-b border-white/5 px-6 pb-6 md:hidden"
           >
             <div className="flex flex-col gap-1">
-              {navLinks.map((link, i) => (
-                <motion.a
-                  key={link.href}
-                  href={link.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                  className="rounded-xl px-4 py-3 text-sm font-medium text-white/60 transition-all hover:bg-primary/10 hover:text-white"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {link.label}
-                </motion.a>
-              ))}
-              <Button size="sm" asChild className="mt-3 w-fit glow-sm">
+              {navLinks.map((link, i) => {
+                const isActive = activeSection === link.href.slice(1);
+                return (
+                  <motion.a
+                    key={link.href}
+                    href={link.href}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                    className={`rounded-xl px-4 py-3 text-sm font-medium transition-all duration-300 ${
+                      isActive
+                        ? "bg-primary text-white"
+                        : "text-white/60 hover:bg-white/10 hover:text-white"
+                    }`}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {link.label}
+                  </motion.a>
+                );
+              })}
+              <Button size="sm" asChild className="mt-3 w-fit bg-gradient-to-r from-[#7C3AED] to-[#6D28D9] text-white font-medium shadow-[0_0_20px_-4px_hsl(var(--primary)/0.4)]">
                 <a href="/resume.pdf" download>
                   <Download className="mr-1.5 h-3.5 w-3.5" />
                   Resume

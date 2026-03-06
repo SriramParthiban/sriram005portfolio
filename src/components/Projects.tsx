@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import FadeInSection from "./FadeInSection";
-import { Zap, BarChart3, Database, Mail, ArrowUpRight, CheckCircle2 } from "lucide-react";
+import { Zap, BarChart3, Database, Mail, ArrowUpRight, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import dentbooksProof from "@/assets/dentbooks-email-proof.png";
@@ -22,6 +22,7 @@ const projects = [
     accentColor: "from-primary to-primary/60",
     proofImage: multichannelDashboard,
     proofLabel: "✅ Live Dashboard — Final Output",
+    extraImages: [],
   },
   {
     title: "Automated KPI Tracking & Call Optimization Engine",
@@ -32,6 +33,7 @@ const projects = [
     accentColor: "from-accent to-accent/60",
     proofImage: kpiDashboard,
     proofLabel: "✅ Live Dashboard — Call Center Performance",
+    extraImages: [],
   },
   {
     title: "Intelligent Data Integration System",
@@ -42,6 +44,7 @@ const projects = [
     accentColor: "from-primary to-accent",
     proofImage: dataIntegrationWorkflow,
     proofLabel: "✅ Live Workflow — n8n Automation Pipeline",
+    extraImages: [],
   },
   {
     title: "GoHighLevel Email Automation Workflow",
@@ -62,7 +65,28 @@ const projects = [
 ];
 
 const Projects = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
   const [showProof, setShowProof] = useState<string | null>(null);
+  const [direction, setDirection] = useState(0);
+
+  const goTo = (idx: number) => {
+    setDirection(idx > currentSlide ? 1 : -1);
+    setCurrentSlide(idx);
+    setShowProof(null);
+  };
+
+  const next = () => goTo((currentSlide + 1) % projects.length);
+  const prev = () => goTo((currentSlide - 1 + projects.length) % projects.length);
+
+  const p = projects[currentSlide];
+  const Icon = p.icon;
+  const isProofOpen = showProof === p.title;
+
+  const variants = {
+    enter: (d: number) => ({ x: d > 0 ? 300 : -300, opacity: 0 }),
+    center: { x: 0, opacity: 1 },
+    exit: (d: number) => ({ x: d > 0 ? -300 : 300, opacity: 0 }),
+  };
 
   return (
     <section id="projects" className="dark-section relative px-6 py-32 overflow-hidden">
@@ -83,104 +107,140 @@ const Projects = () => {
           </h2>
         </FadeInSection>
 
-        <div className="mt-14 space-y-6">
-          {projects.map((p, idx) => {
-            const Icon = p.icon;
-            const isProofOpen = showProof === p.title;
+        {/* Slideshow */}
+        <div className="mt-14 relative">
+          {/* Navigation arrows */}
+          <div className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 sm:-left-12">
+            <button
+              onClick={prev}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/60 backdrop-blur-sm transition-all duration-300 hover:bg-primary hover:text-white hover:border-primary hover:shadow-[0_0_20px_-4px_hsl(var(--primary)/0.4)]"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+          </div>
+          <div className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 sm:-right-12">
+            <button
+              onClick={next}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/60 backdrop-blur-sm transition-all duration-300 hover:bg-primary hover:text-white hover:border-primary hover:shadow-[0_0_20px_-4px_hsl(var(--primary)/0.4)]"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
+          </div>
 
-            return (
-              <FadeInSection key={p.title} delay={idx * 150}>
-                <motion.div
-                  whileHover={{ y: -5 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 transition-all duration-500 hover:border-primary/20 hover:bg-white/8 sm:p-8"
-                >
-                  <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${p.accentColor} opacity-0 transition-opacity duration-500 group-hover:opacity-100`} />
+          {/* Slide content */}
+          <div className="overflow-hidden min-h-[400px]">
+            <AnimatePresence custom={direction} mode="wait">
+              <motion.div
+                key={currentSlide}
+                custom={direction}
+                variants={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[hsl(0_0%_7%)] backdrop-blur-sm p-6 transition-all duration-500 hover:border-primary/30 sm:p-8"
+                style={{ boxShadow: "0 0 40px -10px hsl(var(--primary) / 0.08)" }}
+              >
+                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${p.accentColor}`} />
 
-                  <div className="relative flex items-start gap-5">
-                    <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${p.accentColor} p-[1px]`}>
-                      <div className="flex h-full w-full items-center justify-center rounded-[14px] bg-[hsl(0_0%_10%)] transition-all duration-300 group-hover:bg-transparent">
-                        <Icon className="h-6 w-6 text-primary transition-colors duration-300 group-hover:text-white" />
-                      </div>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex items-start justify-between gap-3">
-                        <h3 className="text-base font-display font-bold leading-snug text-white sm:text-lg">{p.title}</h3>
-                        <ArrowUpRight className="h-4 w-4 shrink-0 text-white/20 transition-all duration-300 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                      </div>
-                      <p className="mt-2 text-sm leading-relaxed text-white/50">{p.description}</p>
+                <div className="relative flex items-start gap-5">
+                  <div className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${p.accentColor} p-[1px]`}>
+                    <div className="flex h-full w-full items-center justify-center rounded-[14px] bg-[hsl(0_0%_7%)] transition-all duration-300 group-hover:bg-transparent">
+                      <Icon className="h-6 w-6 text-primary transition-colors duration-300 group-hover:text-white" />
                     </div>
                   </div>
-
-                  <div className="relative mt-6 grid grid-cols-1 gap-2.5 sm:grid-cols-2 sm:pl-[76px]">
-                    {p.metrics.map((m) => (
-                      <div key={m} className="flex items-center gap-2.5 text-sm text-white/50">
-                        <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-accent" />
-                        <span>{m}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="relative mt-6 flex flex-wrap gap-2 sm:pl-[76px]">
-                    {p.tech.map((t) => (
-                      <Badge
-                        key={t}
-                        variant="secondary"
-                        className="border border-white/10 bg-white/5 text-white/60 text-xs font-medium transition-all duration-300 group-hover:border-primary/20 group-hover:bg-primary/10 group-hover:text-primary"
-                      >
-                        {t}
-                      </Badge>
-                    ))}
-                  </div>
-
-                  {p.proofImage && (
-                    <div className="relative mt-6 sm:pl-[76px]">
-                      <button
-                        onClick={() => setShowProof(isProofOpen ? null : p.title)}
-                        className="inline-flex items-center gap-2 rounded-lg border border-accent/20 bg-accent/5 px-4 py-2 text-sm font-medium text-accent transition-all duration-300 hover:bg-accent/10 hover:border-accent/40"
-                      >
-                        <CheckCircle2 className="h-4 w-4" />
-                        {isProofOpen ? "Hide Output" : "See It in Action"}
-                      </button>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-start justify-between gap-3">
+                      <h3 className="text-base font-display font-bold leading-snug text-white sm:text-lg">{p.title}</h3>
+                      <ArrowUpRight className="h-4 w-4 shrink-0 text-white/20 transition-all duration-300 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                     </div>
-                  )}
+                    <p className="mt-2 text-sm leading-relaxed text-white/50">{p.description}</p>
+                  </div>
+                </div>
 
-                  <AnimatePresence>
-                    {isProofOpen && p.proofImage && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.4, ease: "easeInOut" }}
-                        className="relative overflow-hidden sm:pl-[76px]"
-                      >
-                        <div className="mt-6 space-y-4">
-                          <div className="overflow-hidden rounded-xl border border-white/10 bg-white/5">
-                            <div className="border-b border-white/10 bg-accent/5 px-4 py-2">
-                              <span className="text-xs font-semibold uppercase tracking-wider text-accent">
-                                {p.proofLabel}
+                <div className="relative mt-6 grid grid-cols-1 gap-2.5 sm:grid-cols-2 sm:pl-[76px]">
+                  {p.metrics.map((m) => (
+                    <div key={m} className="flex items-center gap-2.5 text-sm text-white/50">
+                      <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-accent" />
+                      <span>{m}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="relative mt-6 flex flex-wrap gap-2 sm:pl-[76px]">
+                  {p.tech.map((t) => (
+                    <Badge
+                      key={t}
+                      variant="secondary"
+                      className="border border-white/10 bg-white/5 text-white/60 text-xs font-medium transition-all duration-300 hover:border-primary/30 hover:bg-primary/15 hover:text-white"
+                    >
+                      {t}
+                    </Badge>
+                  ))}
+                </div>
+
+                {p.proofImage && (
+                  <div className="relative mt-6 sm:pl-[76px]">
+                    <button
+                      onClick={() => setShowProof(isProofOpen ? null : p.title)}
+                      className="inline-flex items-center gap-2 rounded-lg border border-accent/20 bg-accent/5 px-4 py-2 text-sm font-medium text-accent transition-all duration-300 hover:bg-accent/15 hover:border-accent/40 hover:text-white"
+                    >
+                      <CheckCircle2 className="h-4 w-4" />
+                      {isProofOpen ? "Hide Output" : "See It in Action"}
+                    </button>
+                  </div>
+                )}
+
+                <AnimatePresence>
+                  {isProofOpen && p.proofImage && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.4, ease: "easeInOut" }}
+                      className="relative overflow-hidden sm:pl-[76px]"
+                    >
+                      <div className="mt-6 space-y-4">
+                        <div className="overflow-hidden rounded-xl border border-white/10 bg-white/5">
+                          <div className="border-b border-white/10 bg-accent/5 px-4 py-2">
+                            <span className="text-xs font-semibold uppercase tracking-wider text-accent">
+                              {p.proofLabel}
+                            </span>
+                          </div>
+                          <img src={p.proofImage} alt={`${p.title} - proof of work`} className="w-full" />
+                        </div>
+                        {p.extraImages.map((img) => (
+                          <div key={img.label} className="overflow-hidden rounded-xl border border-white/10 bg-white/5">
+                            <div className="border-b border-white/10 bg-primary/5 px-4 py-2">
+                              <span className="text-xs font-semibold uppercase tracking-wider text-primary">
+                                📎 {img.label}
                               </span>
                             </div>
-                            <img src={p.proofImage} alt={`${p.title} - proof of work`} className="w-full" />
+                            <img src={img.src} alt={img.label} className="w-full" />
                           </div>
-                          {"extraImages" in p && (p as any).extraImages?.map((img: { src: string; label: string }) => (
-                            <div key={img.label} className="overflow-hidden rounded-xl border border-white/10 bg-white/5">
-                              <div className="border-b border-white/10 bg-primary/5 px-4 py-2">
-                                <span className="text-xs font-semibold uppercase tracking-wider text-primary">
-                                  📎 {img.label}
-                                </span>
-                              </div>
-                              <img src={img.src} alt={img.label} className="w-full" />
-                            </div>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              </FadeInSection>
-            );
-          })}
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Dot indicators */}
+          <div className="mt-6 flex items-center justify-center gap-2">
+            {projects.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => goTo(idx)}
+                className={`h-2.5 rounded-full transition-all duration-300 ${
+                  idx === currentSlide
+                    ? "w-8 bg-primary shadow-[0_0_12px_-2px_hsl(var(--primary)/0.5)]"
+                    : "w-2.5 bg-white/20 hover:bg-white/40"
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
