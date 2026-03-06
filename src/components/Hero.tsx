@@ -82,7 +82,7 @@ const Hero = () => {
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -30, opacity: 0 }}
               transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="text-lg font-semibold text-muted-foreground sm:text-xl font-display"
+              className="text-lg font-semibold text-white/60 sm:text-xl font-display"
             >
               {roles[roleIdx]}
             </motion.p>
