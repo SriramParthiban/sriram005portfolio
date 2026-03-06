@@ -61,6 +61,13 @@ const Hero = () => {
           </span>
         </motion.div>
 
+        {/* Profile photo */}
+        <motion.div variants={item} className="mb-6 flex justify-center">
+          <div className="relative">
+            <img src={profilePhoto} alt="Sriram Parthiban" className="h-28 w-28 rounded-full object-cover ring-4 ring-primary/20 shadow-[0_0_40px_-10px_hsl(var(--primary)/0.3)]" />
+          </div>
+        </motion.div>
+
         <motion.h1 variants={item} className="font-display text-5xl font-extrabold tracking-tight text-foreground sm:text-6xl lg:text-7xl text-balance">
           Sriram{" "}
           <span className="gradient-text-warm">Parthiban</span>

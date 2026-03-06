@@ -47,10 +47,9 @@ const Navbar = () => {
       }`}
     >
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 lg:px-8">
-        <a href="#" className="group relative text-xl font-display font-bold tracking-tight text-foreground">
-          SP
-          <span className="gradient-text">.</span>
-          <span className="absolute -bottom-1 left-0 h-0.5 w-0 bg-gradient-to-r from-primary to-accent transition-all duration-300 group-hover:w-full" />
+        <a href="#" className="group flex items-center gap-2.5 text-xl font-display font-bold tracking-tight text-foreground">
+          <img src={profilePhoto} alt="Sriram Parthiban" className="h-8 w-8 rounded-full object-cover ring-2 ring-primary/30" />
+          SP<span className="gradient-text">.</span>
         </a>
 
         {/* Desktop */}
