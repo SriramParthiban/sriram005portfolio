@@ -127,8 +127,8 @@ const Hero = () => {
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           className="flex flex-col items-center gap-2"
         >
-          <span className="text-[10px] font-medium tracking-widest text-muted-foreground/50 uppercase">Scroll</span>
-          <div className="h-8 w-5 rounded-full border-2 border-muted-foreground/20 p-1">
+          <span className="text-[10px] font-medium tracking-widest text-white/30 uppercase">Scroll</span>
+          <div className="h-8 w-5 rounded-full border-2 border-white/20 p-1">
             <motion.div
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
