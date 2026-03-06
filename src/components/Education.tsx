@@ -6,8 +6,12 @@ import { motion } from "framer-motion";
 const coursework = ["Machine Learning", "Supply Chain Operations", "Statistical Forecasting", "Business Analytics"];
 
 const Education = () => (
-  <section id="education" className="relative px-6 py-32">
-    <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-secondary/30 via-secondary/50 to-secondary/30" />
+  <section id="education" className="dark-section relative px-6 py-32 overflow-hidden">
+    <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      <div className="absolute top-0 left-0 h-[300px] w-[300px] rounded-full bg-primary/6 blur-[120px]" />
+      <div className="absolute -bottom-20 right-20 h-[250px] w-[250px] rounded-full bg-accent/5 blur-[100px]" />
+    </div>
+    <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.02)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
     <div className="relative mx-auto max-w-3xl">
       <FadeInSection>
@@ -15,7 +19,7 @@ const Education = () => (
           <div className="h-1 w-10 rounded-full bg-gradient-to-r from-primary to-accent" />
           <span className="text-sm font-display font-semibold uppercase tracking-[0.2em] text-primary">Education</span>
         </div>
-        <h2 className="text-3xl font-display font-bold text-foreground sm:text-4xl lg:text-5xl">
+        <h2 className="text-3xl font-display font-bold text-white sm:text-4xl lg:text-5xl">
           Academic <span className="gradient-text">Background</span>
         </h2>
       </FadeInSection>
@@ -24,19 +28,19 @@ const Education = () => (
         <motion.div
           whileHover={{ y: -3 }}
           transition={{ type: "spring", stiffness: 300, damping: 25 }}
-          className="group relative mt-12 overflow-hidden rounded-2xl border border-border/50 bg-card/80 backdrop-blur-sm p-6 card-hover sm:p-8"
+          className="group relative mt-12 overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 transition-all duration-500 hover:border-primary/20 hover:bg-white/8 sm:p-8"
         >
           <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] to-accent/[0.03] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
           <div className="relative flex items-start gap-5">
-            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/10 to-accent/10 text-primary transition-all duration-300 group-hover:from-primary group-hover:to-accent group-hover:text-primary-foreground">
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-primary/15 to-accent/10 text-primary transition-all duration-300 group-hover:from-primary group-hover:to-accent group-hover:text-white">
               <GraduationCap className="h-7 w-7" />
             </div>
             <div>
-              <h3 className="text-lg font-display font-bold text-foreground">
+              <h3 className="text-lg font-display font-bold text-white">
                 B.Tech in Artificial Intelligence & Data Science
               </h3>
-              <p className="mt-1.5 text-sm font-medium text-muted-foreground">
+              <p className="mt-1.5 text-sm font-medium text-white/50">
                 St. Joseph's Institute of Technology
               </p>
               <span className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-accent/10 px-3.5 py-1 text-xs font-bold text-accent">
@@ -48,11 +52,11 @@ const Education = () => (
           <div className="relative mt-8 sm:pl-[76px]">
             <div className="flex items-center gap-2 mb-3">
               <BookOpen className="h-4 w-4 text-primary" />
-              <span className="text-sm font-display font-semibold text-foreground">Relevant Coursework</span>
+              <span className="text-sm font-display font-semibold text-white">Relevant Coursework</span>
             </div>
             <div className="flex flex-wrap gap-2">
               {coursework.map((c) => (
-                <Badge key={c} variant="secondary" className="bg-secondary/60 border border-border/30 text-xs font-medium">
+                <Badge key={c} variant="secondary" className="bg-white/5 border border-white/10 text-white/60 text-xs font-medium">
                   {c}
                 </Badge>
               ))}
