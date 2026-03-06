@@ -38,7 +38,7 @@ const FinalCTA = () => (
               Get in Touch
             </a>
           </Button>
-          <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10 font-semibold px-8 py-6 text-[0.9rem]" asChild>
+          <Button size="lg" className="bg-primary/20 border border-primary/40 text-primary hover:bg-primary/30 font-semibold px-8 py-6 text-[0.9rem]" asChild>
             <a href="#experience">
               <ArrowDown className="mr-2 h-4 w-4" />
               View My Work

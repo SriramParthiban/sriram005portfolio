@@ -93,7 +93,7 @@ const Hero = () => {
               View Experience
             </a>
           </Button>
-          <Button size="lg" variant="outline" className="font-semibold text-[0.9rem] px-7 py-6 border-border/60 transition-all duration-300 hover:border-primary/30 hover:bg-primary/5 hover:glow-sm" asChild>
+          <Button size="lg" className="bg-primary/20 border border-primary/40 text-primary hover:bg-primary/30 font-semibold text-[0.9rem] px-7 py-6 transition-all duration-300 hover:glow-sm" asChild>
             <a href="#contact">
               <Mail className="mr-2 h-4 w-4" />
               Contact Me
