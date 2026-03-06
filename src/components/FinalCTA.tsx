@@ -10,6 +10,13 @@ const FinalCTA = () => (
       <div className="absolute -bottom-20 -right-20 h-[300px] w-[300px] rounded-full bg-accent/10 blur-[100px]" />
     </div>
 
+    {/* Mobile: gradient lines + drifting orbs + corner flourishes */}
+    <div className="pointer-events-none absolute top-8 left-4 h-16 w-[1.5px] rounded-full bg-gradient-to-b from-[#7C3AED]/25 to-transparent animate-[pulseFade_4s_ease-in-out_infinite] md:hidden" />
+    <div className="pointer-events-none absolute bottom-8 right-4 h-12 w-[1.5px] rounded-full bg-gradient-to-b from-[#06B6D4]/20 to-transparent animate-[pulseFade_4s_ease-in-out_infinite_2s] md:hidden" />
+    <div className="pointer-events-none absolute top-[40%] right-5 h-3 w-3 rounded-full bg-gradient-to-br from-[#7C3AED]/15 to-[#06B6D4]/10 blur-[2px] animate-drift md:hidden" />
+    <div className="pointer-events-none absolute top-6 right-3 h-6 w-6 rounded-tr-lg border-t border-r border-[#7C3AED]/12 animate-border-glow md:hidden" />
+    <div className="pointer-events-none absolute bottom-6 left-3 h-6 w-6 rounded-bl-lg border-b border-l border-[#06B6D4]/10 animate-[borderGlow_4s_ease-in-out_infinite_2s] md:hidden" />
+
     <div className="relative mx-auto max-w-2xl px-6 text-center">
       <motion.div
         initial={{ opacity: 0, y: 30 }}

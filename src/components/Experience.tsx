@@ -43,9 +43,14 @@ const Experience = () => (
     </div>
     <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.02)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
-    {/* Decorative: floating squares — hidden on mobile */}
+    {/* Desktop: floating squares */}
     <div className="pointer-events-none absolute top-[25%] right-[5%] h-2 w-2 rotate-45 border border-[#7C3AED]/15 animate-[floatSlow_6s_ease-in-out_infinite] hidden md:block" />
     <div className="pointer-events-none absolute bottom-[30%] left-[5%] h-2 w-2 rotate-45 border border-[#7C3AED]/15 animate-[floatSlow_7s_ease-in-out_infinite_1s] hidden md:block" />
+
+    {/* Mobile: horizontal shimmer line + drifting orbs */}
+    <div className="pointer-events-none absolute top-20 left-4 right-4 h-[1px] bg-gradient-to-r from-transparent via-[#7C3AED]/20 to-transparent animate-shimmer md:hidden" />
+    <div className="pointer-events-none absolute bottom-28 right-5 h-3 w-3 rounded-full bg-gradient-to-br from-[#7C3AED]/15 to-[#06B6D4]/10 blur-[2px] animate-drift md:hidden" />
+    <div className="pointer-events-none absolute top-[40%] left-3 h-6 w-6 rounded-br-lg border-b border-r border-[#06B6D4]/12 animate-border-glow md:hidden" />
 
     <div className="relative mx-auto max-w-3xl">
       <FadeInSection>

@@ -107,11 +107,17 @@ const Projects = () => {
       </div>
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.02)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
-      {/* Decorative: </> watermark */}
-      <div className="pointer-events-none absolute top-20 right-10 text-5xl md:text-8xl font-display font-bold text-white/[0.04] select-none">&lt;/&gt;</div>
-      {/* Decorative: cyan glow orbs */}
-      <div className="pointer-events-none absolute top-10 left-10 h-[60px] w-[60px] md:h-[120px] md:w-[120px] rounded-full bg-[#06B6D4]/10 blur-[40px] md:blur-[60px]" />
-      <div className="pointer-events-none absolute bottom-10 right-10 h-[60px] w-[60px] md:h-[120px] md:w-[120px] rounded-full bg-[#06B6D4]/10 blur-[40px] md:blur-[60px]" />
+      {/* Desktop: </> watermark + cyan orbs */}
+      <div className="pointer-events-none absolute top-20 right-10 text-8xl font-display font-bold text-white/[0.04] select-none hidden md:block">&lt;/&gt;</div>
+      <div className="pointer-events-none absolute top-10 left-10 h-[120px] w-[120px] rounded-full bg-[#06B6D4]/10 blur-[60px] hidden md:block" />
+      <div className="pointer-events-none absolute bottom-10 right-10 h-[120px] w-[120px] rounded-full bg-[#06B6D4]/10 blur-[60px] hidden md:block" />
+
+      {/* Mobile: shimmer line + gradient orbs + corner brackets */}
+      <div className="pointer-events-none absolute top-24 left-4 right-4 h-[1px] bg-gradient-to-r from-transparent via-[#06B6D4]/20 to-transparent animate-shimmer md:hidden" />
+      <div className="pointer-events-none absolute top-[30%] left-3 h-4 w-4 rounded-full bg-gradient-to-br from-[#06B6D4]/15 to-[#7C3AED]/10 blur-[3px] animate-drift md:hidden" />
+      <div className="pointer-events-none absolute bottom-[20%] right-4 h-3 w-3 rounded-full bg-gradient-to-br from-[#7C3AED]/15 to-[#06B6D4]/10 blur-[2px] animate-[drift_7s_ease-in-out_infinite_1s] md:hidden" />
+      <div className="pointer-events-none absolute top-16 right-3 h-8 w-8 rounded-tr-xl border-t border-r border-[#06B6D4]/12 animate-border-glow md:hidden" />
+      <div className="pointer-events-none absolute bottom-16 left-3 h-8 w-8 rounded-bl-xl border-b border-l border-[#7C3AED]/12 animate-[borderGlow_4s_ease-in-out_infinite_2s] md:hidden" />
 
       <div className="relative mx-auto max-w-3xl">
         <FadeInSection>

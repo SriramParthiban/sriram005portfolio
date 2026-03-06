@@ -16,9 +16,14 @@ const About = () => (
     </div>
     <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.02)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
-    {/* Decorative curly braces */}
-    <div className="pointer-events-none absolute top-20 left-6 text-6xl md:text-9xl font-display font-bold text-white/[0.05] select-none">{"{"}</div>
-    <div className="pointer-events-none absolute bottom-20 right-6 text-6xl md:text-9xl font-display font-bold text-white/[0.05] select-none">{"}"}</div>
+    {/* Desktop: curly braces watermark */}
+    <div className="pointer-events-none absolute top-20 left-6 text-9xl font-display font-bold text-white/[0.05] select-none hidden md:block">{"{"}</div>
+    <div className="pointer-events-none absolute bottom-20 right-6 text-9xl font-display font-bold text-white/[0.05] select-none hidden md:block">{"}"}</div>
+
+    {/* Mobile: gradient accent lines + drifting orb */}
+    <div className="pointer-events-none absolute top-16 right-4 h-24 w-[1.5px] rounded-full bg-gradient-to-b from-[#7C3AED]/25 via-[#06B6D4]/15 to-transparent animate-[pulseFade_5s_ease-in-out_infinite] md:hidden" />
+    <div className="pointer-events-none absolute bottom-20 left-4 h-4 w-4 rounded-full bg-gradient-to-br from-[#7C3AED]/15 to-[#06B6D4]/10 blur-[3px] animate-drift md:hidden" />
+    <div className="pointer-events-none absolute top-1/2 right-3 h-6 w-6 rounded-tl-lg border-t border-l border-[#7C3AED]/10 animate-border-glow md:hidden" />
 
     <div className="relative mx-auto max-w-3xl">
       <FadeInSection>
