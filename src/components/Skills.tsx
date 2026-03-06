@@ -20,7 +20,7 @@ const Skills = () => (
     </div>
     <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.02)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
-    {/* Decorative: circuit pattern SVG — hidden on mobile */}
+    {/* Desktop: circuit pattern + floating squares */}
     <svg className="pointer-events-none absolute inset-0 w-full h-full hidden md:block" xmlns="http://www.w3.org/2000/svg">
       <pattern id="circuit" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
         <path d="M50 0 v30 M50 70 v30 M0 50 h30 M70 50 h30" stroke="white" strokeWidth="0.5" opacity="0.05" fill="none" />
@@ -28,11 +28,15 @@ const Skills = () => (
       </pattern>
       <rect width="100%" height="100%" fill="url(#circuit)" />
     </svg>
-
-    {/* Decorative: floating squares — hidden on mobile */}
     <div className="pointer-events-none absolute top-[30%] right-[5%] h-2 w-2 rotate-45 border border-[#7C3AED]/15 animate-[floatSlow_6s_ease-in-out_infinite] hidden md:block" />
     <div className="pointer-events-none absolute top-[60%] left-[8%] h-2 w-2 rotate-45 border border-[#7C3AED]/15 animate-[floatSlow_7s_ease-in-out_infinite_1s] hidden md:block" />
     <div className="pointer-events-none absolute bottom-[20%] right-[15%] h-2 w-2 rotate-45 border border-[#7C3AED]/15 animate-[floatSlow_5s_ease-in-out_infinite_0.5s] hidden md:block" />
+
+    {/* Mobile: vertical gradient lines + drifting orbs + corner accents */}
+    <div className="pointer-events-none absolute top-16 left-3 h-20 w-[1.5px] rounded-full bg-gradient-to-b from-[#06B6D4]/25 to-transparent animate-[pulseFade_4s_ease-in-out_infinite] md:hidden" />
+    <div className="pointer-events-none absolute bottom-20 right-3 h-16 w-[1.5px] rounded-full bg-gradient-to-b from-[#7C3AED]/20 to-transparent animate-[pulseFade_5s_ease-in-out_infinite_1.5s] md:hidden" />
+    <div className="pointer-events-none absolute top-[35%] right-5 h-3.5 w-3.5 rounded-full bg-gradient-to-br from-[#06B6D4]/15 to-[#7C3AED]/10 blur-[2px] animate-drift md:hidden" />
+    <div className="pointer-events-none absolute bottom-[30%] left-5 h-7 w-7 rounded-tr-xl border-t border-r border-[#7C3AED]/10 animate-border-glow md:hidden" />
 
     <div className="relative mx-auto max-w-3xl">
       <FadeInSection>

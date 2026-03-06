@@ -13,6 +13,11 @@ const Education = () => (
     </div>
     <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.02)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
+    {/* Mobile: accent line + orb + corner bracket */}
+    <div className="pointer-events-none absolute top-14 left-4 h-14 w-[1.5px] rounded-full bg-gradient-to-b from-[#7C3AED]/25 to-transparent animate-[pulseFade_5s_ease-in-out_infinite] md:hidden" />
+    <div className="pointer-events-none absolute bottom-16 right-5 h-3 w-3 rounded-full bg-gradient-to-br from-[#06B6D4]/15 to-[#7C3AED]/10 blur-[2px] animate-drift md:hidden" />
+    <div className="pointer-events-none absolute top-1/2 right-3 h-7 w-7 rounded-br-xl border-b border-r border-[#7C3AED]/10 animate-border-glow md:hidden" />
+
     <div className="relative mx-auto max-w-3xl">
       <FadeInSection>
         <div className="flex items-center gap-3 mb-4">

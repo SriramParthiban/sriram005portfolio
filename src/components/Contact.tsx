@@ -59,18 +59,26 @@ const Contact = () => {
 
   return (
     <section id="contact" className="dark-section relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
-      {/* Decorative: radial glow behind form */}
+      {/* Radial glow behind form */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-[#7C3AED]/20 blur-[180px] md:h-[600px] md:w-[600px]" />
         <div className="absolute bottom-0 right-0 h-[250px] w-[250px] rounded-full bg-[#06B6D4]/10 blur-[100px]" />
       </div>
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.02)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
-      {/* Sparkles */}
-      <div className="pointer-events-none absolute top-8 left-8 text-white/20 text-lg animate-[pulseFade_3s_ease-in-out_infinite] sm:text-xl">✦</div>
+      {/* Desktop: sparkles */}
+      <div className="pointer-events-none absolute top-8 left-8 text-white/20 text-xl animate-[pulseFade_3s_ease-in-out_infinite] hidden md:block">✦</div>
       <div className="pointer-events-none absolute top-12 right-10 text-white/20 text-sm animate-[pulseFade_3s_ease-in-out_infinite_0.5s] hidden md:block">✦</div>
-      <div className="pointer-events-none absolute bottom-16 right-8 text-white/20 text-lg animate-[pulseFade_3s_ease-in-out_infinite_1s]">✦</div>
+      <div className="pointer-events-none absolute bottom-16 right-8 text-white/20 text-lg animate-[pulseFade_3s_ease-in-out_infinite_1s] hidden md:block">✦</div>
       <div className="pointer-events-none absolute bottom-20 left-12 text-white/20 text-sm animate-[pulseFade_3s_ease-in-out_infinite_1.5s] hidden md:block">✦</div>
+
+      {/* Mobile: dual gradient lines + animated orbs + corner brackets */}
+      <div className="pointer-events-none absolute top-12 left-4 h-20 w-[1.5px] rounded-full bg-gradient-to-b from-[#7C3AED]/30 to-transparent animate-[pulseFade_3s_ease-in-out_infinite] md:hidden" />
+      <div className="pointer-events-none absolute bottom-16 right-4 h-16 w-[1.5px] rounded-full bg-gradient-to-b from-[#06B6D4]/25 to-transparent animate-[pulseFade_3s_ease-in-out_infinite_1.5s] md:hidden" />
+      <div className="pointer-events-none absolute top-[30%] right-5 h-3 w-3 rounded-full bg-gradient-to-br from-[#7C3AED]/20 to-[#06B6D4]/15 blur-[2px] animate-drift md:hidden" />
+      <div className="pointer-events-none absolute bottom-[35%] left-4 h-2.5 w-2.5 rounded-full bg-gradient-to-br from-[#06B6D4]/15 to-[#7C3AED]/10 blur-[2px] animate-[drift_6s_ease-in-out_infinite_2s] md:hidden" />
+      <div className="pointer-events-none absolute top-8 right-3 h-6 w-6 rounded-tr-lg border-t border-r border-[#7C3AED]/15 animate-border-glow md:hidden" />
+      <div className="pointer-events-none absolute bottom-10 left-3 h-6 w-6 rounded-bl-lg border-b border-l border-[#06B6D4]/12 animate-[borderGlow_4s_ease-in-out_infinite_2s] md:hidden" />
 
       <div className="relative mx-auto max-w-3xl">
         <FadeInSection>

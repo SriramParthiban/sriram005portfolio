@@ -17,11 +17,15 @@ const Certifications = () => (
     </div>
     <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.02)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
-    {/* Decorative: </> watermark */}
-    <div className="pointer-events-none absolute bottom-16 left-6 text-5xl md:text-8xl font-display font-bold text-white/[0.04] select-none">&lt;/&gt;</div>
-    {/* Cyan glow orbs */}
-    <div className="pointer-events-none absolute top-10 left-10 h-[40px] w-[40px] md:h-[80px] md:w-[80px] rounded-full bg-[#06B6D4]/10 blur-[30px] md:blur-[50px]" />
-    <div className="pointer-events-none absolute bottom-10 right-10 h-[40px] w-[40px] md:h-[80px] md:w-[80px] rounded-full bg-[#06B6D4]/10 blur-[30px] md:blur-[50px]" />
+    {/* Desktop: </> watermark + cyan orbs */}
+    <div className="pointer-events-none absolute bottom-16 left-6 text-8xl font-display font-bold text-white/[0.04] select-none hidden md:block">&lt;/&gt;</div>
+    <div className="pointer-events-none absolute top-10 left-10 h-[80px] w-[80px] rounded-full bg-[#06B6D4]/10 blur-[50px] hidden md:block" />
+    <div className="pointer-events-none absolute bottom-10 right-10 h-[80px] w-[80px] rounded-full bg-[#06B6D4]/10 blur-[50px] hidden md:block" />
+
+    {/* Mobile: gradient accent line + drifting orb + corner flourish */}
+    <div className="pointer-events-none absolute top-14 right-4 h-16 w-[1.5px] rounded-full bg-gradient-to-b from-[#7C3AED]/20 via-[#06B6D4]/15 to-transparent animate-[pulseFade_4s_ease-in-out_infinite_0.5s] md:hidden" />
+    <div className="pointer-events-none absolute bottom-24 left-5 h-3.5 w-3.5 rounded-full bg-gradient-to-br from-[#06B6D4]/15 to-[#7C3AED]/10 blur-[2px] animate-drift md:hidden" />
+    <div className="pointer-events-none absolute bottom-12 right-3 h-7 w-7 rounded-tr-xl border-t border-r border-[#06B6D4]/12 animate-border-glow md:hidden" />
 
     <div className="relative mx-auto max-w-3xl">
       <FadeInSection>

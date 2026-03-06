@@ -38,17 +38,25 @@ const Hero = () => {
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -top-20 -left-20 h-[200px] w-[200px] md:h-[400px] md:w-[400px] rounded-full bg-[#7C3AED]/10 blur-[80px] md:blur-[120px]" />
         <div className="absolute -bottom-20 -right-20 h-[200px] w-[200px] md:h-[400px] md:w-[400px] rounded-full bg-[#06B6D4]/10 blur-[80px] md:blur-[120px]" />
-        {/* Large central glow */}
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[250px] w-[250px] md:h-[500px] md:w-[500px] rounded-full bg-[#7C3AED]/20 blur-[100px] md:blur-[150px]" />
       </div>
 
       {/* Dotted grid pattern */}
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.03)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.03)_1px,transparent_1px)] bg-[size:20px_20px] opacity-50 md:bg-[size:20px_20px]" />
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.03)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.03)_1px,transparent_1px)] bg-[size:20px_20px] opacity-50" />
 
-      {/* Floating dots - desktop: 5-6, mobile: 3 centered */}
-      <div className="pointer-events-none absolute top-[15%] right-[10%] h-1 w-1 rounded-full bg-[#7C3AED]/10 animate-[float_4s_ease-in-out_infinite]" />
-      <div className="pointer-events-none absolute top-[20%] right-[15%] h-1 w-1 rounded-full bg-[#7C3AED]/10 animate-[float_5s_ease-in-out_infinite_0.5s]" />
-      <div className="pointer-events-none absolute top-[12%] right-[20%] h-1 w-1 rounded-full bg-[#7C3AED]/10 animate-[float_3.5s_ease-in-out_infinite_1s]" />
+      {/* Mobile: animated gradient accent lines + floating orbs */}
+      <div className="pointer-events-none absolute top-[12%] left-4 h-16 w-[2px] rounded-full bg-gradient-to-b from-[#7C3AED]/30 to-transparent animate-[pulseFade_4s_ease-in-out_infinite] md:hidden" />
+      <div className="pointer-events-none absolute top-[8%] right-6 h-20 w-[2px] rounded-full bg-gradient-to-b from-[#06B6D4]/25 to-transparent animate-[pulseFade_5s_ease-in-out_infinite_1s] md:hidden" />
+      <div className="pointer-events-none absolute bottom-[15%] left-8 h-3 w-3 rounded-full bg-gradient-to-br from-[#7C3AED]/20 to-[#06B6D4]/15 blur-[2px] animate-drift md:hidden" />
+      <div className="pointer-events-none absolute bottom-[25%] right-6 h-2 w-2 rounded-full bg-[#06B6D4]/20 blur-[1px] animate-[drift_6s_ease-in-out_infinite_2s] md:hidden" />
+      {/* Mobile: corner flourish */}
+      <div className="pointer-events-none absolute top-20 right-4 h-8 w-8 rounded-tr-xl border-t border-r border-[#7C3AED]/15 animate-border-glow md:hidden" />
+      <div className="pointer-events-none absolute bottom-24 left-4 h-8 w-8 rounded-bl-xl border-b border-l border-[#06B6D4]/15 animate-[borderGlow_4s_ease-in-out_infinite_2s] md:hidden" />
+
+      {/* Desktop: floating dots */}
+      <div className="pointer-events-none absolute top-[15%] right-[10%] h-1 w-1 rounded-full bg-[#7C3AED]/10 animate-[float_4s_ease-in-out_infinite] hidden md:block" />
+      <div className="pointer-events-none absolute top-[20%] right-[15%] h-1 w-1 rounded-full bg-[#7C3AED]/10 animate-[float_5s_ease-in-out_infinite_0.5s] hidden md:block" />
+      <div className="pointer-events-none absolute top-[12%] right-[20%] h-1 w-1 rounded-full bg-[#7C3AED]/10 animate-[float_3.5s_ease-in-out_infinite_1s] hidden md:block" />
       <div className="pointer-events-none absolute top-[18%] right-[8%] h-1 w-1 rounded-full bg-[#7C3AED]/10 animate-[float_4.5s_ease-in-out_infinite_0.3s] hidden md:block" />
       <div className="pointer-events-none absolute top-[25%] right-[12%] h-1 w-1 rounded-full bg-[#7C3AED]/10 animate-[float_5.5s_ease-in-out_infinite_0.8s] hidden md:block" />
 
