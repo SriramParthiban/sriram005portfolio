@@ -52,6 +52,12 @@ const projects = [
     accentColor: "from-accent to-primary",
     proofImage: dentbooksProof,
     proofLabel: "✅ Live Output — Automated Email Delivered",
+    extraImages: [
+      { src: ghlWorkflowOverview, label: "Full Workflow Overview" },
+      { src: ghlWorkflowBranches, label: "Condition-Based Branching Logic" },
+      { src: ghlEmailCompose, label: "Personalized Email Template" },
+      { src: ghlPipelineStages, label: "Pipeline Stage Management" },
+    ],
   },
 ];
 
