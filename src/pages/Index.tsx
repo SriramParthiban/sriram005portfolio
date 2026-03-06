@@ -15,7 +15,7 @@ import Footer from "@/components/Footer";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
 
 const Index = () => (
-  <>
+  <div className="overflow-x-hidden">
     <Navbar />
     <main>
       <Hero />
@@ -33,7 +33,7 @@ const Index = () => (
     </main>
     <Footer />
     <StickyMobileCTA />
-  </>
+  </div>
 );
 
 export default Index;

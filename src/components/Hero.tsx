@@ -33,16 +33,24 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="dark-section relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pt-20">
+    <section className="dark-section relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 sm:px-6 pt-20">
       {/* Ambient background */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-20 -left-20 h-[400px] w-[400px] rounded-full bg-primary/10 blur-[120px]" />
-        <div className="absolute -bottom-20 -right-20 h-[400px] w-[400px] rounded-full bg-accent/10 blur-[120px]" />
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-primary/5 blur-[150px]" />
+        <div className="absolute -top-20 -left-20 h-[200px] w-[200px] md:h-[400px] md:w-[400px] rounded-full bg-[#7C3AED]/10 blur-[80px] md:blur-[120px]" />
+        <div className="absolute -bottom-20 -right-20 h-[200px] w-[200px] md:h-[400px] md:w-[400px] rounded-full bg-[#06B6D4]/10 blur-[80px] md:blur-[120px]" />
+        {/* Large central glow */}
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[250px] w-[250px] md:h-[500px] md:w-[500px] rounded-full bg-[#7C3AED]/20 blur-[100px] md:blur-[150px]" />
       </div>
 
-      {/* Grid pattern */}
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.03)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
+      {/* Dotted grid pattern */}
+      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.03)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.03)_1px,transparent_1px)] bg-[size:20px_20px] opacity-50 md:bg-[size:20px_20px]" />
+
+      {/* Floating dots - desktop: 5-6, mobile: 3 centered */}
+      <div className="pointer-events-none absolute top-[15%] right-[10%] h-1 w-1 rounded-full bg-[#7C3AED]/10 animate-[float_4s_ease-in-out_infinite]" />
+      <div className="pointer-events-none absolute top-[20%] right-[15%] h-1 w-1 rounded-full bg-[#7C3AED]/10 animate-[float_5s_ease-in-out_infinite_0.5s]" />
+      <div className="pointer-events-none absolute top-[12%] right-[20%] h-1 w-1 rounded-full bg-[#7C3AED]/10 animate-[float_3.5s_ease-in-out_infinite_1s]" />
+      <div className="pointer-events-none absolute top-[18%] right-[8%] h-1 w-1 rounded-full bg-[#7C3AED]/10 animate-[float_4.5s_ease-in-out_infinite_0.3s] hidden md:block" />
+      <div className="pointer-events-none absolute top-[25%] right-[12%] h-1 w-1 rounded-full bg-[#7C3AED]/10 animate-[float_5.5s_ease-in-out_infinite_0.8s] hidden md:block" />
 
       <motion.div
         className="relative mx-auto max-w-5xl w-full"
@@ -62,7 +70,7 @@ const Hero = () => {
         </motion.div>
 
         {/* Two-column layout */}
-        <div className="flex flex-col items-center gap-10 md:flex-row md:gap-16 lg:gap-20">
+        <div className="flex flex-col items-center gap-8 sm:gap-10 md:flex-row md:gap-16 lg:gap-20">
           {/* LEFT: Profile photo */}
           <motion.div variants={item} className="flex shrink-0 justify-center">
             <div className="relative">
@@ -70,14 +78,14 @@ const Hero = () => {
               <img
                 src={profilePhoto}
                 alt="Sriram Parthiban"
-                className="relative h-40 w-40 rounded-full object-cover ring-4 ring-primary/25 shadow-[0_0_60px_-10px_hsl(var(--primary)/0.4)] sm:h-48 sm:w-48 lg:h-56 lg:w-56"
+                className="relative h-36 w-36 sm:h-40 sm:w-40 md:h-48 md:w-48 lg:h-56 lg:w-56 rounded-full object-cover ring-4 ring-primary/25 shadow-[0_0_60px_-10px_hsl(var(--primary)/0.4)]"
               />
             </div>
           </motion.div>
 
           {/* RIGHT: Content */}
           <div className="flex flex-1 flex-col items-center text-center md:items-start md:text-left">
-            <motion.h1 variants={item} className="font-display text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl xl:text-7xl text-balance">
+            <motion.h1 variants={item} className="font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-balance">
               Sriram{" "}
               <span className="gradient-text-warm">Parthiban</span>
             </motion.h1>
@@ -91,26 +99,26 @@ const Hero = () => {
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: -30, opacity: 0 }}
                   transition={{ duration: 0.4, ease: "easeInOut" }}
-                  className="text-lg font-semibold text-white/60 sm:text-xl font-display"
+                  className="text-base sm:text-lg md:text-xl font-semibold text-white/60 font-display"
                 >
                   {roles[roleIdx]}
                 </motion.p>
               </AnimatePresence>
             </motion.div>
 
-            <motion.p variants={item} className="mt-5 max-w-xl text-base leading-[1.8] text-white/50">
+            <motion.p variants={item} className="mt-5 max-w-xl text-sm sm:text-base leading-[1.8] text-white/50">
               Designing intelligent automation systems that generate qualified pipeline,
               optimize GTM workflows, and build scalable AI-driven operations.
             </motion.p>
 
-            <motion.div variants={item} className="mt-8 flex flex-wrap items-center gap-4">
-              <Button size="lg" className="glow-md font-semibold text-[0.9rem] px-7 py-6 transition-all duration-300 hover:glow-lg" asChild>
+            <motion.div variants={item} className="mt-8 flex flex-wrap items-center justify-center md:justify-start gap-3 sm:gap-4">
+              <Button size="lg" className="glow-md font-semibold text-[0.9rem] px-6 sm:px-7 py-6 transition-all duration-300 hover:glow-lg min-h-[44px]" asChild>
                 <a href="#experience">
                   <ArrowDown className="mr-2 h-4 w-4" />
                   View Experience
                 </a>
               </Button>
-              <Button size="lg" className="bg-primary/20 border border-primary/40 text-primary hover:bg-primary/30 font-semibold text-[0.9rem] px-7 py-6 transition-all duration-300" asChild>
+              <Button size="lg" className="bg-primary/20 border border-primary/40 text-primary hover:bg-primary/30 font-semibold text-[0.9rem] px-6 sm:px-7 py-6 transition-all duration-300 min-h-[44px]" asChild>
                 <a href="#contact">
                   <Mail className="mr-2 h-4 w-4" />
                   Contact Me
@@ -124,7 +132,6 @@ const Hero = () => {
           </div>
         </div>
       </motion.div>
-
     </section>
   );
 };

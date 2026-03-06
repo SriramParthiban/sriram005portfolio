@@ -7,6 +7,7 @@ import { Mail, Linkedin, Github, Send, ArrowUpRight, Loader2 } from "lucide-reac
 import FadeInSection from "./FadeInSection";
 import { motion } from "framer-motion";
 import { z } from "zod";
+import { supabase } from "@/integrations/supabase/client";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
@@ -34,14 +35,20 @@ const Contact = () => {
     setErrors({});
     setSending(true);
 
-    const subject = encodeURIComponent(`Portfolio inquiry from ${form.name}`);
-    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\n${form.message}`);
-    window.location.href = `mailto:sriramparthiban1970@gmail.com?subject=${subject}&body=${body}`;
+    try {
+      const { data, error } = await supabase.functions.invoke("send-contact-email", {
+        body: { name: form.name, email: form.email, message: form.message },
+      });
 
-    await new Promise((r) => setTimeout(r, 800));
-    setSending(false);
-    toast({ title: "✉️ Email client opened!", description: "Your message has been pre-filled. Just hit send!" });
-    setForm({ name: "", email: "", message: "" });
+      if (error) throw error;
+
+      toast({ title: "✉️ Message sent successfully!", description: "I'll get back to you soon." });
+      setForm({ name: "", email: "", message: "" });
+    } catch {
+      toast({ title: "Something went wrong", description: "Please try again.", variant: "destructive" });
+    } finally {
+      setSending(false);
+    }
   };
 
   const links = [
@@ -51,12 +58,19 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="dark-section relative px-6 py-32 overflow-hidden">
+    <section id="contact" className="dark-section relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
+      {/* Decorative: radial glow behind form */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-20 left-1/3 h-[350px] w-[350px] rounded-full bg-primary/8 blur-[130px]" />
-        <div className="absolute bottom-0 right-0 h-[250px] w-[250px] rounded-full bg-accent/6 blur-[100px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-[#7C3AED]/20 blur-[180px] md:h-[600px] md:w-[600px]" />
+        <div className="absolute bottom-0 right-0 h-[250px] w-[250px] rounded-full bg-[#06B6D4]/10 blur-[100px]" />
       </div>
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.02)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
+
+      {/* Sparkles */}
+      <div className="pointer-events-none absolute top-8 left-8 text-white/20 text-lg animate-[pulseFade_3s_ease-in-out_infinite] sm:text-xl">✦</div>
+      <div className="pointer-events-none absolute top-12 right-10 text-white/20 text-sm animate-[pulseFade_3s_ease-in-out_infinite_0.5s] hidden md:block">✦</div>
+      <div className="pointer-events-none absolute bottom-16 right-8 text-white/20 text-lg animate-[pulseFade_3s_ease-in-out_infinite_1s]">✦</div>
+      <div className="pointer-events-none absolute bottom-20 left-12 text-white/20 text-sm animate-[pulseFade_3s_ease-in-out_infinite_1.5s] hidden md:block">✦</div>
 
       <div className="relative mx-auto max-w-3xl">
         <FadeInSection>
@@ -64,10 +78,10 @@ const Contact = () => {
             <div className="h-1 w-10 rounded-full bg-gradient-to-r from-primary to-accent" />
             <span className="text-sm font-display font-semibold uppercase tracking-[0.2em] text-primary">Connect</span>
           </div>
-          <h2 className="text-3xl font-display font-bold text-white sm:text-4xl lg:text-5xl">
+          <h2 className="text-2xl sm:text-3xl font-display font-bold text-white md:text-4xl lg:text-5xl">
             Get in <span className="gradient-text">Touch</span>
           </h2>
-          <p className="mt-5 text-base leading-relaxed text-white/50 max-w-lg">
+          <p className="mt-5 text-sm sm:text-base leading-relaxed text-white/50 max-w-lg">
             Interested in building scalable AI-driven automation systems? Let's connect and explore how I can help.
           </p>
         </FadeInSection>
@@ -84,7 +98,7 @@ const Contact = () => {
                   rel={link.external ? "noopener noreferrer" : undefined}
                   whileHover={{ y: -3 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-5 py-3.5 text-sm font-medium text-white/50 backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:text-white hover:bg-white/8"
+                  className="group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 sm:px-5 py-3.5 text-sm font-medium text-white/50 backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:text-white hover:bg-white/8 min-h-[44px]"
                 >
                   <Icon className="h-4 w-4 transition-colors duration-300 group-hover:text-primary" />
                   <span className="truncate">{link.label}</span>
@@ -102,7 +116,7 @@ const Contact = () => {
             <motion.div
               whileHover={{ y: -2 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className="group relative overflow-hidden space-y-4 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 transition-all duration-500 hover:border-primary/15"
+              className="group relative overflow-hidden space-y-4 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-5 sm:p-6 transition-all duration-500 hover:border-primary/15"
             >
               <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-primary to-accent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
@@ -113,7 +127,7 @@ const Contact = () => {
                   maxLength={100}
                   value={form.name}
                   onChange={(e) => setForm({ ...form, name: e.target.value })}
-                  className="border-white/10 bg-white/5 text-white placeholder:text-white/30 transition-all duration-300 focus:border-primary/40 focus:bg-white/8"
+                  className="border-white/10 bg-white/5 text-white placeholder:text-white/30 transition-all duration-300 focus:border-primary/40 focus:bg-white/8 min-h-[44px]"
                 />
                 {errors.name && <p className="mt-1 text-xs text-destructive">{errors.name}</p>}
               </div>
@@ -125,7 +139,7 @@ const Contact = () => {
                   maxLength={255}
                   value={form.email}
                   onChange={(e) => setForm({ ...form, email: e.target.value })}
-                  className="border-white/10 bg-white/5 text-white placeholder:text-white/30 transition-all duration-300 focus:border-primary/40 focus:bg-white/8"
+                  className="border-white/10 bg-white/5 text-white placeholder:text-white/30 transition-all duration-300 focus:border-primary/40 focus:bg-white/8 min-h-[44px]"
                 />
                 {errors.email && <p className="mt-1 text-xs text-destructive">{errors.email}</p>}
               </div>
@@ -141,9 +155,9 @@ const Contact = () => {
                 />
                 {errors.message && <p className="mt-1 text-xs text-destructive">{errors.message}</p>}
               </div>
-              <Button type="submit" disabled={sending} className="w-full glow-sm font-semibold transition-all duration-300 hover:glow-md">
+              <Button type="submit" disabled={sending} className="w-full glow-sm font-semibold transition-all duration-300 hover:glow-md min-h-[44px]">
                 {sending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Send className="mr-2 h-4 w-4" />}
-                {sending ? "Opening..." : "Send Message"}
+                {sending ? "Sending..." : "Send Message"}
               </Button>
             </motion.div>
           </form>
