@@ -94,9 +94,9 @@ const Projects = () => {
   const isProofOpen = showProof === p.title;
 
   const variants = {
-    enter: (d: number) => ({ x: d > 0 ? 300 : -300, opacity: 0 }),
-    center: { x: 0, opacity: 1 },
-    exit: (d: number) => ({ x: d > 0 ? -300 : 300, opacity: 0 }),
+    enter: (d: number) => ({ x: d > 0 ? 60 : -60, opacity: 0, scale: 0.97 }),
+    center: { x: 0, opacity: 1, scale: 1 },
+    exit: (d: number) => ({ x: d > 0 ? -60 : 60, opacity: 0, scale: 0.97 }),
   };
 
   return (
@@ -160,7 +160,7 @@ const Projects = () => {
                 initial="enter"
                 animate="center"
                 exit="exit"
-                transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
+                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                 className="group relative overflow-hidden rounded-2xl border border-white/10 bg-[hsl(0_0%_7%)] backdrop-blur-sm p-5 sm:p-6 md:p-8 transition-all duration-500 hover:border-primary/30"
                 style={{ boxShadow: "0 0 40px -10px hsl(var(--primary) / 0.08)" }}
               >
