@@ -236,11 +236,6 @@
   0%, 100% { opacity: 0.15; }
   50% { opacity: 0.4; }
 }
-@keyframes scanline {
-  0% { top: 0%; }
-  50% { top: 100%; }
-  100% { top: 0%; }
-}
 
 .animate-shimmer {
   background-size: 200% 100%;
