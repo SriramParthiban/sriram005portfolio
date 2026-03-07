@@ -3,6 +3,7 @@ import { ArrowDown, Mail } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import profilePhoto from "@/assets/profile-photo.jpeg";
+import PixelArtCanvas from "./PixelArtCanvas";
 
 const roles = [
   "AI Automation Specialist",
@@ -33,73 +34,269 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="dark-section relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 sm:px-6 pt-20">
-      {/* Ambient background */}
+    <section
+      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 sm:px-6 pt-20"
+      style={{ background: '#0d0f1a' }}
+    >
+      {/* Grid texture background */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          backgroundImage: `linear-gradient(rgba(139,92,246,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(139,92,246,0.04) 1px, transparent 1px)`,
+          backgroundSize: '40px 40px',
+        }}
+      />
+
+      {/* Ambient glows */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-20 -left-20 h-[200px] w-[200px] md:h-[400px] md:w-[400px] rounded-full bg-[#7C3AED]/10 blur-[80px] md:blur-[120px]" />
-        <div className="absolute -bottom-20 -right-20 h-[200px] w-[200px] md:h-[400px] md:w-[400px] rounded-full bg-[#06B6D4]/10 blur-[80px] md:blur-[120px]" />
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[250px] w-[250px] md:h-[500px] md:w-[500px] rounded-full bg-[#7C3AED]/20 blur-[100px] md:blur-[150px]" />
+        <div className="absolute top-1/4 right-1/4 h-[300px] w-[300px] md:h-[500px] md:w-[500px] rounded-full blur-[120px] md:blur-[180px]" style={{ background: 'rgba(139,92,246,0.15)' }} />
+        <div className="absolute bottom-1/4 left-1/6 h-[200px] w-[200px] md:h-[350px] md:w-[350px] rounded-full blur-[100px] md:blur-[140px]" style={{ background: 'rgba(45,212,191,0.1)' }} />
       </div>
 
-      {/* Dotted grid pattern */}
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.03)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.03)_1px,transparent_1px)] bg-[size:20px_20px] opacity-50" />
-
-      {/* Mobile: animated gradient accent lines + floating orbs */}
-      <div className="pointer-events-none absolute top-[12%] left-4 h-16 w-[2px] rounded-full bg-gradient-to-b from-[#7C3AED]/30 to-transparent animate-[pulseFade_4s_ease-in-out_infinite] md:hidden" />
-      <div className="pointer-events-none absolute top-[8%] right-6 h-20 w-[2px] rounded-full bg-gradient-to-b from-[#06B6D4]/25 to-transparent animate-[pulseFade_5s_ease-in-out_infinite_1s] md:hidden" />
-      <div className="pointer-events-none absolute bottom-[15%] left-8 h-3 w-3 rounded-full bg-gradient-to-br from-[#7C3AED]/20 to-[#06B6D4]/15 blur-[2px] animate-drift md:hidden" />
-      <div className="pointer-events-none absolute bottom-[25%] right-6 h-2 w-2 rounded-full bg-[#06B6D4]/20 blur-[1px] animate-[drift_6s_ease-in-out_infinite_2s] md:hidden" />
-      {/* Mobile: corner flourish */}
-      <div className="pointer-events-none absolute top-20 right-4 h-8 w-8 rounded-tr-xl border-t border-r border-[#7C3AED]/15 animate-border-glow md:hidden" />
-      <div className="pointer-events-none absolute bottom-24 left-4 h-8 w-8 rounded-bl-xl border-b border-l border-[#06B6D4]/15 animate-[borderGlow_4s_ease-in-out_infinite_2s] md:hidden" />
-
-      {/* Desktop: floating dots */}
-      <div className="pointer-events-none absolute top-[15%] right-[10%] h-1 w-1 rounded-full bg-[#7C3AED]/10 animate-[float_4s_ease-in-out_infinite] hidden md:block" />
-      <div className="pointer-events-none absolute top-[20%] right-[15%] h-1 w-1 rounded-full bg-[#7C3AED]/10 animate-[float_5s_ease-in-out_infinite_0.5s] hidden md:block" />
-      <div className="pointer-events-none absolute top-[12%] right-[20%] h-1 w-1 rounded-full bg-[#7C3AED]/10 animate-[float_3.5s_ease-in-out_infinite_1s] hidden md:block" />
-      <div className="pointer-events-none absolute top-[18%] right-[8%] h-1 w-1 rounded-full bg-[#7C3AED]/10 animate-[float_4.5s_ease-in-out_infinite_0.3s] hidden md:block" />
-      <div className="pointer-events-none absolute top-[25%] right-[12%] h-1 w-1 rounded-full bg-[#7C3AED]/10 animate-[float_5.5s_ease-in-out_infinite_0.8s] hidden md:block" />
-
       <motion.div
-        className="relative mx-auto max-w-5xl w-full"
+        className="relative mx-auto max-w-6xl w-full"
         variants={container}
         initial="hidden"
         animate="visible"
       >
-        {/* Status badge - centered */}
-        <motion.div variants={item} className="mb-10 text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-5 py-2 text-xs font-semibold text-primary backdrop-blur-sm">
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
-            </span>
-            Available for opportunities
-          </span>
-        </motion.div>
+        {/* Two-column grid layout */}
+        <div
+          className="grid items-center gap-8 md:gap-12"
+          style={{
+            gridTemplateColumns: '1fr',
+          }}
+        >
+          {/* Mobile: photo + canvas side by side, then content below */}
+          {/* Desktop: left column (photo+canvas stacked) + right column (content) */}
+          <div className="hidden md:grid items-center" style={{ gridTemplateColumns: '220px 1fr', gap: '3rem' }}>
+            {/* LEFT COLUMN: Photo + Canvas stacked */}
+            <motion.div variants={item} className="flex flex-col gap-4">
+              {/* Profile Photo Card */}
+              <div className="relative" style={{ width: 190, height: 210 }}>
+                {/* Corner bracket accents */}
+                <div className="absolute -top-1.5 -left-1.5 w-3 h-3 border-t-2 border-l-2" style={{ borderColor: '#2dd4bf' }} />
+                <div className="absolute -top-1.5 -right-1.5 w-3 h-3 border-t-2 border-r-2" style={{ borderColor: '#2dd4bf' }} />
+                <div className="absolute -bottom-1.5 -left-1.5 w-3 h-3 border-b-2 border-l-2" style={{ borderColor: '#2dd4bf' }} />
+                <div className="absolute -bottom-1.5 -right-1.5 w-3 h-3 border-b-2 border-r-2" style={{ borderColor: '#2dd4bf' }} />
 
-        {/* Two-column layout */}
-        <div className="flex flex-col items-center gap-8 sm:gap-10 md:flex-row md:gap-16 lg:gap-20">
-          {/* LEFT: Profile photo */}
-          <motion.div variants={item} className="flex shrink-0 justify-center">
-            <div className="relative">
-              <div className="absolute -inset-3 rounded-full bg-gradient-to-br from-primary/30 via-accent/20 to-primary/10 blur-xl" />
-              <img
-                src={profilePhoto}
-                alt="Sriram Parthiban"
-                className="relative h-36 w-36 sm:h-40 sm:w-40 md:h-48 md:w-48 lg:h-56 lg:w-56 rounded-full object-cover ring-4 ring-primary/25 shadow-[0_0_60px_-10px_hsl(var(--primary)/0.4)]"
-              />
+                <div
+                  className="relative overflow-hidden w-full h-full"
+                  style={{
+                    borderRadius: 20,
+                    border: '1px solid rgba(139,92,246,0.35)',
+                    boxShadow: '0 0 30px rgba(139,92,246,0.15), 0 20px 60px rgba(0,0,0,0.5)',
+                  }}
+                >
+                  <img
+                    src={profilePhoto}
+                    alt="Sriram Parthiban"
+                    className="w-full h-full object-cover"
+                    style={{ objectPosition: 'top center' }}
+                  />
+                  {/* Scanline animation */}
+                  <div
+                    className="absolute left-0 w-full pointer-events-none"
+                    style={{
+                      height: 2,
+                      background: 'linear-gradient(90deg, transparent, rgba(139,92,246,0.7) 40%, rgba(45,212,191,0.7) 60%, transparent)',
+                      animation: 'scanline 4s ease-in-out infinite',
+                    }}
+                  />
+                </div>
+
+                {/* Available tag */}
+                <div
+                  className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-semibold whitespace-nowrap"
+                  style={{
+                    background: 'rgba(4,6,14,0.85)',
+                    border: '1px solid rgba(34,197,94,0.3)',
+                    color: '#22c55e',
+                  }}
+                >
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full opacity-75" style={{ background: '#22c55e' }} />
+                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full" style={{ background: '#22c55e' }} />
+                  </span>
+                  ◈ AVAILABLE
+                </div>
+              </div>
+
+              {/* Pixel Art Canvas Card */}
+              <div
+                className="overflow-hidden"
+                style={{
+                  width: 190,
+                  height: 190,
+                  borderRadius: 20,
+                  border: '1px solid rgba(139,92,246,0.2)',
+                  background: '#04060e',
+                }}
+              >
+                <PixelArtCanvas size={190} />
+              </div>
+            </motion.div>
+
+            {/* RIGHT COLUMN: Content */}
+            <div className="flex flex-col items-start text-left">
+              {/* Status badge */}
+              <motion.div variants={item} className="mb-6">
+                <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-5 py-2 text-xs font-semibold text-primary backdrop-blur-sm">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+                  </span>
+                  Available for opportunities
+                </span>
+              </motion.div>
+
+              <motion.h1 variants={item} className="font-display text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl xl:text-7xl text-balance" style={{ color: '#e2e8f0' }}>
+                Sriram{" "}
+                <span
+                  style={{
+                    background: 'linear-gradient(135deg, #a78bfa, #2dd4bf)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                  }}
+                >
+                  Parthiban
+                </span>
+              </motion.h1>
+
+              {/* Typing role animation */}
+              <motion.div variants={item} className="mt-4 h-8 sm:h-9 overflow-hidden">
+                <AnimatePresence mode="wait">
+                  <motion.p
+                    key={roleIdx}
+                    initial={{ y: 30, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -30, opacity: 0 }}
+                    transition={{ duration: 0.4, ease: "easeInOut" }}
+                    className="text-base sm:text-lg md:text-xl font-semibold font-display"
+                    style={{ color: '#64748b' }}
+                  >
+                    {roles[roleIdx]}
+                  </motion.p>
+                </AnimatePresence>
+              </motion.div>
+
+              <motion.p variants={item} className="mt-5 max-w-xl text-sm sm:text-base leading-[1.8]" style={{ color: 'rgba(226,232,240,0.5)' }}>
+                Designing intelligent automation systems that generate qualified pipeline,
+                optimize GTM workflows, and build scalable AI-driven operations.
+              </motion.p>
+
+              <motion.div variants={item} className="mt-8 flex flex-wrap items-start gap-3 sm:gap-4">
+                <Button size="lg" className="glow-md font-semibold text-[0.9rem] px-6 sm:px-7 py-6 transition-all duration-300 hover:glow-lg min-h-[44px]" asChild>
+                  <a href="#experience">
+                    <ArrowDown className="mr-2 h-4 w-4" />
+                    View Experience
+                  </a>
+                </Button>
+                <Button size="lg" className="bg-primary/20 border border-primary/40 text-primary hover:bg-primary/30 font-semibold text-[0.9rem] px-6 sm:px-7 py-6 transition-all duration-300 min-h-[44px]" asChild>
+                  <a href="#contact">
+                    <Mail className="mr-2 h-4 w-4" />
+                    Contact Me
+                  </a>
+                </Button>
+              </motion.div>
+
+              <motion.p variants={item} className="mt-6 text-xs font-medium tracking-wide" style={{ color: 'rgba(226,232,240,0.3)' }}>
+                AI-First · Data-Driven · Results-Oriented
+              </motion.p>
             </div>
-          </motion.div>
+          </div>
 
-          {/* RIGHT: Content */}
-          <div className="flex flex-1 flex-col items-center text-center md:items-start md:text-left">
-            <motion.h1 variants={item} className="font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-balance">
+          {/* MOBILE LAYOUT (< md) */}
+          <div className="flex flex-col items-center text-center md:hidden">
+            {/* Photo + Canvas side by side */}
+            <motion.div variants={item} className="flex items-center justify-center gap-4 mb-8">
+              {/* Profile Photo Card - smaller */}
+              <div className="relative" style={{ width: 130, height: 150 }}>
+                <div className="absolute -top-1 -left-1 w-2.5 h-2.5 border-t-2 border-l-2" style={{ borderColor: '#2dd4bf' }} />
+                <div className="absolute -top-1 -right-1 w-2.5 h-2.5 border-t-2 border-r-2" style={{ borderColor: '#2dd4bf' }} />
+                <div className="absolute -bottom-1 -left-1 w-2.5 h-2.5 border-b-2 border-l-2" style={{ borderColor: '#2dd4bf' }} />
+                <div className="absolute -bottom-1 -right-1 w-2.5 h-2.5 border-b-2 border-r-2" style={{ borderColor: '#2dd4bf' }} />
+
+                <div
+                  className="relative overflow-hidden w-full h-full"
+                  style={{
+                    borderRadius: 16,
+                    border: '1px solid rgba(139,92,246,0.35)',
+                    boxShadow: '0 0 20px rgba(139,92,246,0.12), 0 10px 40px rgba(0,0,0,0.4)',
+                  }}
+                >
+                  <img
+                    src={profilePhoto}
+                    alt="Sriram Parthiban"
+                    className="w-full h-full object-cover"
+                    style={{ objectPosition: 'top center' }}
+                  />
+                  <div
+                    className="absolute left-0 w-full pointer-events-none"
+                    style={{
+                      height: 2,
+                      background: 'linear-gradient(90deg, transparent, rgba(139,92,246,0.7) 40%, rgba(45,212,191,0.7) 60%, transparent)',
+                      animation: 'scanline 4s ease-in-out infinite',
+                    }}
+                  />
+                </div>
+                <div
+                  className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 flex items-center gap-1 px-2 py-0.5 rounded-full text-[8px] font-semibold whitespace-nowrap"
+                  style={{
+                    background: 'rgba(4,6,14,0.85)',
+                    border: '1px solid rgba(34,197,94,0.3)',
+                    color: '#22c55e',
+                  }}
+                >
+                  <span className="relative flex h-1 w-1">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full opacity-75" style={{ background: '#22c55e' }} />
+                    <span className="relative inline-flex h-1 w-1 rounded-full" style={{ background: '#22c55e' }} />
+                  </span>
+                  ◈ AVAILABLE
+                </div>
+              </div>
+
+              {/* Pixel Art Canvas - smaller */}
+              <div
+                className="overflow-hidden"
+                style={{
+                  width: 130,
+                  height: 130,
+                  borderRadius: 16,
+                  border: '1px solid rgba(139,92,246,0.2)',
+                  background: '#04060e',
+                }}
+              >
+                <PixelArtCanvas size={130} />
+              </div>
+            </motion.div>
+
+            {/* Status badge */}
+            <motion.div variants={item} className="mb-6">
+              <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-[10px] font-semibold text-primary backdrop-blur-sm">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
+                  <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
+                </span>
+                Available for opportunities
+              </span>
+            </motion.div>
+
+            <motion.h1 variants={item} className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl text-balance" style={{ color: '#e2e8f0' }}>
               Sriram{" "}
-              <span className="gradient-text-warm">Parthiban</span>
+              <span
+                style={{
+                  background: 'linear-gradient(135deg, #a78bfa, #2dd4bf)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}
+              >
+                Parthiban
+              </span>
             </motion.h1>
 
-            {/* Typing role animation */}
-            <motion.div variants={item} className="mt-4 h-8 sm:h-9 overflow-hidden">
+            <motion.div variants={item} className="mt-3 h-7 overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.p
                   key={roleIdx}
@@ -107,26 +304,27 @@ const Hero = () => {
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: -30, opacity: 0 }}
                   transition={{ duration: 0.4, ease: "easeInOut" }}
-                  className="text-base sm:text-lg md:text-xl font-semibold text-white/60 font-display"
+                  className="text-sm sm:text-base font-semibold font-display"
+                  style={{ color: '#64748b' }}
                 >
                   {roles[roleIdx]}
                 </motion.p>
               </AnimatePresence>
             </motion.div>
 
-            <motion.p variants={item} className="mt-5 max-w-xl text-sm sm:text-base leading-[1.8] text-white/50">
+            <motion.p variants={item} className="mt-4 max-w-md text-xs sm:text-sm leading-[1.8]" style={{ color: 'rgba(226,232,240,0.5)' }}>
               Designing intelligent automation systems that generate qualified pipeline,
               optimize GTM workflows, and build scalable AI-driven operations.
             </motion.p>
 
-            <motion.div variants={item} className="mt-8 flex flex-wrap items-center justify-center md:justify-start gap-3 sm:gap-4">
-              <Button size="lg" className="glow-md font-semibold text-[0.9rem] px-6 sm:px-7 py-6 transition-all duration-300 hover:glow-lg min-h-[44px]" asChild>
+            <motion.div variants={item} className="mt-6 flex flex-col sm:flex-row items-center gap-3 w-full sm:w-auto">
+              <Button size="lg" className="glow-md font-semibold text-[0.85rem] px-6 py-5 transition-all duration-300 hover:glow-lg min-h-[44px] w-full sm:w-auto" asChild>
                 <a href="#experience">
                   <ArrowDown className="mr-2 h-4 w-4" />
                   View Experience
                 </a>
               </Button>
-              <Button size="lg" className="bg-primary/20 border border-primary/40 text-primary hover:bg-primary/30 font-semibold text-[0.9rem] px-6 sm:px-7 py-6 transition-all duration-300 min-h-[44px]" asChild>
+              <Button size="lg" className="bg-primary/20 border border-primary/40 text-primary hover:bg-primary/30 font-semibold text-[0.85rem] px-6 py-5 transition-all duration-300 min-h-[44px] w-full sm:w-auto" asChild>
                 <a href="#contact">
                   <Mail className="mr-2 h-4 w-4" />
                   Contact Me
@@ -134,7 +332,7 @@ const Hero = () => {
               </Button>
             </motion.div>
 
-            <motion.p variants={item} className="mt-6 text-xs font-medium text-white/30 tracking-wide">
+            <motion.p variants={item} className="mt-5 text-[10px] font-medium tracking-wide" style={{ color: 'rgba(226,232,240,0.3)' }}>
               AI-First · Data-Driven · Results-Oriented
             </motion.p>
           </div>
