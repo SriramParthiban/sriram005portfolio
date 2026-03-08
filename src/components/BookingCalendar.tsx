@@ -201,8 +201,8 @@ const BookingCalendar = () => {
           {step === "time" && (
             <motion.div key="time" variants={stepVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.2 }}>
               <div className="flex items-center gap-2 mb-4">
-                <Clock className="h-4 w-4 text-primary" />
-                <h4 className="text-sm font-display font-semibold text-foreground">Pick a Time</h4>
+                <Clock className="h-5 w-5 text-primary" />
+                <h4 className="text-base font-display font-bold text-foreground">Pick a Time</h4>
               </div>
               <div className="flex gap-2 mb-4">
                 {([30, 60] as const).map((d) => (
