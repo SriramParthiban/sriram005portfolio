@@ -181,9 +181,16 @@ const TechStack = () => {
           <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-40 z-10 bg-gradient-to-r from-[hsl(var(--dark-section))] to-transparent" />
           <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-40 z-10 bg-gradient-to-l from-[hsl(var(--dark-section))] to-transparent" />
 
-          <div className="flex animate-ticker-row1 gap-4 sm:gap-6">
+          {/* Desktop: infinite loop with duplicates */}
+          <div className="hidden sm:flex animate-ticker-row1 gap-6">
             {[...row1Tools, ...row1Tools, ...row1Tools, ...row1Tools].map((tool, i) => (
               <ToolCard key={`row1-${i}`} tool={tool} />
+            ))}
+          </div>
+          {/* Mobile: single set, bounce back and forth */}
+          <div className="flex sm:hidden animate-ticker-row1-mobile gap-4" style={{ width: 'max-content' }}>
+            {row1Tools.map((tool, i) => (
+              <ToolCard key={`m-row1-${i}`} tool={tool} />
             ))}
           </div>
         </div>
@@ -193,9 +200,14 @@ const TechStack = () => {
           <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-40 z-10 bg-gradient-to-r from-[hsl(var(--dark-section))] to-transparent" />
           <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-40 z-10 bg-gradient-to-l from-[hsl(var(--dark-section))] to-transparent" />
 
-          <div className="flex animate-ticker-row2 gap-4 sm:gap-6">
+          <div className="hidden sm:flex animate-ticker-row2 gap-6">
             {[...row2Tools, ...row2Tools, ...row2Tools, ...row2Tools].map((tool, i) => (
               <ToolCard key={`row2-${i}`} tool={tool} />
+            ))}
+          </div>
+          <div className="flex sm:hidden animate-ticker-row2-mobile gap-4" style={{ width: 'max-content' }}>
+            {row2Tools.map((tool, i) => (
+              <ToolCard key={`m-row2-${i}`} tool={tool} />
             ))}
           </div>
         </div>
