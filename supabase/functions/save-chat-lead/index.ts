@@ -29,6 +29,7 @@ serve(async (req) => {
 - "extracted_name": The visitor's name if mentioned, or null
 - "extracted_email": The visitor's email if mentioned, or null
 - "extracted_phone": The visitor's phone number if mentioned, or null
+- "tag": A short custom tag (2-4 words max) describing the visitor's intent, e.g. "Website Development", "Hiring Inquiry", "Automation Consulting", "Data Analytics", "Partnership Proposal", "General Question", etc. Be specific to what they actually want. Return null if unclear.
 
 Only extract info that was clearly provided. Return ONLY valid JSON, no markdown.
 
@@ -52,6 +53,7 @@ ${messages.map((m: any) => `${m.role}: ${m.content}`).join("\n")}`;
     let extractedName = contactInfo?.name || null;
     let extractedEmail = contactInfo?.email || null;
     let extractedPhone = contactInfo?.phone || null;
+    let tag: string | null = null;
 
     if (aiResp.ok) {
       const aiData = await aiResp.json();
@@ -65,6 +67,7 @@ ${messages.map((m: any) => `${m.role}: ${m.content}`).join("\n")}`;
         if (parsed.extracted_name) extractedName = parsed.extracted_name;
         if (parsed.extracted_email) extractedEmail = parsed.extracted_email;
         if (parsed.extracted_phone) extractedPhone = parsed.extracted_phone;
+        if (parsed.tag) tag = parsed.tag;
       } catch {
         summary = content.slice(0, 500);
       }
@@ -79,6 +82,7 @@ ${messages.map((m: any) => `${m.role}: ${m.content}`).join("\n")}`;
       summary,
       ai_response_summary: aiResponseSummary,
       full_conversation: messages,
+      tag,
     });
 
     if (error) {

@@ -1,0 +1,1 @@
+ALTER TABLE public.chat_leads ADD COLUMN tag text DEFAULT null;

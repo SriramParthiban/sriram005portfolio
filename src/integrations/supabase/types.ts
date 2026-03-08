@@ -60,6 +60,7 @@ export type Database = {
           name: string | null
           phone: string | null
           summary: string | null
+          tag: string | null
         }
         Insert: {
           ai_response_summary?: string | null
@@ -70,6 +71,7 @@ export type Database = {
           name?: string | null
           phone?: string | null
           summary?: string | null
+          tag?: string | null
         }
         Update: {
           ai_response_summary?: string | null
@@ -80,6 +82,7 @@ export type Database = {
           name?: string | null
           phone?: string | null
           summary?: string | null
+          tag?: string | null
         }
         Relationships: []
       }
