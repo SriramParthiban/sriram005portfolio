@@ -405,7 +405,7 @@ const BookingCalendar = () => {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent/10 text-accent text-sm font-medium hover:bg-accent/20 transition-colors mb-6"
                     >
-                      <Video className="h-4 w-4" /> Join Google Meet
+                      <CalendarDays className="h-4 w-4" /> Open Calendly
                     </a>
                   )}
                   <div>
