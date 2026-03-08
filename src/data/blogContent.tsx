@@ -475,7 +475,7 @@ const AILeadQualContent = () => (
     <h2>Step 1: Capture Everything</h2>
     <p>Not just name and email — I capture signals that predict intent:</p>
 
-    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 my-10">
+    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 my-10">
       {[
         { icon: "🌐", label: "Source", desc: "Where they came from" },
         { icon: "🖱️", label: "Behavior", desc: "Pages visited, time spent" },
