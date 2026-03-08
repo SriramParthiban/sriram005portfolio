@@ -322,7 +322,7 @@ const BookingCalendar = () => {
                       <span className="text-muted-foreground">• {duration} min</span>
                       {MEET_LINK && (
                         <span className="flex items-center gap-1.5 text-accent">
-                          <Video className="h-3.5 w-3.5" /> Google Meet
+                          <CalendarDays className="h-3.5 w-3.5" /> Calendly
                         </span>
                       )}
                     </div>
