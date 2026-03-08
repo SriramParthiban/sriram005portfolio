@@ -164,7 +164,7 @@ const Projects = () => {
                     {p.proofImage && (
                       <button
                         onClick={() => setShowProof(!showProof)}
-                        className="inline-flex items-center gap-2 rounded-lg border border-accent/20 bg-accent/5 px-4 py-2 text-sm font-medium text-accent transition-all duration-300 hover:bg-accent/15 hover:border-accent/40 hover:text-white min-h-[44px]"
+                        className="inline-flex items-center gap-2 rounded-lg border-2 border-accent bg-accent/20 px-5 py-2.5 text-sm font-semibold text-accent transition-all duration-300 hover:bg-accent hover:text-white hover:shadow-[0_0_20px_-4px_hsl(var(--accent)/0.6)] min-h-[44px]"
                       >
                         <CheckCircle2 className="h-4 w-4" />
                         {showProof ? "Hide Output" : "See It in Action"}
@@ -174,7 +174,7 @@ const Projects = () => {
                     {/* Case study link */}
                     <Link
                       to={`/projects/${p.slug}`}
-                      className="inline-flex items-center gap-2 rounded-lg border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-medium text-primary transition-all duration-300 hover:bg-primary/15 hover:border-primary/40 hover:text-white min-h-[44px]"
+                      className="inline-flex items-center gap-2 rounded-lg border-2 border-primary bg-primary/20 px-5 py-2.5 text-sm font-semibold text-primary transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-[0_0_20px_-4px_hsl(var(--primary)/0.6)] min-h-[44px]"
                     >
                       <ExternalLink className="h-4 w-4" />
                       Read Case Study
