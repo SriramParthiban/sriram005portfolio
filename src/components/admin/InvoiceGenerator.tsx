@@ -177,27 +177,16 @@ const InvoiceGenerator = () => {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div>
           <label className={labelClass}>Currency</label>
-          <div className="flex gap-2">
-            {([
-              { value: "INR" as const, label: "₹ INR" },
-              { value: "USD" as const, label: "$ USD" },
-              { value: "CAD" as const, label: "CA$ CAD" },
-            ]).map((opt) => (
-              <button
-                key={opt.value}
-                type="button"
-                onClick={() => setCurrency(opt.value)}
-                className={cn(
-                  "flex-1 px-3 py-2.5 rounded-lg text-sm font-medium border transition-all",
-                  currency === opt.value
-                    ? "bg-primary text-primary-foreground border-primary shadow-lg shadow-primary/20"
-                    : "bg-[hsl(270,15%,12%)] border-[hsl(270,20%,20%)] text-muted-foreground hover:border-primary/40"
-                )}
-              >
-                {opt.label}
-              </button>
-            ))}
-          </div>
+          <Select value={currency} onValueChange={(v) => setCurrency(v as "INR" | "USD" | "CAD")}>
+            <SelectTrigger className="w-full bg-[hsl(270,15%,12%)] border-[hsl(270,20%,20%)]">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="INR">₹ INR — Indian Rupees</SelectItem>
+              <SelectItem value="USD">$ USD — US Dollars</SelectItem>
+              <SelectItem value="CAD">CA$ CAD — Canadian Dollars</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
         <div>
           <label className={labelClass}>Invoice Date</label>
