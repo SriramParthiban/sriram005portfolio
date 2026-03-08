@@ -26,6 +26,8 @@ const item = {
 
 const Hero = () => {
   const [roleIdx, setRoleIdx] = useState(0);
+  const [videoPlaying, setVideoPlaying] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const interval = setInterval(() => setRoleIdx((i) => (i + 1) % roles.length), 3000);
