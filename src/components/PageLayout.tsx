@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 
 const pageVariants = {
   initial: { opacity: 0, y: 20, filter: "blur(4px)" },
-  animate: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.5, ease: [0.25, 0.4, 0.25, 1] } },
-  exit: { opacity: 0, y: -20, filter: "blur(4px)", transition: { duration: 0.3, ease: [0.25, 0.4, 0.25, 1] } },
+  animate: { opacity: 1, y: 0, filter: "blur(0px)", transition: { duration: 0.5, ease: [0.25, 0.4, 0.25, 1] as [number, number, number, number] } },
+  exit: { opacity: 0, y: -20, filter: "blur(4px)", transition: { duration: 0.3, ease: [0.25, 0.4, 0.25, 1] as [number, number, number, number] } },
 };
 
 const PageLayout = ({ children }: { children: React.ReactNode }) => (
