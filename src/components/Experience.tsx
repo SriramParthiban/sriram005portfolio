@@ -1,8 +1,6 @@
 import FadeInSection from "./FadeInSection";
 import { Briefcase, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
-import expAiAutomation from "@/assets/exp-ai-automation.png";
-import expDataAnalyst from "@/assets/exp-data-analyst.png";
 import forestCanopy from "@/assets/forest-canopy.jpg";
 
 const experiences = [
@@ -12,7 +10,7 @@ const experiences = [
     location: "Remote / Canada",
     period: "June 2024 – Present",
     current: true,
-    illustration: expAiAutomation,
+    illustration: null,
     bullets: [
       "Designed and deployed outbound & qualification automation systems using AI voice, chat, and SMS agents across multiple channels.",
       "Built discovery logic that translates prospect signals into AE-ready handoffs, reducing manual qualification overhead significantly.",
@@ -29,7 +27,7 @@ const experiences = [
     location: "Chennai, India",
     period: "Aug 2023 – Jan 2024",
     current: false,
-    illustration: expDataAnalyst,
+    illustration: null,
     bullets: [
       "Performed cross-channel performance analysis across Google Ads, Meta Ads, and organic content — identifying high-ROI patterns that informed budget reallocation decisions.",
       "Built automated reporting dashboards in Power BI and Looker Studio, reducing manual reporting time by over 60%.",
@@ -71,12 +69,12 @@ const Experience = () => (
                     {exp.current && <div className="absolute inset-0 h-4 w-4 rounded-full bg-primary/20 animate-ping" />}
                   </div>
 
-                  <div className="ml-12 sm:ml-0 sm:flex sm:items-center">
-                    <div className={`sm:w-[calc(50%-40px)] ${isLeft ? "sm:order-1" : "sm:order-2 sm:ml-auto"}`}>
+                  <div className="ml-12 sm:ml-0 sm:flex sm:justify-center">
+                    <div className="sm:w-[calc(70%)] sm:max-w-2xl">
                       <motion.div
-                        whileHover={{ rotate: isLeft ? -1 : 1, y: -6, scale: 1.01 }}
+                        whileHover={{ rotate: isLeft ? -0.5 : 0.5, y: -6, scale: 1.01 }}
                         transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                        className="relative rounded-sm bg-card border border-border p-4 sm:p-5 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.08),0_2px_8px_-2px_rgba(0,0,0,0.04)]"
+                        className="relative rounded-sm bg-card border border-border p-5 sm:p-7 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.08),0_2px_8px_-2px_rgba(0,0,0,0.04)]"
                         style={{ transform: `rotate(${isLeft ? -0.5 : 0.5}deg)` }}
                       >
                         <div className={tapeStyle} />
@@ -94,42 +92,27 @@ const Experience = () => (
                             <Briefcase className="h-5 w-5" />
                           </div>
                           <div className="flex-1 min-w-0">
-                            <h3 className="text-sm sm:text-base font-display font-bold text-foreground">{exp.title}</h3>
-                            <p className="mt-0.5 text-xs font-medium text-muted-foreground">
+                            <h3 className="text-base sm:text-lg font-display font-bold text-foreground">{exp.title}</h3>
+                            <p className="mt-0.5 text-sm font-medium text-muted-foreground">
                               {exp.company} · {exp.location}
                             </p>
                           </div>
                         </div>
                         <div className="mt-2 text-right">
-                          <span className="inline-block rounded-full bg-primary/10 px-3 py-0.5 text-[11px] font-bold tracking-wide text-primary/80 italic">
+                          <span className="inline-block rounded-full bg-primary/10 px-3 py-0.5 text-xs font-bold tracking-wide text-primary/80 italic">
                             {exp.period}
                           </span>
                         </div>
                         <div className="my-3 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-                        <ul className="space-y-2">
+                        <ul className="space-y-2.5">
                           {exp.bullets.map((b, i) => (
-                            <li key={i} className="flex gap-2 text-xs leading-relaxed text-muted-foreground">
-                              <ChevronRight className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary/50" />
+                            <li key={i} className="flex gap-2 text-sm leading-relaxed text-muted-foreground">
+                              <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-primary/50" />
                               <span>{b}</span>
                             </li>
                           ))}
                         </ul>
                       </motion.div>
-                    </div>
-
-                    <div className={`hidden sm:flex sm:w-[calc(50%-40px)] items-center justify-center ${isLeft ? "sm:order-2 sm:ml-auto" : "sm:order-1"}`}>
-                      <motion.img
-                        src={exp.illustration}
-                        alt={`${exp.title} pixel art illustration`}
-                        className="w-48 md:w-56 lg:w-64 h-auto object-contain drop-shadow-[0_0_20px_hsl(var(--primary)/0.1)]"
-                        initial={{ opacity: 0, scale: 0.85 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.3 }}
-                        whileHover={{ scale: 1.06, y: -6 }}
-                        loading="lazy"
-                        decoding="async"
-                      />
                     </div>
                   </div>
                 </div>
