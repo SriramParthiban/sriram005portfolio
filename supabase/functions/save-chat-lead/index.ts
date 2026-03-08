@@ -29,6 +29,7 @@ serve(async (req) => {
 - "extracted_name": The visitor's name if mentioned, or null
 - "extracted_email": The visitor's email if mentioned, or null
 - "extracted_phone": The visitor's phone number if mentioned, or null
+- "tag": A short custom tag (2-4 words max) describing the visitor's intent, e.g. "Website Development", "Hiring Inquiry", "Automation Consulting", "Data Analytics", "Partnership Proposal", "General Question", etc. Be specific to what they actually want. Return null if unclear.
 
 Only extract info that was clearly provided. Return ONLY valid JSON, no markdown.
 
