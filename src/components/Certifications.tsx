@@ -66,7 +66,7 @@ const Certifications = () => (
                   </div>
 
                   {/* External link corner */}
-                  <ExternalLink className="absolute top-3 right-3 h-3 w-3 text-white/10 transition-all duration-300 group-hover:text-[hsl(40,60%,55%)]" />
+                  
                 </div>
               </div>
 
