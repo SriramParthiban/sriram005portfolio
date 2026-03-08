@@ -12,8 +12,8 @@ const STAGES = [
     label: "Lead Captured",
     emoji: "📨",
     icon: Send,
-    color: "rgba(124,111,255,0.85)",
-    glow: "rgba(124,111,255,0.4)",
+    color: "rgba(45,139,94,0.85)",
+    glow: "rgba(45,139,94,0.4)",
     explanation: (name: string, email: string) =>
       `${name}'s lead information has been received and entered into our system. We now have ${email} safely stored and ready for processing.`,
     logMsg: (name: string, email: string) => `Lead captured: ${name} (${email})`,
