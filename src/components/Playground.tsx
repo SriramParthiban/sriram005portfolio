@@ -110,10 +110,10 @@ function injectRunnerCSS() {
     .pg-wave-bar{animation:pg-wave 1s ease-in-out infinite}
     .pg-pulse-glow{animation:pg-pulse-ring 2s ease-in-out infinite}
     .pg-log-scroll::-webkit-scrollbar{width:6px}
-    .pg-log-scroll::-webkit-scrollbar-track{background:hsl(250 75% 57% / 0.08);border-radius:999px}
-    .pg-log-scroll::-webkit-scrollbar-thumb{background:hsl(250 75% 57% / 0.35);border-radius:999px}
-    .pg-log-scroll::-webkit-scrollbar-thumb:hover{background:hsl(250 75% 57% / 0.55)}
-    .pg-log-scroll{scrollbar-width:thin;scrollbar-color:hsl(250 75% 57% / 0.35) hsl(250 75% 57% / 0.08)}
+    .pg-log-scroll::-webkit-scrollbar-track{background:hsl(152 55% 45% / 0.08);border-radius:999px}
+    .pg-log-scroll::-webkit-scrollbar-thumb{background:hsl(152 55% 45% / 0.35);border-radius:999px}
+    .pg-log-scroll::-webkit-scrollbar-thumb:hover{background:hsl(152 55% 45% / 0.55)}
+    .pg-log-scroll{scrollbar-width:thin;scrollbar-color:hsl(152 55% 45% / 0.35) hsl(152 55% 45% / 0.08)}
   `;
   document.head.appendChild(style);
 }
