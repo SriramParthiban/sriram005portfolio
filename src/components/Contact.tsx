@@ -178,7 +178,7 @@ const Contact = () => {
                           maxLength={2000}
                           value={form.message}
                           onChange={(e) => setForm({ ...form, message: e.target.value })}
-                          className="w-full bg-transparent border-b-2 border-dotted border-[hsl(35,20%,68%)] pb-2 text-sm text-[hsl(35,20%,25%)] placeholder:text-[hsl(35,10%,60%)] focus:outline-none focus:border-primary/40 transition-colors resize-none font-mono"
+                          className="w-full bg-transparent border-b-2 border-dotted border-[hsl(35,20%,68%)] pb-2 text-sm font-semibold text-[hsl(35,20%,20%)] placeholder:text-[hsl(35,15%,45%)] placeholder:font-medium focus:outline-none focus:border-primary/40 transition-colors resize-none font-mono"
                           style={{
                             backgroundImage: "repeating-linear-gradient(transparent, transparent 27px, hsl(35 20% 78% / 0.5) 27px, hsl(35 20% 78% / 0.5) 28px)",
                             lineHeight: "28px",
