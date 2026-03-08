@@ -80,8 +80,8 @@ const About = () => (
   <section id="about" className="relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
     {/* Nature image background — subtle */}
     <div className="absolute inset-0">
-      <img src={natureTree} alt="" className="h-full w-full object-cover opacity-[0.06]" loading="lazy" />
-      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.95)]" />
+      <img src={natureTree} alt="" className="h-full w-full object-cover opacity-[0.13]" loading="lazy" />
+      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.91)]" />
     </div>
 
     {/* Left side sticky notes */}

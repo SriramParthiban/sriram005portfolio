@@ -45,8 +45,8 @@ const Experience = () => (
   <section id="experience" className="dark-section relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
     {/* Forest canopy background */}
     <div className="absolute inset-0">
-      <img src={forestCanopy} alt="" className="h-full w-full object-cover opacity-[0.05]" loading="lazy" />
-      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.96)]" />
+      <img src={forestCanopy} alt="" className="h-full w-full object-cover opacity-[0.12]" loading="lazy" />
+      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.92)]" />
       <div className="absolute inset-0 bg-gradient-to-b from-[hsl(155_25%_5%)] via-transparent to-[hsl(155_25%_5%)]" />
     </div>
 
