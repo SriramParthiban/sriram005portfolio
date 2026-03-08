@@ -24,14 +24,14 @@ const categories = [
 ];
 
 const Skills = () => (
-  <section id="skills" className="dark-section relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
-    {/* Leaf macro background */}
+  <section id="skills" className="dark-section relative px-4 sm:px-6 py-24 sm:py-28 overflow-hidden">
+    {/* Leaf macro background — more visible */}
     <div className="absolute inset-0">
-      <img src={fernCloseup} alt="" className="h-full w-full object-cover opacity-[0.14]" loading="lazy" />
-      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.90)]" />
+      <img src={fernCloseup} alt="" className="h-full w-full object-cover opacity-[0.20]" loading="lazy" />
+      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.84)]" />
     </div>
 
-    <div className="relative mx-auto max-w-4xl">
+    <div className="relative mx-auto max-w-5xl">
       <FadeInSection>
         <h2 className="text-2xl sm:text-3xl font-display font-bold text-white md:text-4xl lg:text-5xl">
           Technical Skills
@@ -39,7 +39,8 @@ const Skills = () => (
         <p className="mt-3 text-sm text-muted-foreground max-w-lg">The tools and expertise I bring to every project.</p>
       </FadeInSection>
 
-      <div className="mt-10 sm:mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {/* Staggered masonry-like layout instead of uniform grid */}
+      <div className="mt-10 sm:mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {categories.map((cat, idx) => {
           const Icon = cat.icon;
           const color = noteColors[idx];
@@ -56,6 +57,7 @@ const Skills = () => (
                 style={{
                   background: color.bg,
                   clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%)",
+                  marginTop: idx % 3 === 1 ? "1.5rem" : idx % 3 === 2 ? "0.75rem" : "0",
                 }}
               >
                 <div

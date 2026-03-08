@@ -77,11 +77,11 @@ const StickyNote = ({
 };
 
 const About = () => (
-  <section id="about" className="relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
-    {/* Nature image background — subtle */}
+  <section id="about" className="relative px-4 sm:px-6 py-20 sm:py-28 overflow-hidden">
+    {/* Nature image background */}
     <div className="absolute inset-0">
-      <img src={natureTree} alt="" className="h-full w-full object-cover opacity-[0.13]" loading="lazy" />
-      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.91)]" />
+      <img src={natureTree} alt="" className="h-full w-full object-cover opacity-[0.08]" loading="lazy" />
+      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.94)]" />
     </div>
 
     {/* Left side sticky notes */}
@@ -148,9 +148,6 @@ const About = () => (
         <h2 className="text-2xl sm:text-3xl font-display font-bold text-white md:text-4xl lg:text-5xl">
           About Me
         </h2>
-        <span className="font-handwritten text-base sm:text-lg text-primary/50 mt-2 block" style={{ transform: "rotate(-1deg)" }}>
-          (the short version — I promise it won't bore you)
-        </span>
       </FadeInSection>
 
       <FadeInSection delay={200}>

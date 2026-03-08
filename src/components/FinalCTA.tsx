@@ -4,12 +4,12 @@ import { motion } from "framer-motion";
 import coralVibrant from "@/assets/coral-vibrant.jpg";
 
 const FinalCTA = () => (
-  <section className="relative overflow-hidden py-24">
-    {/* Mountain waterfall background — dramatic */}
+  <section className="relative overflow-hidden py-28 sm:py-36">
+    {/* Coral background — clearly visible */}
     <div className="absolute inset-0">
       <img src={coralVibrant} alt="" className="h-full w-full object-cover" loading="lazy" />
-      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.88)]" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[hsl(155_25%_5%)] via-[hsl(155_25%_5%/0.6)] to-[hsl(155_25%_5%/0.7)]" />
+      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.82)]" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[hsl(155_25%_5%)] via-[hsl(155_25%_5%/0.4)] to-[hsl(155_25%_5%/0.5)]" />
     </div>
 
     <div className="relative mx-auto max-w-2xl px-6 text-center">
@@ -23,9 +23,6 @@ const FinalCTA = () => (
           Ready to Build Something{" "}
           <span className="gradient-text-warm">Extraordinary?</span>
         </h2>
-        <p className="font-handwritten text-lg sm:text-xl text-accent/50 mt-2" style={{ transform: "rotate(-1deg)" }}>
-          (seriously, let's chat — no sales pitch, just a real conversation)
-        </p>
 
         <p className="mx-auto mt-5 max-w-md text-base text-white/60">
           Let's discuss how AI-driven automation can transform your operations and drive measurable results.

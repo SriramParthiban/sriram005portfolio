@@ -13,26 +13,19 @@ const certs = [
 ];
 
 const Certifications = () => (
-  <section id="certifications" className="dark-section relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
-    {/* Coral reef background — much more visible */}
+  <section id="certifications" className="dark-section relative px-4 sm:px-6 py-24 sm:py-28 overflow-hidden">
+    {/* Coral reef background — clearly visible */}
     <div className="absolute inset-0">
-      <img src={coralReef} alt="" className="h-full w-full object-cover opacity-[0.22]" loading="lazy" />
-      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.82)]" />
+      <img src={coralReef} alt="" className="h-full w-full object-cover opacity-[0.25]" loading="lazy" />
+      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.78)]" />
     </div>
 
     <div className="relative mx-auto max-w-3xl">
       <FadeInSection>
-        <div className="flex items-end gap-4">
-          <div>
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground md:text-4xl lg:text-5xl">
-              Certifications
-            </h2>
-            <div className="mt-2 h-1 w-12 rounded-full bg-accent" />
-          </div>
-          <span className="font-handwritten text-lg sm:text-xl text-accent/60 mb-1" style={{ transform: "rotate(-3deg)", display: "inline-block" }}>
-            ← always learning!
-          </span>
-        </div>
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground md:text-4xl lg:text-5xl">
+          Certifications
+        </h2>
+        <div className="mt-2 h-1 w-12 rounded-full bg-accent" />
       </FadeInSection>
 
       <div className="mt-10 sm:mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2">

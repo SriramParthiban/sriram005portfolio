@@ -19,7 +19,7 @@ import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
 import ChatWidget from "@/components/ChatWidget";
-import { LeafDivider, VineDivider, NaturePhotoStrip } from "@/components/NatureDivider";
+import { NaturePhotoStrip } from "@/components/NatureDivider";
 
 const Index = () => {
   const location = useLocation();
@@ -41,22 +41,18 @@ const Index = () => {
       <Hero />
       <TrustStats />
       <SkillsTicker />
-      <LeafDivider />
       <About />
       <NaturePhotoStrip variant="canopy" />
       <Experience />
       <Projects />
       <Testimonials />
-      <LeafDivider flip />
       <Skills />
       <NaturePhotoStrip variant="leaves" />
       <Playground />
       <TechStack />
-      <VineDivider />
       <Education />
       <Certifications />
       <GitHubRepos />
-      <LeafDivider />
       <Contact />
       <FinalCTA />
     </main>

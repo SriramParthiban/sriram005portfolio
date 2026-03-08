@@ -7,11 +7,11 @@ import coralDeep from "@/assets/coral-deep.jpg";
 const coursework = ["Machine Learning", "Supply Chain Operations", "Statistical Forecasting", "Business Analytics"];
 
 const Education = () => (
-  <section id="education" className="dark-section relative px-6 py-32 overflow-hidden">
-    {/* Fern detail — subtle accent */}
+  <section id="education" className="dark-section relative px-6 py-20 sm:py-24 overflow-hidden">
+    {/* Coral deep — visible accent */}
     <div className="absolute inset-0">
-      <img src={coralDeep} alt="" className="h-full w-full object-cover opacity-[0.12]" loading="lazy" />
-      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.91)]" />
+      <img src={coralDeep} alt="" className="h-full w-full object-cover opacity-[0.18]" loading="lazy" />
+      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.86)]" />
     </div>
 
     <div className="relative mx-auto max-w-3xl">
@@ -20,9 +20,6 @@ const Education = () => (
         <h2 className="text-3xl font-display font-bold text-foreground sm:text-4xl lg:text-5xl">
           Academic Background
         </h2>
-        <span className="font-handwritten text-base text-primary/40 mt-2 block" style={{ transform: "rotate(-2deg)" }}>
-          where it all started 📚
-        </span>
       </FadeInSection>
 
       <FadeInSection delay={200}>

@@ -42,12 +42,12 @@ const experiences = [
 const tapeStyle = "absolute -top-3 left-1/2 -translate-x-1/2 h-6 w-16 bg-gradient-to-b from-white/20 to-white/5 rounded-sm backdrop-blur-sm border border-white/10 z-10";
 
 const Experience = () => (
-  <section id="experience" className="dark-section relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
-    {/* Forest canopy background */}
+  <section id="experience" className="dark-section relative px-4 sm:px-6 py-28 sm:py-36 overflow-hidden">
+    {/* Forest canopy background — more visible */}
     <div className="absolute inset-0">
-      <img src={forestCanopy} alt="" className="h-full w-full object-cover opacity-[0.12]" loading="lazy" />
-      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.92)]" />
-      <div className="absolute inset-0 bg-gradient-to-b from-[hsl(155_25%_5%)] via-transparent to-[hsl(155_25%_5%)]" />
+      <img src={forestCanopy} alt="" className="h-full w-full object-cover opacity-[0.18]" loading="lazy" />
+      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.85)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[hsl(155_25%_5%/0.7)] via-transparent to-[hsl(155_25%_5%)]" />
     </div>
 
     <div className="relative mx-auto max-w-4xl">
@@ -56,9 +56,6 @@ const Experience = () => (
           Professional Experience
         </h2>
         <div className="mt-2 h-1 w-16 rounded-full bg-primary" />
-        <p className="font-handwritten text-base sm:text-lg text-accent/50 mt-3" style={{ transform: "rotate(-1.5deg)" }}>
-          ↓ where the real magic happens
-        </p>
       </FadeInSection>
 
       {/* Timeline */}
