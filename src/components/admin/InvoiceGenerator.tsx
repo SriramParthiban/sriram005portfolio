@@ -68,7 +68,7 @@ const InvoiceGenerator = () => {
       <!DOCTYPE html>
       <html>
       <head>
-        <title>Invoice ${invoiceNumber}</title>
+        <title>Invoice</title>
         <style>
           * { margin: 0; padding: 0; box-sizing: border-box; }
           body { font-family: 'Segoe UI', system-ui, sans-serif; color: #1a1a2e; padding: 40px; max-width: 800px; margin: 0 auto; }
