@@ -209,7 +209,7 @@ const BookingCalendar = () => {
                   <button
                     key={d}
                     onClick={() => { setDuration(d); setSelectedTime(""); }}
-                    className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ${
+                    className={`px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${
                       duration === d
                         ? "bg-primary text-primary-foreground shadow-[0_0_12px_hsl(var(--primary)/0.3)]"
                         : "bg-white/5 text-muted-foreground border border-white/10 hover:bg-white/10"
