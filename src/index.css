@@ -306,6 +306,7 @@ input[type="number"] {
 }
 .scrollbar-themed::-webkit-scrollbar {
   height: 6px;
+  width: 6px;
 }
 .scrollbar-themed::-webkit-scrollbar-track {
   background: hsl(var(--primary) / 0.08);
