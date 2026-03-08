@@ -4,7 +4,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers":
-    "authorization, x-client-info, apikey, content-type, x-admin-password",
+    "authorization, x-client-info, apikey, content-type, x-admin-password, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
 serve(async (req) => {
@@ -27,16 +27,72 @@ serve(async (req) => {
     const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
-    const { data, error } = await supabase
-      .from("chat_leads")
-      .select("*")
-      .order("created_at", { ascending: false });
+    // Fetch all data in parallel
+    const [leadsRes, bookingsRes, viewsRes, viewsTodayRes, uniqueSessionsRes] = await Promise.all([
+      supabase.from("chat_leads").select("*").order("created_at", { ascending: false }),
+      supabase.from("bookings").select("*").order("created_at", { ascending: false }),
+      supabase.from("page_views").select("id", { count: "exact", head: true }),
+      supabase.from("page_views").select("id", { count: "exact", head: true })
+        .gte("created_at", new Date(new Date().setHours(0, 0, 0, 0)).toISOString()),
+      supabase.from("page_views").select("session_id"),
+    ]);
 
-    if (error) throw error;
+    const leads = leadsRes.data || [];
+    const bookings = bookingsRes.data || [];
+    const totalViews = viewsRes.count || 0;
+    const todayViews = viewsTodayRes.count || 0;
+    
+    // Count unique sessions
+    const uniqueSessions = new Set(
+      (uniqueSessionsRes.data || []).map((r: any) => r.session_id).filter(Boolean)
+    ).size;
 
-    return new Response(JSON.stringify({ leads: data }), {
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    // Derive stats
+    const leadsWithContact = leads.filter(
+      (l: any) => l.email || l.phone
+    ).length;
+    const confirmedBookings = bookings.filter((b: any) => b.status === "confirmed").length;
+
+    // Tag breakdown
+    const tagCounts: Record<string, number> = {};
+    leads.forEach((l: any) => {
+      const tag = l.tag || "Untagged";
+      tagCounts[tag] = (tagCounts[tag] || 0) + 1;
     });
+
+    // Last 7 days views by day
+    const sevenDaysAgo = new Date();
+    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+    const recentViewsRes = await supabase
+      .from("page_views")
+      .select("created_at")
+      .gte("created_at", sevenDaysAgo.toISOString());
+    
+    const dailyViews: Record<string, number> = {};
+    (recentViewsRes.data || []).forEach((v: any) => {
+      const day = new Date(v.created_at).toISOString().split("T")[0];
+      dailyViews[day] = (dailyViews[day] || 0) + 1;
+    });
+
+    return new Response(
+      JSON.stringify({
+        leads,
+        bookings,
+        stats: {
+          totalViews,
+          todayViews,
+          uniqueVisitors: uniqueSessions,
+          totalLeads: leads.length,
+          leadsWithContact,
+          totalBookings: bookings.length,
+          confirmedBookings,
+          chatConversations: leads.length,
+          tagCounts,
+          dailyViews,
+        },
+      }),
+      { headers: { ...corsHeaders, "Content-Type": "application/json" } }
+    );
   } catch (e) {
     return new Response(
       JSON.stringify({ error: e instanceof Error ? e.message : "Unknown error" }),

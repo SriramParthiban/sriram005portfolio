@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ProjectDetailPage from "./pages/ProjectDetailPage";
 import AdminPage from "./pages/AdminPage";
+import PageTracker from "./components/PageTracker";
 
 const queryClient = new QueryClient();
 
@@ -16,6 +17,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <PageTracker />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/projects/:slug" element={<ProjectDetailPage />} />
