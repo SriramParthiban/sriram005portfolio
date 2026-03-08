@@ -9,7 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import FadeInSection from "./FadeInSection";
 import { format, addDays, isBefore, startOfDay } from "date-fns";
 
-const MEET_LINK = "https://meet.google.com/YOUR-LINK-HERE"; // Replace with your static link
+const MEET_LINK = "https://meet.google.com/ptr-jaru-cjn";
 
 const TIME_SLOTS_30 = [
   "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
