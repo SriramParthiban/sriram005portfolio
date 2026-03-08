@@ -36,7 +36,7 @@ const N8nContent = () => (
 
     <h2>What Makes n8n Different?</h2>
 
-    <div className="space-y-6 my-10">
+    <div className="space-y-2 my-8">
       <StepCard number={1} title="Self-Hosted, Full Control" description="Your customer data never leaves your servers. Non-negotiable for healthcare, finance, and enterprise." />
       <StepCard number={2} title="Complex Branching & Error Handling" description="IF/ELSE branches, switch nodes, error workflows, sub-workflows — all native. Handle 15+ scenarios in one pipeline." />
       <StepCard number={3} title="Code When You Need It" description="Drop in JavaScript or Python at any node. Transform payloads, run regex, call custom APIs — 5 lines, done." />
@@ -72,7 +72,7 @@ const N8nContent = () => (
     <h2>Real-World: Multi-Channel Lead Pipeline</h2>
     <p>I built this for a dental marketing agency — <strong>3,000+ leads/month</strong> on a single n8n instance:</p>
 
-    <div className="space-y-5 my-10">
+    <div className="space-y-2 my-8">
       <StepCard number={1} title="📥 Capture" description="Facebook Ads, Google Ads, and website forms — all via webhooks into one pipeline." />
       <StepCard number={2} title="🔍 Enrich" description="Clearbit + custom API lookups to fill in company, location, and budget data." />
       <StepCard number={3} title="🔀 Route" description="Smart routing based on location, service interest, and lead score to different GHL pipelines." />
@@ -572,7 +572,7 @@ const AILeadQualContent = () => (
 
     <h2>Build Your Own</h2>
 
-    <div className="space-y-5 my-10">
+    <div className="space-y-2 my-8">
       <StepCard number={1} title="Set up n8n" description="Create a workflow triggered by your lead form webhook." />
       <StepCard number={2} title="Add AI scoring" description="Pass lead data to any LLM API with a scoring prompt." />
       <StepCard number={3} title="Map to CRM" description="Use the score to set a custom field in your pipeline." />

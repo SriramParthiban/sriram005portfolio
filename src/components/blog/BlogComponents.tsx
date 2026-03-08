@@ -159,19 +159,19 @@ export const StepCard = ({
   title: string;
   description: string;
 }) => (
-  <div className="flex gap-5 items-start py-4">
-    <div className="h-11 w-11 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center flex-shrink-0 mt-0.5">
-      <span className="text-primary font-bold text-sm">{number}</span>
+  <div className="flex gap-3 sm:gap-4 items-start py-2">
+    <div className="h-9 w-9 sm:h-10 sm:w-10 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center flex-shrink-0 mt-0.5">
+      <span className="text-primary font-bold text-xs sm:text-sm">{number}</span>
     </div>
-    <div className="flex-1 min-w-0">
-      <p className="font-bold text-white text-base tracking-tight">{title}</p>
-      <p className="text-[14px] text-white/65 mt-1.5 leading-[1.8]">{description}</p>
+    <div className="flex-1 min-w-0 pt-0.5">
+      <p className="font-bold text-white text-[15px] sm:text-base leading-snug">{title}</p>
+      <p className="text-[13px] sm:text-[14px] text-white/65 mt-1 leading-[1.7]">{description}</p>
     </div>
   </div>
 );
 
 export const SectionDivider = () => (
-  <div className="my-16 flex items-center gap-4">
+  <div className="my-10 sm:my-14 flex items-center gap-4">
     <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
     <div className="h-1.5 w-1.5 rounded-full bg-primary/40" />
     <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
