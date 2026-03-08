@@ -263,7 +263,7 @@ const BookingCalendar = () => {
 
           {step === "details" && (
             <motion.div key="details" variants={stepVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.2 }}>
-              <h4 className="text-sm font-display font-semibold text-foreground mb-4">Your Details</h4>
+              <h4 className="text-base font-display font-bold text-foreground mb-4">Your Details</h4>
               <div className="mb-4 p-3 rounded-lg bg-primary/5 border border-primary/10">
                 <div className="flex flex-wrap gap-2 text-xs">
                   <span className="flex items-center gap-1 text-foreground">
