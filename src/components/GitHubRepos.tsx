@@ -99,7 +99,7 @@ const GitHubRepos = () => {
               }}
             />
 
-            <div className="relative rounded-lg border border-[hsl(0,0%,18%)] bg-[hsl(0,0%,6%)] shadow-[0_0_60px_-20px_hsl(120,60%,30%/0.15),0_20px_40px_-10px_rgba(0,0,0,0.5)] overflow-hidden">
+            <div className="relative rounded-lg border border-[hsl(155,20%,14%)] bg-[hsl(155,25%,4%)] shadow-[0_0_60px_-20px_hsl(152,55%,35%/0.15),0_20px_40px_-10px_rgba(0,0,0,0.5)] overflow-hidden">
               <TerminalHeader />
 
               <div className="p-4 sm:p-6 font-mono text-sm space-y-1">
