@@ -11,7 +11,7 @@ type BlogSection = {
 
 /* ───────────── BLOG 1: n8n ───────────── */
 const N8nContent = () => (
-  <div className="space-y-0">
+  <div className="space-y-2">
     <h2>The Automation Landscape Is Shifting</h2>
     <p>
       Most businesses start with <strong>Zapier</strong> or <strong>Make</strong> — they're easy, visual, 
