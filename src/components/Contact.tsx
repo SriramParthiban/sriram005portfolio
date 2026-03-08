@@ -63,11 +63,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className="relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0">
-        <img src={mountainFog} alt="" className="h-full w-full object-cover opacity-[0.06]" loading="lazy" />
-        <div className="absolute inset-0 bg-background/94" />
-      </div>
+      <div className="absolute inset-0 bg-muted/30" />
 
       <div className="relative mx-auto max-w-6xl">
         <FadeInSection>
