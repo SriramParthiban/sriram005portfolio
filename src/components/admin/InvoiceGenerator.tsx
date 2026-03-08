@@ -1,6 +1,11 @@
 import { useState, useRef } from "react";
-import { Plus, Trash2, FileDown, Printer } from "lucide-react";
+import { Plus, Trash2, FileDown, CalendarIcon } from "lucide-react";
 import { motion } from "framer-motion";
+import { format } from "date-fns";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 type LineItem = {
   id: string;
@@ -12,9 +17,9 @@ const generateId = () => Math.random().toString(36).slice(2, 9);
 
 const OWNER = {
   name: "Sriram Parthiban",
-  email: "sriramparthiban.work@gmail.com",
-  phone: "+91 93445 XXXXX",
-  address: "Chennai, Tamil Nadu, India",
+  email: "info@sriramparthiban.com",
+  phone: "+91 93459 73779",
+  address: "Plot No A2 F1, Ashraya Apartments, Brindavan Street, Secretariat Colony, Mapeedu, Chennai - 600126",
 };
 
 const InvoiceGenerator = () => {
