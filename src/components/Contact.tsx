@@ -114,12 +114,14 @@ const Contact = () => {
 
           <FadeInSection delay={200}>
             <div>
-              <h3 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-2">
-                Get in Touch
-              </h3>
-              <p className="text-sm sm:text-base font-bold text-foreground mb-5 lg:mb-[57px]">
-                Prefer to write? Send me a message directly.
-              </p>
+              <div className="inline-block rounded-2xl bg-black/50 backdrop-blur-md px-6 py-4 border border-white/15 shadow-lg mb-5 lg:mb-[57px]">
+                <h3 className="text-2xl sm:text-3xl font-display font-bold text-white mb-1">
+                  Get in Touch
+                </h3>
+                <p className="text-sm sm:text-base font-semibold text-white/80">
+                  Prefer to write? Send me a message directly.
+                </p>
+              </div>
 
               <form onSubmit={handleSubmit}>
                 <motion.div
