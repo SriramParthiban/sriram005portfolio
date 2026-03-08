@@ -9,7 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import FadeInSection from "./FadeInSection";
 import { format, addDays, isBefore, startOfDay } from "date-fns";
 
-const MEET_LINK = "https://meet.google.com/YOUR-LINK-HERE"; // Replace with your static link
+const MEET_LINK = "https://meet.google.com/ptr-jaru-cjn";
 
 const TIME_SLOTS_30 = [
   "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
@@ -100,7 +100,7 @@ const BookingCalendar = () => {
           time: selectedTime,
           duration,
           message: message.trim(),
-          meetLink: MEET_LINK !== "https://meet.google.com/YOUR-LINK-HERE" ? MEET_LINK : null,
+          meetLink: MEET_LINK,
         },
       });
 
@@ -320,7 +320,7 @@ const BookingCalendar = () => {
                         {selectedTime} IST
                       </span>
                       <span className="text-muted-foreground">• {duration} min</span>
-                      {MEET_LINK !== "https://meet.google.com/YOUR-LINK-HERE" && (
+                      {MEET_LINK && (
                         <span className="flex items-center gap-1.5 text-accent">
                           <Video className="h-3.5 w-3.5" /> Google Meet
                         </span>
@@ -398,7 +398,7 @@ const BookingCalendar = () => {
                   <p className="text-sm text-muted-foreground/70 mb-6">
                     {duration} minute session • Confirmation sent to your email
                   </p>
-                  {MEET_LINK !== "https://meet.google.com/YOUR-LINK-HERE" && (
+                  {MEET_LINK && (
                     <a
                       href={MEET_LINK}
                       target="_blank"
