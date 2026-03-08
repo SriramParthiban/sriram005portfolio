@@ -1,7 +1,7 @@
 import FadeInSection from "./FadeInSection";
 import { Target, Bot, Plug, LineChart, Code, Users } from "lucide-react";
 import { motion } from "framer-motion";
-import leavesDewdrops from "@/assets/leaves-dewdrops.jpg";
+import fernCloseup from "@/assets/fern-closeup.jpg";
 
 const noteColors = [
   { bg: "#D1FAE5", text: "#065F46", badge: "#A7F3D0", badgeText: "#064E3B" },

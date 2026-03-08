@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote, Play, Star } from "lucide-react";
 import FadeInSection from "./FadeInSection";
-import leavesBright from "@/assets/leaves-bright.jpg";
+import fernDetail from "@/assets/fern-detail.jpg";
 
 interface Testimonial {
   name: string;

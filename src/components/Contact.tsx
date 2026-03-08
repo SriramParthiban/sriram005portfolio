@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import BookingCalendar from "./BookingCalendar";
-import flowingWater from "@/assets/flowing-water.jpg";
+import natureWaterfall from "@/assets/nature-waterfall.jpg";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),

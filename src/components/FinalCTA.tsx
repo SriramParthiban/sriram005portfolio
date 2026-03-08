@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Mail, ArrowUp, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
-import birdFlight from "@/assets/bird-flight.jpg";
+import natureMountains from "@/assets/nature-mountains.jpg";
 
 const FinalCTA = () => (
   <section className="relative overflow-hidden py-24">
