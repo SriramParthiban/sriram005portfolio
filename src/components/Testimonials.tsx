@@ -47,30 +47,25 @@ const Testimonials = () => {
   const t = testimonials[current];
 
   return (
-    <section id="testimonials" className="dark-section relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
+    <section id="testimonials" className="dark-section relative px-4 sm:px-6 py-20 sm:py-24 overflow-hidden">
       {/* Bright leaves background */}
       <div className="absolute inset-0">
-        <img src={fernDetail} alt="" className="h-full w-full object-cover opacity-[0.12]" loading="lazy" />
+        <img src={fernDetail} alt="" className="h-full w-full object-cover opacity-[0.10]" loading="lazy" />
         <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.92)]" />
       </div>
 
-      <div className="relative mx-auto max-w-4xl">
-        {/* Header */}
+      <div className="relative mx-auto max-w-3xl">
+        {/* Header — left-aligned to break the pattern */}
         <FadeInSection>
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground md:text-4xl lg:text-5xl">
-              What People Say
-            </h2>
-            <p className="mt-3 text-sm text-muted-foreground">Real feedback from real collaborators.</p>
-            <span className="font-handwritten text-base sm:text-lg text-primary/40 mt-2 inline-block" style={{ transform: "rotate(2deg)" }}>
-              (not my mom, I swear 😄)
-            </span>
-          </div>
+          <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground md:text-4xl lg:text-5xl">
+            What People Say
+          </h2>
+          <p className="mt-3 text-sm text-muted-foreground">Real feedback from real collaborators.</p>
         </FadeInSection>
 
         {/* Testimonial Card */}
         <FadeInSection>
-          <div className="relative">
+          <div className="relative mt-10">
             <AnimatePresence mode="wait">
               <motion.div
                 key={current}
@@ -78,7 +73,7 @@ const Testimonials = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -50 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-6 sm:p-10"
+                className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-10"
               >
                 <div className="absolute top-6 right-6 sm:top-8 sm:right-8">
                   <Quote className="h-10 w-10 sm:h-14 sm:w-14 text-primary/10" />
@@ -140,7 +135,7 @@ const Testimonials = () => {
             </AnimatePresence>
 
             {/* Navigation */}
-            <div className="flex items-center justify-center gap-4 mt-8">
+            <div className="flex items-center justify-between mt-8">
               <button
                 onClick={prev}
                 className="h-10 w-10 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-white/60 hover:text-white hover:border-primary/40 hover:bg-primary/10 transition-all min-h-[44px] min-w-[44px]"

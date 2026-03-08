@@ -38,9 +38,12 @@ const Counter = ({ value, prefix = "", suffix = "" }: { value: number; prefix?: 
 };
 
 const TrustStats = () => (
-  <section className="dark-section relative overflow-hidden py-16">
+  <section className="dark-section relative overflow-hidden py-14 sm:py-16">
+    {/* Asymmetric accent line */}
+    <div className="absolute top-0 left-[10%] right-[30%] h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+    
     <div className="relative mx-auto max-w-5xl px-6">
-      <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
+      <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-6">
         {stats.map((s, idx) => {
           const Icon = s.icon;
           return (
@@ -64,6 +67,9 @@ const TrustStats = () => (
         })}
       </div>
     </div>
+    
+    {/* Asymmetric accent line bottom */}
+    <div className="absolute bottom-0 left-[30%] right-[10%] h-px bg-gradient-to-r from-transparent via-accent/15 to-transparent" />
   </section>
 );
 

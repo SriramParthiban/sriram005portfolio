@@ -56,20 +56,20 @@ const Contact = () => {
 
   return (
     <section id="contact" className="relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
-      {/* Flowing water background */}
+      {/* Mountain background — more visible */}
       <div className="absolute inset-0">
-        <img src={mountainFog} alt="" className="h-full w-full object-cover opacity-[0.14]" loading="lazy" />
-        <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.90)]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(155_25%_5%/0.6)] via-transparent to-[hsl(155_25%_5%/0.6)]" />
+        <img src={mountainFog} alt="" className="h-full w-full object-cover opacity-[0.20]" loading="lazy" />
+        <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.84)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(155_25%_5%/0.4)] via-transparent to-[hsl(155_25%_5%/0.4)]" />
       </div>
 
       <div className="relative mx-auto max-w-6xl">
         <FadeInSection>
-          <div className="text-center mb-12">
+          <div className="mb-12">
             <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground md:text-4xl lg:text-5xl">
               Let's Work Together
             </h2>
-            <p className="mt-4 text-sm sm:text-base text-muted-foreground max-w-xl mx-auto">
+            <p className="mt-4 text-sm sm:text-base text-muted-foreground max-w-xl">
               Book a meeting or drop me a message — I'd love to hear about your project.
             </p>
           </div>
@@ -77,7 +77,7 @@ const Contact = () => {
 
         {/* Contact links */}
         <FadeInSection delay={100}>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center mb-12">
+          <div className="flex flex-col sm:flex-row gap-3 mb-12">
             {links.map((link) => {
               const Icon = link.icon;
               return (
@@ -88,7 +88,7 @@ const Contact = () => {
                   rel={link.external ? "noopener noreferrer" : undefined}
                   whileHover={{ y: -3 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-medium text-muted-foreground backdrop-blur-sm transition-all duration-300 hover:border-primary/20 hover:text-foreground hover:bg-white/8 min-h-[44px]"
+                  className="group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-medium text-muted-foreground transition-all duration-300 hover:border-primary/20 hover:text-foreground hover:bg-white/8 min-h-[44px]"
                 >
                   <Icon className="h-4 w-4 transition-colors duration-300 group-hover:text-primary" />
                   <span className="truncate">{link.label}</span>
