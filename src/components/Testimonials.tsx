@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote, Play, Star } from "lucide-react";
 import FadeInSection from "./FadeInSection";
+import leavesBright from "@/assets/leaves-bright.jpg";
 
 interface Testimonial {
   name: string;
@@ -47,8 +48,14 @@ const Testimonials = () => {
 
   return (
     <section id="testimonials" className="dark-section relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
+      {/* Bright leaves background */}
+      <div className="absolute inset-0">
+        <img src={leavesBright} alt="" className="h-full w-full object-cover opacity-[0.04]" loading="lazy" />
+        <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.97)]" />
+      </div>
+
       <div className="relative mx-auto max-w-4xl">
-        {/* Header — different style */}
+        {/* Header */}
         <FadeInSection>
           <div className="text-center mb-12 sm:mb-16">
             <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground md:text-4xl lg:text-5xl">

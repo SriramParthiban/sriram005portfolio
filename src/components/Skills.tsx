@@ -1,6 +1,7 @@
 import FadeInSection from "./FadeInSection";
 import { Target, Bot, Plug, LineChart, Code, Users } from "lucide-react";
 import { motion } from "framer-motion";
+import leavesDewdrops from "@/assets/leaves-dewdrops.jpg";
 
 const noteColors = [
   { bg: "#D1FAE5", text: "#065F46", badge: "#A7F3D0", badgeText: "#064E3B" },
@@ -24,6 +25,12 @@ const categories = [
 
 const Skills = () => (
   <section id="skills" className="dark-section relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
+    {/* Leaf macro background */}
+    <div className="absolute inset-0">
+      <img src={leavesDewdrops} alt="" className="h-full w-full object-cover opacity-[0.06]" loading="lazy" />
+      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.95)]" />
+    </div>
+
     <div className="relative mx-auto max-w-4xl">
       <FadeInSection>
         <h2 className="text-2xl sm:text-3xl font-display font-bold text-white md:text-4xl lg:text-5xl">

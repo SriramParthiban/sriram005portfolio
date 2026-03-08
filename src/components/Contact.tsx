@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import BookingCalendar from "./BookingCalendar";
-import natureTech from "@/assets/nature-tech.jpg";
+import flowingWater from "@/assets/flowing-water.jpg";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
@@ -56,10 +56,11 @@ const Contact = () => {
 
   return (
     <section id="contact" className="relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
-      {/* Nature background for contact */}
+      {/* Flowing water background */}
       <div className="absolute inset-0">
-        <img src={natureTech} alt="" className="h-full w-full object-cover opacity-[0.08]" loading="lazy" />
+        <img src={flowingWater} alt="" className="h-full w-full object-cover opacity-[0.07]" loading="lazy" />
         <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.94)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(155_25%_5%/0.6)] via-transparent to-[hsl(155_25%_5%/0.6)]" />
       </div>
 
       <div className="relative mx-auto max-w-6xl">

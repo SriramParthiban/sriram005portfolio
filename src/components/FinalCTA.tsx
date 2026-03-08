@@ -1,15 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { Mail, ArrowUp, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
-import natureWaterfall from "@/assets/nature-waterfall.jpg";
+import birdFlight from "@/assets/bird-flight.jpg";
 
 const FinalCTA = () => (
   <section className="relative overflow-hidden py-24">
-    {/* Nature background */}
+    {/* Bird in flight background — dramatic */}
     <div className="absolute inset-0">
-      <img src={natureWaterfall} alt="" className="h-full w-full object-cover" loading="lazy" />
-      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.9)]" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[hsl(155_25%_5%)] via-transparent to-[hsl(155_25%_5%/0.7)]" />
+      <img src={birdFlight} alt="" className="h-full w-full object-cover" loading="lazy" />
+      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.88)]" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[hsl(155_25%_5%)] via-[hsl(155_25%_5%/0.6)] to-[hsl(155_25%_5%/0.7)]" />
     </div>
 
     <div className="relative mx-auto max-w-2xl px-6 text-center">
