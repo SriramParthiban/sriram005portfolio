@@ -407,7 +407,7 @@ const Playground = () => {
                     <button
                       onClick={handleSubmit}
                       disabled={!leadName.trim() || !leadEmail.trim()}
-                      className="group w-full rounded-lg bg-primary py-3.5 text-sm font-semibold text-primary-foreground transition-all disabled:opacity-40 disabled:cursor-not-allowed hover:brightness-110 hover:shadow-[0_0_20px_-4px_hsl(250_75%_57%/0.5)] active:scale-[0.97] flex items-center justify-center gap-2"
+                      className="group w-full rounded-lg bg-primary py-3.5 text-sm font-semibold text-primary-foreground transition-all disabled:opacity-40 disabled:cursor-not-allowed hover:brightness-110 hover:shadow-[0_0_20px_-4px_hsl(152_55%_45%/0.5)] active:scale-[0.97] flex items-center justify-center gap-2"
                     >
                       <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                       Fire Lead
