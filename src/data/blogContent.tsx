@@ -18,7 +18,7 @@ const N8nContent = () => (
       and get you automated in minutes. But as operations scale, cracks appear fast.
     </p>
 
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 my-10">
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 my-10">
       {["Rate limits", "Limited logic", "Expensive pricing", "Zero data control"].map((issue) => (
         <div key={issue} className="bg-[hsl(0,30%,14%)] border border-[hsl(0,30%,25%)] rounded-xl p-5 text-center">
           <span className="text-red-400 text-2xl">✕</span>
@@ -44,33 +44,27 @@ const N8nContent = () => (
     </div>
 
     <h3>Pricing Comparison</h3>
-    <div className="overflow-x-auto my-8">
-      <table className="w-full text-sm border border-[hsl(270,15%,22%)] rounded-xl overflow-hidden">
-        <thead className="bg-[hsl(270,15%,14%)]">
-          <tr>
-            <th className="text-left py-3 px-4 text-foreground font-semibold border-b border-[hsl(270,15%,20%)]">Platform</th>
-            <th className="text-left py-3 px-4 text-foreground font-semibold border-b border-[hsl(270,15%,20%)]">50K tasks/mo</th>
-            <th className="text-left py-3 px-4 text-foreground font-semibold border-b border-[hsl(270,15%,20%)]">Self-hosted?</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="border-b border-[hsl(270,15%,18%)]">
-            <td className="py-3.5 px-4 text-white/70">Zapier</td>
-            <td className="py-3.5 px-4 text-red-400 font-medium">~$400+/mo</td>
-            <td className="py-3.5 px-4 text-red-400">❌</td>
-          </tr>
-          <tr className="border-b border-[hsl(270,15%,18%)]">
-            <td className="py-3.5 px-4 text-white/70">Make</td>
-            <td className="py-3.5 px-4 text-red-400 font-medium">~$200+/mo</td>
-            <td className="py-3.5 px-4 text-red-400">❌</td>
-          </tr>
-          <tr>
-            <td className="py-3.5 px-4 text-white font-medium">n8n</td>
-            <td className="py-3.5 px-4 text-[hsl(145,60%,55%)] font-bold">$0</td>
-            <td className="py-3.5 px-4 text-[hsl(145,60%,55%)]">✅</td>
-          </tr>
-        </tbody>
-      </table>
+    <div className="my-8 rounded-xl border border-[hsl(270,15%,22%)] overflow-hidden">
+      <div className="grid grid-cols-3 bg-[hsl(270,15%,14%)] text-foreground font-semibold text-sm">
+        <div className="py-3 px-4 border-b border-[hsl(270,15%,20%)]">Platform</div>
+        <div className="py-3 px-4 border-b border-[hsl(270,15%,20%)]">50K tasks/mo</div>
+        <div className="py-3 px-4 border-b border-[hsl(270,15%,20%)]">Self-hosted?</div>
+      </div>
+      <div className="grid grid-cols-3 border-b border-[hsl(270,15%,18%)] text-sm">
+        <div className="py-3.5 px-4 text-white/70">Zapier</div>
+        <div className="py-3.5 px-4 text-red-400 font-medium">~$400+/mo</div>
+        <div className="py-3.5 px-4 text-red-400">❌</div>
+      </div>
+      <div className="grid grid-cols-3 border-b border-[hsl(270,15%,18%)] text-sm">
+        <div className="py-3.5 px-4 text-white/70">Make</div>
+        <div className="py-3.5 px-4 text-red-400 font-medium">~$200+/mo</div>
+        <div className="py-3.5 px-4 text-red-400">❌</div>
+      </div>
+      <div className="grid grid-cols-3 text-sm">
+        <div className="py-3.5 px-4 text-white font-medium">n8n</div>
+        <div className="py-3.5 px-4 text-[hsl(145,60%,55%)] font-bold">$0</div>
+        <div className="py-3.5 px-4 text-[hsl(145,60%,55%)]">✅</div>
+      </div>
     </div>
 
     <SectionDivider />
@@ -177,12 +171,12 @@ const KPIDashboardContent = () => (
 
     <div className="bg-[hsl(270,12%,12%)] border border-[hsl(270,18%,22%)] rounded-xl p-7 my-10">
       <p className="text-xs text-white/40 mb-4 font-medium uppercase tracking-wider">My Standard Architecture</p>
-      <div className="flex flex-wrap items-center gap-3 text-sm">
+      <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-sm">
         {["Source (API/Webhook)", "→", "n8n (Transform)", "→", "PostgreSQL (Store)", "→", "Looker/Power BI"].map((part, i) => (
           part === "→" ? (
-            <span key={i} className="text-primary text-xl">→</span>
+            <span key={i} className="text-primary text-lg sm:text-xl">→</span>
           ) : (
-            <span key={i} className="bg-[hsl(270,18%,17%)] border border-[hsl(270,22%,25%)] rounded-lg px-4 py-2 text-white/80 font-medium">
+            <span key={i} className="bg-[hsl(270,18%,17%)] border border-[hsl(270,22%,25%)] rounded-lg px-3 sm:px-4 py-2 text-white/80 font-medium text-xs sm:text-sm">
               {part}
             </span>
           )
@@ -220,7 +214,7 @@ const KPIDashboardContent = () => (
       Everything else is a drill-down. If you can't fit it on one screen, you're tracking too much.
     </StickyNote>
 
-    <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 my-10">
+    <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 sm:gap-4 my-10">
       {[
         { label: "Cost Per Lead", desc: "Spending efficiently?" },
         { label: "Speed to Lead", desc: "Responding fast?" },
@@ -263,7 +257,7 @@ const KPIDashboardContent = () => (
 
     <h2>The Business Impact</h2>
 
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 my-10">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 my-10">
       <StatsCard label="Reporting" before="6 hrs/week" after="Real-time" />
       <StatsCard label="Time Saved" before="0" after="24 hrs/mo" change="+100%" />
       <StatsCard label="Ad Waste Found" before="Hidden" after="$3K/mo" change="Week 1" />
@@ -410,7 +404,7 @@ const GHLPlaybookContent = () => (
 
     <h2>The Numbers Don't Lie</h2>
 
-    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 my-10">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 my-10">
       <StatsCard label="Speed to Lead" before="4+ hrs" after="< 3 min" change="98% faster" />
       <StatsCard label="Contact Rate" before="15%" after="45%" change="3x better" />
       <StatsCard label="Booking Rate" before="8%" after="22%" change="2.75x" />
@@ -435,7 +429,7 @@ const AILeadQualContent = () => (
       <NumberHighlight number="67%" label="of sales time wasted on bad leads" color="amber" />
     </div>
 
-    <div className="grid grid-cols-3 gap-4 my-10">
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 my-10">
       {[
         { icon: "🐌", label: "Slow", desc: "Hours to research each lead" },
         { icon: "🎲", label: "Inconsistent", desc: "Depends on who's reviewing" },
@@ -481,7 +475,7 @@ const AILeadQualContent = () => (
     <h2>Step 1: Capture Everything</h2>
     <p>Not just name and email — I capture signals that predict intent:</p>
 
-    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 my-10">
+    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 my-10">
       {[
         { icon: "🌐", label: "Source", desc: "Where they came from" },
         { icon: "🖱️", label: "Behavior", desc: "Pages visited, time spent" },
@@ -545,7 +539,7 @@ const AILeadQualContent = () => (
 
     <h2>The Tech Stack</h2>
 
-    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 my-10">
+    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 my-10">
       {[
         { tool: "n8n", role: "Workflow Engine", why: "Complex branching, self-hosted" },
         { tool: "GPT API", role: "AI Scoring", why: "Best for unstructured text" },
@@ -567,7 +561,7 @@ const AILeadQualContent = () => (
     <h2>Results</h2>
     <p>For a B2B SaaS client running <strong>$15K/month</strong> in ads:</p>
 
-    <div className="grid grid-cols-2 gap-4 my-10">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-10">
       <StatsCard label="Sales Efficiency" before="Baseline" after="+340%" change="🚀" />
       <StatsCard label="Hot Lead Response" before="2+ hours" after="47 seconds" change="99% faster" />
       <StatsCard label="Close Rate" before="8%" after="23%" change="2.9x" />
