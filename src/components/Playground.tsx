@@ -201,7 +201,7 @@ const AIWaveBars = () => (
         className="w-[3px] rounded-full pg-wave-bar"
         style={{
           height: "100%",
-          backgroundColor: "rgba(0,212,255,0.6)",
+          backgroundColor: "rgba(212,162,76,0.6)",
           animationDelay: `${i * 0.15}s`,
         }}
       />
