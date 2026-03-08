@@ -247,3 +247,32 @@
 .animate-border-glow {
   animation: borderGlow 4s ease-in-out infinite;
 }
+
+/* Hide scrollbar utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Themed scrollbar for dark sections */
+.scrollbar-themed {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--primary) / 0.4) transparent;
+}
+.scrollbar-themed::-webkit-scrollbar {
+  height: 6px;
+}
+.scrollbar-themed::-webkit-scrollbar-track {
+  background: hsl(var(--primary) / 0.08);
+  border-radius: 999px;
+}
+.scrollbar-themed::-webkit-scrollbar-thumb {
+  background: hsl(var(--primary) / 0.35);
+  border-radius: 999px;
+}
+.scrollbar-themed::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.55);
+}
