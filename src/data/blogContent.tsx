@@ -86,7 +86,7 @@ const N8nContent = () => (
       <StepCard number={5} title="📊 Track" description="Push conversion events to a PostgreSQL-powered KPI dashboard in real-time." />
     </div>
 
-    <div className="flex justify-center my-8">
+    <div className="flex justify-center my-10">
       <NumberHighlight number="99.8%" label="Uptime on a single instance" color="green" />
     </div>
 
