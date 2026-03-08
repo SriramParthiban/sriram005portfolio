@@ -96,7 +96,7 @@ const About = () => (
     </div>
 
     {/* Right side sticky notes */}
-    <div className="hidden md:block absolute top-0 bottom-0 right-2 lg:right-8 xl:right-16 w-[110px]">
+    <div className="hidden lg:block absolute top-0 bottom-0 right-2 lg:right-8 xl:right-16 w-[110px]">
       {rightNotes.map((note, idx) => (
         <StickyNote key={note.label} note={note} side="right" idx={idx} />
       ))}
