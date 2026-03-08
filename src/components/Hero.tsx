@@ -3,7 +3,7 @@ import { ArrowDown, Mail } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import profilePhoto from "@/assets/profile-photo.jpeg";
-import natureWaterfall from "@/assets/nature-waterfall.jpg";
+import mountainFog from "@/assets/mountain-fog.jpg";
 
 const roles = [
   "AI Automation Specialist",
@@ -38,7 +38,7 @@ const Hero = () => {
       {/* Nature background image */}
       <div className="absolute inset-0">
         <img 
-          src={natureWaterfall} 
+          src={mountainFog} 
           alt="" 
           className="h-full w-full object-cover"
           loading="eager"
