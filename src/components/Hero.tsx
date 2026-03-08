@@ -38,7 +38,7 @@ const Hero = () => {
       {/* Nature background image */}
       <div className="absolute inset-0">
         <img 
-          src={natureWaterfall} 
+          src={mountainFog} 
           alt="" 
           className="h-full w-full object-cover"
           loading="eager"
