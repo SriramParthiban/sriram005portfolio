@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Mail, ArrowDown, Sparkles, CheckCircle2 } from "lucide-react";
+import { Mail, ArrowUp, Sparkles, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 
 const FinalCTA = () => (
@@ -47,7 +47,7 @@ const FinalCTA = () => (
           </Button>
           <Button size="lg" className="bg-primary/20 border border-primary/40 text-primary hover:bg-primary/30 font-semibold px-8 py-6 text-[0.9rem]" asChild>
             <a href="#experience">
-              <ArrowDown className="mr-2 h-4 w-4" />
+              <ArrowUp className="mr-2 h-4 w-4" />
               View My Work
             </a>
           </Button>
