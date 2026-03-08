@@ -458,8 +458,8 @@ const AILeadQualContent = () => (
 
     <h2>The Architecture</h2>
 
-    <div className="bg-[hsl(270,15%,10%)] border border-[hsl(270,20%,18%)] rounded-xl p-6 my-8">
-      <div className="flex flex-col items-center gap-2 text-sm">
+    <div className="bg-[hsl(270,12%,12%)] border border-[hsl(270,18%,22%)] rounded-xl p-7 my-10">
+      <div className="flex flex-col items-center gap-3 text-sm">
         {[
           "📥 Incoming Lead (Webhook)",
           "⚙️ n8n Workflow",
@@ -469,8 +469,8 @@ const AILeadQualContent = () => (
           "🚀 Trigger Sequence",
         ].map((step, i, arr) => (
           <div key={step} className="flex flex-col items-center">
-            <span className="bg-[hsl(270,20%,15%)] border border-[hsl(270,25%,22%)] rounded-lg px-4 py-2 text-foreground/80">{step}</span>
-            {i < arr.length - 1 && <span className="text-primary text-lg my-1">↓</span>}
+            <span className="bg-[hsl(270,18%,17%)] border border-[hsl(270,22%,25%)] rounded-lg px-5 py-2.5 text-white/80 font-medium">{step}</span>
+            {i < arr.length - 1 && <span className="text-primary text-xl my-1.5">↓</span>}
           </div>
         ))}
       </div>
