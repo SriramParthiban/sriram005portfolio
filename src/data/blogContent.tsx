@@ -220,7 +220,7 @@ const KPIDashboardContent = () => (
       Everything else is a drill-down. If you can't fit it on one screen, you're tracking too much.
     </StickyNote>
 
-    <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 my-8">
+    <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 my-10">
       {[
         { label: "Cost Per Lead", desc: "Spending efficiently?" },
         { label: "Speed to Lead", desc: "Responding fast?" },
@@ -228,9 +228,9 @@ const KPIDashboardContent = () => (
         { label: "Show Rate", desc: "Showing up?" },
         { label: "Revenue/Lead", desc: "True ROI?" },
       ].map((m) => (
-        <div key={m.label} className="bg-[hsl(270,15%,10%)] border border-[hsl(270,20%,18%)] rounded-lg p-3 text-center">
+        <div key={m.label} className="bg-[hsl(270,12%,12%)] border border-[hsl(270,18%,22%)] rounded-xl p-4 text-center">
           <p className="text-primary text-xs font-bold">{m.label}</p>
-          <p className="text-[10px] text-muted-foreground mt-1">{m.desc}</p>
+          <p className="text-[11px] text-white/40 mt-1.5">{m.desc}</p>
         </div>
       ))}
     </div>
