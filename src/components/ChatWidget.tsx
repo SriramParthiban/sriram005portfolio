@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { MessageCircle, X, Send, Bot, User } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ReactMarkdown from "react-markdown";
@@ -6,6 +6,7 @@ import ReactMarkdown from "react-markdown";
 type Msg = { role: "user" | "assistant"; content: string };
 
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
+const SAVE_LEAD_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/save-chat-lead`;
 
 async function streamChat({
   messages,
@@ -70,7 +71,6 @@ async function streamChat({
       }
     }
 
-    // Flush remaining
     if (buffer.trim()) {
       for (let raw of buffer.split("\n")) {
         if (!raw || !raw.startsWith("data: ")) continue;
@@ -95,8 +95,15 @@ const ChatWidget = () => {
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [leadSaved, setLeadSaved] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const messagesRef = useRef<Msg[]>([]);
+
+  // Keep ref in sync
+  useEffect(() => {
+    messagesRef.current = messages;
+  }, [messages]);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -109,6 +116,45 @@ const ChatWidget = () => {
       inputRef.current.focus();
     }
   }, [isOpen]);
+
+  const saveLead = useCallback(async () => {
+    const msgs = messagesRef.current;
+    if (leadSaved || msgs.length < 2) return; // Need at least 1 exchange
+    setLeadSaved(true);
+
+    try {
+      await fetch(SAVE_LEAD_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+        },
+        body: JSON.stringify({ messages: msgs }),
+      });
+    } catch (e) {
+      console.error("Failed to save lead:", e);
+    }
+  }, [leadSaved]);
+
+  const handleClose = () => {
+    saveLead();
+    setIsOpen(false);
+  };
+
+  // Also save on page unload if chat had exchanges
+  useEffect(() => {
+    const handleUnload = () => {
+      if (messagesRef.current.length >= 2 && !leadSaved) {
+        const blob = new Blob(
+          [JSON.stringify({ messages: messagesRef.current })],
+          { type: "application/json" }
+        );
+        navigator.sendBeacon(SAVE_LEAD_URL, blob);
+      }
+    };
+    window.addEventListener("beforeunload", handleUnload);
+    return () => window.removeEventListener("beforeunload", handleUnload);
+  }, [leadSaved]);
 
   const send = async () => {
     const text = input.trim();
@@ -145,6 +191,46 @@ const ChatWidget = () => {
         setIsLoading(false);
       },
     });
+  };
+
+  const handleQuickQuestion = (q: string) => {
+    setInput(q);
+    // Use a slight delay so state updates, then trigger send
+    setTimeout(() => {
+      const fakeInput = q;
+      if (!fakeInput || isLoading) return;
+      const userMsg: Msg = { role: "user", content: fakeInput };
+      setMessages((prev) => [...prev, userMsg]);
+      setInput("");
+      setIsLoading(true);
+
+      let assistantSoFar = "";
+      const upsert = (chunk: string) => {
+        assistantSoFar += chunk;
+        setMessages((prev) => {
+          const last = prev[prev.length - 1];
+          if (last?.role === "assistant") {
+            return prev.map((m, i) =>
+              i === prev.length - 1 ? { ...m, content: assistantSoFar } : m
+            );
+          }
+          return [...prev, { role: "assistant", content: assistantSoFar }];
+        });
+      };
+
+      streamChat({
+        messages: [userMsg],
+        onDelta: upsert,
+        onDone: () => setIsLoading(false),
+        onError: (err) => {
+          setMessages((prev) => [
+            ...prev,
+            { role: "assistant", content: err },
+          ]);
+          setIsLoading(false);
+        },
+      });
+    }, 50);
   };
 
   return (
@@ -187,7 +273,7 @@ const ChatWidget = () => {
                 </div>
               </div>
               <button
-                onClick={() => setIsOpen(false)}
+                onClick={handleClose}
                 className="h-8 w-8 rounded-full hover:bg-white/10 flex items-center justify-center transition-colors"
               >
                 <X className="h-4 w-4 text-muted-foreground" />
@@ -210,14 +296,7 @@ const ChatWidget = () => {
                       (q) => (
                         <button
                           key={q}
-                          onClick={() => {
-                            setInput(q);
-                            setTimeout(() => {
-                              setInput(q);
-                              const fakeEvent = { preventDefault: () => {} };
-                              // trigger send
-                            }, 0);
-                          }}
+                          onClick={() => handleQuickQuestion(q)}
                           className="text-[11px] px-3 py-1.5 rounded-full border border-white/10 text-muted-foreground hover:border-primary/50 hover:text-primary transition-colors"
                         >
                           {q}
