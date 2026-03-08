@@ -11,7 +11,6 @@ const navLinks = [
   { label: "Projects", href: "#projects" },
   { label: "Testimonials", href: "#testimonials" },
   { label: "Skills", href: "#skills" },
-  { label: "Blog", href: "#blog" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -27,7 +26,6 @@ const Navbar = () => {
     const onScroll = () => {
       setScrolled(window.scrollY > 20);
 
-      // Determine active section based on scroll position
       const sections = navLinks.map((l) => l.href.replace("#", ""));
       let current = "";
       for (const id of sections) {
@@ -69,7 +67,7 @@ const Navbar = () => {
       transition={{ duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
         scrolled
-          ? "bg-[hsl(0_0%_8%/0.85)] backdrop-blur-xl border-b border-white/5 shadow-[0_4px_30px_-8px_hsl(var(--primary)/0.1)]"
+          ? "bg-[hsl(155_30%_5%/0.9)] backdrop-blur-xl border-b border-white/5 shadow-[0_4px_30px_-8px_hsl(var(--primary)/0.1)]"
           : "bg-transparent"
       }`}
     >
@@ -97,7 +95,7 @@ const Navbar = () => {
               </button>
             );
           })}
-          <Button size="sm" className="ml-5 bg-gradient-to-r from-[#7C3AED] to-[#6D28D9] text-white font-medium shadow-[0_0_20px_-4px_hsl(var(--primary)/0.4)] hover:shadow-[0_0_30px_-4px_hsl(var(--primary)/0.5)] hover:brightness-110 transition-all duration-300" asChild>
+          <Button size="sm" className="ml-5 bg-gradient-to-r from-primary to-[hsl(152,55%,35%)] text-white font-medium shadow-[0_0_20px_-4px_hsl(var(--primary)/0.4)] hover:shadow-[0_0_30px_-4px_hsl(var(--primary)/0.5)] hover:brightness-110 transition-all duration-300" asChild>
             <a href="/resume.pdf" download>
               <Download className="mr-1.5 h-3.5 w-3.5" />
               Resume
@@ -133,7 +131,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
-            className="bg-[hsl(0_0%_8%/0.95)] backdrop-blur-xl overflow-hidden border-b border-white/5 px-6 pb-6 lg:hidden"
+            className="bg-[hsl(155_30%_5%/0.95)] backdrop-blur-xl overflow-hidden border-b border-white/5 px-6 pb-6 lg:hidden"
           >
             <div className="flex flex-col gap-1">
               {navLinks.map((link, i) => {
@@ -155,7 +153,7 @@ const Navbar = () => {
                   </motion.button>
                 );
               })}
-              <Button size="sm" asChild className="mt-3 w-fit bg-gradient-to-r from-[#7C3AED] to-[#6D28D9] text-white font-medium shadow-[0_0_20px_-4px_hsl(var(--primary)/0.4)]">
+              <Button size="sm" asChild className="mt-3 w-fit bg-gradient-to-r from-primary to-[hsl(152,55%,35%)] text-white font-medium shadow-[0_0_20px_-4px_hsl(var(--primary)/0.4)]">
                 <a href="/resume.pdf" download>
                   <Download className="mr-1.5 h-3.5 w-3.5" />
                   Resume

@@ -14,7 +14,6 @@ import Playground from "@/components/Playground";
 import Education from "@/components/Education";
 import Certifications from "@/components/Certifications";
 import GitHubRepos from "@/components/GitHubRepos";
-import Blog from "@/components/Blog";
 import Contact from "@/components/Contact";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
@@ -51,7 +50,7 @@ const Index = () => {
       <Education />
       <Certifications />
       <GitHubRepos />
-      <Blog />
+      
       <Contact />
       <FinalCTA />
     </main>

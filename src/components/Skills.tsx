@@ -3,12 +3,12 @@ import { Target, Bot, Plug, LineChart, Code, Users } from "lucide-react";
 import { motion } from "framer-motion";
 
 const noteColors = [
-  { bg: "#FEF3C7", text: "#92400E", badge: "#FDE68A", badgeText: "#78350F" }, // yellow
-  { bg: "#FCE7F3", text: "#9D174D", badge: "#FBCFE8", badgeText: "#831843" }, // pink
   { bg: "#D1FAE5", text: "#065F46", badge: "#A7F3D0", badgeText: "#064E3B" }, // green
-  { bg: "#DBEAFE", text: "#1E40AF", badge: "#BFDBFE", badgeText: "#1E3A8A" }, // blue
-  { bg: "#EDE9FE", text: "#5B21B6", badge: "#DDD6FE", badgeText: "#4C1D95" }, // purple
-  { bg: "#FFEDD5", text: "#9A3412", badge: "#FED7AA", badgeText: "#7C2D12" }, // orange
+  { bg: "#FEF3C7", text: "#92400E", badge: "#FDE68A", badgeText: "#78350F" }, // yellow
+  { bg: "#ECFCCB", text: "#365314", badge: "#D9F99D", badgeText: "#3F6212" }, // lime
+  { bg: "#FED7AA", text: "#9A3412", badge: "#FDBA74", badgeText: "#7C2D12" }, // orange
+  { bg: "#BBF7D0", text: "#14532D", badge: "#86EFAC", badgeText: "#166534" }, // emerald
+  { bg: "#FEF9C3", text: "#713F12", badge: "#FDE047", badgeText: "#854D0E" }, // amber
 ];
 
 const rotations = [-2.5, 1.8, -1.2, 2.2, -1.8, 2.8];
@@ -25,8 +25,8 @@ const categories = [
 const Skills = () => (
   <section id="skills" className="dark-section relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      <div className="absolute -top-20 left-1/2 h-[200px] w-[200px] md:h-[400px] md:w-[400px] rounded-full bg-[#06B6D4]/6 blur-[80px] md:blur-[140px]" />
-      <div className="absolute bottom-0 right-0 h-[125px] w-[125px] md:h-[250px] md:w-[250px] rounded-full bg-[#7C3AED]/6 blur-[60px] md:blur-[100px]" />
+      <div className="absolute -top-20 left-1/2 h-[200px] w-[200px] md:h-[400px] md:w-[400px] rounded-full bg-accent/6 blur-[80px] md:blur-[140px]" />
+      <div className="absolute bottom-0 right-0 h-[125px] w-[125px] md:h-[250px] md:w-[250px] rounded-full bg-primary/6 blur-[60px] md:blur-[100px]" />
     </div>
 
     <div className="relative mx-auto max-w-4xl">

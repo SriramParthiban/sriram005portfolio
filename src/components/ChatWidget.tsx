@@ -277,10 +277,10 @@ const ChatWidget = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-6 right-6 z-50 w-[360px] max-w-[calc(100vw-3rem)] h-[500px] max-h-[calc(100vh-6rem)] rounded-2xl border border-white/10 bg-[hsl(0_0%_8%)] shadow-2xl flex flex-col overflow-hidden"
+            className="fixed bottom-6 right-6 z-50 w-[360px] max-w-[calc(100vw-3rem)] h-[500px] max-h-[calc(100vh-6rem)] rounded-2xl border border-white/10 bg-[hsl(155_30%_5%)] shadow-2xl flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-[hsl(0_0%_6%)]">
+            <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-[hsl(155_30%_4%)]">
               <div className="flex items-center gap-2">
                 <div className="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center">
                   <Bot className="h-4 w-4 text-primary" />
@@ -386,7 +386,7 @@ const ChatWidget = () => {
             </div>
 
             {/* Input */}
-            <div className="p-3 border-t border-white/10 bg-[hsl(0_0%_6%)]">
+            <div className="p-3 border-t border-white/10 bg-[hsl(155_30%_4%)]">
               <form
                 onSubmit={(e) => {
                   e.preventDefault();

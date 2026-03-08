@@ -12,8 +12,8 @@ const STAGES = [
     label: "Lead Captured",
     emoji: "📨",
     icon: Send,
-    color: "rgba(124,111,255,0.85)",
-    glow: "rgba(124,111,255,0.4)",
+    color: "rgba(45,139,94,0.85)",
+    glow: "rgba(45,139,94,0.4)",
     explanation: (name: string, email: string) =>
       `${name}'s lead information has been received and entered into our system. We now have ${email} safely stored and ready for processing.`,
     logMsg: (name: string, email: string) => `Lead captured: ${name} (${email})`,
@@ -24,8 +24,8 @@ const STAGES = [
     label: "AI Processing",
     emoji: "🤖",
     icon: Bot,
-    color: "rgba(0,212,255,0.85)",
-    glow: "rgba(0,212,255,0.4)",
+    color: "rgba(212,162,76,0.85)",
+    glow: "rgba(212,162,76,0.4)",
     explanation: (name: string) =>
       `Our smart system is analyzing ${name}'s profile right now — checking their company, industry, and how well they match your ideal customer. It gives them a quality score from 0 to 100 so your team knows who to prioritize. This happens in seconds, not hours.`,
     logMsg: (name: string) => `AI processing complete for ${name}: Quality score 8.7/10`,
@@ -36,8 +36,8 @@ const STAGES = [
     label: "Pipeline Routing",
     emoji: "🗂️",
     icon: FolderKanban,
-    color: "rgba(255,184,0,0.85)",
-    glow: "rgba(255,184,0,0.4)",
+    color: "rgba(245,158,11,0.85)",
+    glow: "rgba(245,158,11,0.4)",
     explanation: (name: string) =>
       `Based on the analysis, ${name} is instantly routed to the correct sales pipeline. High-quality leads go straight to your top salespeople. Others get a friendly follow-up email sequence. No manual work needed — it all happens automatically.`,
     logMsg: (name: string) => `${name} routed to Enterprise Sales Pipeline`,
@@ -110,10 +110,10 @@ function injectRunnerCSS() {
     .pg-wave-bar{animation:pg-wave 1s ease-in-out infinite}
     .pg-pulse-glow{animation:pg-pulse-ring 2s ease-in-out infinite}
     .pg-log-scroll::-webkit-scrollbar{width:6px}
-    .pg-log-scroll::-webkit-scrollbar-track{background:hsl(250 75% 57% / 0.08);border-radius:999px}
-    .pg-log-scroll::-webkit-scrollbar-thumb{background:hsl(250 75% 57% / 0.35);border-radius:999px}
-    .pg-log-scroll::-webkit-scrollbar-thumb:hover{background:hsl(250 75% 57% / 0.55)}
-    .pg-log-scroll{scrollbar-width:thin;scrollbar-color:hsl(250 75% 57% / 0.35) hsl(250 75% 57% / 0.08)}
+    .pg-log-scroll::-webkit-scrollbar-track{background:hsl(152 55% 45% / 0.08);border-radius:999px}
+    .pg-log-scroll::-webkit-scrollbar-thumb{background:hsl(152 55% 45% / 0.35);border-radius:999px}
+    .pg-log-scroll::-webkit-scrollbar-thumb:hover{background:hsl(152 55% 45% / 0.55)}
+    .pg-log-scroll{scrollbar-width:thin;scrollbar-color:hsl(152 55% 45% / 0.35) hsl(152 55% 45% / 0.08)}
   `;
   document.head.appendChild(style);
 }
@@ -144,36 +144,36 @@ const InfoTip = ({ text }: { text: string }) => {
 
 /* ─── Runner: Cute pixel-art robot ─── */
 const RunnerSVG = () => (
-  <svg width="32" height="36" viewBox="0 0 32 36" fill="none" className="pg-runner drop-shadow-[0_0_8px_hsl(250_75%_57%/0.6)]">
+  <svg width="32" height="36" viewBox="0 0 32 36" fill="none" className="pg-runner drop-shadow-[0_0_8px_hsl(152_55%_45%/0.6)]">
     {/* Antenna */}
-    <rect x="15" y="0" width="2" height="4" rx="1" fill="hsl(250 75% 70%)" />
-    <circle cx="16" cy="0" r="2" fill="hsl(250 75% 80%)" className="pg-pulse-glow" />
+    <rect x="15" y="0" width="2" height="4" rx="1" fill="hsl(152 55% 55%)" />
+    <circle cx="16" cy="0" r="2" fill="hsl(152 55% 65%)" className="pg-pulse-glow" />
     {/* Head */}
-    <rect x="8" y="4" width="16" height="12" rx="3" fill="hsl(250 75% 57%)" />
+    <rect x="8" y="4" width="16" height="12" rx="3" fill="hsl(152 55% 42%)" />
     {/* Visor / eyes */}
-    <rect x="10" y="7" width="12" height="5" rx="2" fill="hsl(250 40% 20%)" />
-    <rect x="11" y="8" width="4" height="3" rx="1" fill="#00D4FF" opacity="0.9" />
-    <rect x="17" y="8" width="4" height="3" rx="1" fill="#00D4FF" opacity="0.9" />
+    <rect x="10" y="7" width="12" height="5" rx="2" fill="hsl(152 30% 18%)" />
+    <rect x="11" y="8" width="4" height="3" rx="1" fill="hsl(38 75% 55%)" opacity="0.9" />
+    <rect x="17" y="8" width="4" height="3" rx="1" fill="hsl(38 75% 55%)" opacity="0.9" />
     {/* Body */}
-    <rect x="9" y="17" width="14" height="10" rx="2" fill="hsl(250 60% 50%)" />
-    <rect x="12" y="19" width="8" height="3" rx="1" fill="hsl(250 75% 70%)" opacity="0.5" />
+    <rect x="9" y="17" width="14" height="10" rx="2" fill="hsl(152 50% 35%)" />
+    <rect x="12" y="19" width="8" height="3" rx="1" fill="hsl(152 55% 55%)" opacity="0.5" />
     {/* chest light */}
-    <circle cx="16" cy="23" r="1.5" fill="#7C3AED" className="pg-pulse-glow" />
+    <circle cx="16" cy="23" r="1.5" fill="hsl(152 55% 42%)" className="pg-pulse-glow" />
     {/* Left arm */}
     <g className="pg-stride" style={{ transformOrigin: "10px 19px" }}>
-      <rect x="4" y="18" width="5" height="8" rx="2" fill="hsl(250 55% 45%)" />
+      <rect x="4" y="18" width="5" height="8" rx="2" fill="hsl(152 45% 32%)" />
     </g>
     {/* Right arm */}
     <g className="pg-stride" style={{ transformOrigin: "22px 19px", animationDirection: "reverse" }}>
-      <rect x="23" y="18" width="5" height="8" rx="2" fill="hsl(250 55% 45%)" />
+      <rect x="23" y="18" width="5" height="8" rx="2" fill="hsl(152 45% 32%)" />
     </g>
     {/* Left leg */}
     <g className="pg-stride" style={{ transformOrigin: "12px 27px", animationDirection: "reverse" }}>
-      <rect x="10" y="27" width="5" height="7" rx="2" fill="hsl(250 50% 40%)" />
+      <rect x="10" y="27" width="5" height="7" rx="2" fill="hsl(152 40% 28%)" />
     </g>
     {/* Right leg */}
     <g className="pg-stride" style={{ transformOrigin: "20px 27px" }}>
-      <rect x="17" y="27" width="5" height="7" rx="2" fill="hsl(250 50% 40%)" />
+      <rect x="17" y="27" width="5" height="7" rx="2" fill="hsl(152 40% 28%)" />
     </g>
   </svg>
 );
@@ -185,10 +185,10 @@ const AIVisual = () => (
       <div
         key={i}
         className="absolute w-2 h-2 rounded-full pg-orbit-dot"
-        style={{ backgroundColor: "rgba(0,212,255,0.7)", animationDelay: `${i * 0.66}s` }}
+        style={{ backgroundColor: "rgba(212,162,76,0.7)", animationDelay: `${i * 0.66}s` }}
       />
     ))}
-    <div className="absolute w-full h-[2px] pg-scan-line" style={{ backgroundColor: "rgba(0,212,255,0.3)" }} />
+    <div className="absolute w-full h-[2px] pg-scan-line" style={{ backgroundColor: "rgba(212,162,76,0.3)" }} />
   </div>
 );
 
@@ -201,7 +201,7 @@ const AIWaveBars = () => (
         className="w-[3px] rounded-full pg-wave-bar"
         style={{
           height: "100%",
-          backgroundColor: "rgba(0,212,255,0.6)",
+          backgroundColor: "rgba(212,162,76,0.6)",
           animationDelay: `${i * 0.15}s`,
         }}
       />
@@ -211,7 +211,7 @@ const AIWaveBars = () => (
 
 /* ─── Confetti Burst ─── */
 const ConfettiBurst = () => {
-  const colors = ["#7C6FFF", "#00D4FF", "#FFB800", "#00E87A", "#FF6B35", "#FF3CAC"];
+  const colors = ["#2D8B5E", "#D4A24C", "#F59E0B", "#34D399", "#FF6B35", "#FF3CAC"];
   const pieces = useRef(
     Array.from({ length: 24 }, (_, i) => ({
       color: colors[i % colors.length],
@@ -377,7 +377,7 @@ const Playground = () => {
                         placeholder="Full Name"
                         value={leadName}
                         onChange={(e) => setLeadName(e.target.value)}
-                        className="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-3 text-sm text-foreground placeholder:text-white/30 focus:outline-none focus:border-primary/50 focus:shadow-[0_0_12px_-4px_hsl(250_75%_57%/0.4)] transition-all"
+                        className="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-3 text-sm text-foreground placeholder:text-white/30 focus:outline-none focus:border-primary/50 focus:shadow-[0_0_12px_-4px_hsl(152_55%_45%/0.4)] transition-all"
                         aria-required="true"
                       />
                     </div>
@@ -389,7 +389,7 @@ const Playground = () => {
                         placeholder="Email Address"
                         value={leadEmail}
                         onChange={(e) => setLeadEmail(e.target.value)}
-                        className="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-3 text-sm text-foreground placeholder:text-white/30 focus:outline-none focus:border-primary/50 focus:shadow-[0_0_12px_-4px_hsl(250_75%_57%/0.4)] transition-all"
+                        className="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-3 text-sm text-foreground placeholder:text-white/30 focus:outline-none focus:border-primary/50 focus:shadow-[0_0_12px_-4px_hsl(152_55%_45%/0.4)] transition-all"
                         aria-required="true"
                       />
                     </div>
@@ -401,13 +401,13 @@ const Playground = () => {
                         placeholder="Company Name (optional)"
                         value={leadCompany}
                         onChange={(e) => setLeadCompany(e.target.value)}
-                        className="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-3 text-sm text-foreground placeholder:text-white/30 focus:outline-none focus:border-primary/50 focus:shadow-[0_0_12px_-4px_hsl(250_75%_57%/0.4)] transition-all"
+                        className="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-3 text-sm text-foreground placeholder:text-white/30 focus:outline-none focus:border-primary/50 focus:shadow-[0_0_12px_-4px_hsl(152_55%_45%/0.4)] transition-all"
                       />
                     </div>
                     <button
                       onClick={handleSubmit}
                       disabled={!leadName.trim() || !leadEmail.trim()}
-                      className="group w-full rounded-lg bg-primary py-3.5 text-sm font-semibold text-primary-foreground transition-all disabled:opacity-40 disabled:cursor-not-allowed hover:brightness-110 hover:shadow-[0_0_20px_-4px_hsl(250_75%_57%/0.5)] active:scale-[0.97] flex items-center justify-center gap-2"
+                      className="group w-full rounded-lg bg-primary py-3.5 text-sm font-semibold text-primary-foreground transition-all disabled:opacity-40 disabled:cursor-not-allowed hover:brightness-110 hover:shadow-[0_0_20px_-4px_hsl(152_55%_45%/0.5)] active:scale-[0.97] flex items-center justify-center gap-2"
                     >
                       <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                       Fire Lead

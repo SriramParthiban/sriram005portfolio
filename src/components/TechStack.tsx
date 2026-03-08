@@ -19,7 +19,7 @@ const tools = [
     name: "Make.com",
     description: "Visual integration and automation platform",
     usage: "Connecting apps and automating workflows with visual scenario builder",
-    color: "#6D28D9",
+    color: "#2D8B5E",
     logo: "/logos/make.svg",
   },
   {
