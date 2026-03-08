@@ -24,8 +24,8 @@ const STAGES = [
     label: "AI Processing",
     emoji: "🤖",
     icon: Bot,
-    color: "rgba(0,212,255,0.85)",
-    glow: "rgba(0,212,255,0.4)",
+    color: "rgba(212,162,76,0.85)",
+    glow: "rgba(212,162,76,0.4)",
     explanation: (name: string) =>
       `Our smart system is analyzing ${name}'s profile right now — checking their company, industry, and how well they match your ideal customer. It gives them a quality score from 0 to 100 so your team knows who to prioritize. This happens in seconds, not hours.`,
     logMsg: (name: string) => `AI processing complete for ${name}: Quality score 8.7/10`,
