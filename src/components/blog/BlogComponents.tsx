@@ -171,7 +171,7 @@ export const StepCard = ({
 );
 
 export const SectionDivider = () => (
-  <div className="my-16 flex items-center gap-4">
+  <div className="my-10 sm:my-14 flex items-center gap-4">
     <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
     <div className="h-1.5 w-1.5 rounded-full bg-primary/40" />
     <div className="flex-1 h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
