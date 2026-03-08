@@ -481,7 +481,7 @@ const AILeadQualContent = () => (
     <h2>Step 1: Capture Everything</h2>
     <p>Not just name and email — I capture signals that predict intent:</p>
 
-    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 my-8">
+    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 my-10">
       {[
         { icon: "🌐", label: "Source", desc: "Where they came from" },
         { icon: "🖱️", label: "Behavior", desc: "Pages visited, time spent" },
@@ -489,10 +489,10 @@ const AILeadQualContent = () => (
         { icon: "⏰", label: "Timing", desc: "Business hours = high intent" },
         { icon: "📱", label: "Device", desc: "Mobile ad ≠ desktop research" },
       ].map((s) => (
-        <div key={s.label} className="bg-[hsl(270,15%,10%)] border border-[hsl(270,20%,18%)] rounded-lg p-3">
-          <span className="text-lg">{s.icon}</span>
-          <p className="text-sm font-medium text-foreground mt-1">{s.label}</p>
-          <p className="text-[11px] text-muted-foreground">{s.desc}</p>
+        <div key={s.label} className="bg-[hsl(270,12%,12%)] border border-[hsl(270,18%,22%)] rounded-xl p-4">
+          <span className="text-xl">{s.icon}</span>
+          <p className="text-[14px] font-medium text-white mt-2">{s.label}</p>
+          <p className="text-xs text-white/50 mt-1">{s.desc}</p>
         </div>
       ))}
     </div>
