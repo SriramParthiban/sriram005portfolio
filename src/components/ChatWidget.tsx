@@ -256,8 +256,12 @@ const ChatWidget = () => {
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
+            drag
+            dragMomentum={false}
+            dragElastic={0.1}
+            dragConstraints={{ top: -(window.innerHeight - 80), bottom: 0, left: -(window.innerWidth - 80), right: 0 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-20 right-6 z-50 h-14 w-14 rounded-full bg-primary text-primary-foreground shadow-[0_0_25px_-5px_hsl(var(--primary)/0.5)] flex items-center justify-center hover:scale-110 transition-transform md:bottom-6"
+            className="fixed bottom-20 right-6 z-50 h-14 w-14 rounded-full bg-primary text-primary-foreground shadow-[0_0_25px_-5px_hsl(var(--primary)/0.5)] flex items-center justify-center hover:scale-110 transition-transform md:bottom-6 cursor-grab active:cursor-grabbing"
             aria-label="Open chat"
           >
             <MessageCircle className="h-6 w-6" />
