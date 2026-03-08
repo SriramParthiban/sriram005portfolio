@@ -32,12 +32,14 @@ const InvoiceGenerator = () => {
   const [clientAddress, setClientAddress] = useState("");
 
   // Invoice meta
-  const [invoiceNumber, setInvoiceNumber] = useState(
-    `INV-${Date.now().toString().slice(-6)}`
-  );
   const [invoiceDate, setInvoiceDate] = useState<Date>(new Date());
   const [dueDate, setDueDate] = useState<Date | undefined>(undefined);
   const [notes, setNotes] = useState("");
+  const [currency, setCurrency] = useState<"INR" | "USD" | "CAD">("INR");
+  const [customRole, setCustomRole] = useState("AI Automation Specialist");
+
+  const currencySymbol = currency === "INR" ? "₹" : currency === "USD" ? "$" : "CA$";
+  const currencyLocale = currency === "INR" ? "en-IN" : "en-US";
 
   // Line items
   const [items, setItems] = useState<LineItem[]>([
@@ -66,7 +68,7 @@ const InvoiceGenerator = () => {
       <!DOCTYPE html>
       <html>
       <head>
-        <title>Invoice ${invoiceNumber}</title>
+        <title>Invoice</title>
         <style>
           * { margin: 0; padding: 0; box-sizing: border-box; }
           body { font-family: 'Segoe UI', system-ui, sans-serif; color: #1a1a2e; padding: 40px; max-width: 800px; margin: 0 auto; }
@@ -105,7 +107,6 @@ const InvoiceGenerator = () => {
             <div class="invoice-title">INVOICE</div>
           </div>
           <div class="invoice-meta">
-            <div><strong>${invoiceNumber}</strong></div>
             <div>Date: ${invoiceDate ? format(invoiceDate, "MMMM d, yyyy") : ""}</div>
             ${dueDate ? `<div>Due: ${format(dueDate, "MMMM d, yyyy")}</div>` : ""}
           </div>
@@ -133,7 +134,7 @@ const InvoiceGenerator = () => {
               .filter((i) => i.description.trim())
               .map(
                 (i, idx) =>
-                  `<tr><td>${idx + 1}</td><td>${i.description}</td><td>₹${Number(i.amount).toLocaleString("en-IN", { minimumFractionDigits: 2 })}</td></tr>`
+                  `<tr><td>${idx + 1}</td><td>${i.description}</td><td>${currencySymbol}${Number(i.amount).toLocaleString(currencyLocale, { minimumFractionDigits: 2 })}</td></tr>`
               )
               .join("")}
           </tbody>
@@ -142,7 +143,7 @@ const InvoiceGenerator = () => {
         <div class="total-row">
           <div class="total-box">
             <div class="total-label">Total Amount</div>
-            <div class="total-amount">₹${total.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</div>
+            <div class="total-amount">${currencySymbol}${total.toLocaleString(currencyLocale, { minimumFractionDigits: 2 })}</div>
           </div>
         </div>
 
@@ -152,7 +153,7 @@ const InvoiceGenerator = () => {
           <div class="sig-line">
             <div class="sig-name">Sriram Parthiban</div>
           </div>
-          <div class="sig-title">AI Automation Specialist</div>
+          <div class="sig-title">${customRole}</div>
         </div>
 
         <div class="footer">
@@ -174,8 +175,16 @@ const InvoiceGenerator = () => {
       {/* Invoice Meta */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div>
-          <label className={labelClass}>Invoice Number</label>
-          <input className={inputClass} value={invoiceNumber} onChange={(e) => setInvoiceNumber(e.target.value)} />
+          <label className={labelClass}>Currency</label>
+          <select
+            className={inputClass}
+            value={currency}
+            onChange={(e) => setCurrency(e.target.value as "INR" | "USD" | "CAD")}
+          >
+            <option value="INR">₹ INR (Indian Rupees)</option>
+            <option value="USD">$ USD (US Dollars)</option>
+            <option value="CAD">CA$ CAD (Canadian Dollars)</option>
+          </select>
         </div>
         <div>
           <label className={labelClass}>Invoice Date</label>
@@ -239,7 +248,7 @@ const InvoiceGenerator = () => {
           {/* Header */}
           <div className="hidden sm:grid grid-cols-[1fr_150px_40px] gap-3 text-xs text-muted-foreground font-medium px-1">
             <span>Description</span>
-            <span>Amount (₹)</span>
+            <span>Amount ({currencySymbol})</span>
             <span></span>
           </div>
 
@@ -280,8 +289,8 @@ const InvoiceGenerator = () => {
         {/* Total */}
         <div className="mt-6 pt-5 border-t border-[hsl(270,20%,15%)] flex items-center justify-between">
           <span className="text-sm text-muted-foreground font-medium">Total Amount</span>
-          <span className="text-2xl font-extrabold text-white">
-            ₹{total.toLocaleString("en-IN", { minimumFractionDigits: 2 })}
+          <span className="text-2xl font-extrabold text-foreground">
+            {currencySymbol}{total.toLocaleString(currencyLocale, { minimumFractionDigits: 2 })}
           </span>
         </div>
       </div>
@@ -298,14 +307,19 @@ const InvoiceGenerator = () => {
       </div>
 
       {/* Signature Preview */}
-      <div className="bg-[hsl(270,15%,8%)] border border-[hsl(270,20%,15%)] rounded-xl p-5 flex items-end justify-between">
-        <div className="text-xs text-muted-foreground">E-Signature will appear on the generated invoice</div>
-        <div className="text-right">
-          <p className="text-xl font-bold italic text-primary" style={{ fontFamily: "Georgia, serif" }}>
-            Sriram Parthiban
-          </p>
-          <div className="w-40 h-px bg-foreground/30 mt-1 ml-auto" />
-          <p className="text-[11px] text-muted-foreground mt-1">AI Automation Specialist</p>
+      <div className="bg-[hsl(270,15%,8%)] border border-[hsl(270,20%,15%)] rounded-xl p-5">
+        <div className="flex flex-col sm:flex-row gap-4 sm:items-end sm:justify-between">
+          <div className="flex-1">
+            <label className={labelClass}>Your Role / Title</label>
+            <input className={inputClass} placeholder="e.g. AI Automation Specialist" value={customRole} onChange={(e) => setCustomRole(e.target.value)} />
+          </div>
+          <div className="text-right">
+            <p className="text-xl font-bold italic text-primary" style={{ fontFamily: "Georgia, serif" }}>
+              Sriram Parthiban
+            </p>
+            <div className="w-40 h-px bg-foreground/30 mt-1 ml-auto" />
+            <p className="text-[11px] text-muted-foreground mt-1">{customRole || "Your Role"}</p>
+          </div>
         </div>
       </div>
 
