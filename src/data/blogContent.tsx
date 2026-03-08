@@ -428,7 +428,7 @@ const GHLPlaybookContent = () => (
 
 /* ───────────── BLOG 4: AI Lead Qualification ───────────── */
 const AILeadQualContent = () => (
-  <div className="space-y-0">
+  <div className="space-y-2">
     <h2>The Problem With Manual Qualification</h2>
 
     <div className="flex justify-center my-8">
