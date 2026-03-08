@@ -152,16 +152,16 @@ const KPIDashboardContent = () => (
     <h2>Principle 1: Decision-First Design</h2>
     <p>Before writing a single SQL query, ask: <strong>"What decision will this metric change?"</strong></p>
 
-    <div className="grid sm:grid-cols-2 gap-4 my-8">
-      <div className="bg-[hsl(0,30%,12%)] border border-[hsl(0,30%,22%)] rounded-xl p-5">
-        <p className="text-red-400 text-xs font-bold mb-2">❌ BAD</p>
-        <p className="text-sm text-foreground/70">"Let's track website traffic"</p>
-        <p className="text-[11px] text-muted-foreground mt-1 italic">So what? What do you DO with that number?</p>
+    <div className="grid sm:grid-cols-2 gap-5 my-10">
+      <div className="bg-[hsl(0,25%,14%)] border border-[hsl(0,25%,25%)] rounded-xl p-6">
+        <p className="text-red-400 text-xs font-bold mb-3">❌ BAD</p>
+        <p className="text-[15px] text-white/75">"Let's track website traffic"</p>
+        <p className="text-xs text-white/40 mt-2 italic">So what? What do you DO with that number?</p>
       </div>
-      <div className="bg-[hsl(145,25%,12%)] border border-[hsl(145,30%,22%)] rounded-xl p-5">
-        <p className="text-[hsl(145,60%,50%)] text-xs font-bold mb-2">✅ GOOD</p>
-        <p className="text-sm text-foreground/70">"Track CPL by channel to shift ad budget weekly"</p>
-        <p className="text-[11px] text-muted-foreground mt-1 italic">Clear decision → clear action</p>
+      <div className="bg-[hsl(145,20%,14%)] border border-[hsl(145,25%,25%)] rounded-xl p-6">
+        <p className="text-[hsl(145,60%,55%)] text-xs font-bold mb-3">✅ GOOD</p>
+        <p className="text-[15px] text-white/75">"Track CPL by channel to shift ad budget weekly"</p>
+        <p className="text-xs text-white/40 mt-2 italic">Clear decision → clear action</p>
       </div>
     </div>
 
