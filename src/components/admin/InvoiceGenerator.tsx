@@ -245,7 +245,12 @@ const InvoiceGenerator = () => {
 
       {/* Line Items */}
       <div className="bg-[hsl(270,15%,8%)] border border-[hsl(270,20%,15%)] rounded-xl p-5">
-        <p className="text-xs font-bold text-primary uppercase tracking-widest mb-4">Services & Pricing</p>
+        <div className="flex items-center justify-between mb-4">
+          <p className="text-xs font-bold text-primary uppercase tracking-widest">Services & Pricing</p>
+          <span className="text-xs font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">
+            Currency: {currencySymbol} {currency}
+          </span>
+        </div>
         <div className="space-y-3">
           {/* Header */}
           <div className="hidden sm:grid grid-cols-[1fr_150px_40px] gap-3 text-xs text-muted-foreground font-medium px-1">
@@ -273,7 +278,7 @@ const InvoiceGenerator = () => {
               <button
                 onClick={() => removeItem(item.id)}
                 disabled={items.length === 1}
-                className="h-10 w-10 flex items-center justify-center rounded-lg border border-[hsl(0,30%,25%)] text-red-400 hover:bg-red-400/10 disabled:opacity-20 disabled:cursor-not-allowed transition-colors"
+                className="h-10 w-10 flex items-center justify-center rounded-lg border border-destructive/30 text-destructive hover:bg-destructive/10 disabled:opacity-20 disabled:cursor-not-allowed transition-colors"
               >
                 <Trash2 className="h-4 w-4" />
               </button>
