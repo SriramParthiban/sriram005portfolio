@@ -578,7 +578,7 @@ const AILeadQualContent = () => (
 
     <h2>Build Your Own</h2>
 
-    <div className="space-y-4 my-8">
+    <div className="space-y-5 my-10">
       <StepCard number={1} title="Set up n8n" description="Create a workflow triggered by your lead form webhook." />
       <StepCard number={2} title="Add AI scoring" description="Pass lead data to any LLM API with a scoring prompt." />
       <StepCard number={3} title="Map to CRM" description="Use the score to set a custom field in your pipeline." />
