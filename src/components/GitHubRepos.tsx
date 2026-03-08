@@ -36,10 +36,10 @@ const TypingCursor = () => (
 );
 
 const TerminalHeader = () => (
-  <div className="flex items-center gap-2 px-4 py-2.5 bg-[hsl(0,0%,12%)] border-b border-[hsl(0,0%,18%)] rounded-t-lg">
+  <div className="flex items-center gap-2 px-4 py-2.5 bg-[hsl(155,25%,8%)] border-b border-[hsl(155,20%,14%)] rounded-t-lg">
     <div className="h-3 w-3 rounded-full bg-[hsl(0,70%,50%)]" />
-    <div className="h-3 w-3 rounded-full bg-[hsl(45,80%,55%)]" />
-    <div className="h-3 w-3 rounded-full bg-[hsl(120,55%,45%)]" />
+    <div className="h-3 w-3 rounded-full bg-[hsl(38,80%,55%)]" />
+    <div className="h-3 w-3 rounded-full bg-[hsl(152,55%,45%)]" />
     <span className="ml-3 text-xs font-mono text-white/40">sriram@portfolio:~/repos</span>
   </div>
 );
