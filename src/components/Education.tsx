@@ -2,15 +2,15 @@ import FadeInSection from "./FadeInSection";
 import { GraduationCap, BookOpen } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
-import birdPerched from "@/assets/bird-perched.jpg";
+import fernDetail from "@/assets/fern-detail.jpg";
 
 const coursework = ["Machine Learning", "Supply Chain Operations", "Statistical Forecasting", "Business Analytics"];
 
 const Education = () => (
   <section id="education" className="dark-section relative px-6 py-32 overflow-hidden">
-    {/* Kingfisher perched — subtle accent */}
+    {/* Fern detail — subtle accent */}
     <div className="absolute inset-0">
-      <img src={birdPerched} alt="" className="h-full w-full object-cover opacity-[0.12]" loading="lazy" />
+      <img src={fernDetail} alt="" className="h-full w-full object-cover opacity-[0.12]" loading="lazy" />
       <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.91)]" />
     </div>
 
