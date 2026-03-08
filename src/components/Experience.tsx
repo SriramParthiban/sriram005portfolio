@@ -45,7 +45,7 @@ const Experience = () => (
   <section id="experience" className="relative px-4 sm:px-6 py-28 sm:py-36 overflow-hidden">
     <div className="absolute inset-0">
       <img src={forestCanopy} alt="" className="h-full w-full object-cover" loading="lazy" />
-      <div className="absolute inset-0 bg-background/55" />
+      <div className="absolute inset-0 bg-background/40" />
     </div>
 
     <div className="relative mx-auto max-w-4xl">
