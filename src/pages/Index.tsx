@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import TrustStats from "@/components/TrustStats";
@@ -17,7 +19,20 @@ import Footer from "@/components/Footer";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
 import ChatWidget from "@/components/ChatWidget";
 
-const Index = () => (
+const Index = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace("#", "");
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    }
+  }, [location]);
+
+  return (
   <div className="overflow-x-hidden">
     <Navbar />
     <main>
@@ -40,6 +55,7 @@ const Index = () => (
     <StickyMobileCTA />
     <ChatWidget />
   </div>
-);
+  );
+};
 
 export default Index;
