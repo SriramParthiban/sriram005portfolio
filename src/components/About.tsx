@@ -106,7 +106,7 @@ const About = () => (
     <div className="md:hidden relative mx-auto max-w-3xl mb-6">
       <FadeInSection delay={50}>
         <div className="-mx-4 px-4">
-          <div className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
+          <div className="flex gap-3 overflow-x-auto pb-3 scrollbar-themed">
             {[...leftNotes, ...rightNotes].map((note, idx) => {
               const Icon = note.icon;
               return (
