@@ -142,7 +142,7 @@ const Testimonials = () => {
                     <div>
                       <p className="font-display font-bold text-foreground text-sm sm:text-base">{t.name}</p>
                       <p className="text-xs sm:text-sm text-muted-foreground">
-                        {t.role} · {t.company}
+                        {t.role}{t.company ? ` · ${t.company}` : ""}
                       </p>
                     </div>
                   </div>
