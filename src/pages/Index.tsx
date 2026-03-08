@@ -55,6 +55,7 @@ const Index = () => {
       <Certifications />
       <GitHubRepos />
       <Contact />
+      <QuoteStrip />
       <FinalCTA />
     </main>
     <Footer />
