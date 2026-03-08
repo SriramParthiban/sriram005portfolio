@@ -270,7 +270,7 @@ const KPIDashboardContent = () => (
       <StatsCard label="Speed to Lead" before="45 min" after="3 min" change="93% faster" />
     </div>
 
-    <StickyNote color="blue" rotate={-0.5}>
+    <StickyNote color="blue">
       <strong>You don't need enterprise tools.</strong> PostgreSQL + n8n + Looker Studio (free) can power dashboards 
       that rival anything built with six-figure BI platforms. The secret isn't the tool — it's the thinking behind what you measure.
     </StickyNote>
