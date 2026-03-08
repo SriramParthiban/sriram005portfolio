@@ -283,9 +283,9 @@ const Playground = () => {
     return () => clearTimeout(timer);
   }, [stage]);
 
-  // Elapsed time counter
+  // Elapsed time counter — stops when animation completes
   useEffect(() => {
-    if (stage < 0) return;
+    if (stage < 0 || stage >= STAGES.length - 1) return;
     if (stage === 0) timerStartRef.current = Date.now();
     const interval = setInterval(() => {
       setElapsedSec(Math.floor((Date.now() - timerStartRef.current) / 1000));
