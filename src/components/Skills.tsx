@@ -25,8 +25,10 @@ const categories = [
 
 const Skills = () => (
   <section id="skills" className="relative px-4 sm:px-6 py-24 sm:py-28 overflow-hidden">
-    {/* Background */}
-    <div className="absolute inset-0 bg-background" />
+    <div className="absolute inset-0">
+      <img src={fernCloseup} alt="" className="h-full w-full object-cover opacity-[0.06]" loading="lazy" />
+      <div className="absolute inset-0 bg-background/93" />
+    </div>
 
     <div className="relative mx-auto max-w-5xl">
       <FadeInSection>
