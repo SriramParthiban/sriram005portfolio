@@ -7,7 +7,7 @@ const FinalCTA = () => (
   <section className="relative overflow-hidden py-28 sm:py-36">
     <div className="absolute inset-0">
       <img src={coralVibrant} alt="" className="h-full w-full object-cover" loading="lazy" />
-      <div className="absolute inset-0 bg-background/45" />
+      <div className="absolute inset-0 bg-background/30" />
     </div>
 
     <div className="relative mx-auto max-w-2xl px-6 text-center">

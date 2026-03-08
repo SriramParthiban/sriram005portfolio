@@ -127,15 +127,15 @@ const InfoTip = ({ text }: { text: string }) => {
         onClick={() => setOpen(!open)}
         onMouseEnter={() => setOpen(true)}
         onMouseLeave={() => setOpen(false)}
-        className="text-white/30 hover:text-white/60 transition-colors"
+        className="text-muted-foreground/30 hover:text-muted-foreground/60 transition-colors"
         aria-label="More info"
       >
         <HelpCircle className="h-3.5 w-3.5 inline" />
       </button>
       {open && (
-        <span className="absolute z-50 bottom-full left-1/2 -translate-x-1/2 mb-2 w-60 rounded-lg bg-black/95 border border-white/10 p-3 text-xs text-white/80 leading-relaxed shadow-2xl">
+        <span className="absolute z-50 bottom-full left-1/2 -translate-x-1/2 mb-2 w-60 rounded-lg bg-card border border-border p-3 text-xs text-muted-foreground leading-relaxed shadow-xl">
           {text}
-          <span className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-black/95" />
+          <span className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-card" />
         </span>
       )}
     </span>
@@ -329,14 +329,14 @@ const Playground = () => {
     <section
       ref={sectionRef}
       id="playground"
-      className="dark-section relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden"
+      className="relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden"
     >
       {/* BG */}
+      <div className="absolute inset-0 bg-muted/50" />
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
-        <div className="absolute top-20 left-0 h-[250px] w-[250px] md:h-[400px] md:w-[400px] rounded-full bg-primary/5 blur-[120px]" />
-        <div className="absolute bottom-10 right-10 h-[200px] w-[200px] md:h-[350px] md:w-[350px] rounded-full bg-accent/4 blur-[100px]" />
+        <div className="absolute top-20 left-0 h-[250px] w-[250px] md:h-[400px] md:w-[400px] rounded-full bg-primary/8 blur-[120px]" />
+        <div className="absolute bottom-10 right-10 h-[200px] w-[200px] md:h-[350px] md:w-[350px] rounded-full bg-accent/6 blur-[100px]" />
       </div>
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.015)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.015)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
       <div className="relative mx-auto max-w-5xl">
         {/* Header */}
@@ -360,12 +360,12 @@ const Playground = () => {
 
         {isVisible && (
           <FadeInSection>
-            <div className="rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-sm p-5 sm:p-8 lg:p-10">
+            <div className="rounded-2xl border border-border bg-card/80 backdrop-blur-sm p-5 sm:p-8 lg:p-10 shadow-sm">
 
               {/* ── Lead Form ── */}
               {stage === -1 && (
                 <div className="max-w-sm mx-auto mb-8 pg-fade-in">
-                  <p className="text-sm font-semibold text-white/60 mb-4 text-center">
+                  <p className="text-sm font-semibold text-muted-foreground mb-4 text-center">
                     ⚡ Submit a sample lead to trigger the automation
                   </p>
                   <div className="space-y-3">
@@ -377,7 +377,7 @@ const Playground = () => {
                         placeholder="Full Name"
                         value={leadName}
                         onChange={(e) => setLeadName(e.target.value)}
-                        className="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-3 text-sm text-foreground placeholder:text-white/30 focus:outline-none focus:border-primary/50 focus:shadow-[0_0_12px_-4px_hsl(152_55%_45%/0.4)] transition-all"
+                        className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:shadow-[0_0_12px_-4px_hsl(var(--primary)/0.3)] transition-all"
                         aria-required="true"
                       />
                     </div>
@@ -389,7 +389,7 @@ const Playground = () => {
                         placeholder="Email Address"
                         value={leadEmail}
                         onChange={(e) => setLeadEmail(e.target.value)}
-                        className="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-3 text-sm text-foreground placeholder:text-white/30 focus:outline-none focus:border-primary/50 focus:shadow-[0_0_12px_-4px_hsl(152_55%_45%/0.4)] transition-all"
+                        className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:shadow-[0_0_12px_-4px_hsl(var(--primary)/0.3)] transition-all"
                         aria-required="true"
                       />
                     </div>
@@ -401,13 +401,13 @@ const Playground = () => {
                         placeholder="Company Name (optional)"
                         value={leadCompany}
                         onChange={(e) => setLeadCompany(e.target.value)}
-                        className="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-3 text-sm text-foreground placeholder:text-white/30 focus:outline-none focus:border-primary/50 focus:shadow-[0_0_12px_-4px_hsl(152_55%_45%/0.4)] transition-all"
+                        className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:shadow-[0_0_12px_-4px_hsl(var(--primary)/0.3)] transition-all"
                       />
                     </div>
                     <button
                       onClick={handleSubmit}
                       disabled={!leadName.trim() || !leadEmail.trim()}
-                      className="group w-full rounded-lg bg-primary py-3.5 text-sm font-semibold text-primary-foreground transition-all disabled:opacity-40 disabled:cursor-not-allowed hover:brightness-110 hover:shadow-[0_0_20px_-4px_hsl(152_55%_45%/0.5)] active:scale-[0.97] flex items-center justify-center gap-2"
+                      className="group w-full rounded-lg bg-primary py-3.5 text-sm font-semibold text-primary-foreground transition-all disabled:opacity-40 disabled:cursor-not-allowed hover:brightness-110 hover:shadow-[0_0_20px_-4px_hsl(var(--primary)/0.4)] active:scale-[0.97] flex items-center justify-center gap-2"
                     >
                       <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                       Fire Lead
@@ -424,7 +424,7 @@ const Playground = () => {
                   <div className="hidden md:block">
                     {/* Track */}
                     <div className="relative mx-8 mb-8">
-                      <div className="h-[3px] rounded-full bg-white/10" />
+                      <div className="h-[3px] rounded-full bg-border" />
                       <div
                         className="absolute top-0 left-0 h-[3px] rounded-full pg-progress"
                         style={{
@@ -473,8 +473,8 @@ const Playground = () => {
                               <div
                                 className="h-14 w-14 lg:h-16 lg:w-16 rounded-2xl flex items-center justify-center border-2 pg-node-glow relative overflow-hidden group-hover/node:brightness-110"
                                 style={{
-                                  borderColor: isActive ? s.color : "rgba(255,255,255,0.1)",
-                                  backgroundColor: isActive ? `${s.color.replace(/[\d.]+\)$/, "0.12)")}` : "rgba(255,255,255,0.02)",
+                                  borderColor: isActive ? s.color : "hsl(var(--border))",
+                                  backgroundColor: isActive ? `${s.color.replace(/[\d.]+\)$/, "0.12)")}` : "hsl(var(--background))",
                                   boxShadow: isCurrent
                                     ? `0 0 30px -5px ${s.glow}`
                                     : isActive
@@ -485,19 +485,18 @@ const Playground = () => {
                                 {isCurrent && s.id === "ai" && <AIVisual />}
                                 <Icon
                                   className="h-5 w-5 lg:h-6 lg:w-6 relative z-10 transition-colors duration-500"
-                                  style={{ color: isActive ? s.color : "rgba(255,255,255,0.2)" }}
+                                  style={{ color: isActive ? s.color : "hsl(var(--muted-foreground) / 0.3)" }}
                                 />
                               </div>
-                              {/* Checkmark on past + completed final stage */}
                               {(isPast || (isLast && isComplete)) && (
                                 <div className="absolute -top-1 -right-1 pg-check">
-                                  <CheckCircle2 className="h-4 w-4 text-emerald-400 fill-emerald-400/20" />
+                                  <CheckCircle2 className="h-4 w-4 text-emerald-500 fill-emerald-500/20" />
                                 </div>
                               )}
                             </div>
                             <p
                               className="mt-2 text-[11px] lg:text-xs font-semibold text-center transition-colors duration-500"
-                              style={{ color: isActive ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.25)" }}
+                              style={{ color: isActive ? "hsl(var(--foreground))" : "hsl(var(--muted-foreground) / 0.4)" }}
                             >
                               {s.label}
                             </p>
@@ -509,7 +508,7 @@ const Playground = () => {
 
                   {/* ═══ MOBILE: Vertical ═══ */}
                   <div className="md:hidden relative">
-                    <div className="absolute left-7 top-7 bottom-7 w-[3px] rounded-full bg-white/10">
+                    <div className="absolute left-7 top-7 bottom-7 w-[3px] rounded-full bg-border">
                       <div
                         className="w-full rounded-full pg-progress"
                         style={{
@@ -542,32 +541,32 @@ const Playground = () => {
                               <div
                                 className="h-14 w-14 rounded-xl flex items-center justify-center border-2 pg-node-glow relative overflow-hidden"
                                 style={{
-                                  borderColor: isActive ? s.color : "rgba(255,255,255,0.1)",
-                                  backgroundColor: isActive ? `${s.color.replace(/[\d.]+\)$/, "0.12)")}` : "rgba(255,255,255,0.02)",
+                                  borderColor: isActive ? s.color : "hsl(var(--border))",
+                                  backgroundColor: isActive ? `${s.color.replace(/[\d.]+\)$/, "0.12)")}` : "hsl(var(--background))",
                                   boxShadow: isCurrent ? `0 0 25px -5px ${s.glow}` : "none",
                                 }}
                               >
                                 {isCurrent && s.id === "ai" && <AIVisual />}
                                 <Icon
                                   className="h-5 w-5 relative z-10 transition-colors duration-500"
-                                  style={{ color: isActive ? s.color : "rgba(255,255,255,0.2)" }}
+                                  style={{ color: isActive ? s.color : "hsl(var(--muted-foreground) / 0.3)" }}
                                 />
                               </div>
                               {(isPast || (isLast && isComplete)) && (
                                 <div className="absolute -top-1 -right-1 pg-check">
-                                  <CheckCircle2 className="h-3.5 w-3.5 text-emerald-400 fill-emerald-400/20" />
+                                  <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500 fill-emerald-500/20" />
                                 </div>
                               )}
                             </div>
                             <div className="pt-1 flex-1 min-w-0">
                               <p
                                 className="text-sm font-semibold transition-colors duration-500"
-                                style={{ color: isActive ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.3)" }}
+                                style={{ color: isActive ? "hsl(var(--foreground))" : "hsl(var(--muted-foreground) / 0.4)" }}
                               >
                                 {s.emoji} {s.label}
                               </p>
                               {(isCurrent || hoveredStage === idx) && isActive && (
-                                <p className="text-xs text-white/50 mt-1 leading-relaxed pg-fade-in">
+                                <p className="text-xs text-muted-foreground mt-1 leading-relaxed pg-fade-in">
                                   {s.explanation(leadName, leadEmail)}
                                 </p>
                               )}
@@ -593,22 +592,22 @@ const Playground = () => {
                     {activeExplanation !== null && (
                       <div
                         key={activeExplanation}
-                        className="rounded-xl border border-white/10 bg-white/[0.03] p-5 pg-fade-in"
-                        style={{ borderColor: `${STAGES[activeExplanation].color.replace(/[\d.]+\)$/, "0.25)")}` }}
+                        className="rounded-xl border border-border bg-card p-5 pg-fade-in"
+                        style={{ borderColor: `${STAGES[activeExplanation].color.replace(/[\d.]+\)$/, "0.3)")}` }}
                       >
                         <div className="flex items-start gap-3">
                           <span className="text-xl shrink-0">{STAGES[activeExplanation].emoji}</span>
                           <div className="flex-1 min-w-0">
-                            <p className="text-sm font-semibold text-white/90 mb-1.5 flex items-center gap-2">
+                            <p className="text-sm font-semibold text-foreground mb-1.5 flex items-center gap-2">
                               {STAGES[activeExplanation].label}
                               <InfoTip text={`Stage ${activeExplanation + 1} of ${STAGES.length}. Each stage runs automatically — no manual steps needed.`} />
                               {activeExplanation === 1 && stage === 1 && isRunning && <AIWaveBars />}
                             </p>
-                            <p className="text-sm text-white/60 leading-relaxed">
+                            <p className="text-sm text-muted-foreground leading-relaxed">
                               {STAGES[activeExplanation].explanation(leadName, leadEmail)}
                             </p>
                             {STAGES[activeExplanation].analogy && (
-                              <p className="text-xs text-white/40 mt-2 italic">
+                              <p className="text-xs text-muted-foreground/60 mt-2 italic">
                                 💡 {STAGES[activeExplanation].analogy}
                               </p>
                             )}
@@ -621,24 +620,24 @@ const Playground = () => {
                   {/* ── Running Status ── */}
                   {isRunning && (
                     <div className="mt-6 text-center pg-fade-in">
-                      <p className="text-sm text-white/40">
-                        Processing <span className="text-white/70 font-medium">{leadName}</span>
+                      <p className="text-sm text-muted-foreground">
+                        Processing <span className="text-foreground font-medium">{leadName}</span>
                         {leadCompany ? ` from ${leadCompany}` : ""}…
-                        <span className="text-white/25 ml-2">Step {stage + 1}/{STAGES.length} · {elapsedSec}s</span>
+                        <span className="text-muted-foreground/50 ml-2">Step {stage + 1}/{STAGES.length} · {elapsedSec}s</span>
                       </p>
                     </div>
                   )}
 
                   {/* ── Live Activity Log ── */}
                   {activityLog.length > 0 && (
-                    <div className="mt-6 rounded-lg border border-white/8 bg-black/20 p-4 max-h-[180px] overflow-y-auto pg-log-scroll">
-                      <p className="text-[10px] uppercase tracking-widest text-white/25 mb-2 font-semibold">Live Activity Log</p>
+                    <div className="mt-6 rounded-lg border border-border bg-muted/50 p-4 max-h-[180px] overflow-y-auto pg-log-scroll">
+                      <p className="text-[10px] uppercase tracking-widest text-muted-foreground/50 mb-2 font-semibold">Live Activity Log</p>
                       <div className="space-y-1.5">
                         {activityLog.map((entry, i) => (
                           <div key={i} className="flex items-start gap-2 text-xs pg-fade-in" style={{ animationDelay: `${i * 0.05}s` }}>
-                            <span className="text-white/25 font-mono shrink-0">{entry.time}</span>
+                            <span className="text-muted-foreground/40 font-mono shrink-0">{entry.time}</span>
                             <span className="w-1.5 h-1.5 rounded-full shrink-0 mt-1" style={{ backgroundColor: entry.color }} />
-                            <span className="text-white/55">{entry.message}</span>
+                            <span className="text-muted-foreground">{entry.message}</span>
                           </div>
                         ))}
                       </div>
@@ -654,15 +653,15 @@ const Playground = () => {
                         Automation Complete!
                       </p>
                       <p className="text-sm text-muted-foreground mb-1">
-                        <span className="text-white/80 font-medium">{leadName}</span>
+                        <span className="text-foreground font-medium">{leadName}</span>
                         {leadCompany ? ` from ${leadCompany}` : ""} ({leadEmail}) has been processed in {elapsedSec} seconds.
                       </p>
-                      <p className="text-xs text-white/35 mb-6 max-w-lg mx-auto">
+                      <p className="text-xs text-muted-foreground/50 mb-6 max-w-lg mx-auto">
                         Lead captured → AI scored → Routed to pipeline → CRM updated → Dashboard notified → Client welcomed
                       </p>
                       <button
                         onClick={handleReset}
-                        className="inline-flex items-center gap-2 rounded-lg border border-white/15 bg-white/5 px-6 py-2.5 text-sm font-semibold text-white/70 hover:text-white hover:border-primary/40 hover:bg-primary/10 transition-all active:scale-[0.97]"
+                        className="inline-flex items-center gap-2 rounded-lg border border-border bg-card px-6 py-2.5 text-sm font-semibold text-muted-foreground hover:text-foreground hover:border-primary/40 hover:bg-primary/10 transition-all active:scale-[0.97]"
                       >
                         <RotateCcw className="h-4 w-4" />
                         Try Again
@@ -676,7 +675,7 @@ const Playground = () => {
         )}
 
         <FadeInSection>
-          <p className="mt-8 text-center text-xs text-white/30">
+          <p className="mt-8 text-center text-xs text-muted-foreground/50">
             This is a visual demo — no actual data is sent or stored. Want this for your business?{" "}
             <a href="#contact" className="text-primary hover:underline">Let's talk!</a>
           </p>

@@ -65,7 +65,7 @@ const Contact = () => {
     <section id="contact" className="relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
       <div className="absolute inset-0">
         <img src={mountainFog} alt="" className="h-full w-full object-cover" loading="lazy" />
-        <div className="absolute inset-0 bg-background/50" />
+        <div className="absolute inset-0 bg-background/35" />
       </div>
 
       <div className="relative mx-auto max-w-6xl">
