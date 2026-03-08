@@ -100,7 +100,7 @@ const BookingCalendar = () => {
           time: selectedTime,
           duration,
           message: message.trim(),
-          meetLink: MEET_LINK !== "https://meet.google.com/YOUR-LINK-HERE" ? MEET_LINK : null,
+          meetLink: MEET_LINK,
         },
       });
 
