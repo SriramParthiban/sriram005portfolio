@@ -42,8 +42,8 @@ const Testimonials = () => {
   const [current, setCurrent] = useState(0);
   const [videoPlaying, setVideoPlaying] = useState(false);
   const vidRef = useRef<HTMLVideoElement>(null);
-  const next = () => setCurrent((c) => (c + 1) % testimonials.length);
-  const prev = () => setCurrent((c) => (c - 1 + testimonials.length) % testimonials.length);
+  const next = () => { setCurrent((c) => (c + 1) % testimonials.length); setVideoPlaying(false); };
+  const prev = () => { setCurrent((c) => (c - 1 + testimonials.length) % testimonials.length); setVideoPlaying(false); };
 
   const t = testimonials[current];
 
