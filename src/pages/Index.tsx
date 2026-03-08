@@ -29,6 +29,7 @@ const Index = () => (
       <Education />
       <Certifications />
       <GitHubRepos />
+      <BookingCalendar />
       <Contact />
       <FinalCTA />
     </main>
