@@ -10,7 +10,7 @@ const experiences = [
     location: "Remote / Canada",
     period: "June 2024 – Present",
     current: true,
-    illustration: expAiAutomation,
+    illustration: null,
     bullets: [
       "Designed and deployed outbound & qualification automation systems using AI voice, chat, and SMS agents across multiple channels.",
       "Built discovery logic that translates prospect signals into AE-ready handoffs, reducing manual qualification overhead significantly.",
