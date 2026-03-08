@@ -1,21 +1,16 @@
 import { Button } from "@/components/ui/button";
-import { Mail, ArrowUp, Sparkles, CheckCircle2 } from "lucide-react";
+import { Mail, ArrowUp, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
+import natureWaterfall from "@/assets/nature-waterfall.jpg";
 
 const FinalCTA = () => (
-  <section className="dark-section relative overflow-hidden py-24">
-    {/* Ambient orbs */}
-    <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      <div className="absolute -top-20 -left-20 h-[300px] w-[300px] rounded-full bg-primary/10 blur-[100px]" />
-      <div className="absolute -bottom-20 -right-20 h-[300px] w-[300px] rounded-full bg-accent/10 blur-[100px]" />
+  <section className="relative overflow-hidden py-24">
+    {/* Nature background */}
+    <div className="absolute inset-0">
+      <img src={natureWaterfall} alt="" className="h-full w-full object-cover" loading="lazy" />
+      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.9)]" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[hsl(155_25%_5%)] via-transparent to-[hsl(155_25%_5%/0.7)]" />
     </div>
-
-    {/* Mobile decorations */}
-    <div className="pointer-events-none absolute top-8 left-4 h-16 w-[1.5px] rounded-full bg-gradient-to-b from-primary/25 to-transparent animate-[pulseFade_4s_ease-in-out_infinite] md:hidden" />
-    <div className="pointer-events-none absolute bottom-8 right-4 h-12 w-[1.5px] rounded-full bg-gradient-to-b from-accent/20 to-transparent animate-[pulseFade_4s_ease-in-out_infinite_2s] md:hidden" />
-    <div className="pointer-events-none absolute top-[40%] right-5 h-3 w-3 rounded-full bg-gradient-to-br from-primary/15 to-accent/10 blur-[2px] animate-drift md:hidden" />
-    <div className="pointer-events-none absolute top-6 right-3 h-6 w-6 rounded-tr-lg border-t border-r border-primary/12 animate-border-glow md:hidden" />
-    <div className="pointer-events-none absolute bottom-6 left-3 h-6 w-6 rounded-bl-lg border-b border-l border-accent/10 animate-[borderGlow_4s_ease-in-out_infinite_2s] md:hidden" />
 
     <div className="relative mx-auto max-w-2xl px-6 text-center">
       <motion.div
@@ -24,12 +19,7 @@ const FinalCTA = () => (
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs font-semibold text-primary mb-6">
-          <Sparkles className="h-3 w-3" />
-          Open to Opportunities
-        </span>
-
-        <h2 className="mt-6 text-3xl font-display font-bold text-white sm:text-4xl lg:text-5xl text-balance">
+        <h2 className="text-3xl font-display font-bold text-white sm:text-4xl lg:text-5xl text-balance">
           Ready to Build Something{" "}
           <span className="gradient-text-warm">Extraordinary?</span>
         </h2>

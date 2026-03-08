@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { z } from "zod";
 import { supabase } from "@/integrations/supabase/client";
 import BookingCalendar from "./BookingCalendar";
+import natureTech from "@/assets/nature-tech.jpg";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100),
@@ -54,25 +55,18 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="dark-section relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
-      {/* Background */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-primary/20 blur-[180px] md:h-[600px] md:w-[600px]" />
-        <div className="absolute bottom-0 right-0 h-[250px] w-[250px] rounded-full bg-accent/10 blur-[100px]" />
+    <section id="contact" className="relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
+      {/* Nature background for contact */}
+      <div className="absolute inset-0">
+        <img src={natureTech} alt="" className="h-full w-full object-cover opacity-[0.08]" loading="lazy" />
+        <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.94)]" />
       </div>
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.02)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
       <div className="relative mx-auto max-w-6xl">
-        {/* Section header */}
         <FadeInSection>
           <div className="text-center mb-12">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="h-1 w-10 rounded-full bg-gradient-to-r from-primary to-accent" />
-              <span className="text-sm font-display font-semibold uppercase tracking-[0.2em] text-primary">Connect</span>
-              <div className="h-1 w-10 rounded-full bg-gradient-to-r from-accent to-primary" />
-            </div>
             <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground md:text-4xl lg:text-5xl">
-              Let's <span className="gradient-text">Work Together</span>
+              Let's Work Together
             </h2>
             <p className="mt-4 text-sm sm:text-base text-muted-foreground max-w-xl mx-auto">
               Book a meeting or drop me a message — I'd love to hear about your project.
@@ -106,22 +100,16 @@ const Contact = () => {
           </div>
         </FadeInSection>
 
-        {/* Side-by-side: Booking + Contact Form */}
+        {/* Side-by-side */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:items-start">
-          {/* Left: Booking Calendar */}
           <FadeInSection delay={200}>
             <BookingCalendar />
           </FadeInSection>
 
-          {/* Right: Contact Form */}
           <FadeInSection delay={200}>
             <div>
-              <div className="flex items-center gap-3 mb-3">
-                <div className="h-1 w-8 rounded-full bg-gradient-to-r from-accent to-primary" />
-                <span className="text-xs font-display font-semibold uppercase tracking-[0.2em] text-accent">Message</span>
-              </div>
               <h3 className="text-xl sm:text-2xl font-display font-bold text-foreground mb-2">
-                Get in <span className="gradient-text">Touch</span>
+                Get in Touch
               </h3>
               <p className="text-xs sm:text-sm text-muted-foreground mb-5 lg:mb-[57px]">
                 Prefer to write? Send me a message directly.
@@ -140,12 +128,9 @@ const Contact = () => {
                       background: "linear-gradient(145deg, hsl(35 25% 14%) 0%, hsl(35 20% 11%) 100%)",
                     }}
                   >
-                    {/* Stamp */}
                     <div className="absolute top-3 right-3 h-12 w-10 rounded-sm border-2 border-dashed border-[hsl(35,20%,30%)] bg-[hsl(35,15%,16%)] flex items-center justify-center">
                       <Mail className="h-4 w-4 text-primary/40" />
                     </div>
-
-                    <div className="absolute top-5 right-10 h-8 w-8 rounded-full border border-[hsl(35,20%,25%)] opacity-20 rotate-12" />
 
                     <div className="mb-5 text-xs font-mono text-[hsl(35,15%,40%)] italic pr-16">
                       Dear Sriram,
@@ -197,7 +182,6 @@ const Contact = () => {
                       </div>
                     </div>
 
-                    {/* Wax seal send */}
                     <div className="mt-5 flex justify-end">
                       <Button
                         type="submit"

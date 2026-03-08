@@ -3,12 +3,12 @@ import { Target, Bot, Plug, LineChart, Code, Users } from "lucide-react";
 import { motion } from "framer-motion";
 
 const noteColors = [
-  { bg: "#D1FAE5", text: "#065F46", badge: "#A7F3D0", badgeText: "#064E3B" }, // green
-  { bg: "#FEF3C7", text: "#92400E", badge: "#FDE68A", badgeText: "#78350F" }, // yellow
-  { bg: "#ECFCCB", text: "#365314", badge: "#D9F99D", badgeText: "#3F6212" }, // lime
-  { bg: "#FED7AA", text: "#9A3412", badge: "#FDBA74", badgeText: "#7C2D12" }, // orange
-  { bg: "#BBF7D0", text: "#14532D", badge: "#86EFAC", badgeText: "#166534" }, // emerald
-  { bg: "#FEF9C3", text: "#713F12", badge: "#FDE047", badgeText: "#854D0E" }, // amber
+  { bg: "#D1FAE5", text: "#065F46", badge: "#A7F3D0", badgeText: "#064E3B" },
+  { bg: "#FEF3C7", text: "#92400E", badge: "#FDE68A", badgeText: "#78350F" },
+  { bg: "#ECFCCB", text: "#365314", badge: "#D9F99D", badgeText: "#3F6212" },
+  { bg: "#FED7AA", text: "#9A3412", badge: "#FDBA74", badgeText: "#7C2D12" },
+  { bg: "#BBF7D0", text: "#14532D", badge: "#86EFAC", badgeText: "#166534" },
+  { bg: "#FEF9C3", text: "#713F12", badge: "#FDE047", badgeText: "#854D0E" },
 ];
 
 const rotations = [-2.5, 1.8, -1.2, 2.2, -1.8, 2.8];
@@ -24,20 +24,12 @@ const categories = [
 
 const Skills = () => (
   <section id="skills" className="dark-section relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
-    <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      <div className="absolute -top-20 left-1/2 h-[200px] w-[200px] md:h-[400px] md:w-[400px] rounded-full bg-accent/6 blur-[80px] md:blur-[140px]" />
-      <div className="absolute bottom-0 right-0 h-[125px] w-[125px] md:h-[250px] md:w-[250px] rounded-full bg-primary/6 blur-[60px] md:blur-[100px]" />
-    </div>
-
     <div className="relative mx-auto max-w-4xl">
       <FadeInSection>
-        <div className="flex items-center gap-3 mb-4">
-          <div className="h-1 w-10 rounded-full bg-gradient-to-r from-primary to-accent" />
-          <span className="text-sm font-display font-semibold uppercase tracking-[0.2em] text-primary">Expertise</span>
-        </div>
         <h2 className="text-2xl sm:text-3xl font-display font-bold text-white md:text-4xl lg:text-5xl">
-          Technical <span className="gradient-text">Skills</span>
+          Technical Skills
         </h2>
+        <p className="mt-3 text-sm text-muted-foreground max-w-lg">The tools and expertise I bring to every project.</p>
       </FadeInSection>
 
       <div className="mt-10 sm:mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -59,28 +51,19 @@ const Skills = () => (
                   clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%)",
                 }}
               >
-                {/* Tape strip */}
                 <div
                   className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[3px] w-12 h-5 rounded-sm z-10"
                   style={{ background: "rgba(255,255,255,0.45)", backdropFilter: "blur(2px)", border: "1px solid rgba(255,255,255,0.3)" }}
                 />
-
-                {/* Notebook lines */}
                 <div
                   className="absolute inset-0 opacity-[0.06]"
                   style={{ backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 13px, #000 13px, #000 14px)" }}
                 />
-
-                {/* Folded corner shadow */}
                 <div
                   className="absolute bottom-0 right-0 w-5 h-5"
-                  style={{
-                    background: `linear-gradient(135deg, transparent 50%, rgba(0,0,0,0.08) 50%)`,
-                  }}
+                  style={{ background: `linear-gradient(135deg, transparent 50%, rgba(0,0,0,0.08) 50%)` }}
                 />
-
                 <div className="relative p-5 sm:p-6">
-                  {/* Header */}
                   <div className="flex items-center gap-3 mb-4">
                     <div
                       className="flex h-9 w-9 items-center justify-center rounded-lg"
@@ -92,8 +75,6 @@ const Skills = () => (
                       {cat.title}
                     </h3>
                   </div>
-
-                  {/* Skill badges */}
                   <div className="flex flex-wrap gap-1.5">
                     {cat.skills.map((s) => (
                       <span

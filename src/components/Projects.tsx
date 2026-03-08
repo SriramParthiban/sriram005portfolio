@@ -32,31 +32,20 @@ const Projects = () => {
 
   return (
     <section id="projects" className="dark-section relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
-      {/* Background */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute top-40 -left-20 h-[350px] w-[350px] rounded-full bg-accent/6 blur-[120px]" />
-        <div className="absolute -bottom-20 right-0 h-[300px] w-[300px] rounded-full bg-primary/8 blur-[120px]" />
-      </div>
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.02)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
-
       <div className="relative mx-auto max-w-3xl">
         <FadeInSection>
-          <div className="flex items-center gap-3 mb-4">
-            <div className="h-1 w-10 rounded-full bg-gradient-to-r from-primary to-accent" />
-            <span className="text-sm font-display font-semibold uppercase tracking-[0.2em] text-primary">Portfolio</span>
-          </div>
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary mb-3">Portfolio</p>
           <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground md:text-4xl lg:text-5xl">
-            Key <span className="gradient-text">Projects</span>
+            Key Projects
           </h2>
         </FadeInSection>
 
         <div className="mt-10 sm:mt-14">
-          {/* Project selector — pill nav */}
+          {/* Project selector */}
           <div className="flex items-center gap-2 mb-8">
             <button onClick={prev} className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/50 transition-all hover:bg-primary hover:text-white hover:border-primary">
               <ChevronLeft className="h-4 w-4" />
             </button>
-
             <div className="flex-1 flex items-center justify-center gap-2 flex-wrap">
               {projects.map((proj, idx) => {
                 const isActive = idx === active;
@@ -82,13 +71,12 @@ const Projects = () => {
                 );
               })}
             </div>
-
             <button onClick={next} className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/50 transition-all hover:bg-primary hover:text-white hover:border-primary">
               <ChevronRight className="h-4 w-4" />
             </button>
           </div>
 
-          {/* Project counter */}
+          {/* Counter */}
           <div className="flex items-center justify-center gap-3 mb-6">
             <span className="text-xs font-mono text-white/25">
               {String(active + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
@@ -118,11 +106,8 @@ const Projects = () => {
                 transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
                 className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-sm"
               >
-                {/* Top accent bar */}
                 <div className={`h-1 bg-gradient-to-r ${p.color}`} />
-
                 <div className="p-5 sm:p-8">
-                  {/* Header */}
                   <div className="flex items-start gap-4 sm:gap-5">
                     <div className={`flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${p.color} p-[1px]`}>
                       <div className="flex h-full w-full items-center justify-center rounded-[14px] bg-[hsl(var(--dark-section))] transition-all duration-300 group-hover:bg-transparent">
@@ -135,7 +120,6 @@ const Projects = () => {
                     </div>
                   </div>
 
-                  {/* Metrics */}
                   <div className="mt-6 grid grid-cols-1 gap-2 sm:grid-cols-2">
                     {p.metrics.map((m) => (
                       <div key={m} className="flex items-center gap-2.5 text-xs sm:text-sm text-muted-foreground">
@@ -145,7 +129,6 @@ const Projects = () => {
                     ))}
                   </div>
 
-                  {/* Tech */}
                   <div className="mt-5 flex flex-wrap gap-2">
                     {p.tech.map((t) => (
                       <Badge
@@ -158,9 +141,7 @@ const Projects = () => {
                     ))}
                   </div>
 
-                  {/* Actions row */}
                   <div className="mt-6 flex flex-wrap items-center gap-3">
-                    {/* Proof toggle */}
                     {p.proofImage && (
                       <button
                         onClick={() => setShowProof(!showProof)}
@@ -170,8 +151,6 @@ const Projects = () => {
                         {showProof ? "Hide Output" : "See It in Action"}
                       </button>
                     )}
-
-                    {/* Case study link */}
                     <Link
                       to={`/projects/${p.slug}`}
                       className="inline-flex items-center gap-2 rounded-lg border-2 border-primary bg-primary/20 px-5 py-2.5 text-sm font-semibold text-primary transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-[0_0_20px_-4px_hsl(var(--primary)/0.6)] min-h-[44px]"
@@ -181,7 +160,6 @@ const Projects = () => {
                     </Link>
                   </div>
 
-                  {/* Proof images */}
                   <AnimatePresence>
                     {showProof && p.proofImage && (
                       <motion.div
