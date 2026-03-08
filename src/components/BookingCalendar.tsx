@@ -398,7 +398,7 @@ const BookingCalendar = () => {
                   <p className="text-sm text-muted-foreground/70 mb-6">
                     {duration} minute session • Confirmation sent to your email
                   </p>
-                  {MEET_LINK !== "https://meet.google.com/YOUR-LINK-HERE" && (
+                  {MEET_LINK && (
                     <a
                       href={MEET_LINK}
                       target="_blank"
