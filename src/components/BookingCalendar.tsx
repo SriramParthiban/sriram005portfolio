@@ -173,8 +173,8 @@ const BookingCalendar = () => {
           {step === "date" && (
             <motion.div key="date" variants={stepVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.2 }}>
               <div className="flex items-center gap-2 mb-4">
-                <CalendarDays className="h-4 w-4 text-primary" />
-                <h4 className="text-sm font-display font-semibold text-foreground">Select a Date</h4>
+                <CalendarDays className="h-5 w-5 text-primary" />
+                <h4 className="text-base font-display font-bold text-foreground">Select a Date</h4>
               </div>
               <div className="flex justify-center">
                 <Calendar
