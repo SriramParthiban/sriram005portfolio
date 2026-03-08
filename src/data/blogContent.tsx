@@ -343,35 +343,35 @@ const GHLPlaybookContent = () => (
 
     <h2>Pipeline Stage Automation</h2>
 
-    <div className="space-y-4 my-8">
+    <div className="space-y-5 my-10">
       {[
         {
           stage: "📥 New Lead",
-          color: "bg-[hsl(210,25%,10%)] border-[hsl(210,30%,22%)]",
+          color: "bg-[hsl(210,20%,13%)] border-[hsl(210,25%,25%)]",
           actions: ["Assign to round-robin sales rep", "Trigger speed-to-lead sequence", "Create manual follow-up task for Day 2"],
         },
         {
           stage: "📅 Appointment Booked",
-          color: "bg-[hsl(145,20%,10%)] border-[hsl(145,30%,20%)]",
+          color: "bg-[hsl(145,18%,13%)] border-[hsl(145,25%,24%)]",
           actions: ["Send confirmation SMS + email + calendar link", "Trigger reminder sequence (24h → 2h → 15min)", "Notify assigned rep via Slack"],
         },
         {
           stage: "😞 No Show",
-          color: "bg-[hsl(35,30%,10%)] border-[hsl(35,35%,22%)]",
+          color: "bg-[hsl(35,25%,13%)] border-[hsl(35,30%,25%)]",
           actions: ["Re-engagement SMS with reschedule option", "24h wait → move to nurture campaign", "Track no-show rate in KPI dashboard"],
         },
         {
           stage: "🎉 Won",
-          color: "bg-[hsl(270,20%,10%)] border-[hsl(270,25%,20%)]",
+          color: "bg-[hsl(270,18%,13%)] border-[hsl(270,22%,24%)]",
           actions: ["Trigger onboarding workflow", "Create project in Monday.com", "Update revenue tracking in PostgreSQL"],
         },
       ].map((s) => (
-        <div key={s.stage} className={`${s.color} border rounded-xl p-5`}>
-          <p className="font-semibold text-foreground text-sm mb-3">{s.stage}</p>
-          <ul className="space-y-1.5">
+        <div key={s.stage} className={`${s.color} border rounded-xl p-6`}>
+          <p className="font-semibold text-white text-[15px] mb-3">{s.stage}</p>
+          <ul className="space-y-2.5">
             {s.actions.map((a, i) => (
-              <li key={i} className="text-sm text-foreground/70 flex items-start gap-2">
-                <span className="text-primary mt-0.5">→</span> {a}
+              <li key={i} className="text-[14px] text-white/70 flex items-start gap-2.5">
+                <span className="text-primary mt-0.5 flex-shrink-0">→</span> {a}
               </li>
             ))}
           </ul>
