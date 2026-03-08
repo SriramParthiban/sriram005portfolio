@@ -55,6 +55,7 @@ const Index = () => {
     <StickyMobileCTA />
     <ChatWidget />
   </div>
-);
+  );
+};
 
 export default Index;
