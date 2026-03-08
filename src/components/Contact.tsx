@@ -138,13 +138,13 @@ const Contact = () => {
                       <Mail className="h-4 w-4 text-primary/40" />
                     </div>
 
-                    <div className="mb-5 text-xs font-mono text-[hsl(35,15%,45%)] italic pr-16">
+                    <div className="mb-5 text-sm font-mono font-bold text-[hsl(35,20%,25%)] italic pr-16">
                       Dear Sriram,
                     </div>
 
                     <div className="space-y-4">
                       <div>
-                        <label className="block text-[10px] font-mono text-[hsl(35,15%,45%)] uppercase tracking-widest mb-1">From</label>
+                        <label className="block text-[11px] font-mono font-bold text-[hsl(35,20%,30%)] uppercase tracking-widest mb-1">From</label>
                         <input
                           type="text"
                           placeholder="Your name"
@@ -152,12 +152,12 @@ const Contact = () => {
                           maxLength={100}
                           value={form.name}
                           onChange={(e) => setForm({ ...form, name: e.target.value })}
-                          className="w-full bg-transparent border-b-2 border-dotted border-[hsl(35,20%,68%)] pb-2 text-sm text-[hsl(35,20%,25%)] placeholder:text-[hsl(35,10%,60%)] focus:outline-none focus:border-primary/40 transition-colors font-mono"
+                          className="w-full bg-transparent border-b-2 border-dotted border-[hsl(35,20%,68%)] pb-2 text-sm font-semibold text-[hsl(35,20%,20%)] placeholder:text-[hsl(35,15%,45%)] placeholder:font-medium focus:outline-none focus:border-primary/40 transition-colors font-mono"
                         />
                         {errors.name && <p className="mt-1 text-xs text-destructive">{errors.name}</p>}
                       </div>
                       <div>
-                        <label className="block text-[10px] font-mono text-[hsl(35,15%,45%)] uppercase tracking-widest mb-1">Return Address</label>
+                        <label className="block text-[11px] font-mono font-bold text-[hsl(35,20%,30%)] uppercase tracking-widest mb-1">Return Address</label>
                         <input
                           type="email"
                           placeholder="Your email"
@@ -165,12 +165,12 @@ const Contact = () => {
                           maxLength={255}
                           value={form.email}
                           onChange={(e) => setForm({ ...form, email: e.target.value })}
-                          className="w-full bg-transparent border-b-2 border-dotted border-[hsl(35,20%,68%)] pb-2 text-sm text-[hsl(35,20%,25%)] placeholder:text-[hsl(35,10%,60%)] focus:outline-none focus:border-primary/40 transition-colors font-mono"
+                          className="w-full bg-transparent border-b-2 border-dotted border-[hsl(35,20%,68%)] pb-2 text-sm font-semibold text-[hsl(35,20%,20%)] placeholder:text-[hsl(35,15%,45%)] placeholder:font-medium focus:outline-none focus:border-primary/40 transition-colors font-mono"
                         />
                         {errors.email && <p className="mt-1 text-xs text-destructive">{errors.email}</p>}
                       </div>
                       <div>
-                        <label className="block text-[10px] font-mono text-[hsl(35,15%,45%)] uppercase tracking-widest mb-1">Message</label>
+                        <label className="block text-[11px] font-mono font-bold text-[hsl(35,20%,30%)] uppercase tracking-widest mb-1">Message</label>
                         <textarea
                           placeholder="Write your message here..."
                           required
@@ -178,7 +178,7 @@ const Contact = () => {
                           maxLength={2000}
                           value={form.message}
                           onChange={(e) => setForm({ ...form, message: e.target.value })}
-                          className="w-full bg-transparent border-b-2 border-dotted border-[hsl(35,20%,68%)] pb-2 text-sm text-[hsl(35,20%,25%)] placeholder:text-[hsl(35,10%,60%)] focus:outline-none focus:border-primary/40 transition-colors resize-none font-mono"
+                          className="w-full bg-transparent border-b-2 border-dotted border-[hsl(35,20%,68%)] pb-2 text-sm font-semibold text-[hsl(35,20%,20%)] placeholder:text-[hsl(35,15%,45%)] placeholder:font-medium focus:outline-none focus:border-primary/40 transition-colors resize-none font-mono"
                           style={{
                             backgroundImage: "repeating-linear-gradient(transparent, transparent 27px, hsl(35 20% 78% / 0.5) 27px, hsl(35 20% 78% / 0.5) 28px)",
                             lineHeight: "28px",
