@@ -89,7 +89,7 @@ const About = () => (
     <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.02)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
     {/* Left side sticky notes */}
-    <div className="hidden md:block absolute top-0 bottom-0 left-2 lg:left-8 xl:left-16 w-[110px]">
+    <div className="hidden lg:block absolute top-0 bottom-0 left-2 lg:left-8 xl:left-16 w-[110px]">
       {leftNotes.map((note, idx) => (
         <StickyNote key={note.label} note={note} side="left" idx={idx} />
       ))}
