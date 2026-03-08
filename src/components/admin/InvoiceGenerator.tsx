@@ -179,11 +179,31 @@ const InvoiceGenerator = () => {
         </div>
         <div>
           <label className={labelClass}>Invoice Date</label>
-          <input className={inputClass} type="date" value={invoiceDate} onChange={(e) => setInvoiceDate(e.target.value)} />
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button variant="outline" className={cn("w-full justify-start text-left font-normal bg-[hsl(270,15%,12%)] border-[hsl(270,20%,20%)] hover:bg-[hsl(270,15%,15%)]", !invoiceDate && "text-muted-foreground")}>
+                <CalendarIcon className="mr-2 h-4 w-4" />
+                {invoiceDate ? format(invoiceDate, "dd-MM-yyyy") : <span>Pick a date</span>}
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-auto p-0" align="start">
+              <Calendar mode="single" selected={invoiceDate} onSelect={(d) => d && setInvoiceDate(d)} initialFocus className={cn("p-3 pointer-events-auto")} />
+            </PopoverContent>
+          </Popover>
         </div>
         <div>
           <label className={labelClass}>Due Date</label>
-          <input className={inputClass} type="date" value={dueDate} onChange={(e) => setDueDate(e.target.value)} />
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button variant="outline" className={cn("w-full justify-start text-left font-normal bg-[hsl(270,15%,12%)] border-[hsl(270,20%,20%)] hover:bg-[hsl(270,15%,15%)]", !dueDate && "text-muted-foreground")}>
+                <CalendarIcon className="mr-2 h-4 w-4" />
+                {dueDate ? format(dueDate, "dd-MM-yyyy") : <span>dd-mm-yyyy</span>}
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-auto p-0" align="start">
+              <Calendar mode="single" selected={dueDate} onSelect={setDueDate} initialFocus className={cn("p-3 pointer-events-auto")} />
+            </PopoverContent>
+          </Popover>
         </div>
       </div>
 
