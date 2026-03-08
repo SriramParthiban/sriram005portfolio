@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import {
   Lock, LogOut, Search, MessageCircle, Mail, Phone, User, Tag, Clock,
   ChevronDown, ChevronUp, Eye, Users, CalendarCheck, MousePointerClick,
-  TrendingUp, BarChart3, MessageSquare, UserCheck, RefreshCw
+  TrendingUp, BarChart3, MessageSquare, UserCheck, RefreshCw, FileText
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import InvoiceGenerator from "@/components/admin/InvoiceGenerator";
 
 const VERIFY_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/verify-admin`;
 const LEADS_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/admin-leads`;
