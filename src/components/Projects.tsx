@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import FadeInSection from "./FadeInSection";
-import { Zap, BarChart3, Database, Mail, CheckCircle2, Paperclip } from "lucide-react";
+import { Zap, BarChart3, Database, Mail, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import dentbooksProof from "@/assets/dentbooks-email-proof.png";
@@ -12,13 +12,6 @@ import ghlWorkflowBranches from "@/assets/ghl-workflow-branches.png";
 import ghlEmailCompose from "@/assets/ghl-email-compose.png";
 import ghlPipelineStages from "@/assets/ghl-pipeline-stages.png";
 
-const folderColors = [
-  { tab: "bg-[hsl(250,80%,68%)]", tabText: "text-white", border: "border-[hsl(250,80%,68%)/0.3]" },
-  { tab: "bg-[hsl(165,55%,48%)]", tabText: "text-white", border: "border-[hsl(165,55%,48%)/0.3]" },
-  { tab: "bg-[hsl(35,85%,55%)]", tabText: "text-white", border: "border-[hsl(35,85%,55%)/0.3]" },
-  { tab: "bg-[hsl(340,70%,55%)]", tabText: "text-white", border: "border-[hsl(340,70%,55%)/0.3]" },
-];
-
 const projects = [
   {
     title: "Multi-Channel Automation",
@@ -27,6 +20,7 @@ const projects = [
     metrics: ["Reduced documentation time by 70%", "99% data accuracy", "1,000+ interactions/day", "Real-time CRM sync"],
     tech: ["AI Agents", "n8n", "REST APIs", "CRM Integration", "NLP", "Lovable"],
     icon: Zap,
+    color: "from-primary to-primary/60",
     proofImage: multichannelDashboard,
     proofLabel: "✅ Live Dashboard — Final Output",
     extraImages: [],
@@ -38,17 +32,19 @@ const projects = [
     metrics: ["Call completion: 67% → 97%", "Invalid leads reduced by 90%", "15+ hours/week saved", "Real-time dashboards"],
     tech: ["Python", "SQL", "Power BI", "Automation", "Analytics"],
     icon: BarChart3,
+    color: "from-accent to-accent/60",
     proofImage: kpiDashboard,
     proofLabel: "✅ Live Dashboard — Call Center Performance",
     extraImages: [],
   },
   {
-    title: "Data Integration System",
+    title: "Data Integration",
     fullTitle: "Intelligent Data Integration System",
     description: "End-to-end data pipeline collecting via GoHighLevel and n8n webhooks, validating and syncing to monday.com with intelligent routing and real-time alerting.",
     metrics: ["Errors reduced by 80%", "Improved SLA compliance", "Real-time alerting", "Zero-touch processing"],
     tech: ["n8n", "monday.com", "GoHighLevel", "Webhooks", "Data Validation", "ETL"],
     icon: Database,
+    color: "from-primary to-accent",
     proofImage: dataIntegrationWorkflow,
     proofLabel: "✅ Live Workflow — n8n Automation Pipeline",
     extraImages: [],
@@ -60,6 +56,7 @@ const projects = [
     metrics: ["Instant lead response time", "Automated booking link delivery", "Trigger-based email sequences", "Zero manual follow-up needed"],
     tech: ["GoHighLevel", "Email Automation", "Workflows", "Lead Nurturing", "CRM"],
     icon: Mail,
+    color: "from-accent to-primary",
     proofImage: dentbooksProof,
     proofLabel: "✅ Live Output — Automated Email Delivered",
     extraImages: [
@@ -72,7 +69,28 @@ const projects = [
 ];
 
 const Projects = () => {
-  const [openFolder, setOpenFolder] = useState<number | null>(0);
+  const [active, setActive] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const [showProof, setShowProof] = useState(false);
+
+  const goTo = (idx: number) => {
+    if (idx === active) return;
+    setDirection(idx > active ? 1 : -1);
+    setActive(idx);
+    setShowProof(false);
+  };
+
+  const next = () => goTo((active + 1) % projects.length);
+  const prev = () => goTo((active - 1 + projects.length) % projects.length);
+
+  const p = projects[active];
+  const Icon = p.icon;
+
+  const slideVariants = {
+    enter: (d: number) => ({ x: d > 0 ? 80 : -80, opacity: 0, scale: 0.96 }),
+    center: { x: 0, opacity: 1, scale: 1 },
+    exit: (d: number) => ({ x: d > 0 ? -80 : 80, opacity: 0, scale: 0.96 }),
+  };
 
   return (
     <section id="projects" className="dark-section relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
@@ -94,120 +112,160 @@ const Projects = () => {
           </h2>
         </FadeInSection>
 
-        {/* Folder tabs */}
         <div className="mt-10 sm:mt-14">
-          <div className="flex gap-1 overflow-x-auto pb-0 scrollbar-none">
-            {projects.map((p, idx) => {
-              const color = folderColors[idx % folderColors.length];
-              const isOpen = openFolder === idx;
-              return (
-                <button
-                  key={idx}
-                  onClick={() => setOpenFolder(isOpen ? null : idx)}
-                  className={`relative shrink-0 rounded-t-lg px-3 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-display font-bold transition-all duration-300 border border-b-0 ${
-                    isOpen
-                      ? `${color.tab} ${color.tabText} shadow-[0_-4px_16px_-4px_rgba(0,0,0,0.3)] z-10 -mb-px`
-                      : "bg-white/5 text-muted-foreground border-white/10 hover:bg-white/10 hover:text-foreground"
-                  }`}
-                >
-                  {p.title}
-                  {/* Folder notch */}
-                  {isOpen && (
-                    <div className="absolute -bottom-px left-0 right-0 h-px bg-white/[0.07]" />
-                  )}
-                </button>
-              );
-            })}
+          {/* Project selector — pill nav */}
+          <div className="flex items-center gap-2 mb-8">
+            <button onClick={prev} className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/50 transition-all hover:bg-primary hover:text-white hover:border-primary">
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+
+            <div className="flex-1 flex items-center justify-center gap-2 flex-wrap">
+              {projects.map((proj, idx) => {
+                const isActive = idx === active;
+                return (
+                  <button
+                    key={idx}
+                    onClick={() => goTo(idx)}
+                    className={`relative px-4 py-2 rounded-full text-xs sm:text-sm font-display font-semibold transition-all duration-400 ${
+                      isActive
+                        ? "bg-primary text-white shadow-[0_0_24px_-4px_hsl(var(--primary)/0.5)]"
+                        : "bg-white/5 text-white/40 border border-white/8 hover:bg-white/10 hover:text-white/70"
+                    }`}
+                  >
+                    {proj.title}
+                    {isActive && (
+                      <motion.div
+                        layoutId="project-pill"
+                        className="absolute inset-0 rounded-full bg-primary -z-10"
+                        transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                      />
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+
+            <button onClick={next} className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/50 transition-all hover:bg-primary hover:text-white hover:border-primary">
+              <ChevronRight className="h-4 w-4" />
+            </button>
           </div>
 
-          {/* Folder body */}
-          <AnimatePresence mode="wait">
-            {openFolder !== null && (
+          {/* Project counter */}
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <span className="text-xs font-mono text-white/25">
+              {String(active + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
+            </span>
+            <div className="flex gap-1.5">
+              {projects.map((_, idx) => (
+                <div
+                  key={idx}
+                  className={`h-1 rounded-full transition-all duration-500 ${
+                    idx === active ? "w-6 bg-primary" : "w-1.5 bg-white/15"
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Card */}
+          <div className="relative min-h-[320px]">
+            <AnimatePresence custom={direction} mode="wait">
               <motion.div
-                key={openFolder}
-                initial={{ opacity: 0, y: 10, scaleY: 0.98 }}
-                animate={{ opacity: 1, y: 0, scaleY: 1 }}
-                exit={{ opacity: 0, y: -10, scaleY: 0.98 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-                className="relative rounded-b-2xl rounded-tr-2xl border border-white/10 bg-white/[0.04] backdrop-blur-sm overflow-hidden"
-                style={{
-                  backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 27px, hsl(0 0% 100% / 0.03) 27px, hsl(0 0% 100% / 0.03) 28px)",
-                }}
+                key={active}
+                custom={direction}
+                variants={slideVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
+                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-sm"
               >
-                {/* Paper texture lines */}
+                {/* Top accent bar */}
+                <div className={`h-1 bg-gradient-to-r ${p.color}`} />
+
                 <div className="p-5 sm:p-8">
-                  {(() => {
-                    const p = projects[openFolder];
-                    const Icon = p.icon;
-                    const color = folderColors[openFolder % folderColors.length];
-                    return (
-                      <div>
-                        {/* Header */}
-                        <div className="flex items-start gap-4">
-                          <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-xl ${color.tab} shadow-lg`}>
-                            <Icon className="h-6 w-6 text-white" />
-                          </div>
-                          <div className="flex-1">
-                            <h3 className="text-base sm:text-lg font-display font-bold text-foreground">{p.fullTitle}</h3>
-                            <p className="mt-2 text-xs sm:text-sm leading-relaxed text-muted-foreground">{p.description}</p>
-                          </div>
-                        </div>
-
-                        {/* Metrics */}
-                        <div className="mt-6 grid grid-cols-1 gap-2 sm:grid-cols-2">
-                          {p.metrics.map((m) => (
-                            <div key={m} className="flex items-center gap-2.5 text-xs sm:text-sm text-muted-foreground">
-                              <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-accent" />
-                              <span>{m}</span>
-                            </div>
-                          ))}
-                        </div>
-
-                        {/* Tech badges */}
-                        <div className="mt-5 flex flex-wrap gap-2">
-                          {p.tech.map((t) => (
-                            <Badge
-                              key={t}
-                              variant="secondary"
-                              className="border border-white/10 bg-white/5 text-muted-foreground text-xs font-medium transition-all duration-300 hover:border-primary/30 hover:bg-primary/15 hover:text-foreground"
-                            >
-                              {t}
-                            </Badge>
-                          ))}
-                        </div>
-
-                        {/* Proof images — "paperclipped" */}
-                        {p.proofImage && (
-                          <div className="mt-6">
-                            <div className="flex items-center gap-2 mb-3 text-xs font-semibold text-accent uppercase tracking-wider">
-                              <Paperclip className="h-3.5 w-3.5 -rotate-45" />
-                              Attached Proof
-                            </div>
-                            <div className="space-y-3">
-                              <div className="overflow-hidden rounded-lg border border-white/10 bg-white/5 shadow-lg">
-                                <div className="border-b border-white/10 bg-accent/5 px-4 py-2">
-                                  <span className="text-xs font-semibold text-accent">{p.proofLabel}</span>
-                                </div>
-                                <img src={p.proofImage} alt={`${p.fullTitle} - proof`} className="w-full" loading="lazy" />
-                              </div>
-                              {p.extraImages.map((img) => (
-                                <div key={img.label} className="overflow-hidden rounded-lg border border-white/10 bg-white/5 shadow-lg">
-                                  <div className="border-b border-white/10 bg-primary/5 px-4 py-2">
-                                    <span className="text-xs font-semibold text-primary">📎 {img.label}</span>
-                                  </div>
-                                  <img src={img.src} alt={img.label} className="w-full" loading="lazy" />
-                                </div>
-                              ))}
-                            </div>
-                          </div>
-                        )}
+                  {/* Header */}
+                  <div className="flex items-start gap-4 sm:gap-5">
+                    <div className={`flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${p.color} p-[1px]`}>
+                      <div className="flex h-full w-full items-center justify-center rounded-[14px] bg-[hsl(var(--dark-section))] transition-all duration-300 group-hover:bg-transparent">
+                        <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary transition-colors group-hover:text-white" />
                       </div>
-                    );
-                  })()}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-base sm:text-lg font-display font-bold text-foreground leading-snug">{p.fullTitle}</h3>
+                      <p className="mt-2 text-xs sm:text-sm leading-relaxed text-muted-foreground">{p.description}</p>
+                    </div>
+                  </div>
+
+                  {/* Metrics */}
+                  <div className="mt-6 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                    {p.metrics.map((m) => (
+                      <div key={m} className="flex items-center gap-2.5 text-xs sm:text-sm text-muted-foreground">
+                        <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-accent" />
+                        <span>{m}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Tech */}
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {p.tech.map((t) => (
+                      <Badge
+                        key={t}
+                        variant="secondary"
+                        className="border border-white/10 bg-white/5 text-muted-foreground text-xs font-medium transition-all duration-300 hover:border-primary/30 hover:bg-primary/15 hover:text-foreground"
+                      >
+                        {t}
+                      </Badge>
+                    ))}
+                  </div>
+
+                  {/* Proof toggle */}
+                  {p.proofImage && (
+                    <div className="mt-6">
+                      <button
+                        onClick={() => setShowProof(!showProof)}
+                        className="inline-flex items-center gap-2 rounded-lg border border-accent/20 bg-accent/5 px-4 py-2 text-sm font-medium text-accent transition-all duration-300 hover:bg-accent/15 hover:border-accent/40 hover:text-white min-h-[44px]"
+                      >
+                        <CheckCircle2 className="h-4 w-4" />
+                        {showProof ? "Hide Output" : "See It in Action"}
+                      </button>
+                    </div>
+                  )}
+
+                  {/* Proof images */}
+                  <AnimatePresence>
+                    {showProof && p.proofImage && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="mt-5 space-y-3">
+                          <div className="overflow-hidden rounded-xl border border-white/10 bg-white/5">
+                            <div className="border-b border-white/10 bg-accent/5 px-4 py-2">
+                              <span className="text-xs font-semibold uppercase tracking-wider text-accent">{p.proofLabel}</span>
+                            </div>
+                            <img src={p.proofImage} alt={`${p.fullTitle} - proof`} className="w-full" loading="lazy" />
+                          </div>
+                          {p.extraImages.map((img) => (
+                            <div key={img.label} className="overflow-hidden rounded-xl border border-white/10 bg-white/5">
+                              <div className="border-b border-white/10 bg-primary/5 px-4 py-2">
+                                <span className="text-xs font-semibold uppercase tracking-wider text-primary">📎 {img.label}</span>
+                              </div>
+                              <img src={img.src} alt={img.label} className="w-full" loading="lazy" />
+                            </div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               </motion.div>
-            )}
-          </AnimatePresence>
+            </AnimatePresence>
+          </div>
         </div>
       </div>
     </section>
