@@ -132,7 +132,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
-            className="bg-[hsl(0_0%_8%/0.95)] backdrop-blur-xl overflow-hidden border-b border-white/5 px-6 pb-6 md:hidden"
+            className="bg-[hsl(0_0%_8%/0.95)] backdrop-blur-xl overflow-hidden border-b border-white/5 px-6 pb-6 lg:hidden"
           >
             <div className="flex flex-col gap-1">
               {navLinks.map((link, i) => {

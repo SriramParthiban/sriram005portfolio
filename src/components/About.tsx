@@ -103,7 +103,7 @@ const About = () => (
     </div>
 
     {/* Mobile: horizontal scrollable sticky notes */}
-    <div className="md:hidden relative mx-auto max-w-3xl mb-6">
+    <div className="lg:hidden relative mx-auto max-w-3xl mb-6">
       <FadeInSection delay={50}>
         <div className="-mx-4 px-4">
           <div className="flex gap-3 overflow-x-auto pb-3 scrollbar-themed">
