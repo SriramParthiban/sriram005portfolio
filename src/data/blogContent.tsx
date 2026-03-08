@@ -27,7 +27,7 @@ const N8nContent = () => (
       ))}
     </div>
 
-    <StickyNote color="purple" rotate={-1}>
+    <StickyNote color="purple">
       <strong>💡 That's where n8n changes the game.</strong> An open-source, self-hostable workflow engine 
       built for teams who've outgrown the basics.
     </StickyNote>
