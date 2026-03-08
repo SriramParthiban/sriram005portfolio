@@ -24,7 +24,7 @@ const VineDivider = ({ className = "" }: { className?: string }) => (
 
 /** Full-bleed nature photo strip between sections */
 const NaturePhotoStrip = ({ variant = "canopy", className = "" }: { variant?: "canopy" | "leaves"; className?: string }) => {
-  const img = variant === "canopy" ? forestCanopy : leavesBright;
+  const img = variant === "canopy" ? natureWaterfall : natureMountains;
   return (
     <div className={`relative w-full h-32 sm:h-44 md:h-56 overflow-hidden ${className}`}>
       <img
