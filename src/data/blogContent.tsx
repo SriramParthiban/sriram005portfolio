@@ -72,7 +72,7 @@ const N8nContent = () => (
     <h2>Real-World: Multi-Channel Lead Pipeline</h2>
     <p>I built this for a dental marketing agency — <strong>3,000+ leads/month</strong> on a single n8n instance:</p>
 
-    <div className="space-y-5 my-10">
+    <div className="space-y-2 my-8">
       <StepCard number={1} title="📥 Capture" description="Facebook Ads, Google Ads, and website forms — all via webhooks into one pipeline." />
       <StepCard number={2} title="🔍 Enrich" description="Clearbit + custom API lookups to fill in company, location, and budget data." />
       <StepCard number={3} title="🔀 Route" description="Smart routing based on location, service interest, and lead score to different GHL pipelines." />
