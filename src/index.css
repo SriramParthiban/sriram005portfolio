@@ -203,6 +203,22 @@
   .animate-ticker {
     animation: ticker 30s linear infinite;
   }
+
+  /* Tech stack ticker rows */
+  @keyframes ticker-row1 {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  @keyframes ticker-row2 {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+  .animate-ticker-row1 {
+    animation: ticker-row1 40s linear infinite;
+  }
+  .animate-ticker-row2 {
+    animation: ticker-row2 45s linear infinite;
+  }
 }
 
 /* Decorative keyframe animations */
