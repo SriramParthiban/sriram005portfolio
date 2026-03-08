@@ -10,6 +10,7 @@ import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import TechStack from "@/components/TechStack";
 import Testimonials from "@/components/Testimonials";
+import Playground from "@/components/Playground";
 import Education from "@/components/Education";
 import Certifications from "@/components/Certifications";
 import GitHubRepos from "@/components/GitHubRepos";
