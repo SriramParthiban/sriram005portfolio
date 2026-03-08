@@ -123,7 +123,7 @@ const Contact = () => {
               <h3 className="text-xl sm:text-2xl font-display font-bold text-foreground mb-2">
                 Get in <span className="gradient-text">Touch</span>
               </h3>
-              <p className="text-xs sm:text-sm text-muted-foreground mb-5">
+              <p className="text-xs sm:text-sm text-muted-foreground mb-5 lg:mb-[57px]">
                 Prefer to write? Send me a message directly.
               </p>
 
