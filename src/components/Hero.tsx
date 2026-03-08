@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Mail } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import profilePhoto from "@/assets/profile-photo.jpeg";
 
 const roles = [
