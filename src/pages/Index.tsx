@@ -50,7 +50,7 @@ const Index = () => {
       <Education />
       <Certifications />
       <GitHubRepos />
-      <Blog />
+      
       <Contact />
       <FinalCTA />
     </main>
