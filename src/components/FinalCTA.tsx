@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Mail, ArrowDown, Sparkles, CheckCircle2 } from "lucide-react";
+import { Mail, ArrowUp, Sparkles, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
 
 const FinalCTA = () => (
