@@ -223,16 +223,6 @@ input[type="number"] {
     0% { transform: translateX(-50%); }
     100% { transform: translateX(0); }
   }
-  @keyframes ticker-row1-bounce {
-    0% { transform: translateX(0); }
-    50% { transform: translateX(calc(-100% + 100vw)); }
-    100% { transform: translateX(0); }
-  }
-  @keyframes ticker-row2-bounce {
-    0% { transform: translateX(calc(-100% + 100vw)); }
-    50% { transform: translateX(0); }
-    100% { transform: translateX(calc(-100% + 100vw)); }
-  }
   .animate-ticker-row1 {
     animation: ticker-row1 40s linear infinite;
   }
@@ -241,10 +231,10 @@ input[type="number"] {
   }
   @media (max-width: 640px) {
     .animate-ticker-row1 {
-      animation: ticker-row1-bounce 20s ease-in-out infinite;
+      animation: ticker-row1 15s linear infinite;
     }
     .animate-ticker-row2 {
-      animation: ticker-row2-bounce 20s ease-in-out infinite;
+      animation: ticker-row2 15s linear infinite;
     }
   }
 }
