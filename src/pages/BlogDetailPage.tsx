@@ -6,10 +6,6 @@ import { blogContentMap } from "@/data/blogContent";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ChatWidget from "@/components/ChatWidget";
-import { blogPosts } from "@/data/blogData";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import ChatWidget from "@/components/ChatWidget";
 
 const categoryColors: Record<string, string> = {
   Automation: "bg-[hsl(270,70%,50%/0.15)] text-[hsl(270,70%,65%)] border-[hsl(270,70%,50%/0.3)]",
