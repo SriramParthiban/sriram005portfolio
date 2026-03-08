@@ -286,12 +286,23 @@ const ChatWidget = () => {
                   <p className="text-[10px] text-muted-foreground">Ask me anything</p>
                 </div>
               </div>
-              <button
-                onClick={handleClose}
-                className="h-8 w-8 rounded-full hover:bg-white/10 flex items-center justify-center transition-colors"
-              >
-                <X className="h-4 w-4 text-muted-foreground" />
-              </button>
+              <div className="flex items-center gap-1">
+                {messages.length > 0 && (
+                  <button
+                    onClick={handleNewChat}
+                    className="h-8 w-8 rounded-full hover:bg-white/10 flex items-center justify-center transition-colors"
+                    title="New chat"
+                  >
+                    <RotateCcw className="h-3.5 w-3.5 text-muted-foreground" />
+                  </button>
+                )}
+                <button
+                  onClick={handleClose}
+                  className="h-8 w-8 rounded-full hover:bg-white/10 flex items-center justify-center transition-colors"
+                >
+                  <X className="h-4 w-4 text-muted-foreground" />
+                </button>
+              </div>
             </div>
 
             {/* Messages */}
