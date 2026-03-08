@@ -350,7 +350,7 @@ const ChatWidget = () => {
                     className={`max-w-[80%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed ${
                       msg.role === "user"
                         ? "bg-primary text-primary-foreground rounded-br-md"
-                        : "bg-white/[0.06] text-foreground rounded-bl-md"
+                        : "bg-muted text-foreground rounded-bl-md"
                     }`}
                   >
                     {msg.role === "assistant" ? (
