@@ -1,15 +1,4 @@
 import FadeInSection from "./FadeInSection";
-import ghlLogo from "@/assets/logos/ghl.png";
-import n8nLogo from "@/assets/logos/n8n.svg";
-import makeLogo from "@/assets/logos/make.svg";
-import zapierLogo from "@/assets/logos/zapier.png";
-import powerbiLogo from "@/assets/logos/powerbi.svg";
-import pythonLogo from "@/assets/logos/python.svg";
-import mondayLogo from "@/assets/logos/monday.png";
-import bigqueryLogo from "@/assets/logos/bigquery.svg";
-import javascriptLogo from "@/assets/logos/javascript.svg";
-import postgresqlLogo from "@/assets/logos/postgresql.svg";
-import lookerLogo from "@/assets/logos/looker.svg";
 
 const tools = [
   {
@@ -17,91 +6,91 @@ const tools = [
     description: "All-in-one CRM & marketing automation platform",
     usage: "Building automated sales funnels, email sequences, and managing client pipelines",
     color: "#FF6B35",
-    logo: ghlLogo,
+    logo: "/logos/ghl.png",
   },
   {
     name: "n8n",
     description: "Open-source workflow automation tool",
     usage: "Creating complex multi-step automations, API integrations, and data transformations",
     color: "#EA4B71",
-    logo: n8nLogo,
+    logo: "/logos/n8n.svg",
   },
   {
     name: "Make.com",
     description: "Visual integration and automation platform",
     usage: "Connecting apps and automating workflows with visual scenario builder",
     color: "#6D28D9",
-    logo: makeLogo,
+    logo: "/logos/make.svg",
   },
   {
     name: "Zapier",
     description: "No-code automation connecting 5000+ apps",
     usage: "Quick integrations between tools and simple trigger-based automations",
     color: "#FF4A00",
-    logo: zapierLogo,
+    logo: "/logos/zapier.png",
   },
   {
     name: "JavaScript",
     description: "Web programming language for dynamic applications",
     usage: "Building interactive web apps, custom scripts, and frontend automation logic",
     color: "#F7DF1E",
-    logo: javascriptLogo,
+    logo: "/logos/javascript.svg",
   },
   {
     name: "Python",
     description: "Programming language for data & automation",
     usage: "Building ETL pipelines, data analysis scripts, and custom automation tools",
     color: "#3776AB",
-    logo: pythonLogo,
+    logo: "/logos/python.svg",
   },
   {
     name: "SQL",
     description: "Structured query language for databases",
     usage: "Writing complex queries, data extraction, reporting, and database management",
     color: "#336791",
-    logo: postgresqlLogo,
+    logo: "/logos/postgresql.svg",
   },
   {
     name: "Power BI",
     description: "Business intelligence and data visualization",
     usage: "Creating interactive dashboards, KPI tracking, and executive reporting",
     color: "#F2C811",
-    logo: powerbiLogo,
+    logo: "/logos/powerbi.svg",
   },
   {
     name: "monday.com",
     description: "Work OS for project management",
     usage: "Managing projects, tracking tasks, and team collaboration workflows",
     color: "#FF3D57",
-    logo: mondayLogo,
+    logo: "/logos/monday.png",
   },
   {
     name: "BigQuery",
     description: "Google's serverless data warehouse",
     usage: "Running complex SQL queries on large datasets and building data pipelines",
     color: "#4285F4",
-    logo: bigqueryLogo,
+    logo: "/logos/bigquery.svg",
   },
   {
     name: "Looker Studio",
     description: "Google's free data visualization & reporting tool",
     usage: "Building shareable dashboards, blending data sources, and client reporting",
     color: "#4285F4",
-    logo: lookerLogo,
+    logo: "/logos/looker.svg",
   },
   {
     name: "REST APIs",
     description: "Standard interface for web service communication",
     usage: "Integrating third-party services, building webhooks, and connecting platforms",
     color: "#00C7B7",
-    logo: null,
+    logo: "",
   },
   {
     name: "PostgreSQL",
     description: "Powerful open-source relational database",
     usage: "Storing structured data, running analytics queries, and backend data management",
     color: "#4169E1",
-    logo: postgresqlLogo,
+    logo: "/logos/postgresql.svg",
   },
 ];
 
