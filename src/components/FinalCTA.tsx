@@ -5,9 +5,9 @@ import natureMountains from "@/assets/nature-mountains.jpg";
 
 const FinalCTA = () => (
   <section className="relative overflow-hidden py-24">
-    {/* Bird in flight background — dramatic */}
+    {/* Mountain waterfall background — dramatic */}
     <div className="absolute inset-0">
-      <img src={birdFlight} alt="" className="h-full w-full object-cover" loading="lazy" />
+      <img src={natureMountains} alt="" className="h-full w-full object-cover" loading="lazy" />
       <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.88)]" />
       <div className="absolute inset-0 bg-gradient-to-t from-[hsl(155_25%_5%)] via-[hsl(155_25%_5%/0.6)] to-[hsl(155_25%_5%/0.7)]" />
     </div>
