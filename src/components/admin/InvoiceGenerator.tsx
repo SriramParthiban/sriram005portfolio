@@ -143,7 +143,7 @@ const InvoiceGenerator = () => {
         <div class="total-row">
           <div class="total-box">
             <div class="total-label">Total Amount</div>
-            <div class="total-amount">₹${total.toLocaleString("en-IN", { minimumFractionDigits: 2 })}</div>
+            <div class="total-amount">${currencySymbol}${total.toLocaleString(currencyLocale, { minimumFractionDigits: 2 })}</div>
           </div>
         </div>
 
