@@ -377,7 +377,7 @@ const Playground = () => {
                         placeholder="Full Name"
                         value={leadName}
                         onChange={(e) => setLeadName(e.target.value)}
-                        className="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-3 text-sm text-foreground placeholder:text-white/30 focus:outline-none focus:border-primary/50 focus:shadow-[0_0_12px_-4px_hsl(250_75%_57%/0.4)] transition-all"
+                        className="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-3 text-sm text-foreground placeholder:text-white/30 focus:outline-none focus:border-primary/50 focus:shadow-[0_0_12px_-4px_hsl(152_55%_45%/0.4)] transition-all"
                         aria-required="true"
                       />
                     </div>
