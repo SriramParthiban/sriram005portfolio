@@ -294,7 +294,7 @@ const ChatWidget = () => {
                 {messages.length > 0 && (
                   <button
                     onClick={handleNewChat}
-                    className="h-8 w-8 rounded-full hover:bg-white/10 flex items-center justify-center transition-colors"
+                    className="h-8 w-8 rounded-full hover:bg-foreground/5 flex items-center justify-center transition-colors"
                     title="New chat"
                   >
                     <RotateCcw className="h-3.5 w-3.5 text-muted-foreground" />
