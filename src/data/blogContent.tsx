@@ -131,7 +131,7 @@ const N8nContent = () => (
 
 /* ───────────── BLOG 2: KPI Dashboards ───────────── */
 const KPIDashboardContent = () => (
-  <div className="space-y-0">
+  <div className="space-y-2">
     <h2>The Dashboard Problem</h2>
 
     <div className="flex justify-center my-8">
