@@ -302,7 +302,7 @@ const ChatWidget = () => {
                 )}
                 <button
                   onClick={handleClose}
-                  className="h-8 w-8 rounded-full hover:bg-white/10 flex items-center justify-center transition-colors"
+                  className="h-8 w-8 rounded-full hover:bg-foreground/5 flex items-center justify-center transition-colors"
                 >
                   <X className="h-4 w-4 text-muted-foreground" />
                 </button>
