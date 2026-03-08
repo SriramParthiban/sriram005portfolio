@@ -54,10 +54,10 @@ const Hero = () => {
       >
         {/* Status badge */}
         <motion.div variants={item} className="mb-10 text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-5 py-2 text-xs font-semibold text-primary backdrop-blur-sm">
+          <span className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-black/50 px-5 py-2 text-xs font-semibold text-white backdrop-blur-md shadow-lg">
             <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400" />
             </span>
             Available for opportunities
           </span>
