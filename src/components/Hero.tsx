@@ -129,8 +129,8 @@ const Hero = () => {
               </Button>
             </motion.div>
 
-            <motion.p variants={item} className="mt-6 text-xs font-medium text-white/30 tracking-wide">
-              AI-First · Data-Driven · Results-Oriented
+            <motion.p variants={item} className="mt-6 font-handwritten text-sm sm:text-base text-accent/40 tracking-wide">
+              ✦ AI-First · Data-Driven · Results-Oriented ✦
             </motion.p>
           </div>
         </div>

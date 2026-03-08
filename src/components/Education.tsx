@@ -20,6 +20,9 @@ const Education = () => (
         <h2 className="text-3xl font-display font-bold text-foreground sm:text-4xl lg:text-5xl">
           Academic Background
         </h2>
+        <span className="font-handwritten text-base text-primary/40 mt-2 block" style={{ transform: "rotate(-2deg)" }}>
+          where it all started 📚
+        </span>
       </FadeInSection>
 
       <FadeInSection delay={200}>
