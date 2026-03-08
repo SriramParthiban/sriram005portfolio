@@ -40,11 +40,10 @@ const Hero = () => {
         <img 
           src={natureWaterfall} 
           alt="" 
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover opacity-[0.12]"
           loading="eager"
         />
-        <div className="absolute inset-0 bg-[hsl(90_20%_97%/0.88)]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(90_20%_97%/0.4)] via-transparent to-[hsl(90_20%_97%)]" />
+        <div className="absolute inset-0 bg-background/90" />
       </div>
 
       <motion.div

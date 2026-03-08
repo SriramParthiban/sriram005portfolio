@@ -47,7 +47,7 @@ const Index = () => {
       <Projects />
       <Testimonials />
       <Skills />
-      <NaturePhotoStrip variant="leaves" />
+      
       <Playground />
       <TechStack />
       <Education />

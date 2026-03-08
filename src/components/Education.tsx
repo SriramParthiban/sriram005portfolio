@@ -8,11 +8,7 @@ const coursework = ["Machine Learning", "Supply Chain Operations", "Statistical 
 
 const Education = () => (
   <section id="education" className="relative px-6 py-20 sm:py-24 overflow-hidden">
-    {/* Background */}
-    <div className="absolute inset-0">
-      <img src={coralDeep} alt="" className="h-full w-full object-cover opacity-[0.06]" loading="lazy" />
-      <div className="absolute inset-0 bg-background/94" />
-    </div>
+    <div className="absolute inset-0 bg-muted/40" />
 
     <div className="relative mx-auto max-w-3xl">
       <FadeInSection>

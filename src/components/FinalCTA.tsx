@@ -5,12 +5,7 @@ import coralVibrant from "@/assets/coral-vibrant.jpg";
 
 const FinalCTA = () => (
   <section className="relative overflow-hidden py-28 sm:py-36">
-    {/* Background */}
-    <div className="absolute inset-0">
-      <img src={coralVibrant} alt="" className="h-full w-full object-cover" loading="lazy" />
-      <div className="absolute inset-0 bg-[hsl(90_20%_97%/0.88)]" />
-      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-background/60" />
-    </div>
+    <div className="absolute inset-0 bg-muted/50" />
 
     <div className="relative mx-auto max-w-2xl px-6 text-center">
       <motion.div
