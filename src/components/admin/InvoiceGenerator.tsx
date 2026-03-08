@@ -175,8 +175,16 @@ const InvoiceGenerator = () => {
       {/* Invoice Meta */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div>
-          <label className={labelClass}>Invoice Number</label>
-          <input className={inputClass} value={invoiceNumber} onChange={(e) => setInvoiceNumber(e.target.value)} />
+          <label className={labelClass}>Currency</label>
+          <select
+            className={inputClass}
+            value={currency}
+            onChange={(e) => setCurrency(e.target.value as "INR" | "USD" | "CAD")}
+          >
+            <option value="INR">₹ INR (Indian Rupees)</option>
+            <option value="USD">$ USD (US Dollars)</option>
+            <option value="CAD">CA$ CAD (Canadian Dollars)</option>
+          </select>
         </div>
         <div>
           <label className={labelClass}>Invoice Date</label>
