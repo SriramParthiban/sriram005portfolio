@@ -1,4 +1,4 @@
-import { Award, ExternalLink } from "lucide-react";
+import { Award } from "lucide-react";
 import FadeInSection from "./FadeInSection";
 import { motion } from "framer-motion";
 
