@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import FadeInSection from "./FadeInSection";
-import { ChevronLeft, ChevronRight, Play, Quote, Star } from "lucide-react";
+import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import fernDetail from "@/assets/fern-detail.jpg";
 
@@ -12,7 +12,6 @@ const testimonials = [
     quote:
       "Sriram consistently demonstrates an exceptional ability to translate complex automation requirements into elegant, high-performance solutions. His work on our AI-driven outbound systems was transformative — reducing qualification time while significantly improving pipeline quality. He's not just a builder, he's a strategic thinker who connects technical execution with real business outcomes.",
     rating: 5,
-    videoUrl: "/videos/testimonial-1.mp4",
   },
   {
     name: "Jesiha",
@@ -21,16 +20,13 @@ const testimonials = [
     quote:
       "What sets Sriram apart is his analytical rigor combined with genuine curiosity. During his time with our team, he didn't just analyze data — he uncovered insights that directly influenced our campaign strategy. His automated dashboards saved our team hours of manual work every week.",
     rating: 5,
-    videoUrl: null,
   },
 ];
 
 const Testimonials = () => {
   const [current, setCurrent] = useState(0);
-  const [videoPlaying, setVideoPlaying] = useState(false);
-  const vidRef = useRef<HTMLVideoElement>(null);
-  const next = () => { setCurrent((c) => (c + 1) % testimonials.length); setVideoPlaying(false); };
-  const prev = () => { setCurrent((c) => (c - 1 + testimonials.length) % testimonials.length); setVideoPlaying(false); };
+  const next = () => { setCurrent((c) => (c + 1) % testimonials.length); };
+  const prev = () => { setCurrent((c) => (c - 1 + testimonials.length) % testimonials.length); };
 
   const t = testimonials[current];
 
@@ -65,34 +61,6 @@ const Testimonials = () => {
                 </div>
 
                 <div className="relative">
-                  {t.videoUrl && (
-                    <div
-                      className="mb-6 aspect-video w-full max-w-md mx-auto rounded-xl overflow-hidden bg-muted border border-border cursor-pointer relative"
-                      onClick={() => {
-                        if (vidRef.current) {
-                          if (videoPlaying) { vidRef.current.pause(); } else { vidRef.current.play(); }
-                          setVideoPlaying(!videoPlaying);
-                        }
-                      }}
-                    >
-                      <video
-                        ref={vidRef}
-                        src={t.videoUrl}
-                        className="absolute inset-0 h-full w-full object-cover"
-                        playsInline
-                        preload="metadata"
-                        onEnded={() => setVideoPlaying(false)}
-                      />
-                      {!videoPlaying && (
-                        <div className="absolute inset-0 bg-foreground/30 flex flex-col items-center justify-center gap-2">
-                          <div className="h-14 w-14 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary/30 transition-colors">
-                            <Play className="h-6 w-6 text-primary ml-1" />
-                          </div>
-                          <span className="text-xs text-white/80">Watch testimonial</span>
-                        </div>
-                      )}
-                    </div>
-                  )}
 
                   <div className="flex gap-1 mb-4">
                     {Array.from({ length: t.rating }).map((_, i) => (
