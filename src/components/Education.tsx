@@ -10,8 +10,8 @@ const Education = () => (
   <section id="education" className="dark-section relative px-6 py-20 sm:py-24 overflow-hidden">
     {/* Coral deep — visible accent */}
     <div className="absolute inset-0">
-      <img src={coralDeep} alt="" className="h-full w-full object-cover opacity-[0.18]" loading="lazy" />
-      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.86)]" />
+      <img src={coralDeep} alt="" className="h-full w-full object-cover opacity-[0.30]" loading="lazy" />
+      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.70)]" />
     </div>
 
     <div className="relative mx-auto max-w-3xl">

@@ -8,8 +8,8 @@ const FinalCTA = () => (
     {/* Coral background — clearly visible */}
     <div className="absolute inset-0">
       <img src={coralVibrant} alt="" className="h-full w-full object-cover" loading="lazy" />
-      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.82)]" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[hsl(155_25%_5%)] via-[hsl(155_25%_5%/0.4)] to-[hsl(155_25%_5%/0.5)]" />
+      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.68)]" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[hsl(155_25%_5%/0.8)] via-[hsl(155_25%_5%/0.3)] to-[hsl(155_25%_5%/0.4)]" />
     </div>
 
     <div className="relative mx-auto max-w-2xl px-6 text-center">
