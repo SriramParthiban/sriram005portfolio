@@ -133,6 +133,10 @@ input[type="number"] {
     font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
   }
 
+  .font-handwritten {
+    font-family: 'Caveat', cursive;
+  }
+
   .glass {
     background: hsl(var(--card) / 0.6);
     backdrop-filter: blur(20px) saturate(180%);
