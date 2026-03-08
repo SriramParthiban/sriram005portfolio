@@ -1,67 +1,113 @@
 import FadeInSection from "./FadeInSection";
+import ghlLogo from "@/assets/logos/ghl.png";
+import n8nLogo from "@/assets/logos/n8n.svg";
+import makeLogo from "@/assets/logos/make.svg";
+import zapierLogo from "@/assets/logos/zapier.png";
+import powerbiLogo from "@/assets/logos/powerbi.svg";
+import pythonLogo from "@/assets/logos/python.svg";
+import mondayLogo from "@/assets/logos/monday.png";
+import bigqueryLogo from "@/assets/logos/bigquery.svg";
+import javascriptLogo from "@/assets/logos/javascript.svg";
+import postgresqlLogo from "@/assets/logos/postgresql.svg";
+import lookerLogo from "@/assets/logos/looker.svg";
 
 const tools = [
   {
     name: "GoHighLevel",
-    shortName: "GHL",
     description: "All-in-one CRM & marketing automation platform",
     usage: "Building automated sales funnels, email sequences, and managing client pipelines",
     color: "#FF6B35",
+    logo: ghlLogo,
   },
   {
     name: "n8n",
-    shortName: "n8n",
     description: "Open-source workflow automation tool",
     usage: "Creating complex multi-step automations, API integrations, and data transformations",
     color: "#EA4B71",
+    logo: n8nLogo,
   },
   {
     name: "Make.com",
-    shortName: "Make",
     description: "Visual integration and automation platform",
     usage: "Connecting apps and automating workflows with visual scenario builder",
     color: "#6D28D9",
+    logo: makeLogo,
   },
   {
     name: "Zapier",
-    shortName: "Zapier",
     description: "No-code automation connecting 5000+ apps",
     usage: "Quick integrations between tools and simple trigger-based automations",
     color: "#FF4A00",
+    logo: zapierLogo,
   },
   {
-    name: "Power BI",
-    shortName: "PBI",
-    description: "Business intelligence and data visualization",
-    usage: "Creating interactive dashboards, KPI tracking, and executive reporting",
-    color: "#F2C811",
+    name: "JavaScript",
+    description: "Web programming language for dynamic applications",
+    usage: "Building interactive web apps, custom scripts, and frontend automation logic",
+    color: "#F7DF1E",
+    logo: javascriptLogo,
   },
   {
     name: "Python",
-    shortName: "Python",
     description: "Programming language for data & automation",
     usage: "Building ETL pipelines, data analysis scripts, and custom automation tools",
     color: "#3776AB",
+    logo: pythonLogo,
+  },
+  {
+    name: "SQL",
+    description: "Structured query language for databases",
+    usage: "Writing complex queries, data extraction, reporting, and database management",
+    color: "#336791",
+    logo: postgresqlLogo,
+  },
+  {
+    name: "Power BI",
+    description: "Business intelligence and data visualization",
+    usage: "Creating interactive dashboards, KPI tracking, and executive reporting",
+    color: "#F2C811",
+    logo: powerbiLogo,
   },
   {
     name: "monday.com",
-    shortName: "monday",
     description: "Work OS for project management",
     usage: "Managing projects, tracking tasks, and team collaboration workflows",
     color: "#FF3D57",
+    logo: mondayLogo,
   },
   {
     name: "BigQuery",
-    shortName: "BQ",
     description: "Google's serverless data warehouse",
     usage: "Running complex SQL queries on large datasets and building data pipelines",
     color: "#4285F4",
+    logo: bigqueryLogo,
+  },
+  {
+    name: "Looker Studio",
+    description: "Google's free data visualization & reporting tool",
+    usage: "Building shareable dashboards, blending data sources, and client reporting",
+    color: "#4285F4",
+    logo: lookerLogo,
+  },
+  {
+    name: "REST APIs",
+    description: "Standard interface for web service communication",
+    usage: "Integrating third-party services, building webhooks, and connecting platforms",
+    color: "#00C7B7",
+    logo: null,
+  },
+  {
+    name: "PostgreSQL",
+    description: "Powerful open-source relational database",
+    usage: "Storing structured data, running analytics queries, and backend data management",
+    color: "#4169E1",
+    logo: postgresqlLogo,
   },
 ];
 
 // Split tools into two rows
-const row1Tools = tools.slice(0, 4);
-const row2Tools = tools.slice(4, 8);
+const row1Tools = tools.slice(0, 7);
+const row2Tools = tools.slice(7, 13);
 
 const ToolCard = ({ tool }: { tool: typeof tools[0] }) => (
   <div
@@ -74,12 +120,18 @@ const ToolCard = ({ tool }: { tool: typeof tools[0] }) => (
     />
 
     <div className="p-5">
-      {/* Icon placeholder with color */}
-      <div
-        className="mb-3 h-10 w-10 rounded-lg flex items-center justify-center text-white font-bold text-xs"
-        style={{ backgroundColor: tool.color }}
-      >
-        {tool.shortName.slice(0, 3)}
+      {/* Logo */}
+      <div className="mb-3 h-10 w-10 rounded-lg flex items-center justify-center overflow-hidden bg-white/10">
+        {tool.logo ? (
+          <img src={tool.logo} alt={tool.name} className="h-7 w-7 object-contain" />
+        ) : (
+          <div
+            className="h-full w-full rounded-lg flex items-center justify-center text-white font-bold text-xs"
+            style={{ backgroundColor: tool.color }}
+          >
+            API
+          </div>
+        )}
       </div>
 
       {/* Name */}
@@ -137,12 +189,10 @@ const TechStack = () => {
 
         {/* Row 1 - scrolls left */}
         <div className="relative mb-6">
-          {/* Gradient fade edges */}
           <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-24 sm:w-40 z-10 bg-gradient-to-r from-[hsl(var(--dark-section))] to-transparent" />
           <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 sm:w-40 z-10 bg-gradient-to-l from-[hsl(var(--dark-section))] to-transparent" />
 
           <div className="flex animate-ticker-row1 gap-6">
-            {/* Duplicate for seamless loop */}
             {[...row1Tools, ...row1Tools, ...row1Tools, ...row1Tools].map((tool, i) => (
               <ToolCard key={`row1-${i}`} tool={tool} />
             ))}
@@ -151,12 +201,10 @@ const TechStack = () => {
 
         {/* Row 2 - scrolls right (reverse) */}
         <div className="relative">
-          {/* Gradient fade edges */}
           <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-24 sm:w-40 z-10 bg-gradient-to-r from-[hsl(var(--dark-section))] to-transparent" />
           <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 sm:w-40 z-10 bg-gradient-to-l from-[hsl(var(--dark-section))] to-transparent" />
 
           <div className="flex animate-ticker-row2 gap-6">
-            {/* Duplicate for seamless loop */}
             {[...row2Tools, ...row2Tools, ...row2Tools, ...row2Tools].map((tool, i) => (
               <ToolCard key={`row2-${i}`} tool={tool} />
             ))}
