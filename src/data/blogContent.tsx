@@ -512,7 +512,7 @@ const AILeadQualContent = () => (
       </div>
     </CalloutBox>
 
-    <StickyNote color="yellow" rotate={0.5}>
+    <StickyNote color="yellow">
       The AI catches patterns humans miss — like the correlation between <strong>specific word choices</strong> in form 
       submissions and actual close rates. After 3 months: <strong>87% accuracy.</strong>
     </StickyNote>
