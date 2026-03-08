@@ -214,7 +214,7 @@ const KPIDashboardContent = () => (
       Everything else is a drill-down. If you can't fit it on one screen, you're tracking too much.
     </StickyNote>
 
-    <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 my-10">
+    <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 sm:gap-4 my-10">
       {[
         { label: "Cost Per Lead", desc: "Spending efficiently?" },
         { label: "Speed to Lead", desc: "Responding fast?" },
