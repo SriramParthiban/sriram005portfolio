@@ -449,7 +449,7 @@ const AILeadQualContent = () => (
       ))}
     </div>
 
-    <StickyNote color="purple" rotate={-0.5}>
+    <StickyNote color="purple">
       <strong>💡 What if your system could instantly say:</strong> "This is a hot prospect — call them NOW"? 
       That's exactly what I built.
     </StickyNote>
