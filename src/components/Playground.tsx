@@ -136,27 +136,39 @@ const InfoTip = ({ text }: { text: string }) => {
   );
 };
 
-/* ─── Runner SVG ─── */
+/* ─── Runner: Cute pixel-art robot ─── */
 const RunnerSVG = () => (
-  <svg width="36" height="40" viewBox="0 0 36 40" fill="none" className="pg-runner drop-shadow-lg">
+  <svg width="32" height="36" viewBox="0 0 32 36" fill="none" className="pg-runner drop-shadow-[0_0_8px_hsl(250_75%_57%/0.6)]">
+    {/* Antenna */}
+    <rect x="15" y="0" width="2" height="4" rx="1" fill="hsl(250 75% 70%)" />
+    <circle cx="16" cy="0" r="2" fill="hsl(250 75% 80%)" className="pg-pulse-glow" />
     {/* Head */}
-    <circle cx="18" cy="8" r="5" fill="hsl(250 75% 57%)" />
-    <circle cx="16" cy="7" r="1" fill="white" opacity="0.8" />
-    <circle cx="20" cy="7" r="1" fill="white" opacity="0.8" />
+    <rect x="8" y="4" width="16" height="12" rx="3" fill="hsl(250 75% 57%)" />
+    {/* Visor / eyes */}
+    <rect x="10" y="7" width="12" height="5" rx="2" fill="hsl(250 40% 20%)" />
+    <rect x="11" y="8" width="4" height="3" rx="1" fill="#00D4FF" opacity="0.9" />
+    <rect x="17" y="8" width="4" height="3" rx="1" fill="#00D4FF" opacity="0.9" />
     {/* Body */}
-    <path d="M18 13 L18 24" stroke="hsl(250 75% 57%)" strokeWidth="3" strokeLinecap="round" />
-    {/* Arms (animated stride) */}
-    <g className="pg-stride" style={{ transformOrigin: "18px 17px" }}>
-      <path d="M18 17 L11 22" stroke="hsl(250 75% 57%)" strokeWidth="2.5" strokeLinecap="round" />
-      <path d="M18 17 L25 22" stroke="hsl(250 75% 57%)" strokeWidth="2.5" strokeLinecap="round" />
+    <rect x="9" y="17" width="14" height="10" rx="2" fill="hsl(250 60% 50%)" />
+    <rect x="12" y="19" width="8" height="3" rx="1" fill="hsl(250 75% 70%)" opacity="0.5" />
+    {/* chest light */}
+    <circle cx="16" cy="23" r="1.5" fill="#7C3AED" className="pg-pulse-glow" />
+    {/* Left arm */}
+    <g className="pg-stride" style={{ transformOrigin: "10px 19px" }}>
+      <rect x="4" y="18" width="5" height="8" rx="2" fill="hsl(250 55% 45%)" />
     </g>
-    {/* Legs (counter-animated) */}
-    <g className="pg-stride" style={{ transformOrigin: "18px 24px", animationDirection: "reverse" }}>
-      <path d="M18 24 L12 34" stroke="hsl(250 75% 57%)" strokeWidth="2.5" strokeLinecap="round" />
-      <path d="M18 24 L24 34" stroke="hsl(250 75% 57%)" strokeWidth="2.5" strokeLinecap="round" />
+    {/* Right arm */}
+    <g className="pg-stride" style={{ transformOrigin: "22px 19px", animationDirection: "reverse" }}>
+      <rect x="23" y="18" width="5" height="8" rx="2" fill="hsl(250 55% 45%)" />
     </g>
-    {/* Cape/scarf for personality */}
-    <path d="M18 13 Q14 16 12 13" stroke="hsl(250 75% 70%)" strokeWidth="2" fill="none" opacity="0.6" />
+    {/* Left leg */}
+    <g className="pg-stride" style={{ transformOrigin: "12px 27px", animationDirection: "reverse" }}>
+      <rect x="10" y="27" width="5" height="7" rx="2" fill="hsl(250 50% 40%)" />
+    </g>
+    {/* Right leg */}
+    <g className="pg-stride" style={{ transformOrigin: "20px 27px" }}>
+      <rect x="17" y="27" width="5" height="7" rx="2" fill="hsl(250 50% 40%)" />
+    </g>
   </svg>
 );
 
