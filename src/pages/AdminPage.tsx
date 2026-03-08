@@ -244,8 +244,8 @@ const AdminPage = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-6">
         {/* Tabs */}
-        <div className="flex gap-1 bg-[hsl(270,15%,10%)] p-1 rounded-xl w-fit border border-[hsl(270,20%,15%)]">
-          {(["stats", "leads", "bookings"] as const).map((tab) => (
+        <div className="flex gap-1 bg-[hsl(270,15%,10%)] p-1 rounded-xl w-fit border border-[hsl(270,20%,15%)] flex-wrap">
+          {(["stats", "leads", "bookings", "invoice"] as const).map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
@@ -258,7 +258,8 @@ const AdminPage = () => {
               {tab === "stats" && <BarChart3 className="h-4 w-4" />}
               {tab === "leads" && <MessageSquare className="h-4 w-4" />}
               {tab === "bookings" && <CalendarCheck className="h-4 w-4" />}
-              {tab.charAt(0).toUpperCase() + tab.slice(1)}
+              {tab === "invoice" && <FileText className="h-4 w-4" />}
+              {tab === "invoice" ? "Invoice" : tab.charAt(0).toUpperCase() + tab.slice(1)}
             </button>
           ))}
         </div>
