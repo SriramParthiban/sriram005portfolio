@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote, Play, Star } from "lucide-react";
 import FadeInSection from "./FadeInSection";
@@ -20,6 +20,7 @@ const testimonials: Testimonial[] = [
     company: "Aspire Media",
     quote: "Sriram transformed our entire lead pipeline. What used to take our team hours of manual work now runs on autopilot with 99% accuracy. The automation systems he built have genuinely changed how we operate.",
     rating: 5,
+    videoUrl: "/videos/testimonial-1.mp4",
   },
   {
     name: "Priya Nair",
@@ -39,9 +40,10 @@ const testimonials: Testimonial[] = [
 
 const Testimonials = () => {
   const [current, setCurrent] = useState(0);
-
-  const next = () => setCurrent((c) => (c + 1) % testimonials.length);
-  const prev = () => setCurrent((c) => (c - 1 + testimonials.length) % testimonials.length);
+  const [videoPlaying, setVideoPlaying] = useState(false);
+  const vidRef = useRef<HTMLVideoElement>(null);
+  const next = () => { setCurrent((c) => (c + 1) % testimonials.length); setVideoPlaying(false); };
+  const prev = () => { setCurrent((c) => (c - 1 + testimonials.length) % testimonials.length); setVideoPlaying(false); };
 
   const t = testimonials[current];
 
@@ -91,13 +93,31 @@ const Testimonials = () => {
                 <div className="relative">
                   {/* Video placeholder */}
                   {t.videoUrl && (
-                    <div className="mb-6 aspect-video w-full max-w-md mx-auto rounded-xl overflow-hidden bg-white/5 border border-white/10 flex items-center justify-center cursor-pointer group">
-                      <div className="flex flex-col items-center gap-2">
-                        <div className="h-14 w-14 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
-                          <Play className="h-6 w-6 text-primary ml-1" />
+                    <div
+                      className="mb-6 aspect-video w-full max-w-md mx-auto rounded-xl overflow-hidden bg-white/5 border border-white/10 cursor-pointer relative"
+                      onClick={() => {
+                        if (vidRef.current) {
+                          if (videoPlaying) { vidRef.current.pause(); } else { vidRef.current.play(); }
+                          setVideoPlaying(!videoPlaying);
+                        }
+                      }}
+                    >
+                      <video
+                        ref={vidRef}
+                        src={t.videoUrl}
+                        className="absolute inset-0 h-full w-full object-cover"
+                        playsInline
+                        preload="metadata"
+                        onEnded={() => setVideoPlaying(false)}
+                      />
+                      {!videoPlaying && (
+                        <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center gap-2">
+                          <div className="h-14 w-14 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary/30 transition-colors">
+                            <Play className="h-6 w-6 text-primary ml-1" />
+                          </div>
+                          <span className="text-xs text-white/40">Watch testimonial</span>
                         </div>
-                        <span className="text-xs text-white/40">Watch testimonial</span>
-                      </div>
+                      )}
                     </div>
                   )}
 
