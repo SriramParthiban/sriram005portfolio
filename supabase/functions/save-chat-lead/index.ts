@@ -67,6 +67,7 @@ ${messages.map((m: any) => `${m.role}: ${m.content}`).join("\n")}`;
         if (parsed.extracted_name) extractedName = parsed.extracted_name;
         if (parsed.extracted_email) extractedEmail = parsed.extracted_email;
         if (parsed.extracted_phone) extractedPhone = parsed.extracted_phone;
+        if (parsed.tag) tag = parsed.tag;
       } catch {
         summary = content.slice(0, 500);
       }
