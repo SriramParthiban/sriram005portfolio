@@ -106,8 +106,8 @@ const InvoiceGenerator = () => {
           </div>
           <div class="invoice-meta">
             <div><strong>${invoiceNumber}</strong></div>
-            <div>Date: ${new Date(invoiceDate).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</div>
-            ${dueDate ? `<div>Due: ${new Date(dueDate).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</div>` : ""}
+            <div>Date: ${invoiceDate ? format(invoiceDate, "MMMM d, yyyy") : ""}</div>
+            ${dueDate ? `<div>Due: ${format(dueDate, "MMMM d, yyyy")}</div>` : ""}
           </div>
         </div>
 
