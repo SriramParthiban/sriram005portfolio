@@ -93,18 +93,25 @@ const BlogDetailPage = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="prose prose-invert prose-lg max-w-none
               prose-headings:font-display prose-headings:text-foreground prose-headings:font-bold
-              prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
+              prose-h2:text-2xl prose-h2:mt-14 prose-h2:mb-5 prose-h2:pb-3 prose-h2:border-b prose-h2:border-white/[0.06]
               prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
-              prose-p:text-muted-foreground prose-p:leading-relaxed
+              prose-p:text-muted-foreground prose-p:leading-[1.85] prose-p:my-4
               prose-strong:text-foreground
               prose-a:text-primary prose-a:no-underline hover:prose-a:underline
-              prose-code:text-primary prose-code:bg-primary/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm
-              prose-pre:bg-[hsl(270,10%,8%)] prose-pre:border prose-pre:border-white/[0.06] prose-pre:rounded-xl
-              prose-li:text-muted-foreground
-              prose-table:text-sm
-              prose-th:text-foreground prose-th:border-white/10 prose-th:py-2 prose-th:px-3
-              prose-td:text-muted-foreground prose-td:border-white/10 prose-td:py-2 prose-td:px-3
-              prose-blockquote:border-primary/40 prose-blockquote:text-muted-foreground
+              prose-code:text-primary prose-code:bg-primary/10 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-normal
+              prose-pre:bg-[hsl(270,10%,8%)] prose-pre:border prose-pre:border-white/[0.06] prose-pre:rounded-xl prose-pre:my-6
+              prose-li:text-muted-foreground prose-li:my-1.5 prose-li:leading-[1.8]
+              prose-ul:my-4 prose-ol:my-4
+              prose-table:my-6 prose-table:text-sm prose-table:rounded-xl prose-table:overflow-hidden
+              prose-thead:bg-[hsl(270,15%,12%)]
+              prose-th:text-foreground prose-th:border-[hsl(270,15%,18%)] prose-th:py-3 prose-th:px-4 prose-th:text-left prose-th:font-semibold
+              prose-td:text-muted-foreground prose-td:border-[hsl(270,15%,15%)] prose-td:py-3 prose-td:px-4
+              prose-tr:border-[hsl(270,15%,15%)]
+              prose-blockquote:border-l-4 prose-blockquote:border-primary/50 prose-blockquote:bg-[hsl(270,20%,10%)] prose-blockquote:rounded-r-xl prose-blockquote:py-3 prose-blockquote:px-5 prose-blockquote:my-6 prose-blockquote:not-italic
+              [&_blockquote_p]:text-foreground/80 [&_blockquote_p]:text-[15px] [&_blockquote_p]:my-1
+              [&_blockquote_strong]:text-primary
+              prose-hr:border-white/[0.06] prose-hr:my-10
+              [&_table]:border [&_table]:border-[hsl(270,15%,15%)] [&_table]:rounded-xl
             "
           >
             <ReactMarkdown>{post.content}</ReactMarkdown>
