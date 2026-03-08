@@ -117,10 +117,9 @@ const ChatWidget = () => {
     }
   }, [isOpen]);
 
-  const saveLead = useCallback(async () => {
-    const msgs = messagesRef.current;
-    if (leadSaved || msgs.length < 2) return; // Need at least 1 exchange
-    setLeadSaved(true);
+  const saveLead = useCallback(async (msgs?: Msg[]) => {
+    const toSave = msgs || messagesRef.current;
+    if (toSave.length < 2) return;
 
     try {
       await fetch(SAVE_LEAD_URL, {
@@ -129,16 +128,31 @@ const ChatWidget = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages: msgs }),
+        body: JSON.stringify({ messages: toSave }),
       });
     } catch (e) {
       console.error("Failed to save lead:", e);
     }
-  }, [leadSaved]);
+  }, []);
 
   const handleClose = () => {
-    saveLead();
+    if (!leadSaved && messages.length >= 2) {
+      saveLead();
+      setLeadSaved(true);
+    }
     setIsOpen(false);
+  };
+
+  const handleNewChat = async () => {
+    // Save current conversation first (as its own row)
+    if (messages.length >= 2) {
+      await saveLead(messages);
+    }
+    // Reset everything for a fresh chat
+    setMessages([]);
+    setInput("");
+    setLeadSaved(false);
+    if (inputRef.current) inputRef.current.focus();
   };
 
   // Also save on page unload if chat had exchanges
