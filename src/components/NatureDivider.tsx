@@ -10,7 +10,7 @@ const NaturePhotoStrip = ({ variant = "canopy", className = "" }: { variant?: "c
       <img
         src={img}
         alt=""
-        className="h-full w-full object-cover object-center"
+        className="h-full w-full object-cover object-[center_60%]"
         loading="lazy"
       />
       {/* Very subtle edge blending */}

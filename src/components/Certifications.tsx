@@ -16,8 +16,8 @@ const Certifications = () => (
   <section id="certifications" className="dark-section relative px-4 sm:px-6 py-24 sm:py-28 overflow-hidden">
     {/* Coral reef background — clearly visible */}
     <div className="absolute inset-0">
-      <img src={coralReef} alt="" className="h-full w-full object-cover opacity-[0.25]" loading="lazy" />
-      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.78)]" />
+      <img src={coralReef} alt="" className="h-full w-full object-cover opacity-[0.35]" loading="lazy" />
+      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.65)]" />
     </div>
 
     <div className="relative mx-auto max-w-3xl">
