@@ -134,7 +134,7 @@ const InvoiceGenerator = () => {
               .filter((i) => i.description.trim())
               .map(
                 (i, idx) =>
-                  `<tr><td>${idx + 1}</td><td>${i.description}</td><td>₹${Number(i.amount).toLocaleString("en-IN", { minimumFractionDigits: 2 })}</td></tr>`
+                  `<tr><td>${idx + 1}</td><td>${i.description}</td><td>${currencySymbol}${Number(i.amount).toLocaleString(currencyLocale, { minimumFractionDigits: 2 })}</td></tr>`
               )
               .join("")}
           </tbody>
