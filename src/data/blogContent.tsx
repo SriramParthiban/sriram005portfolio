@@ -521,21 +521,21 @@ const AILeadQualContent = () => (
 
     <h2>Step 3: Intelligent Routing</h2>
 
-    <div className="space-y-3 my-8">
+    <div className="space-y-4 my-10">
       {[
-        { range: "80-100", label: "🔥 Hot", color: "bg-[hsl(0,40%,12%)] border-[hsl(0,40%,25%)]", action: "Instant alert to senior rep + speed-to-lead + calendar link in first SMS" },
-        { range: "50-79", label: "🟡 Warm", color: "bg-[hsl(45,35%,12%)] border-[hsl(45,40%,22%)]", action: "Standard nurture sequence + follow-up task within 4 hours" },
-        { range: "20-49", label: "🔵 Cold", color: "bg-[hsl(210,30%,12%)] border-[hsl(210,35%,22%)]", action: "Long-term nurture campaign — weekly value emails for 90 days" },
-        { range: "0-19", label: "⚪ Unqualified", color: "bg-[hsl(0,0%,10%)] border-[hsl(0,0%,18%)]", action: "Tag and archive — zero sales resources wasted" },
+        { range: "80-100", label: "🔥 Hot", color: "bg-[hsl(0,30%,14%)] border-[hsl(0,30%,27%)]", action: "Instant alert to senior rep + speed-to-lead + calendar link in first SMS" },
+        { range: "50-79", label: "🟡 Warm", color: "bg-[hsl(45,28%,14%)] border-[hsl(45,32%,25%)]", action: "Standard nurture sequence + follow-up task within 4 hours" },
+        { range: "20-49", label: "🔵 Cold", color: "bg-[hsl(210,25%,14%)] border-[hsl(210,30%,25%)]", action: "Long-term nurture campaign — weekly value emails for 90 days" },
+        { range: "0-19", label: "⚪ Unqualified", color: "bg-[hsl(0,0%,12%)] border-[hsl(0,0%,22%)]", action: "Tag and archive — zero sales resources wasted" },
       ].map((tier) => (
-        <div key={tier.range} className={`${tier.color} border rounded-xl p-4 flex items-start gap-4`}>
-          <div className="text-center flex-shrink-0 w-16">
-            <p className="text-xs text-muted-foreground">Score</p>
-            <p className="text-lg font-bold text-foreground">{tier.range}</p>
+        <div key={tier.range} className={`${tier.color} border rounded-xl p-5 flex items-start gap-5`}>
+          <div className="text-center flex-shrink-0 w-20">
+            <p className="text-xs text-white/40">Score</p>
+            <p className="text-xl font-bold text-white">{tier.range}</p>
           </div>
           <div>
-            <p className="font-semibold text-foreground text-sm">{tier.label}</p>
-            <p className="text-sm text-foreground/70 mt-0.5">{tier.action}</p>
+            <p className="font-semibold text-white text-[15px]">{tier.label}</p>
+            <p className="text-[14px] text-white/65 mt-1 leading-relaxed">{tier.action}</p>
           </div>
         </div>
       ))}
