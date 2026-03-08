@@ -320,7 +320,7 @@ const BookingCalendar = () => {
                         {selectedTime} IST
                       </span>
                       <span className="text-muted-foreground">• {duration} min</span>
-                      {MEET_LINK !== "https://meet.google.com/YOUR-LINK-HERE" && (
+                      {MEET_LINK && (
                         <span className="flex items-center gap-1.5 text-accent">
                           <Video className="h-3.5 w-3.5" /> Google Meet
                         </span>
