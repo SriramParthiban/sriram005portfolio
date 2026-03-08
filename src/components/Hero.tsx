@@ -93,7 +93,7 @@ const Hero = () => {
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: -30, opacity: 0 }}
                   transition={{ duration: 0.4, ease: "easeInOut" }}
-                  className="text-base sm:text-lg md:text-xl font-semibold text-muted-foreground font-display italic"
+                  className="text-base sm:text-lg md:text-xl font-bold font-display italic" style={{ color: '#2a2a2a', textShadow: '0 0 16px rgba(255,255,255,0.9), 0 0 30px rgba(255,255,255,0.5)' }}
                 >
                   {roles[roleIdx]}
                 </motion.p>
