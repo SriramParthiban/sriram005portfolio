@@ -36,31 +36,37 @@ const Contact = () => {
     setSending(true);
     try {
       const { error } = await supabase.functions.invoke("send-contact-email", {
-        body: { name: form.name, email: form.email, message: form.message },
+        body: result.data,
       });
       if (error) throw error;
-      toast({ title: "✉️ Message sent successfully!", description: "I'll get back to you soon." });
+      toast({
+        title: "Message sent!",
+        description: "I'll get back to you as soon as possible.",
+      });
       setForm({ name: "", email: "", message: "" });
     } catch {
-      toast({ title: "Something went wrong", description: "Please try again.", variant: "destructive" });
+      toast({
+        title: "Failed to send",
+        description: "Please try again or email me directly.",
+        variant: "destructive",
+      });
     } finally {
       setSending(false);
     }
   };
 
   const links = [
-    { href: "mailto:sriramparthiban1970@gmail.com", icon: Mail, label: "sriramparthiban1970@gmail.com", external: false },
-    { href: "https://www.linkedin.com/in/sriram-parthiban-0500q/", icon: Linkedin, label: "LinkedIn", external: true },
-    { href: "https://github.com/SriramParthiban", icon: Github, label: "GitHub", external: true },
+    { icon: Mail, label: "sriramparthiban1970@gmail.com", href: "mailto:sriramparthiban1970@gmail.com", external: false },
+    { icon: Linkedin, label: "LinkedIn Profile", href: "https://www.linkedin.com/in/sriram-parthiban-0500q/", external: true },
+    { icon: Github, label: "GitHub", href: "https://github.com/SriramParthiban", external: true },
   ];
 
   return (
     <section id="contact" className="relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
-      {/* Mountain background — more visible */}
+      {/* Background */}
       <div className="absolute inset-0">
-        <img src={mountainFog} alt="" className="h-full w-full object-cover opacity-[0.30]" loading="lazy" />
-        <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.70)]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(155_25%_5%/0.3)] via-transparent to-[hsl(155_25%_5%/0.3)]" />
+        <img src={mountainFog} alt="" className="h-full w-full object-cover opacity-[0.06]" loading="lazy" />
+        <div className="absolute inset-0 bg-background/94" />
       </div>
 
       <div className="relative mx-auto max-w-6xl">
@@ -88,7 +94,7 @@ const Contact = () => {
                   rel={link.external ? "noopener noreferrer" : undefined}
                   whileHover={{ y: -3 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                  className="group flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-medium text-muted-foreground transition-all duration-300 hover:border-primary/20 hover:text-foreground hover:bg-white/8 min-h-[44px]"
+                  className="group flex items-center gap-3 rounded-2xl border border-border bg-card px-4 py-3 text-sm font-medium text-muted-foreground transition-all duration-300 hover:border-primary/20 hover:text-foreground hover:shadow-sm min-h-[44px]"
                 >
                   <Icon className="h-4 w-4 transition-colors duration-300 group-hover:text-primary" />
                   <span className="truncate">{link.label}</span>
@@ -120,26 +126,26 @@ const Contact = () => {
                 <motion.div
                   whileHover={{ y: -2, rotate: -0.2 }}
                   transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                  className="group relative overflow-hidden rounded-lg shadow-[0_12px_40px_-10px_rgba(0,0,0,0.5)]"
+                  className="group relative overflow-hidden rounded-lg shadow-md"
                   style={{ transform: "rotate(0.3deg)" }}
                 >
                   <div
-                    className="relative p-5 sm:p-6 border-2 border-[hsl(35,20%,25%)]"
+                    className="relative p-5 sm:p-6 border-2 border-[hsl(35,25%,75%)]"
                     style={{
-                      background: "linear-gradient(145deg, hsl(35 25% 14%) 0%, hsl(35 20% 11%) 100%)",
+                      background: "linear-gradient(145deg, hsl(35 30% 90%) 0%, hsl(35 25% 86%) 100%)",
                     }}
                   >
-                    <div className="absolute top-3 right-3 h-12 w-10 rounded-sm border-2 border-dashed border-[hsl(35,20%,30%)] bg-[hsl(35,15%,16%)] flex items-center justify-center">
+                    <div className="absolute top-3 right-3 h-12 w-10 rounded-sm border-2 border-dashed border-[hsl(35,20%,70%)] bg-[hsl(35,15%,84%)] flex items-center justify-center">
                       <Mail className="h-4 w-4 text-primary/40" />
                     </div>
 
-                    <div className="mb-5 text-xs font-mono text-[hsl(35,15%,40%)] italic pr-16">
+                    <div className="mb-5 text-xs font-mono text-[hsl(35,15%,45%)] italic pr-16">
                       Dear Sriram,
                     </div>
 
                     <div className="space-y-4">
                       <div>
-                        <label className="block text-[10px] font-mono text-[hsl(35,15%,40%)] uppercase tracking-widest mb-1">From</label>
+                        <label className="block text-[10px] font-mono text-[hsl(35,15%,45%)] uppercase tracking-widest mb-1">From</label>
                         <input
                           type="text"
                           placeholder="Your name"
@@ -147,12 +153,12 @@ const Contact = () => {
                           maxLength={100}
                           value={form.name}
                           onChange={(e) => setForm({ ...form, name: e.target.value })}
-                          className="w-full bg-transparent border-b-2 border-dotted border-[hsl(35,20%,28%)] pb-2 text-sm text-[hsl(35,30%,75%)] placeholder:text-[hsl(35,10%,30%)] focus:outline-none focus:border-primary/40 transition-colors font-mono"
+                          className="w-full bg-transparent border-b-2 border-dotted border-[hsl(35,20%,68%)] pb-2 text-sm text-[hsl(35,20%,25%)] placeholder:text-[hsl(35,10%,60%)] focus:outline-none focus:border-primary/40 transition-colors font-mono"
                         />
                         {errors.name && <p className="mt-1 text-xs text-destructive">{errors.name}</p>}
                       </div>
                       <div>
-                        <label className="block text-[10px] font-mono text-[hsl(35,15%,40%)] uppercase tracking-widest mb-1">Return Address</label>
+                        <label className="block text-[10px] font-mono text-[hsl(35,15%,45%)] uppercase tracking-widest mb-1">Return Address</label>
                         <input
                           type="email"
                           placeholder="Your email"
@@ -160,12 +166,12 @@ const Contact = () => {
                           maxLength={255}
                           value={form.email}
                           onChange={(e) => setForm({ ...form, email: e.target.value })}
-                          className="w-full bg-transparent border-b-2 border-dotted border-[hsl(35,20%,28%)] pb-2 text-sm text-[hsl(35,30%,75%)] placeholder:text-[hsl(35,10%,30%)] focus:outline-none focus:border-primary/40 transition-colors font-mono"
+                          className="w-full bg-transparent border-b-2 border-dotted border-[hsl(35,20%,68%)] pb-2 text-sm text-[hsl(35,20%,25%)] placeholder:text-[hsl(35,10%,60%)] focus:outline-none focus:border-primary/40 transition-colors font-mono"
                         />
                         {errors.email && <p className="mt-1 text-xs text-destructive">{errors.email}</p>}
                       </div>
                       <div>
-                        <label className="block text-[10px] font-mono text-[hsl(35,15%,40%)] uppercase tracking-widest mb-1">Message</label>
+                        <label className="block text-[10px] font-mono text-[hsl(35,15%,45%)] uppercase tracking-widest mb-1">Message</label>
                         <textarea
                           placeholder="Write your message here..."
                           required
@@ -173,9 +179,9 @@ const Contact = () => {
                           maxLength={2000}
                           value={form.message}
                           onChange={(e) => setForm({ ...form, message: e.target.value })}
-                          className="w-full bg-transparent border-b-2 border-dotted border-[hsl(35,20%,28%)] pb-2 text-sm text-[hsl(35,30%,75%)] placeholder:text-[hsl(35,10%,30%)] focus:outline-none focus:border-primary/40 transition-colors resize-none font-mono"
+                          className="w-full bg-transparent border-b-2 border-dotted border-[hsl(35,20%,68%)] pb-2 text-sm text-[hsl(35,20%,25%)] placeholder:text-[hsl(35,10%,60%)] focus:outline-none focus:border-primary/40 transition-colors resize-none font-mono"
                           style={{
-                            backgroundImage: "repeating-linear-gradient(transparent, transparent 27px, hsl(35 20% 22% / 0.5) 27px, hsl(35 20% 22% / 0.5) 28px)",
+                            backgroundImage: "repeating-linear-gradient(transparent, transparent 27px, hsl(35 20% 78% / 0.5) 27px, hsl(35 20% 78% / 0.5) 28px)",
                             lineHeight: "28px",
                           }}
                         />
@@ -187,17 +193,17 @@ const Contact = () => {
                       <Button
                         type="submit"
                         disabled={sending}
-                        className="relative h-12 w-12 rounded-full bg-gradient-to-br from-[hsl(0,65%,40%)] to-[hsl(0,50%,28%)] border-2 border-[hsl(0,40%,45%)] shadow-[0_4px_20px_-4px_rgba(139,0,0,0.5)] hover:from-[hsl(0,65%,45%)] hover:to-[hsl(0,50%,32%)] hover:shadow-[0_4px_24px_-2px_rgba(139,0,0,0.6)] transition-all duration-300 p-0"
+                        className="relative h-12 w-12 rounded-full bg-gradient-to-br from-[hsl(0,55%,55%)] to-[hsl(0,45%,42%)] border-2 border-[hsl(0,40%,60%)] shadow-md hover:from-[hsl(0,55%,60%)] hover:to-[hsl(0,45%,48%)] transition-all duration-300 p-0"
                       >
                         {sending ? (
-                          <Loader2 className="h-4 w-4 animate-spin text-[hsl(40,80%,85%)]" />
+                          <Loader2 className="h-4 w-4 animate-spin text-white" />
                         ) : (
-                          <Mail className="h-4 w-4 text-[hsl(40,80%,85%)]" />
+                          <Mail className="h-4 w-4 text-white" />
                         )}
                       </Button>
                     </div>
 
-                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20" />
+                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary/15 via-accent/15 to-primary/15" />
                   </div>
                 </motion.div>
               </form>

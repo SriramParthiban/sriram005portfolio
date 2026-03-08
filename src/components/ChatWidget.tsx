@@ -277,10 +277,10 @@ const ChatWidget = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-6 right-6 z-50 w-[360px] max-w-[calc(100vw-3rem)] h-[500px] max-h-[calc(100vh-6rem)] rounded-2xl border border-white/10 bg-[hsl(155_30%_5%)] shadow-2xl flex flex-col overflow-hidden"
+            className="fixed bottom-6 right-6 z-50 w-[360px] max-w-[calc(100vw-3rem)] h-[500px] max-h-[calc(100vh-6rem)] rounded-2xl border border-border bg-card shadow-2xl flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-[hsl(155_30%_4%)]">
+            <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-muted/50">
               <div className="flex items-center gap-2">
                 <div className="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center">
                   <Bot className="h-4 w-4 text-primary" />
@@ -294,7 +294,7 @@ const ChatWidget = () => {
                 {messages.length > 0 && (
                   <button
                     onClick={handleNewChat}
-                    className="h-8 w-8 rounded-full hover:bg-white/10 flex items-center justify-center transition-colors"
+                    className="h-8 w-8 rounded-full hover:bg-foreground/5 flex items-center justify-center transition-colors"
                     title="New chat"
                   >
                     <RotateCcw className="h-3.5 w-3.5 text-muted-foreground" />
@@ -302,7 +302,7 @@ const ChatWidget = () => {
                 )}
                 <button
                   onClick={handleClose}
-                  className="h-8 w-8 rounded-full hover:bg-white/10 flex items-center justify-center transition-colors"
+                  className="h-8 w-8 rounded-full hover:bg-foreground/5 flex items-center justify-center transition-colors"
                 >
                   <X className="h-4 w-4 text-muted-foreground" />
                 </button>
@@ -326,7 +326,7 @@ const ChatWidget = () => {
                         <button
                           key={q}
                           onClick={() => handleQuickQuestion(q)}
-                          className="text-[11px] px-3 py-1.5 rounded-full border border-white/10 text-muted-foreground hover:border-primary/50 hover:text-primary transition-colors"
+                          className="text-[11px] px-3 py-1.5 rounded-full border border-border text-muted-foreground hover:border-primary/50 hover:text-primary transition-colors"
                         >
                           {q}
                         </button>
@@ -350,11 +350,11 @@ const ChatWidget = () => {
                     className={`max-w-[80%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed ${
                       msg.role === "user"
                         ? "bg-primary text-primary-foreground rounded-br-md"
-                        : "bg-white/[0.06] text-foreground rounded-bl-md"
+                        : "bg-muted text-foreground rounded-bl-md"
                     }`}
                   >
                     {msg.role === "assistant" ? (
-                      <div className="prose prose-sm prose-invert max-w-none [&_p]:my-1 [&_ul]:my-1 [&_li]:my-0.5 [&_strong]:text-primary">
+                      <div className="prose prose-sm max-w-none [&_p]:my-1 [&_ul]:my-1 [&_li]:my-0.5 [&_strong]:text-primary">
                         <ReactMarkdown>{msg.content}</ReactMarkdown>
                       </div>
                     ) : (
@@ -362,7 +362,7 @@ const ChatWidget = () => {
                     )}
                   </div>
                   {msg.role === "user" && (
-                    <div className="h-6 w-6 rounded-full bg-white/10 flex-shrink-0 flex items-center justify-center mt-1">
+                    <div className="h-6 w-6 rounded-full bg-muted flex-shrink-0 flex items-center justify-center mt-1">
                       <User className="h-3 w-3 text-muted-foreground" />
                     </div>
                   )}
@@ -374,7 +374,7 @@ const ChatWidget = () => {
                   <div className="h-6 w-6 rounded-full bg-primary/20 flex-shrink-0 flex items-center justify-center">
                     <Bot className="h-3 w-3 text-primary" />
                   </div>
-                  <div className="bg-white/[0.06] rounded-2xl rounded-bl-md px-4 py-3">
+                  <div className="bg-muted rounded-2xl rounded-bl-md px-4 py-3">
                     <div className="flex gap-1">
                       <span className="h-2 w-2 rounded-full bg-primary/50 animate-bounce [animation-delay:0ms]" />
                       <span className="h-2 w-2 rounded-full bg-primary/50 animate-bounce [animation-delay:150ms]" />
@@ -386,7 +386,7 @@ const ChatWidget = () => {
             </div>
 
             {/* Input */}
-            <div className="p-3 border-t border-white/10 bg-[hsl(155_30%_4%)]">
+            <div className="p-3 border-t border-border bg-muted/50">
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
@@ -399,7 +399,7 @@ const ChatWidget = () => {
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask me anything..."
-                  className="flex-1 bg-white/[0.06] border border-white/10 rounded-xl px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
+                  className="flex-1 bg-muted border border-border rounded-xl px-3.5 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
                   disabled={isLoading}
                 />
                 <button

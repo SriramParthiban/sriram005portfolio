@@ -31,23 +31,22 @@ const experiences = [
     current: false,
     illustration: expDataAnalyst,
     bullets: [
-      "Processed and analyzed 500,000+ records using BigQuery and SQL, building robust data pipelines for marketing and operations teams.",
-      "Reduced average query execution time by 80% through schema optimization and indexing strategies.",
-      "Built interactive Power BI dashboards that improved decision-making speed by 50% across leadership teams.",
-      "Improved demand forecasting accuracy by 25% using statistical models and trend analysis.",
-      "Delivered actionable reporting frameworks that became standard tooling for the analytics function.",
+      "Performed cross-channel performance analysis across Google Ads, Meta Ads, and organic content — identifying high-ROI patterns that informed budget reallocation decisions.",
+      "Built automated reporting dashboards in Power BI and Looker Studio, reducing manual reporting time by over 60%.",
+      "Designed and maintained ETL pipelines for marketing data consolidation from 5+ platforms into a unified analytics layer.",
+      "Developed predictive models for campaign performance forecasting using Python and scikit-learn.",
     ],
   },
 ];
-const tapeStyle = "absolute -top-3 left-1/2 -translate-x-1/2 h-6 w-16 bg-gradient-to-b from-white/20 to-white/5 rounded-sm backdrop-blur-sm border border-white/10 z-10";
+
+const tapeStyle = "absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-6 bg-gradient-to-b from-amber-100/70 to-amber-200/50 border border-amber-300/30 rounded-sm z-10 shadow-[0_2px_6px_-2px_rgba(0,0,0,0.1)]";
 
 const Experience = () => (
-  <section id="experience" className="dark-section relative px-4 sm:px-6 py-28 sm:py-36 overflow-hidden">
-    {/* Forest canopy background — more visible */}
+  <section id="experience" className="relative px-4 sm:px-6 py-28 sm:py-36 overflow-hidden">
+    {/* Forest canopy background */}
     <div className="absolute inset-0">
-      <img src={forestCanopy} alt="" className="h-full w-full object-cover opacity-[0.30]" loading="lazy" />
-      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.72)]" />
-      <div className="absolute inset-0 bg-gradient-to-b from-[hsl(155_25%_5%/0.5)] via-transparent to-[hsl(155_25%_5%/0.8)]" />
+      <img src={forestCanopy} alt="" className="h-full w-full object-cover opacity-[0.08]" loading="lazy" />
+      <div className="absolute inset-0 bg-background/92" />
     </div>
 
     <div className="relative mx-auto max-w-4xl">
@@ -60,7 +59,7 @@ const Experience = () => (
 
       {/* Timeline */}
       <div className="relative mt-14 sm:mt-20">
-        <div className="absolute left-4 sm:left-1/2 sm:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/50 via-primary/20 to-transparent" />
+        <div className="absolute left-4 sm:left-1/2 sm:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/40 via-primary/15 to-transparent" />
 
         <div className="space-y-16 sm:space-y-20">
           {experiences.map((exp, idx) => {
@@ -69,8 +68,8 @@ const Experience = () => (
               <FadeInSection key={exp.title + exp.company} delay={idx * 200}>
                 <div className="relative">
                   <div className="absolute left-4 sm:left-1/2 top-8 -translate-x-1/2 z-10">
-                    <div className={`h-4 w-4 rounded-full border-2 ${exp.current ? "border-primary bg-primary/40" : "border-muted-foreground/30 bg-muted/30"} shadow-[0_0_12px_2px_hsl(var(--primary)/0.3)]`} />
-                    {exp.current && <div className="absolute inset-0 h-4 w-4 rounded-full bg-primary/30 animate-ping" />}
+                    <div className={`h-4 w-4 rounded-full border-2 ${exp.current ? "border-primary bg-primary/30" : "border-muted-foreground/30 bg-muted/30"} shadow-[0_0_12px_2px_hsl(var(--primary)/0.2)]`} />
+                    {exp.current && <div className="absolute inset-0 h-4 w-4 rounded-full bg-primary/20 animate-ping" />}
                   </div>
 
                   <div className="ml-12 sm:ml-0 sm:flex sm:items-center">
@@ -78,7 +77,7 @@ const Experience = () => (
                       <motion.div
                         whileHover={{ rotate: isLeft ? -1 : 1, y: -6, scale: 1.01 }}
                         transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                        className="relative rounded-sm bg-white/[0.07] border border-white/15 p-4 sm:p-5 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.5),0_2px_8px_-2px_rgba(0,0,0,0.3)]"
+                        className="relative rounded-sm bg-card border border-border p-4 sm:p-5 shadow-[0_8px_32px_-8px_rgba(0,0,0,0.08),0_2px_8px_-2px_rgba(0,0,0,0.04)]"
                         style={{ transform: `rotate(${isLeft ? -0.5 : 0.5}deg)` }}
                       >
                         <div className={tapeStyle} />
@@ -92,7 +91,7 @@ const Experience = () => (
                           </span>
                         )}
                         <div className="flex items-start gap-3">
-                          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-primary/20 to-accent/10 text-primary">
+                          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-primary/15 to-accent/10 text-primary">
                             <Briefcase className="h-5 w-5" />
                           </div>
                           <div className="flex-1 min-w-0">
@@ -107,7 +106,7 @@ const Experience = () => (
                             {exp.period}
                           </span>
                         </div>
-                        <div className="my-3 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+                        <div className="my-3 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
                         <ul className="space-y-2">
                           {exp.bullets.map((b, i) => (
                             <li key={i} className="flex gap-2 text-xs leading-relaxed text-muted-foreground">
@@ -123,7 +122,7 @@ const Experience = () => (
                       <motion.img
                         src={exp.illustration}
                         alt={`${exp.title} pixel art illustration`}
-                        className="w-48 md:w-56 lg:w-64 h-auto object-contain drop-shadow-[0_0_20px_hsl(var(--primary)/0.15)]"
+                        className="w-48 md:w-56 lg:w-64 h-auto object-contain drop-shadow-[0_0_20px_hsl(var(--primary)/0.1)]"
                         initial={{ opacity: 0, scale: 0.85 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}

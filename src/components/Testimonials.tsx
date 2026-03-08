@@ -1,39 +1,27 @@
-import { useState, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Quote, Play, Star } from "lucide-react";
+import { useRef, useState } from "react";
 import FadeInSection from "./FadeInSection";
+import { ChevronLeft, ChevronRight, Play, Quote, Star } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 import fernDetail from "@/assets/fern-detail.jpg";
 
-interface Testimonial {
-  name: string;
-  role: string;
-  company: string;
-  quote: string;
-  rating: number;
-  videoUrl?: string;
-}
-
-const testimonials: Testimonial[] = [
+const testimonials = [
   {
-    name: "Marcelo",
-    role: "Director",
-    company: "",
-    quote: "Sriram transformed our entire lead pipeline. What used to take our team hours of manual work now runs on autopilot with 99% accuracy. The automation systems he built have genuinely changed how we operate.",
-    rating: 5,
-  },
-  {
-    name: "Rohit",
-    role: "Operations Manager",
-    company: "TechVentures Inc.",
-    quote: "The KPI tracking system Sriram built saved us over $40K in wasted ad spend. His ability to combine data analytics with intelligent automation is rare and incredibly valuable.",
-    rating: 5,
-  },
-  {
-    name: "Nazir",
+    name: "Dean Meader",
     role: "CEO",
-    company: "GrowthStack",
-    quote: "We needed someone who could bridge the gap between sales, marketing, and operations data. Sriram didn't just build dashboards — he built an entire intelligence layer for our business.",
+    company: "Aspire Media Marketing",
+    quote:
+      "Sriram consistently demonstrates an exceptional ability to translate complex automation requirements into elegant, high-performance solutions. His work on our AI-driven outbound systems was transformative — reducing qualification time while significantly improving pipeline quality. He's not just a builder, he's a strategic thinker who connects technical execution with real business outcomes.",
     rating: 5,
+    videoUrl: "/videos/testimonial-1.mp4",
+  },
+  {
+    name: "Jesiha",
+    role: "Program Director",
+    company: "Wonkrew",
+    quote:
+      "What sets Sriram apart is his analytical rigor combined with genuine curiosity. During his time with our team, he didn't just analyze data — he uncovered insights that directly influenced our campaign strategy. His automated dashboards saved our team hours of manual work every week.",
+    rating: 5,
+    videoUrl: null,
   },
 ];
 
@@ -47,15 +35,14 @@ const Testimonials = () => {
   const t = testimonials[current];
 
   return (
-    <section id="testimonials" className="dark-section relative px-4 sm:px-6 py-20 sm:py-24 overflow-hidden">
-      {/* Bright leaves background */}
+    <section id="testimonials" className="relative px-4 sm:px-6 py-20 sm:py-24 overflow-hidden">
+      {/* Background */}
       <div className="absolute inset-0">
-        <img src={fernDetail} alt="" className="h-full w-full object-cover opacity-[0.10]" loading="lazy" />
-        <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.92)]" />
+        <img src={fernDetail} alt="" className="h-full w-full object-cover opacity-[0.05]" loading="lazy" />
+        <div className="absolute inset-0 bg-background/95" />
       </div>
 
       <div className="relative mx-auto max-w-3xl">
-        {/* Header — left-aligned to break the pattern */}
         <FadeInSection>
           <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground md:text-4xl lg:text-5xl">
             What People Say
@@ -63,7 +50,6 @@ const Testimonials = () => {
           <p className="mt-3 text-sm text-muted-foreground">Real feedback from real collaborators.</p>
         </FadeInSection>
 
-        {/* Testimonial Card */}
         <FadeInSection>
           <div className="relative mt-10">
             <AnimatePresence mode="wait">
@@ -73,7 +59,7 @@ const Testimonials = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -50 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-10"
+                className="relative overflow-hidden rounded-2xl border border-border bg-card p-6 sm:p-10 shadow-sm"
               >
                 <div className="absolute top-6 right-6 sm:top-8 sm:right-8">
                   <Quote className="h-10 w-10 sm:h-14 sm:w-14 text-primary/10" />
@@ -82,7 +68,7 @@ const Testimonials = () => {
                 <div className="relative">
                   {t.videoUrl && (
                     <div
-                      className="mb-6 aspect-video w-full max-w-md mx-auto rounded-xl overflow-hidden bg-white/5 border border-white/10 cursor-pointer relative"
+                      className="mb-6 aspect-video w-full max-w-md mx-auto rounded-xl overflow-hidden bg-muted border border-border cursor-pointer relative"
                       onClick={() => {
                         if (vidRef.current) {
                           if (videoPlaying) { vidRef.current.pause(); } else { vidRef.current.play(); }
@@ -99,11 +85,11 @@ const Testimonials = () => {
                         onEnded={() => setVideoPlaying(false)}
                       />
                       {!videoPlaying && (
-                        <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center gap-2">
+                        <div className="absolute inset-0 bg-foreground/30 flex flex-col items-center justify-center gap-2">
                           <div className="h-14 w-14 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary/30 transition-colors">
                             <Play className="h-6 w-6 text-primary ml-1" />
                           </div>
-                          <span className="text-xs text-white/40">Watch testimonial</span>
+                          <span className="text-xs text-white/80">Watch testimonial</span>
                         </div>
                       )}
                     </div>
@@ -115,12 +101,12 @@ const Testimonials = () => {
                     ))}
                   </div>
 
-                  <p className="text-base sm:text-lg leading-relaxed text-white/70 italic">
+                  <p className="text-base sm:text-lg leading-relaxed text-muted-foreground italic">
                     "{t.quote}"
                   </p>
 
                   <div className="mt-6 sm:mt-8 flex items-center gap-4">
-                    <div className="h-12 w-12 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center text-white font-bold text-sm">
+                    <div className="h-12 w-12 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center text-foreground font-bold text-sm">
                       {t.name.split(" ").map((n) => n[0]).join("")}
                     </div>
                     <div>
@@ -138,7 +124,7 @@ const Testimonials = () => {
             <div className="flex items-center justify-between mt-8">
               <button
                 onClick={prev}
-                className="h-10 w-10 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-white/60 hover:text-white hover:border-primary/40 hover:bg-primary/10 transition-all min-h-[44px] min-w-[44px]"
+                className="h-10 w-10 rounded-full border border-border bg-card flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/40 hover:bg-primary/5 transition-all min-h-[44px] min-w-[44px]"
                 aria-label="Previous testimonial"
               >
                 <ChevronLeft className="h-5 w-5" />
@@ -152,7 +138,7 @@ const Testimonials = () => {
                     className={`h-2 rounded-full transition-all duration-300 min-h-[8px] ${
                       idx === current
                         ? "w-8 bg-primary"
-                        : "w-2 bg-white/20 hover:bg-white/40"
+                        : "w-2 bg-border hover:bg-muted-foreground/30"
                     }`}
                     aria-label={`Go to testimonial ${idx + 1}`}
                   />
@@ -161,7 +147,7 @@ const Testimonials = () => {
 
               <button
                 onClick={next}
-                className="h-10 w-10 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-white/60 hover:text-white hover:border-primary/40 hover:bg-primary/10 transition-all min-h-[44px] min-w-[44px]"
+                className="h-10 w-10 rounded-full border border-border bg-card flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-primary/40 hover:bg-primary/5 transition-all min-h-[44px] min-w-[44px]"
                 aria-label="Next testimonial"
               >
                 <ChevronRight className="h-5 w-5" />

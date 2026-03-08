@@ -1,7 +1,7 @@
 import mountainFog from "@/assets/mountain-fog.jpg";
 import coralSunlight from "@/assets/coral-sunlight.jpg";
 
-/** Full-bleed nature photo strip — tall, clearly visible */
+/** Full-bleed nature photo strip */
 const NaturePhotoStrip = ({ variant = "canopy", className = "" }: { variant?: "canopy" | "leaves"; className?: string }) => {
   const img = variant === "canopy" ? mountainFog : coralSunlight;
 
@@ -13,8 +13,8 @@ const NaturePhotoStrip = ({ variant = "canopy", className = "" }: { variant?: "c
         className="h-full w-full object-cover object-[center_60%]"
         loading="lazy"
       />
-      {/* Very subtle edge blending */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[hsl(155_25%_5%/0.25)] via-transparent to-[hsl(155_25%_5%/0.25)]" />
+      {/* Subtle edge blending to match light theme */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[hsl(90_20%_97%/0.2)] via-transparent to-[hsl(90_20%_97%/0.2)]" />
     </div>
   );
 };

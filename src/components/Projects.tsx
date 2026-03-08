@@ -43,7 +43,7 @@ const Projects = () => {
         <div className="mt-10 sm:mt-14">
           {/* Project selector */}
           <div className="flex items-center gap-2 mb-8">
-            <button onClick={prev} className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/50 transition-all hover:bg-primary hover:text-white hover:border-primary">
+            <button onClick={prev} className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-all hover:bg-primary hover:text-white hover:border-primary">
               <ChevronLeft className="h-4 w-4" />
             </button>
             <div className="flex-1 flex items-center justify-center gap-2 flex-wrap">
@@ -55,8 +55,8 @@ const Projects = () => {
                     onClick={() => goTo(idx)}
                     className={`relative px-4 py-2 rounded-full text-xs sm:text-sm font-display font-semibold transition-all duration-400 ${
                       isActive
-                        ? "bg-primary text-white shadow-[0_0_24px_-4px_hsl(var(--primary)/0.5)]"
-                        : "bg-white/5 text-white/40 border border-white/8 hover:bg-white/10 hover:text-white/70"
+                        ? "bg-primary text-white shadow-[0_0_24px_-4px_hsl(var(--primary)/0.3)]"
+                        : "bg-card text-muted-foreground border border-border hover:bg-muted hover:text-foreground"
                     }`}
                   >
                     {proj.title}
@@ -71,14 +71,14 @@ const Projects = () => {
                 );
               })}
             </div>
-            <button onClick={next} className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/50 transition-all hover:bg-primary hover:text-white hover:border-primary">
+            <button onClick={next} className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-all hover:bg-primary hover:text-white hover:border-primary">
               <ChevronRight className="h-4 w-4" />
             </button>
           </div>
 
           {/* Counter */}
           <div className="flex items-center justify-center gap-3 mb-6">
-            <span className="text-xs font-mono text-white/25">
+            <span className="text-xs font-mono text-muted-foreground/50">
               {String(active + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
             </span>
             <div className="flex gap-1.5">
@@ -86,7 +86,7 @@ const Projects = () => {
                 <div
                   key={idx}
                   className={`h-1 rounded-full transition-all duration-500 ${
-                    idx === active ? "w-6 bg-primary" : "w-1.5 bg-white/15"
+                    idx === active ? "w-6 bg-primary" : "w-1.5 bg-border"
                   }`}
                 />
               ))}
@@ -104,13 +104,13 @@ const Projects = () => {
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.04] backdrop-blur-sm"
+                className="group relative overflow-hidden rounded-2xl border border-border bg-card shadow-sm"
               >
                 <div className={`h-1 bg-gradient-to-r ${p.color}`} />
                 <div className="p-5 sm:p-8">
                   <div className="flex items-start gap-4 sm:gap-5">
                     <div className={`flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${p.color} p-[1px]`}>
-                      <div className="flex h-full w-full items-center justify-center rounded-[14px] bg-[hsl(var(--dark-section))] transition-all duration-300 group-hover:bg-transparent">
+                      <div className="flex h-full w-full items-center justify-center rounded-[14px] bg-card transition-all duration-300 group-hover:bg-transparent">
                         <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary transition-colors group-hover:text-white" />
                       </div>
                     </div>
@@ -134,7 +134,7 @@ const Projects = () => {
                       <Badge
                         key={t}
                         variant="secondary"
-                        className="border border-white/10 bg-white/5 text-muted-foreground text-xs font-medium transition-all duration-300 hover:border-primary/30 hover:bg-primary/15 hover:text-foreground"
+                        className="border border-border bg-muted text-muted-foreground text-xs font-medium transition-all duration-300 hover:border-primary/30 hover:bg-primary/10 hover:text-foreground"
                       >
                         {t}
                       </Badge>
@@ -145,7 +145,7 @@ const Projects = () => {
                     {p.proofImage && (
                       <button
                         onClick={() => setShowProof(!showProof)}
-                        className="inline-flex items-center gap-2 rounded-lg border-2 border-accent bg-accent/20 px-5 py-2.5 text-sm font-semibold text-accent transition-all duration-300 hover:bg-accent hover:text-white hover:shadow-[0_0_20px_-4px_hsl(var(--accent)/0.6)] min-h-[44px]"
+                        className="inline-flex items-center gap-2 rounded-lg border-2 border-accent bg-accent/10 px-5 py-2.5 text-sm font-semibold text-accent transition-all duration-300 hover:bg-accent hover:text-white hover:shadow-md min-h-[44px]"
                       >
                         <CheckCircle2 className="h-4 w-4" />
                         {showProof ? "Hide Output" : "See It in Action"}
@@ -153,7 +153,7 @@ const Projects = () => {
                     )}
                     <Link
                       to={`/projects/${p.slug}`}
-                      className="inline-flex items-center gap-2 rounded-lg border-2 border-primary bg-primary/20 px-5 py-2.5 text-sm font-semibold text-primary transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-[0_0_20px_-4px_hsl(var(--primary)/0.6)] min-h-[44px]"
+                      className="inline-flex items-center gap-2 rounded-lg border-2 border-primary bg-primary/10 px-5 py-2.5 text-sm font-semibold text-primary transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-md min-h-[44px]"
                     >
                       <ExternalLink className="h-4 w-4" />
                       Read Case Study
@@ -170,15 +170,15 @@ const Projects = () => {
                         className="overflow-hidden"
                       >
                         <div className="mt-5 space-y-3">
-                          <div className="overflow-hidden rounded-xl border border-white/10 bg-white/5">
-                            <div className="border-b border-white/10 bg-accent/5 px-4 py-2">
+                          <div className="overflow-hidden rounded-xl border border-border bg-muted/50">
+                            <div className="border-b border-border bg-accent/5 px-4 py-2">
                               <span className="text-xs font-semibold uppercase tracking-wider text-accent">{p.proofLabel}</span>
                             </div>
                             <img src={p.proofImage} alt={`${p.fullTitle} - proof`} className="w-full" loading="lazy" />
                           </div>
                           {p.extraImages.map((img) => (
-                            <div key={img.label} className="overflow-hidden rounded-xl border border-white/10 bg-white/5">
-                              <div className="border-b border-white/10 bg-primary/5 px-4 py-2">
+                            <div key={img.label} className="overflow-hidden rounded-xl border border-border bg-muted/50">
+                              <div className="border-b border-border bg-primary/5 px-4 py-2">
                                 <span className="text-xs font-semibold uppercase tracking-wider text-primary">📎 {img.label}</span>
                               </div>
                               <img src={img.src} alt={img.label} className="w-full" loading="lazy" />

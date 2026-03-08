@@ -43,8 +43,8 @@ const Hero = () => {
           className="h-full w-full object-cover"
           loading="eager"
         />
-        <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.85)]" />
-        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(155_25%_5%/0.3)] via-transparent to-[hsl(155_25%_5%)]" />
+        <div className="absolute inset-0 bg-[hsl(90_20%_97%/0.88)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(90_20%_97%/0.4)] via-transparent to-[hsl(90_20%_97%)]" />
       </div>
 
       <motion.div
@@ -69,18 +69,18 @@ const Hero = () => {
           {/* LEFT: Profile photo */}
           <motion.div variants={item} className="flex shrink-0 justify-center">
             <div className="relative">
-              <div className="absolute -inset-3 rounded-full bg-gradient-to-br from-primary/30 via-accent/20 to-primary/10 blur-xl" />
+              <div className="absolute -inset-3 rounded-full bg-gradient-to-br from-primary/20 via-accent/15 to-primary/10 blur-xl" />
               <img
                 src={profilePhoto}
                 alt="Sriram Parthiban"
-                className="relative h-36 w-36 sm:h-40 sm:w-40 md:h-48 md:w-48 lg:h-56 lg:w-56 rounded-full object-cover ring-4 ring-primary/25 shadow-[0_0_60px_-10px_hsl(var(--primary)/0.4)]"
+                className="relative h-36 w-36 sm:h-40 sm:w-40 md:h-48 md:w-48 lg:h-56 lg:w-56 rounded-full object-cover ring-4 ring-primary/20 shadow-[0_0_60px_-10px_hsl(var(--primary)/0.2)]"
               />
             </div>
           </motion.div>
 
           {/* RIGHT: Content */}
           <div className="flex flex-1 flex-col items-center text-center md:items-start md:text-left">
-            <motion.h1 variants={item} className="font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-balance">
+            <motion.h1 variants={item} className="font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-balance">
               Sriram{" "}
               <span className="gradient-text-warm">Parthiban</span>
             </motion.h1>
@@ -94,14 +94,14 @@ const Hero = () => {
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: -30, opacity: 0 }}
                   transition={{ duration: 0.4, ease: "easeInOut" }}
-                  className="text-base sm:text-lg md:text-xl font-semibold text-white/60 font-display italic"
+                  className="text-base sm:text-lg md:text-xl font-semibold text-muted-foreground font-display italic"
                 >
                   {roles[roleIdx]}
                 </motion.p>
               </AnimatePresence>
             </motion.div>
 
-            <motion.p variants={item} className="mt-5 max-w-xl text-sm sm:text-base leading-[1.8] text-white/50">
+            <motion.p variants={item} className="mt-5 max-w-xl text-sm sm:text-base leading-[1.8] text-muted-foreground">
               Designing intelligent automation systems that generate qualified pipeline,
               optimize GTM workflows, and build scalable AI-driven operations.
             </motion.p>
@@ -113,7 +113,7 @@ const Hero = () => {
                   View Experience
                 </a>
               </Button>
-              <Button size="lg" className="bg-primary/20 border border-primary/40 text-primary hover:bg-primary/30 font-semibold text-[0.9rem] px-6 sm:px-7 py-6 transition-all duration-300 min-h-[44px]" asChild>
+              <Button size="lg" variant="outline" className="border-primary/40 text-primary hover:bg-primary/10 font-semibold text-[0.9rem] px-6 sm:px-7 py-6 transition-all duration-300 min-h-[44px]" asChild>
                 <a href="#contact">
                   <Mail className="mr-2 h-4 w-4" />
                   Contact Me
@@ -121,7 +121,7 @@ const Hero = () => {
               </Button>
             </motion.div>
 
-            <motion.p variants={item} className="mt-6 text-xs font-medium text-white/30 tracking-wide">
+            <motion.p variants={item} className="mt-6 text-xs font-medium text-muted-foreground/60 tracking-wide">
               AI-First · Data-Driven · Results-Oriented
             </motion.p>
           </div>

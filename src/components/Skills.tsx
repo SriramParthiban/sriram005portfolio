@@ -1,22 +1,22 @@
 import FadeInSection from "./FadeInSection";
-import { Target, Bot, Plug, LineChart, Code, Users } from "lucide-react";
+import { Cpu, Workflow, Plug, LineChart, Code, Users } from "lucide-react";
 import { motion } from "framer-motion";
 import fernCloseup from "@/assets/fern-closeup.jpg";
 
 const noteColors = [
-  { bg: "#D1FAE5", text: "#065F46", badge: "#A7F3D0", badgeText: "#064E3B" },
-  { bg: "#FEF3C7", text: "#92400E", badge: "#FDE68A", badgeText: "#78350F" },
-  { bg: "#ECFCCB", text: "#365314", badge: "#D9F99D", badgeText: "#3F6212" },
-  { bg: "#FED7AA", text: "#9A3412", badge: "#FDBA74", badgeText: "#7C2D12" },
-  { bg: "#BBF7D0", text: "#14532D", badge: "#86EFAC", badgeText: "#166534" },
-  { bg: "#FEF9C3", text: "#713F12", badge: "#FDE047", badgeText: "#854D0E" },
+  { bg: "#FEF3C7", text: "#78350F", badge: "#FDE68A", badgeText: "#92400E" },
+  { bg: "#D1FAE5", text: "#064E3B", badge: "#A7F3D0", badgeText: "#065F46" },
+  { bg: "#DBEAFE", text: "#1E3A5F", badge: "#BFDBFE", badgeText: "#1E40AF" },
+  { bg: "#FCE7F3", text: "#831843", badge: "#FBCFE8", badgeText: "#9D174D" },
+  { bg: "#E0E7FF", text: "#312E81", badge: "#C7D2FE", badgeText: "#3730A3" },
+  { bg: "#FEE2E2", text: "#7F1D1D", badge: "#FECACA", badgeText: "#991B1B" },
 ];
 
-const rotations = [-2.5, 1.8, -1.2, 2.2, -1.8, 2.8];
+const rotations = [-1.5, 1, -0.5, 1.5, -1, 0.5];
 
 const categories = [
-  { title: "GTM & RevOps", icon: Target, skills: ["Lead Qualification", "Pipeline Tracking", "KPI Management", "Process Optimization"] },
-  { title: "Automation & AI", icon: Bot, skills: ["n8n", "Zapier", "Make.com", "AI Agents", "Workflow Orchestration"] },
+  { title: "AI & Automation", icon: Cpu, skills: ["AI Voice Agents", "AI Chat Agents", "SMS Automation", "AI Workflows", "NLP/LLMs"] },
+  { title: "Workflow Platforms", icon: Workflow, skills: ["n8n", "Make.com", "Zapier", "GoHighLevel"] },
   { title: "APIs & Integrations", icon: Plug, skills: ["REST APIs", "Webhooks", "ETL Pipelines", "System Integrations"] },
   { title: "Data & Analytics", icon: LineChart, skills: ["Python", "SQL", "Power BI", "Looker Studio", "BigQuery", "Advanced Excel"] },
   { title: "Programming", icon: Code, skills: ["Python", "JavaScript", "SQL"] },
@@ -24,22 +24,21 @@ const categories = [
 ];
 
 const Skills = () => (
-  <section id="skills" className="dark-section relative px-4 sm:px-6 py-24 sm:py-28 overflow-hidden">
-    {/* Leaf macro background — more visible */}
+  <section id="skills" className="relative px-4 sm:px-6 py-24 sm:py-28 overflow-hidden">
+    {/* Background */}
     <div className="absolute inset-0">
-      <img src={fernCloseup} alt="" className="h-full w-full object-cover opacity-[0.20]" loading="lazy" />
-      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.84)]" />
+      <img src={fernCloseup} alt="" className="h-full w-full object-cover opacity-[0.05]" loading="lazy" />
+      <div className="absolute inset-0 bg-background/95" />
     </div>
 
     <div className="relative mx-auto max-w-5xl">
       <FadeInSection>
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-white md:text-4xl lg:text-5xl">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground md:text-4xl lg:text-5xl">
           Technical Skills
         </h2>
         <p className="mt-3 text-sm text-muted-foreground max-w-lg">The tools and expertise I bring to every project.</p>
       </FadeInSection>
 
-      {/* Staggered masonry-like layout instead of uniform grid */}
       <div className="mt-10 sm:mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {categories.map((cat, idx) => {
           const Icon = cat.icon;
@@ -51,7 +50,7 @@ const Skills = () => (
                 initial={{ rotate: rotation * 0.3 }}
                 whileInView={{ rotate: rotation }}
                 viewport={{ once: true }}
-                whileHover={{ y: -6, scale: 1.03, boxShadow: "0 20px 40px -12px rgba(0,0,0,0.4)" }}
+                whileHover={{ y: -6, scale: 1.03, boxShadow: "0 20px 40px -12px rgba(0,0,0,0.1)" }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 className="relative cursor-default"
                 style={{
