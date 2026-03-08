@@ -190,19 +190,19 @@ const KPIDashboardContent = () => (
       </div>
     </div>
 
-    <div className="grid sm:grid-cols-2 gap-4 my-8">
-      <div className="bg-[hsl(210,30%,10%)] border border-[hsl(210,30%,20%)] rounded-xl p-5">
-        <p className="text-[hsl(210,70%,60%)] font-semibold text-sm mb-3">🐘 Why PostgreSQL?</p>
-        <ul className="space-y-2 text-sm text-foreground/70">
+    <div className="grid sm:grid-cols-2 gap-5 my-10">
+      <div className="bg-[hsl(210,25%,13%)] border border-[hsl(210,25%,24%)] rounded-xl p-6">
+        <p className="text-[hsl(210,70%,65%)] font-semibold text-sm mb-3">🐘 Why PostgreSQL?</p>
+        <ul className="space-y-2.5 text-[14px] text-white/75">
           <li>✅ Complex joins for multi-source data</li>
           <li>✅ Materialized views for pre-computed KPIs</li>
-          <li>✅ Scales to <strong>millions of rows</strong></li>
+          <li>✅ Scales to <strong className="text-white">millions of rows</strong></li>
           <li>✅ Free and open-source</li>
         </ul>
       </div>
-      <div className="bg-[hsl(25,30%,10%)] border border-[hsl(25,30%,20%)] rounded-xl p-5">
-        <p className="text-[hsl(25,80%,60%)] font-semibold text-sm mb-3">⚙️ Why n8n for ETL?</p>
-        <ul className="space-y-2 text-sm text-foreground/70">
+      <div className="bg-[hsl(25,25%,13%)] border border-[hsl(25,25%,24%)] rounded-xl p-6">
+        <p className="text-[hsl(25,80%,65%)] font-semibold text-sm mb-3">⚙️ Why n8n for ETL?</p>
+        <ul className="space-y-2.5 text-[14px] text-white/75">
           <li>✅ Scheduled pulls from APIs</li>
           <li>✅ Real-time webhook ingestion</li>
           <li>✅ Built-in error handling</li>
