@@ -127,15 +127,15 @@ const InfoTip = ({ text }: { text: string }) => {
         onClick={() => setOpen(!open)}
         onMouseEnter={() => setOpen(true)}
         onMouseLeave={() => setOpen(false)}
-        className="text-white/30 hover:text-white/60 transition-colors"
+        className="text-muted-foreground/30 hover:text-muted-foreground/60 transition-colors"
         aria-label="More info"
       >
         <HelpCircle className="h-3.5 w-3.5 inline" />
       </button>
       {open && (
-        <span className="absolute z-50 bottom-full left-1/2 -translate-x-1/2 mb-2 w-60 rounded-lg bg-black/95 border border-white/10 p-3 text-xs text-white/80 leading-relaxed shadow-2xl">
+        <span className="absolute z-50 bottom-full left-1/2 -translate-x-1/2 mb-2 w-60 rounded-lg bg-card border border-border p-3 text-xs text-muted-foreground leading-relaxed shadow-xl">
           {text}
-          <span className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-black/95" />
+          <span className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-card" />
         </span>
       )}
     </span>
