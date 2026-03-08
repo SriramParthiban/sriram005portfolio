@@ -586,7 +586,7 @@ const AILeadQualContent = () => (
       <StepCard number={5} title="Track & refine" description="Review accuracy weekly — the system gets smarter over time." />
     </div>
 
-    <StickyNote color="green" rotate={-0.5}>
+    <StickyNote color="green">
       <strong>The future of sales isn't more outreach — it's smarter outreach.</strong> AI qualification makes that possible today. 
       Start simple, see ROI in week one.
     </StickyNote>
