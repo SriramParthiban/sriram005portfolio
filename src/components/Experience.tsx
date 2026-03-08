@@ -44,8 +44,8 @@ const tapeStyle = "absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-6 bg-gradien
 const Experience = () => (
   <section id="experience" className="relative px-4 sm:px-6 py-28 sm:py-36 overflow-hidden">
     <div className="absolute inset-0">
-      <img src={forestCanopy} alt="" className="h-full w-full object-cover opacity-[0.25]" loading="lazy" />
-      <div className="absolute inset-0 bg-gradient-to-b from-background/75 via-background/65 to-background/75" />
+      <img src={forestCanopy} alt="" className="h-full w-full object-cover" loading="lazy" />
+      <div className="absolute inset-0 bg-background/55" />
     </div>
 
     <div className="relative mx-auto max-w-4xl">

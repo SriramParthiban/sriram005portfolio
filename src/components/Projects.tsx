@@ -34,8 +34,8 @@ const Projects = () => {
   return (
     <section id="projects" className="dark-section relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
       <div className="absolute inset-0">
-        <img src={coralSunlight} alt="" className="h-full w-full object-cover opacity-[0.20]" loading="lazy" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/75 via-background/68 to-background/78" />
+        <img src={coralSunlight} alt="" className="h-full w-full object-cover" loading="lazy" />
+        <div className="absolute inset-0 bg-background/55" />
       </div>
       <div className="relative mx-auto max-w-3xl">
         <FadeInSection>
