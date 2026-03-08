@@ -44,33 +44,27 @@ const N8nContent = () => (
     </div>
 
     <h3>Pricing Comparison</h3>
-    <div className="overflow-x-auto my-8">
-      <table className="w-full text-sm border border-[hsl(270,15%,22%)] rounded-xl overflow-hidden">
-        <thead className="bg-[hsl(270,15%,14%)]">
-          <tr>
-            <th className="text-left py-3 px-4 text-foreground font-semibold border-b border-[hsl(270,15%,20%)]">Platform</th>
-            <th className="text-left py-3 px-4 text-foreground font-semibold border-b border-[hsl(270,15%,20%)]">50K tasks/mo</th>
-            <th className="text-left py-3 px-4 text-foreground font-semibold border-b border-[hsl(270,15%,20%)]">Self-hosted?</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr className="border-b border-[hsl(270,15%,18%)]">
-            <td className="py-3.5 px-4 text-white/70">Zapier</td>
-            <td className="py-3.5 px-4 text-red-400 font-medium">~$400+/mo</td>
-            <td className="py-3.5 px-4 text-red-400">❌</td>
-          </tr>
-          <tr className="border-b border-[hsl(270,15%,18%)]">
-            <td className="py-3.5 px-4 text-white/70">Make</td>
-            <td className="py-3.5 px-4 text-red-400 font-medium">~$200+/mo</td>
-            <td className="py-3.5 px-4 text-red-400">❌</td>
-          </tr>
-          <tr>
-            <td className="py-3.5 px-4 text-white font-medium">n8n</td>
-            <td className="py-3.5 px-4 text-[hsl(145,60%,55%)] font-bold">$0</td>
-            <td className="py-3.5 px-4 text-[hsl(145,60%,55%)]">✅</td>
-          </tr>
-        </tbody>
-      </table>
+    <div className="my-8 rounded-xl border border-[hsl(270,15%,22%)] overflow-hidden">
+      <div className="grid grid-cols-3 bg-[hsl(270,15%,14%)] text-foreground font-semibold text-sm">
+        <div className="py-3 px-4 border-b border-[hsl(270,15%,20%)]">Platform</div>
+        <div className="py-3 px-4 border-b border-[hsl(270,15%,20%)]">50K tasks/mo</div>
+        <div className="py-3 px-4 border-b border-[hsl(270,15%,20%)]">Self-hosted?</div>
+      </div>
+      <div className="grid grid-cols-3 border-b border-[hsl(270,15%,18%)] text-sm">
+        <div className="py-3.5 px-4 text-white/70">Zapier</div>
+        <div className="py-3.5 px-4 text-red-400 font-medium">~$400+/mo</div>
+        <div className="py-3.5 px-4 text-red-400">❌</div>
+      </div>
+      <div className="grid grid-cols-3 border-b border-[hsl(270,15%,18%)] text-sm">
+        <div className="py-3.5 px-4 text-white/70">Make</div>
+        <div className="py-3.5 px-4 text-red-400 font-medium">~$200+/mo</div>
+        <div className="py-3.5 px-4 text-red-400">❌</div>
+      </div>
+      <div className="grid grid-cols-3 text-sm">
+        <div className="py-3.5 px-4 text-white font-medium">n8n</div>
+        <div className="py-3.5 px-4 text-[hsl(145,60%,55%)] font-bold">$0</div>
+        <div className="py-3.5 px-4 text-[hsl(145,60%,55%)]">✅</div>
+      </div>
     </div>
 
     <SectionDivider />
