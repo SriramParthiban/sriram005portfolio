@@ -36,7 +36,7 @@ const N8nContent = () => (
 
     <h2>What Makes n8n Different?</h2>
 
-    <div className="space-y-6 my-10">
+    <div className="space-y-2 my-8">
       <StepCard number={1} title="Self-Hosted, Full Control" description="Your customer data never leaves your servers. Non-negotiable for healthcare, finance, and enterprise." />
       <StepCard number={2} title="Complex Branching & Error Handling" description="IF/ELSE branches, switch nodes, error workflows, sub-workflows — all native. Handle 15+ scenarios in one pipeline." />
       <StepCard number={3} title="Code When You Need It" description="Drop in JavaScript or Python at any node. Transform payloads, run regex, call custom APIs — 5 lines, done." />
