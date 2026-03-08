@@ -15,7 +15,7 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    name: "Alex Thompson",
+    name: "Marcelo",
     role: "Marketing Director",
     company: "Aspire Media",
     quote: "Sriram transformed our entire lead pipeline. What used to take our team hours of manual work now runs on autopilot with 99% accuracy. The automation systems he built have genuinely changed how we operate.",
