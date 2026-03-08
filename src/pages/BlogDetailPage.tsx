@@ -1,7 +1,11 @@
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, Clock, Calendar, Tag } from "lucide-react";
+import { ArrowLeft, Clock, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
-import ReactMarkdown from "react-markdown";
+import { blogPosts } from "@/data/blogData";
+import { blogContentMap } from "@/data/blogContent";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import ChatWidget from "@/components/ChatWidget";
 import { blogPosts } from "@/data/blogData";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
