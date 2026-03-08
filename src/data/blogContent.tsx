@@ -175,14 +175,14 @@ const KPIDashboardContent = () => (
     <h2>Principle 2: The Pipeline IS the Product</h2>
     <p>A beautiful dashboard means nothing if the data is stale, duplicated, or wrong.</p>
 
-    <div className="bg-[hsl(270,15%,10%)] border border-[hsl(270,20%,18%)] rounded-xl p-6 my-8">
-      <p className="text-xs text-muted-foreground mb-3 font-medium uppercase tracking-wider">My Standard Architecture</p>
-      <div className="flex flex-wrap items-center gap-2 text-sm">
+    <div className="bg-[hsl(270,12%,12%)] border border-[hsl(270,18%,22%)] rounded-xl p-7 my-10">
+      <p className="text-xs text-white/40 mb-4 font-medium uppercase tracking-wider">My Standard Architecture</p>
+      <div className="flex flex-wrap items-center gap-3 text-sm">
         {["Source (API/Webhook)", "→", "n8n (Transform)", "→", "PostgreSQL (Store)", "→", "Looker/Power BI"].map((part, i) => (
           part === "→" ? (
-            <span key={i} className="text-primary text-lg">→</span>
+            <span key={i} className="text-primary text-xl">→</span>
           ) : (
-            <span key={i} className="bg-[hsl(270,20%,15%)] border border-[hsl(270,25%,22%)] rounded-lg px-3 py-1.5 text-foreground/80">
+            <span key={i} className="bg-[hsl(270,18%,17%)] border border-[hsl(270,22%,25%)] rounded-lg px-4 py-2 text-white/80 font-medium">
               {part}
             </span>
           )
