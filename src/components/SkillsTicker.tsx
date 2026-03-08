@@ -5,12 +5,12 @@ const items = [
 ];
 
 const SkillsTicker = () => (
-  <div className="relative overflow-hidden border-y border-white/5 bg-[hsl(155_30%_5%)] py-4">
+  <div className="relative overflow-hidden border-y border-border bg-muted/50 py-4">
     <div className="flex animate-ticker whitespace-nowrap">
       {[...items, ...items].map((item, i) => (
         <span
           key={i}
-          className="mx-4 inline-flex items-center gap-2 text-sm font-medium text-white/40 sm:mx-6"
+          className="mx-4 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground sm:mx-6"
         >
           <span className="h-1.5 w-1.5 rounded-full bg-primary/40" />
           {item}

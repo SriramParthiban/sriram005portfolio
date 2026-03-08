@@ -38,9 +38,8 @@ const Counter = ({ value, prefix = "", suffix = "" }: { value: number; prefix?: 
 };
 
 const TrustStats = () => (
-  <section className="dark-section relative overflow-hidden py-14 sm:py-16">
-    {/* Asymmetric accent line */}
-    <div className="absolute top-0 left-[10%] right-[30%] h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+  <section className="relative overflow-hidden py-14 sm:py-16 bg-background">
+    <div className="absolute top-0 left-[10%] right-[30%] h-px bg-gradient-to-r from-transparent via-primary/15 to-transparent" />
     
     <div className="relative mx-auto max-w-5xl px-6">
       <div className="grid grid-cols-2 gap-8 sm:grid-cols-4 sm:gap-6">
@@ -55,21 +54,20 @@ const TrustStats = () => (
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               className="flex flex-col items-center text-center"
             >
-              <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/15">
+              <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10">
                 <Icon className="h-5 w-5 text-primary" />
               </div>
-              <p className="text-2xl font-display font-bold text-white sm:text-3xl">
+              <p className="text-2xl font-display font-bold text-foreground sm:text-3xl">
                 <Counter value={s.value} prefix={s.prefix} suffix={s.suffix} />
               </p>
-              <p className="mt-1 text-xs font-medium text-white/50">{s.label}</p>
+              <p className="mt-1 text-xs font-medium text-muted-foreground">{s.label}</p>
             </motion.div>
           );
         })}
       </div>
     </div>
     
-    {/* Asymmetric accent line bottom */}
-    <div className="absolute bottom-0 left-[30%] right-[10%] h-px bg-gradient-to-r from-transparent via-accent/15 to-transparent" />
+    <div className="absolute bottom-0 left-[30%] right-[10%] h-px bg-gradient-to-r from-transparent via-accent/10 to-transparent" />
   </section>
 );
 

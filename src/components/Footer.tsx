@@ -8,9 +8,9 @@ const socials = [
 ];
 
 const Footer = () => (
-  <footer className="dark-section relative border-t border-white/5 px-6 py-12">
+  <footer className="relative border-t border-border px-6 py-12 bg-muted/30">
     <div className="mx-auto flex max-w-3xl flex-col items-center gap-6 sm:flex-row sm:justify-between">
-      <p className="text-sm font-medium text-white/40 flex items-center gap-1.5">
+      <p className="text-sm font-medium text-muted-foreground flex items-center gap-1.5">
         © {new Date().getFullYear()} Sriram Parthiban · Built with
         <Heart className="h-3 w-3 text-primary fill-primary" />
       </p>
@@ -24,7 +24,7 @@ const Footer = () => (
               target={s.href.startsWith("http") ? "_blank" : undefined}
               rel={s.href.startsWith("http") ? "noopener noreferrer" : undefined}
               whileHover={{ y: -2 }}
-              className="rounded-xl p-2.5 text-white/40 transition-all duration-300 hover:bg-white/5 hover:text-primary"
+              className="rounded-xl p-2.5 text-muted-foreground transition-all duration-300 hover:bg-foreground/5 hover:text-primary"
               aria-label={s.label}
             >
               <Icon className="h-4 w-4" />
