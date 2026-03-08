@@ -108,6 +108,12 @@ function injectRunnerCSS() {
     .pg-progress{transition:width 1s ease-out,height 1s ease-out,left 1s ease-out}
     .pg-fade-in{animation:pg-fade-in .4s ease-out forwards}
     .pg-wave-bar{animation:pg-wave 1s ease-in-out infinite}
+    .pg-pulse-glow{animation:pg-pulse-ring 2s ease-in-out infinite}
+    .pg-log-scroll::-webkit-scrollbar{width:6px}
+    .pg-log-scroll::-webkit-scrollbar-track{background:transparent}
+    .pg-log-scroll::-webkit-scrollbar-thumb{background:hsl(250 75% 57% / 0.4);border-radius:3px}
+    .pg-log-scroll::-webkit-scrollbar-thumb:hover{background:hsl(250 75% 57% / 0.7)}
+    .pg-log-scroll{scrollbar-width:thin;scrollbar-color:hsl(250 75% 57% / 0.4) transparent}
   `;
   document.head.appendChild(style);
 }
