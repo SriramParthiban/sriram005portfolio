@@ -35,10 +35,8 @@ const InvoiceGenerator = () => {
   const [invoiceNumber, setInvoiceNumber] = useState(
     `INV-${Date.now().toString().slice(-6)}`
   );
-  const [invoiceDate, setInvoiceDate] = useState(
-    new Date().toISOString().split("T")[0]
-  );
-  const [dueDate, setDueDate] = useState("");
+  const [invoiceDate, setInvoiceDate] = useState<Date>(new Date());
+  const [dueDate, setDueDate] = useState<Date | undefined>(undefined);
   const [notes, setNotes] = useState("");
 
   // Line items
