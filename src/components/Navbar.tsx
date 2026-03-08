@@ -55,7 +55,7 @@ const Navbar = () => {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
         scrolled
           ? "bg-background/90 backdrop-blur-xl border-b border-border shadow-[0_4px_30px_-8px_hsl(var(--primary)/0.06)]"
-          : "bg-black/30 backdrop-blur-sm"
+          : "bg-black/60 backdrop-blur-md border-b border-white/10"
       }`}
     >
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 lg:px-8">
