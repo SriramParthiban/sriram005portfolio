@@ -22,21 +22,53 @@ const VineDivider = ({ className = "" }: { className?: string }) => (
   </div>
 );
 
-/** Full-bleed nature photo strip between sections */
+/** Full-bleed nature photo strip — tall enough to actually see the image */
 const NaturePhotoStrip = ({ variant = "canopy", className = "" }: { variant?: "canopy" | "leaves"; className?: string }) => {
   const img = variant === "canopy" ? mountainFog : coralSunlight;
+  const annotation = variant === "canopy" 
+    ? "somewhere above the clouds ☁️" 
+    : "life finds a way, even underwater 🐠";
+
   return (
-    <div className={`relative w-full h-32 sm:h-44 md:h-56 overflow-hidden ${className}`}>
+    <div className={`relative w-full h-48 sm:h-64 md:h-80 lg:h-96 overflow-hidden ${className}`}>
       <img
         src={img}
         alt=""
         className="h-full w-full object-cover"
         loading="lazy"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-[hsl(155_25%_5%)] via-transparent to-[hsl(155_25%_5%)]" />
-      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.30)]" />
+      {/* Much lighter overlays — let the photo breathe */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[hsl(155_25%_5%/0.6)] via-transparent to-[hsl(155_25%_5%/0.6)]" />
+      
+      {/* Handwritten annotation pinned to the photo */}
+      <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-8">
+        <span 
+          className="font-handwritten text-white/60 text-sm sm:text-lg italic drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]"
+          style={{ transform: "rotate(-2deg)", display: "inline-block" }}
+        >
+          — {annotation}
+        </span>
+      </div>
     </div>
   );
 };
 
-export { LeafDivider, VineDivider, NaturePhotoStrip };
+/** Handwritten annotation component for sprinkling personality */
+const HandwrittenNote = ({ 
+  children, 
+  rotate = -2, 
+  className = "" 
+}: { 
+  children: React.ReactNode; 
+  rotate?: number; 
+  className?: string;
+}) => (
+  <span 
+    className={`font-handwritten text-accent/70 inline-block ${className}`}
+    style={{ transform: `rotate(${rotate}deg)` }}
+  >
+    {children}
+  </span>
+);
+
+export { LeafDivider, VineDivider, NaturePhotoStrip, HandwrittenNote };
