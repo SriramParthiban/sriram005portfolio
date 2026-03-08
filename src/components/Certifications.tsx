@@ -3,6 +3,8 @@ import FadeInSection from "./FadeInSection";
 import { motion } from "framer-motion";
 
 const certs = [
+  { name: "n8n Course Certificate", platform: "Udemy" },
+  { name: "Full Stack Web Development Bootcamp", platform: "Udemy" },
   { name: "Supply Chain Operations", platform: "Udemy" },
   { name: "SQL for Data Science", platform: "UC Davis (Coursera)" },
   { name: "Data Analytics & Power BI", platform: "PrepInsta" },
