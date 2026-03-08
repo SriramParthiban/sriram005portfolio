@@ -1,37 +1,53 @@
 import { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Download } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import profilePhoto from "@/assets/profile-photo.jpeg";
 
 const navLinks = [
-  { label: "About", href: "/about" },
-  { label: "Experience", href: "/experience" },
-  { label: "Projects", href: "/projects" },
-  { label: "Skills", href: "/skills" },
-  { label: "Certifications", href: "/certifications" },
-  { label: "Contact", href: "/contact" },
+  { label: "About", href: "#about" },
+  { label: "Experience", href: "#experience" },
+  { label: "Projects", href: "#projects" },
+  { label: "Skills", href: "#skills" },
+  { label: "Certifications", href: "#certifications" },
+  { label: "Contact", href: "#contact" },
 ];
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
+  const [activeSection, setActiveSection] = useState("");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 20);
+
+      // Determine active section based on scroll position
+      const sections = navLinks.map((l) => l.href.replace("#", ""));
+      let current = "";
+      for (const id of sections) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= 120) {
+          current = id;
+        }
+      }
+      setActiveSection(current);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
-
   const handleNav = (href: string) => {
-    navigate(href);
+    const id = href.replace("#", "");
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+    setMobileOpen(false);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
     setMobileOpen(false);
   };
 
@@ -47,7 +63,7 @@ const Navbar = () => {
       }`}
     >
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 lg:px-8">
-        <button onClick={() => handleNav("/")} className="group flex items-center gap-2.5 text-xl font-display font-bold tracking-tight text-white">
+        <button onClick={scrollToTop} className="group flex items-center gap-2.5 text-xl font-display font-bold tracking-tight text-white">
           <img src={profilePhoto} alt="Sriram Parthiban" className="h-8 w-8 rounded-full object-cover ring-2 ring-primary/30" />
           SP<span className="gradient-text">.</span>
         </button>
@@ -55,7 +71,7 @@ const Navbar = () => {
         {/* Desktop */}
         <div className="hidden items-center gap-1 md:flex">
           {navLinks.map((link) => {
-            const isActive = location.pathname === link.href;
+            const isActive = activeSection === link.href.replace("#", "");
             return (
               <button
                 key={link.href}
@@ -110,7 +126,7 @@ const Navbar = () => {
           >
             <div className="flex flex-col gap-1">
               {navLinks.map((link, i) => {
-                const isActive = location.pathname === link.href;
+                const isActive = activeSection === link.href.replace("#", "");
                 return (
                   <motion.button
                     key={link.href}
