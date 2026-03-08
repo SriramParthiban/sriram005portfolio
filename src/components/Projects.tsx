@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { projects } from "@/data/projectsData";
+import coralSunlight from "@/assets/coral-sunlight.jpg";
 
 const Projects = () => {
   const [active, setActive] = useState(0);
