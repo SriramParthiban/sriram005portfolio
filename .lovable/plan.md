@@ -1,140 +1,85 @@
 
 
-# Implementation Plan: Project Case Study Pages & Tech Stack Visualization
+# Sriram Parthiban — Professional Portfolio Website
 
 ## Overview
-
-Two features to implement:
-1. **Individual Project Detail Pages** — Blog-style case study pages for each project
-2. **Tech Stack Section** — Visual grid of tools with logos and descriptions
+A minimal, high-performance, ATS-optimized portfolio website positioning Sriram Parthiban as a senior AI Automation & Revenue Operations Specialist. Clean white design with Inter font, excellent typography hierarchy, and semantic HTML throughout.
 
 ---
 
-## Feature 1: Project Case Study Pages
+## Pages & Sections
 
-### What We're Building
-Each project card will link to a dedicated page (e.g., `/projects/multi-channel-automation`) containing:
-- Project name and hero banner
-- **Purpose & Problem Statement** — Why it was created, what problem it solves
-- **Implementation Details** — How you built it, technical approach
-- **Impact & Turnover** — Metrics, revenue impact, business value
-- **Real Use Cases** — Concrete examples of how it's used
-- **Possible Improvements** — Future enhancements and roadmap
-- Screenshots/proof images
-- Tech stack badges
-- Back navigation to main portfolio
+### 1. Sticky Navbar
+- Left: "Sriram Parthiban" text logo
+- Right: Smooth-scroll navigation links (About, Experience, Projects, Skills, Certifications, Contact)
+- "Download Resume" CTA button (links to a downloadable PDF)
+- Minimal, transparent-to-white on scroll
 
-### Technical Approach
-1. **Create `ProjectDetailPage.tsx`** — Dynamic page component using URL params
-2. **Expand project data** — Add new fields to the projects array:
-   - `slug` — URL-friendly identifier
-   - `problemStatement` — The challenge addressed
-   - `purpose` — Why it was created
-   - `implementation` — How it was built (rich text/sections)
-   - `impact` — Business outcomes & turnover
-   - `useCases` — Real-world applications
-   - `improvements` — Future roadmap
-3. **Add route** — `/projects/:slug` in App.tsx
-4. **Update Projects.tsx** — Add "Read Case Study →" link on each card
-5. **Page styling** — Blog-style layout with sections, headings, and proof images
+### 2. Hero Section
+- Large heading with name and subtitle: "AI Automation & Revenue Operations Specialist"
+- Positioning statement paragraph
+- Two CTA buttons: "View Experience" and "Contact Me"
+- Four credibility metric counters displayed in a clean grid (1,000+ Daily AI Interactions, 99% Accuracy, $40K+ Cost Prevented, 500K+ Records)
 
-### Page Structure
-```text
-┌────────────────────────────────────────┐
-│  ← Back to Portfolio                   │
-├────────────────────────────────────────┤
-│  [Icon] PROJECT TITLE                  │
-│  Tech badges                           │
-├────────────────────────────────────────┤
-│  📋 Problem Statement                  │
-│  Description text...                   │
-├────────────────────────────────────────┤
-│  🎯 Purpose                            │
-│  Why this was built...                 │
-├────────────────────────────────────────┤
-│  🔧 Implementation                     │
-│  How it was built...                   │
-├────────────────────────────────────────┤
-│  📈 Impact & Results                   │
-│  Metrics, turnover, business value...  │
-├────────────────────────────────────────┤
-│  💼 Real Use Cases                     │
-│  Concrete examples...                  │
-├────────────────────────────────────────┤
-│  🚀 Possible Improvements              │
-│  Future roadmap...                     │
-├────────────────────────────────────────┤
-│  [Screenshots Gallery]                 │
-└────────────────────────────────────────┘
-```
+### 3. About Me
+- Executive-level summary written in confident, strategic tone
+- Covers AI automation expertise, RevOps architecture, GTM workflows, and cross-functional leadership
+- Clean text-based layout with proper heading hierarchy
 
----
+### 4. Professional Experience
+- **AI Automation Specialist** — Aspire Media Marketing (June 2024 – Present)
+  - Impact-driven bullet points: outbound automation, 1,000+ daily interactions, KPI dashboards, $40K+ savings, GTM experimentation
+- **Data Analyst Intern** — Wonkrew (Aug 2023 – Jan 2024)
+  - Analytical highlights: 500K+ records, 80% query time reduction, Power BI dashboards, 25% forecast accuracy improvement
 
-## Feature 2: Tech Stack Visualization Section
+### 5. Key Projects
+Three detailed project cards with:
+- Project title and description
+- Key metrics and impact bullets
+- Technologies used
+- Projects: Multi-Channel Automation Platform, KPI Tracking Engine, Intelligent Data Integration System
 
-### What We're Building
-A new section showcasing the tools you work with:
-- Logo grid with tool icons
-- Brief description of each tool
-- How you use it in your workflow
+### 6. Technical Skills
+Categorized grid layout with six categories:
+- GTM & RevOps
+- Automation & AI
+- APIs & Integrations
+- Data & Analytics
+- Programming
+- Consulting
 
-### Tools to Include
-- **GoHighLevel** — CRM & marketing automation
-- **n8n** — Workflow automation
-- **Make.com** — Integration platform
-- **Zapier** — Automation connector
-- **Power BI** — Business intelligence
-- **Python** — Data processing & scripting
-- **monday.com** — Project management
-- **BigQuery** — Data warehouse
+### 7. Education
+- B.Tech in AI & Data Science, St. Joseph's Institute of Technology (CGPA: 7.56)
+- Relevant coursework listed
 
-### Technical Approach
-1. **Create `TechStack.tsx`** component
-2. **Use simple-icons or custom SVGs** for logos (free to use)
-3. **Card-based layout** — Logo + name + description + "How I use it"
-4. **Add to Index.tsx** — Place after Skills section
-5. **Dark theme styling** — Consistent with existing design
+### 8. Certifications
+- Clean list/cards for four certifications with issuing platforms
 
-### Layout
-```text
-┌─────────────────────────────────────────────┐
-│  Tools & Tech Stack                         │
-├─────────────────────────────────────────────┤
-│  ┌──────┐  ┌──────┐  ┌──────┐  ┌──────┐    │
-│  │ GHL  │  │ n8n  │  │ Make │  │Zapier│    │
-│  │ logo │  │ logo │  │ logo │  │ logo │    │
-│  │ desc │  │ desc │  │ desc │  │ desc │    │
-│  └──────┘  └──────┘  └──────┘  └──────┘    │
-│  ┌──────┐  ┌──────┐  ┌──────┐  ┌──────┐    │
-│  │Power │  │Python│  │monday│  │  BQ  │    │
-│  │  BI  │  │      │  │ .com │  │      │    │
-│  └──────┘  └──────┘  └──────┘  └──────┘    │
-└─────────────────────────────────────────────┘
-```
+### 9. GitHub Repositories
+- Fetches public repos dynamically from GitHub's public API (no auth needed)
+- Displays: repo name, description, language/tech stack, stars, last updated
+- Minimal card-based layout
+
+### 10. Contact Section
+- Positioning message
+- Email, LinkedIn, GitHub links
+- Simple contact form (Name, Email, Message) — frontend-only with mailto or toast confirmation
 
 ---
 
-## Files to Create/Modify
-
-| File | Action |
-|------|--------|
-| `src/pages/ProjectDetailPage.tsx` | Create — Case study page |
-| `src/components/Projects.tsx` | Modify — Add expanded data + link |
-| `src/components/TechStack.tsx` | Create — Tool logos section |
-| `src/pages/Index.tsx` | Modify — Add TechStack component |
-| `src/App.tsx` | Modify — Add `/projects/:slug` route |
+## Design Approach
+- **Colors**: White background, near-black text, subtle gray accents, one muted accent color for CTAs
+- **Font**: Inter
+- **Layout**: Maximum ~800px content width, generous whitespace, clean section separators
+- **Responsive**: Mobile-first, fully responsive across all breakpoints
+- **Animations**: Minimal — smooth scroll only, no heavy libraries
+- **SEO**: Proper meta tags, Open Graph tags, semantic HTML, heading hierarchy (H1→H3), structured content for ATS parsing
 
 ---
 
-## Content Needed From You
-
-For the project case studies, I'll need you to provide (or I can draft placeholders):
-- Problem statement for each project
-- Why you built it
-- Implementation approach
-- Business impact / turnover generated
-- Real use cases
-- Possible improvements
-
-Would you like me to proceed with placeholder content that you can later customize, or would you prefer to provide the details first?
+## Technical Notes
+- No backend needed — static content + GitHub public API fetch
+- Contact form will be frontend-only (can be enhanced with backend later)
+- Resume download will link to a PDF file in the public folder (placeholder initially)
+- All content hardcoded for performance and ATS optimization
 

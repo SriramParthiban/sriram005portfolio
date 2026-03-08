@@ -1,72 +1,10 @@
 import { Badge } from "@/components/ui/badge";
 import FadeInSection from "./FadeInSection";
-import { Zap, BarChart3, Database, Mail, CheckCircle2, ChevronLeft, ChevronRight } from "lucide-react";
+import { CheckCircle2, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import dentbooksProof from "@/assets/dentbooks-email-proof.png";
-import multichannelDashboard from "@/assets/multichannel-dashboard.png";
-import kpiDashboard from "@/assets/kpi-tracking-dashboard.png";
-import dataIntegrationWorkflow from "@/assets/data-integration-workflow.png";
-import ghlWorkflowOverview from "@/assets/ghl-workflow-overview.png";
-import ghlWorkflowBranches from "@/assets/ghl-workflow-branches.png";
-import ghlEmailCompose from "@/assets/ghl-email-compose.png";
-import ghlPipelineStages from "@/assets/ghl-pipeline-stages.png";
-
-const projects = [
-  {
-    title: "Multi-Channel Automation",
-    fullTitle: "Multi-Channel Customer Requirements Automation Platform",
-    description: "AI-powered discovery and qualification system automating customer requirements gathering across voice, chat, and SMS channels. Built using Lovable.",
-    metrics: ["Reduced documentation time by 70%", "99% data accuracy", "1,000+ interactions/day", "Real-time CRM sync"],
-    tech: ["AI Agents", "n8n", "REST APIs", "CRM Integration", "NLP", "Lovable"],
-    icon: Zap,
-    color: "from-primary to-primary/60",
-    proofImage: multichannelDashboard,
-    proofLabel: "✅ Live Dashboard — Final Output",
-    extraImages: [],
-  },
-  {
-    title: "KPI Tracking Engine",
-    fullTitle: "Automated KPI Tracking & Call Optimization Engine",
-    description: "Real-time performance monitoring system with automated anomaly detection and call quality optimization.",
-    metrics: ["Call completion: 67% → 97%", "Invalid leads reduced by 90%", "15+ hours/week saved", "Real-time dashboards"],
-    tech: ["Python", "SQL", "Power BI", "Automation", "Analytics"],
-    icon: BarChart3,
-    color: "from-accent to-accent/60",
-    proofImage: kpiDashboard,
-    proofLabel: "✅ Live Dashboard — Call Center Performance",
-    extraImages: [],
-  },
-  {
-    title: "Data Integration",
-    fullTitle: "Intelligent Data Integration System",
-    description: "End-to-end data pipeline collecting via GoHighLevel and n8n webhooks, validating and syncing to monday.com with intelligent routing and real-time alerting.",
-    metrics: ["Errors reduced by 80%", "Improved SLA compliance", "Real-time alerting", "Zero-touch processing"],
-    tech: ["n8n", "monday.com", "GoHighLevel", "Webhooks", "Data Validation", "ETL"],
-    icon: Database,
-    color: "from-primary to-accent",
-    proofImage: dataIntegrationWorkflow,
-    proofLabel: "✅ Live Workflow — n8n Automation Pipeline",
-    extraImages: [],
-  },
-  {
-    title: "Email Automation",
-    fullTitle: "GoHighLevel Email Automation Workflow",
-    description: "Automated lead nurturing pipeline that triggers personalized email sequences when new opportunities or form submissions arrive.",
-    metrics: ["Instant lead response time", "Automated booking link delivery", "Trigger-based email sequences", "Zero manual follow-up needed"],
-    tech: ["GoHighLevel", "Email Automation", "Workflows", "Lead Nurturing", "CRM"],
-    icon: Mail,
-    color: "from-accent to-primary",
-    proofImage: dentbooksProof,
-    proofLabel: "✅ Live Output — Automated Email Delivered",
-    extraImages: [
-      { src: ghlWorkflowOverview, label: "Full Workflow Overview" },
-      { src: ghlWorkflowBranches, label: "Condition-Based Branching Logic" },
-      { src: ghlEmailCompose, label: "Personalized Email Template" },
-      { src: ghlPipelineStages, label: "Pipeline Stage Management" },
-    ],
-  },
-];
+import { Link } from "react-router-dom";
+import { projects } from "@/data/projectsData";
 
 const Projects = () => {
   const [active, setActive] = useState(0);
@@ -220,9 +158,10 @@ const Projects = () => {
                     ))}
                   </div>
 
-                  {/* Proof toggle */}
-                  {p.proofImage && (
-                    <div className="mt-6">
+                  {/* Actions row */}
+                  <div className="mt-6 flex flex-wrap items-center gap-3">
+                    {/* Proof toggle */}
+                    {p.proofImage && (
                       <button
                         onClick={() => setShowProof(!showProof)}
                         className="inline-flex items-center gap-2 rounded-lg border border-accent/20 bg-accent/5 px-4 py-2 text-sm font-medium text-accent transition-all duration-300 hover:bg-accent/15 hover:border-accent/40 hover:text-white min-h-[44px]"
@@ -230,8 +169,17 @@ const Projects = () => {
                         <CheckCircle2 className="h-4 w-4" />
                         {showProof ? "Hide Output" : "See It in Action"}
                       </button>
-                    </div>
-                  )}
+                    )}
+
+                    {/* Case study link */}
+                    <Link
+                      to={`/projects/${p.slug}`}
+                      className="inline-flex items-center gap-2 rounded-lg border border-primary/20 bg-primary/5 px-4 py-2 text-sm font-medium text-primary transition-all duration-300 hover:bg-primary/15 hover:border-primary/40 hover:text-white min-h-[44px]"
+                    >
+                      <ExternalLink className="h-4 w-4" />
+                      Read Case Study
+                    </Link>
+                  </div>
 
                   {/* Proof images */}
                   <AnimatePresence>
