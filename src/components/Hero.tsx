@@ -120,7 +120,7 @@ const Hero = () => {
               </Button>
             </motion.div>
 
-            <motion.p variants={item} className="mt-6 text-xs font-medium text-muted-foreground/60 tracking-wide">
+            <motion.p variants={item} className="mt-6 text-xs font-bold tracking-wide" style={{ color: '#333', textShadow: '0 0 12px rgba(255,255,255,0.9)' }}>
               AI-First · Data-Driven · Results-Oriented
             </motion.p>
           </div>
