@@ -3,6 +3,7 @@ import { Briefcase, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import expAiAutomation from "@/assets/exp-ai-automation.png";
 import expDataAnalyst from "@/assets/exp-data-analyst.png";
+import forestCanopy from "@/assets/forest-canopy.jpg";
 
 const experiences = [
   {
@@ -42,6 +43,13 @@ const tapeStyle = "absolute -top-3 left-1/2 -translate-x-1/2 h-6 w-16 bg-gradien
 
 const Experience = () => (
   <section id="experience" className="dark-section relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
+    {/* Forest canopy background */}
+    <div className="absolute inset-0">
+      <img src={forestCanopy} alt="" className="h-full w-full object-cover opacity-[0.05]" loading="lazy" />
+      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.96)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[hsl(155_25%_5%)] via-transparent to-[hsl(155_25%_5%)]" />
+    </div>
+
     <div className="relative mx-auto max-w-4xl">
       <FadeInSection>
         <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground md:text-4xl lg:text-5xl">
