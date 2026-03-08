@@ -42,7 +42,7 @@ const Index = () => {
       <TrustStats />
       <SkillsTicker />
       <About />
-      <NaturePhotoStrip variant="canopy" />
+      
       <Experience />
       <Projects />
       <Testimonials />
