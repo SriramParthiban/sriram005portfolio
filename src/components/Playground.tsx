@@ -36,8 +36,8 @@ const STAGES = [
     label: "Pipeline Routing",
     emoji: "🗂️",
     icon: FolderKanban,
-    color: "rgba(255,184,0,0.85)",
-    glow: "rgba(255,184,0,0.4)",
+    color: "rgba(245,158,11,0.85)",
+    glow: "rgba(245,158,11,0.4)",
     explanation: (name: string) =>
       `Based on the analysis, ${name} is instantly routed to the correct sales pipeline. High-quality leads go straight to your top salespeople. Others get a friendly follow-up email sequence. No manual work needed — it all happens automatically.`,
     logMsg: (name: string) => `${name} routed to Enterprise Sales Pipeline`,
