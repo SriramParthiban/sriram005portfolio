@@ -294,14 +294,14 @@ const GHLPlaybookContent = () => (
 
     <h2>The Speed-to-Lead Framework</h2>
 
-    <div className="grid sm:grid-cols-2 gap-4 my-8">
-      <div className="flex flex-col items-center justify-center bg-[hsl(0,40%,12%)] border border-[hsl(0,30%,22%)] rounded-xl p-6">
-        <p className="text-3xl font-bold text-red-400">47 hrs</p>
-        <p className="text-xs text-muted-foreground mt-1">Average response time</p>
+    <div className="grid sm:grid-cols-2 gap-5 my-10">
+      <div className="flex flex-col items-center justify-center bg-[hsl(0,30%,14%)] border border-[hsl(0,25%,25%)] rounded-xl p-8">
+        <p className="text-4xl font-bold text-red-400">47 hrs</p>
+        <p className="text-sm text-white/50 mt-2">Average response time</p>
       </div>
-      <div className="flex flex-col items-center justify-center bg-[hsl(145,30%,12%)] border border-[hsl(145,30%,22%)] rounded-xl p-6">
-        <p className="text-3xl font-bold text-[hsl(145,60%,50%)]">5 min</p>
-        <p className="text-xs text-muted-foreground mt-1">= 21x more likely to qualify</p>
+      <div className="flex flex-col items-center justify-center bg-[hsl(145,25%,14%)] border border-[hsl(145,25%,25%)] rounded-xl p-8">
+        <p className="text-4xl font-bold text-[hsl(145,60%,55%)]">5 min</p>
+        <p className="text-sm text-white/50 mt-2">= 21x more likely to qualify</p>
       </div>
     </div>
 
