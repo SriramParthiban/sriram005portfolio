@@ -631,7 +631,7 @@ const Playground = () => {
 
                   {/* ── Live Activity Log ── */}
                   {activityLog.length > 0 && (
-                    <div className="mt-6 rounded-lg border border-white/8 bg-black/20 p-4 max-h-[180px] overflow-y-auto">
+                    <div className="mt-6 rounded-lg border border-white/8 bg-black/20 p-4 max-h-[180px] overflow-y-auto pg-log-scroll">
                       <p className="text-[10px] uppercase tracking-widest text-white/25 mb-2 font-semibold">Live Activity Log</p>
                       <div className="space-y-1.5">
                         {activityLog.map((entry, i) => (
