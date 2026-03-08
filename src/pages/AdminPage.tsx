@@ -480,6 +480,9 @@ const AdminPage = () => {
             )}
           </motion.div>
         )}
+
+        {/* Invoice Tab */}
+        {activeTab === "invoice" && <InvoiceGenerator />}
       </div>
     </div>
   );
