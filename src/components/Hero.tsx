@@ -100,7 +100,7 @@ const Hero = () => {
               </AnimatePresence>
             </motion.div>
 
-            <motion.p variants={item} className="mt-5 max-w-xl text-sm sm:text-base leading-[1.8] text-muted-foreground">
+            <motion.p variants={item} className="mt-5 max-w-xl text-sm sm:text-base leading-[1.8] font-semibold" style={{ color: '#1a1a1a', textShadow: '0 0 14px rgba(255,255,255,0.9), 0 0 28px rgba(255,255,255,0.5)' }}>
               Designing intelligent automation systems that generate qualified pipeline,
               optimize GTM workflows, and build scalable AI-driven operations.
             </motion.p>
