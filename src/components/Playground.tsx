@@ -144,36 +144,36 @@ const InfoTip = ({ text }: { text: string }) => {
 
 /* ─── Runner: Cute pixel-art robot ─── */
 const RunnerSVG = () => (
-  <svg width="32" height="36" viewBox="0 0 32 36" fill="none" className="pg-runner drop-shadow-[0_0_8px_hsl(250_75%_57%/0.6)]">
+  <svg width="32" height="36" viewBox="0 0 32 36" fill="none" className="pg-runner drop-shadow-[0_0_8px_hsl(152_55%_45%/0.6)]">
     {/* Antenna */}
-    <rect x="15" y="0" width="2" height="4" rx="1" fill="hsl(250 75% 70%)" />
-    <circle cx="16" cy="0" r="2" fill="hsl(250 75% 80%)" className="pg-pulse-glow" />
+    <rect x="15" y="0" width="2" height="4" rx="1" fill="hsl(152 55% 55%)" />
+    <circle cx="16" cy="0" r="2" fill="hsl(152 55% 65%)" className="pg-pulse-glow" />
     {/* Head */}
-    <rect x="8" y="4" width="16" height="12" rx="3" fill="hsl(250 75% 57%)" />
+    <rect x="8" y="4" width="16" height="12" rx="3" fill="hsl(152 55% 42%)" />
     {/* Visor / eyes */}
-    <rect x="10" y="7" width="12" height="5" rx="2" fill="hsl(250 40% 20%)" />
-    <rect x="11" y="8" width="4" height="3" rx="1" fill="#00D4FF" opacity="0.9" />
-    <rect x="17" y="8" width="4" height="3" rx="1" fill="#00D4FF" opacity="0.9" />
+    <rect x="10" y="7" width="12" height="5" rx="2" fill="hsl(152 30% 18%)" />
+    <rect x="11" y="8" width="4" height="3" rx="1" fill="hsl(38 75% 55%)" opacity="0.9" />
+    <rect x="17" y="8" width="4" height="3" rx="1" fill="hsl(38 75% 55%)" opacity="0.9" />
     {/* Body */}
-    <rect x="9" y="17" width="14" height="10" rx="2" fill="hsl(250 60% 50%)" />
-    <rect x="12" y="19" width="8" height="3" rx="1" fill="hsl(250 75% 70%)" opacity="0.5" />
+    <rect x="9" y="17" width="14" height="10" rx="2" fill="hsl(152 50% 35%)" />
+    <rect x="12" y="19" width="8" height="3" rx="1" fill="hsl(152 55% 55%)" opacity="0.5" />
     {/* chest light */}
-    <circle cx="16" cy="23" r="1.5" fill="#7C3AED" className="pg-pulse-glow" />
+    <circle cx="16" cy="23" r="1.5" fill="hsl(152 55% 42%)" className="pg-pulse-glow" />
     {/* Left arm */}
     <g className="pg-stride" style={{ transformOrigin: "10px 19px" }}>
-      <rect x="4" y="18" width="5" height="8" rx="2" fill="hsl(250 55% 45%)" />
+      <rect x="4" y="18" width="5" height="8" rx="2" fill="hsl(152 45% 32%)" />
     </g>
     {/* Right arm */}
     <g className="pg-stride" style={{ transformOrigin: "22px 19px", animationDirection: "reverse" }}>
-      <rect x="23" y="18" width="5" height="8" rx="2" fill="hsl(250 55% 45%)" />
+      <rect x="23" y="18" width="5" height="8" rx="2" fill="hsl(152 45% 32%)" />
     </g>
     {/* Left leg */}
     <g className="pg-stride" style={{ transformOrigin: "12px 27px", animationDirection: "reverse" }}>
-      <rect x="10" y="27" width="5" height="7" rx="2" fill="hsl(250 50% 40%)" />
+      <rect x="10" y="27" width="5" height="7" rx="2" fill="hsl(152 40% 28%)" />
     </g>
     {/* Right leg */}
     <g className="pg-stride" style={{ transformOrigin: "20px 27px" }}>
-      <rect x="17" y="27" width="5" height="7" rx="2" fill="hsl(250 50% 40%)" />
+      <rect x="17" y="27" width="5" height="7" rx="2" fill="hsl(152 40% 28%)" />
     </g>
   </svg>
 );
