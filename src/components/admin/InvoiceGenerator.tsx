@@ -32,12 +32,14 @@ const InvoiceGenerator = () => {
   const [clientAddress, setClientAddress] = useState("");
 
   // Invoice meta
-  const [invoiceNumber, setInvoiceNumber] = useState(
-    `INV-${Date.now().toString().slice(-6)}`
-  );
   const [invoiceDate, setInvoiceDate] = useState<Date>(new Date());
   const [dueDate, setDueDate] = useState<Date | undefined>(undefined);
   const [notes, setNotes] = useState("");
+  const [currency, setCurrency] = useState<"INR" | "USD" | "CAD">("INR");
+  const [customRole, setCustomRole] = useState("AI Automation Specialist");
+
+  const currencySymbol = currency === "INR" ? "₹" : currency === "USD" ? "$" : "CA$";
+  const currencyLocale = currency === "INR" ? "en-IN" : "en-US";
 
   // Line items
   const [items, setItems] = useState<LineItem[]>([
