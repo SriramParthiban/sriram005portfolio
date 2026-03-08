@@ -279,19 +279,19 @@ const BookingCalendar = () => {
               </div>
               <div className="space-y-3">
                 <div>
-                  <label className="block text-[10px] font-medium text-muted-foreground mb-1 uppercase tracking-wider">Name *</label>
+                  <label className="block text-xs font-bold text-muted-foreground mb-1 uppercase tracking-wider">Name *</label>
                   <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="Your name" maxLength={100}
-                    className="h-9 text-sm bg-white/5 border-white/10 text-foreground placeholder:text-muted-foreground/50 focus:border-primary/40" />
+                    className="h-10 text-base font-semibold bg-white/5 border-white/10 text-foreground placeholder:text-muted-foreground/50 focus:border-primary/40" />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-medium text-muted-foreground mb-1 uppercase tracking-wider">Email *</label>
+                  <label className="block text-xs font-bold text-muted-foreground mb-1 uppercase tracking-wider">Email *</label>
                   <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="your@email.com" maxLength={255}
-                    className="h-9 text-sm bg-white/5 border-white/10 text-foreground placeholder:text-muted-foreground/50 focus:border-primary/40" />
+                    className="h-10 text-base font-semibold bg-white/5 border-white/10 text-foreground placeholder:text-muted-foreground/50 focus:border-primary/40" />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-medium text-muted-foreground mb-1 uppercase tracking-wider">Note (optional)</label>
+                  <label className="block text-xs font-bold text-muted-foreground mb-1 uppercase tracking-wider">Note (optional)</label>
                   <textarea value={message} onChange={(e) => setMessage(e.target.value)} placeholder="What to discuss?" maxLength={500} rows={2}
-                    className="w-full rounded-md bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground/50 focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-ring px-3 py-2 text-sm resize-none" />
+                    className="w-full rounded-md bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground/50 focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-ring px-3 py-2 text-base font-semibold resize-none" />
                 </div>
               </div>
               <div className="mt-4 flex justify-between">
