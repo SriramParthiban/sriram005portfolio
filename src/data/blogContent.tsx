@@ -279,7 +279,7 @@ const KPIDashboardContent = () => (
 
 /* ───────────── BLOG 3: GHL Playbook ───────────── */
 const GHLPlaybookContent = () => (
-  <div className="space-y-0">
+  <div className="space-y-2">
     <h2>Why Most GHL Setups Underperform</h2>
     <p>
       GoHighLevel is incredibly powerful — but most agencies use about <strong>20%</strong> of its capabilities.
