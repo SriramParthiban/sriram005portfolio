@@ -9,12 +9,12 @@ const highlights = [
 ];
 
 const stickyNotes = [
-  { label: "Detail-Oriented", icon: Target, rotate: "-3deg", top: "8%", left: "2%", delay: 0 },
-  { label: "Fast Learner", icon: Zap, rotate: "2.5deg", top: "45%", left: "0%", delay: 0.3 },
-  { label: "Team Player", icon: Users, rotate: "-2deg", bottom: "12%", left: "1%", delay: 0.6 },
-  { label: "Problem Solver", icon: Brain, rotate: "3deg", top: "10%", right: "1%", delay: 0.15 },
-  { label: "Self-Starter", icon: Zap, rotate: "-2.5deg", top: "48%", right: "0%", delay: 0.45 },
-  { label: "Data-Driven", icon: TrendingUp, rotate: "2deg", bottom: "10%", right: "2%", delay: 0.75 },
+  { label: "Detail-Oriented", icon: Target, rotate: -3, color: "from-primary/20 to-primary/5" },
+  { label: "Fast Learner", icon: Zap, rotate: 2, color: "from-accent/20 to-accent/5" },
+  { label: "Team Player", icon: Users, rotate: -2, color: "from-primary/20 to-accent/10" },
+  { label: "Problem Solver", icon: Brain, rotate: 3, color: "from-accent/15 to-primary/10" },
+  { label: "Self-Starter", icon: Zap, rotate: -1.5, color: "from-primary/15 to-accent/5" },
+  { label: "Data-Driven", icon: TrendingUp, rotate: 2.5, color: "from-accent/20 to-primary/5" },
 ];
 
 const About = () => (
@@ -24,38 +24,6 @@ const About = () => (
       <div className="absolute bottom-0 -left-20 h-[125px] w-[125px] md:h-[250px] md:w-[250px] rounded-full bg-[#06B6D4]/6 blur-[60px] md:blur-[100px]" />
     </div>
     <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.02)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
-
-    {/* Desktop: sticky-note trait cards */}
-    {stickyNotes.map((note) => {
-      const Icon = note.icon;
-      return (
-        <motion.div
-          key={note.label}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.5, delay: note.delay, ease: "easeOut" }}
-          className="pointer-events-none absolute hidden xl:flex flex-col items-center justify-center gap-1.5 rounded-xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] px-4 py-3 backdrop-blur-md shadow-lg shadow-black/20"
-          style={{
-            rotate: note.rotate,
-            top: note.top,
-            left: note.left,
-            right: note.right,
-            bottom: note.bottom,
-          }}
-        >
-          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary/15 text-primary">
-            <Icon className="h-3.5 w-3.5" />
-          </div>
-          <span className="text-[10px] font-display font-semibold tracking-wide text-white/50 whitespace-nowrap">{note.label}</span>
-        </motion.div>
-      );
-    })}
-
-    {/* Mobile: gradient accent lines + drifting orb */}
-    <div className="pointer-events-none absolute top-16 right-4 h-24 w-[1.5px] rounded-full bg-gradient-to-b from-[#7C3AED]/25 via-[#06B6D4]/15 to-transparent animate-[pulseFade_5s_ease-in-out_infinite] md:hidden" />
-    <div className="pointer-events-none absolute bottom-20 left-4 h-4 w-4 rounded-full bg-gradient-to-br from-[#7C3AED]/15 to-[#06B6D4]/10 blur-[3px] animate-drift md:hidden" />
-    <div className="pointer-events-none absolute top-1/2 right-3 h-6 w-6 rounded-tl-lg border-t border-l border-[#7C3AED]/10 animate-border-glow md:hidden" />
 
     <div className="relative mx-auto max-w-3xl">
       <FadeInSection>
@@ -68,8 +36,34 @@ const About = () => (
         </h2>
       </FadeInSection>
 
-      <FadeInSection delay={150}>
-        <div className="mt-10 space-y-5 text-sm sm:text-base leading-[1.9] text-white/60">
+      {/* Sticky Notes — horizontal scroll on mobile, wrapped grid on desktop */}
+      <FadeInSection delay={100}>
+        <div className="mt-8 -mx-4 px-4 sm:mx-0 sm:px-0">
+          <div className="flex gap-3 overflow-x-auto pb-3 sm:pb-0 sm:overflow-visible sm:grid sm:grid-cols-3 sm:gap-3 lg:grid-cols-6 scrollbar-hide">
+            {stickyNotes.map((note, idx) => {
+              const Icon = note.icon;
+              return (
+                <motion.div
+                  key={note.label}
+                  initial={{ opacity: 0, y: 16, rotate: 0 }}
+                  whileInView={{ opacity: 1, y: 0, rotate: note.rotate }}
+                  viewport={{ once: true, margin: "-30px" }}
+                  transition={{ duration: 0.45, delay: idx * 0.08, ease: "easeOut" }}
+                  className="flex-shrink-0 w-[110px] sm:w-auto flex flex-col items-center justify-center gap-2 rounded-xl border border-white/10 bg-gradient-to-br from-white/[0.07] to-white/[0.02] px-4 py-4 backdrop-blur-md shadow-lg shadow-black/20 hover:border-primary/25 hover:shadow-primary/10 transition-all duration-300"
+                >
+                  <div className={`flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br ${note.color}`}>
+                    <Icon className="h-4 w-4 text-primary" />
+                  </div>
+                  <span className="text-[11px] font-display font-semibold tracking-wide text-white/60 whitespace-nowrap text-center">{note.label}</span>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </FadeInSection>
+
+      <FadeInSection delay={200}>
+        <div className="mt-8 space-y-5 text-sm sm:text-base leading-[1.9] text-white/60">
           <p>
             I architect intelligent automation systems at the intersection of{" "}
             <strong className="text-white font-semibold">AI, revenue operations, and go-to-market strategy</strong>.
@@ -90,7 +84,7 @@ const About = () => (
         </div>
       </FadeInSection>
 
-      <FadeInSection delay={300}>
+      <FadeInSection delay={350}>
         <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
           {highlights.map((h) => {
             const Icon = h.icon;
