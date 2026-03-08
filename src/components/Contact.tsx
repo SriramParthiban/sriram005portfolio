@@ -58,7 +58,7 @@ const Contact = () => {
     <section id="contact" className="relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
       {/* Flowing water background */}
       <div className="absolute inset-0">
-        <img src={natureWaterfall} alt="" className="h-full w-full object-cover opacity-[0.14]" loading="lazy" />
+        <img src={mountainFog} alt="" className="h-full w-full object-cover opacity-[0.14]" loading="lazy" />
         <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.90)]" />
         <div className="absolute inset-0 bg-gradient-to-b from-[hsl(155_25%_5%/0.6)] via-transparent to-[hsl(155_25%_5%/0.6)]" />
       </div>
