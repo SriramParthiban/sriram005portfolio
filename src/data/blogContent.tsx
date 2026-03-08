@@ -404,7 +404,7 @@ const GHLPlaybookContent = () => (
 
     <h2>The Numbers Don't Lie</h2>
 
-    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 my-10">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 my-10">
       <StatsCard label="Speed to Lead" before="4+ hrs" after="< 3 min" change="98% faster" />
       <StatsCard label="Contact Rate" before="15%" after="45%" change="3x better" />
       <StatsCard label="Booking Rate" before="8%" after="22%" change="2.75x" />
