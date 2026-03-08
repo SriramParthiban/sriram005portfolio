@@ -43,7 +43,7 @@ const Hero = () => {
           className="h-full w-full object-cover"
           loading="eager"
         />
-        <div className="absolute inset-0 bg-background/35" />
+        <div className="absolute inset-0 bg-background/15" />
       </div>
 
       <motion.div
