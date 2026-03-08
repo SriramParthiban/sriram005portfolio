@@ -37,10 +37,7 @@ const Testimonials = () => {
   return (
     <section id="testimonials" className="relative px-4 sm:px-6 py-20 sm:py-24 overflow-hidden">
       {/* Background */}
-      <div className="absolute inset-0">
-        <img src={fernDetail} alt="" className="h-full w-full object-cover opacity-[0.05]" loading="lazy" />
-        <div className="absolute inset-0 bg-background/95" />
-      </div>
+      <div className="absolute inset-0 bg-muted/40" />
 
       <div className="relative mx-auto max-w-3xl">
         <FadeInSection>

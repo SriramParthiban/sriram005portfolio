@@ -76,10 +76,7 @@ const StickyNote = ({
 const About = () => (
   <section id="about" className="relative px-4 sm:px-6 py-20 sm:py-28 overflow-hidden">
     {/* Nature image background */}
-    <div className="absolute inset-0">
-      <img src={natureTree} alt="" className="h-full w-full object-cover opacity-[0.06]" loading="lazy" />
-      <div className="absolute inset-0 bg-background/92" />
-    </div>
+    <div className="absolute inset-0 bg-muted/30" />
 
     {/* Left side sticky notes */}
     <div className="hidden lg:block absolute top-0 bottom-0 left-2 lg:left-8 xl:left-16 w-[110px]">
