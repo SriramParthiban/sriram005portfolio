@@ -305,7 +305,7 @@ const InvoiceGenerator = () => {
             Sriram Parthiban
           </p>
           <div className="w-40 h-px bg-foreground/30 mt-1 ml-auto" />
-          <p className="text-[11px] text-muted-foreground mt-1">AI Automation & Data Analytics Specialist</p>
+          <p className="text-[11px] text-muted-foreground mt-1">AI Automation Specialist</p>
         </div>
       </div>
 
