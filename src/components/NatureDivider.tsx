@@ -1,5 +1,5 @@
-import natureWaterfall from "@/assets/nature-waterfall.jpg";
-import natureMountains from "@/assets/nature-mountains.jpg";
+import mountainFog from "@/assets/mountain-fog.jpg";
+import coralSunlight from "@/assets/coral-sunlight.jpg";
 
 const LeafDivider = ({ flip = false, className = "" }: { flip?: boolean; className?: string }) => (
   <div className={`relative w-full overflow-hidden ${className}`} style={{ transform: flip ? "scaleY(-1)" : undefined }}>
@@ -24,7 +24,7 @@ const VineDivider = ({ className = "" }: { className?: string }) => (
 
 /** Full-bleed nature photo strip between sections */
 const NaturePhotoStrip = ({ variant = "canopy", className = "" }: { variant?: "canopy" | "leaves"; className?: string }) => {
-  const img = variant === "canopy" ? natureWaterfall : natureMountains;
+  const img = variant === "canopy" ? mountainFog : coralSunlight;
   return (
     <div className={`relative w-full h-32 sm:h-44 md:h-56 overflow-hidden ${className}`}>
       <img
