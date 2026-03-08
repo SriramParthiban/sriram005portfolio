@@ -159,13 +159,13 @@ export const StepCard = ({
   title: string;
   description: string;
 }) => (
-  <div className="flex gap-4 items-start py-1">
-    <div className="h-10 w-10 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center flex-shrink-0">
+  <div className="flex gap-5 items-start py-4">
+    <div className="h-11 w-11 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center flex-shrink-0 mt-0.5">
       <span className="text-primary font-bold text-sm">{number}</span>
     </div>
-    <div>
-      <p className="font-semibold text-white text-[15px]">{title}</p>
-      <p className="text-[14px] text-white/60 mt-1 leading-[1.7]">{description}</p>
+    <div className="flex-1 min-w-0">
+      <p className="font-bold text-white text-base tracking-tight">{title}</p>
+      <p className="text-[14px] text-white/65 mt-1.5 leading-[1.8]">{description}</p>
     </div>
   </div>
 );
