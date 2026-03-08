@@ -176,15 +176,27 @@ const InvoiceGenerator = () => {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div>
           <label className={labelClass}>Currency</label>
-          <select
-            className={inputClass}
-            value={currency}
-            onChange={(e) => setCurrency(e.target.value as "INR" | "USD" | "CAD")}
-          >
-            <option value="INR">₹ INR (Indian Rupees)</option>
-            <option value="USD">$ USD (US Dollars)</option>
-            <option value="CAD">CA$ CAD (Canadian Dollars)</option>
-          </select>
+          <div className="flex gap-2">
+            {([
+              { value: "INR" as const, label: "₹ INR" },
+              { value: "USD" as const, label: "$ USD" },
+              { value: "CAD" as const, label: "CA$ CAD" },
+            ]).map((opt) => (
+              <button
+                key={opt.value}
+                type="button"
+                onClick={() => setCurrency(opt.value)}
+                className={cn(
+                  "flex-1 px-3 py-2.5 rounded-lg text-sm font-medium border transition-all",
+                  currency === opt.value
+                    ? "bg-primary text-primary-foreground border-primary shadow-lg shadow-primary/20"
+                    : "bg-[hsl(270,15%,12%)] border-[hsl(270,20%,20%)] text-muted-foreground hover:border-primary/40"
+                )}
+              >
+                {opt.label}
+              </button>
+            ))}
+          </div>
         </div>
         <div>
           <label className={labelClass}>Invoice Date</label>
