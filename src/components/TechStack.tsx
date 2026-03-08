@@ -1,5 +1,4 @@
 import FadeInSection from "./FadeInSection";
-import { Card, CardContent } from "@/components/ui/card";
 
 const tools = [
   {
@@ -8,12 +7,6 @@ const tools = [
     description: "All-in-one CRM & marketing automation platform",
     usage: "Building automated sales funnels, email sequences, and managing client pipelines",
     color: "#FF6B35",
-    icon: (
-      <svg viewBox="0 0 40 40" className="h-10 w-10">
-        <circle cx="20" cy="20" r="18" fill="currentColor" />
-        <text x="20" y="26" textAnchor="middle" fill="white" fontSize="12" fontWeight="bold">GHL</text>
-      </svg>
-    ),
   },
   {
     name: "n8n",
@@ -21,12 +14,6 @@ const tools = [
     description: "Open-source workflow automation tool",
     usage: "Creating complex multi-step automations, API integrations, and data transformations",
     color: "#EA4B71",
-    icon: (
-      <svg viewBox="0 0 40 40" className="h-10 w-10">
-        <rect x="4" y="4" width="32" height="32" rx="8" fill="currentColor" />
-        <text x="20" y="26" textAnchor="middle" fill="white" fontSize="11" fontWeight="bold">n8n</text>
-      </svg>
-    ),
   },
   {
     name: "Make.com",
@@ -34,13 +21,6 @@ const tools = [
     description: "Visual integration and automation platform",
     usage: "Connecting apps and automating workflows with visual scenario builder",
     color: "#6D28D9",
-    icon: (
-      <svg viewBox="0 0 40 40" className="h-10 w-10">
-        <circle cx="20" cy="20" r="18" fill="currentColor" />
-        <circle cx="14" cy="20" r="4" fill="white" />
-        <circle cx="26" cy="20" r="4" fill="white" />
-      </svg>
-    ),
   },
   {
     name: "Zapier",
@@ -48,15 +28,6 @@ const tools = [
     description: "No-code automation connecting 5000+ apps",
     usage: "Quick integrations between tools and simple trigger-based automations",
     color: "#FF4A00",
-    icon: (
-      <svg viewBox="0 0 40 40" className="h-10 w-10">
-        <path
-          d="M20 4L36 20L20 36L4 20L20 4Z"
-          fill="currentColor"
-        />
-        <circle cx="20" cy="20" r="6" fill="white" />
-      </svg>
-    ),
   },
   {
     name: "Power BI",
@@ -64,13 +35,6 @@ const tools = [
     description: "Business intelligence and data visualization",
     usage: "Creating interactive dashboards, KPI tracking, and executive reporting",
     color: "#F2C811",
-    icon: (
-      <svg viewBox="0 0 40 40" className="h-10 w-10">
-        <rect x="6" y="20" width="8" height="14" rx="2" fill="currentColor" />
-        <rect x="16" y="12" width="8" height="22" rx="2" fill="currentColor" />
-        <rect x="26" y="6" width="8" height="28" rx="2" fill="currentColor" />
-      </svg>
-    ),
   },
   {
     name: "Python",
@@ -78,19 +42,6 @@ const tools = [
     description: "Programming language for data & automation",
     usage: "Building ETL pipelines, data analysis scripts, and custom automation tools",
     color: "#3776AB",
-    icon: (
-      <svg viewBox="0 0 40 40" className="h-10 w-10">
-        <path
-          d="M20 4C12 4 12 8 12 8V12H20V14H8S4 14 4 22S8 30 8 30H12V26S12 22 16 22H24S28 22 28 18V8S28 4 20 4ZM16 7C17.1 7 18 7.9 18 9S17.1 11 16 11S14 10.1 14 9S14.9 7 16 7Z"
-          fill="currentColor"
-        />
-        <path
-          d="M20 36C28 36 28 32 28 32V28H20V26H32S36 26 36 18S32 10 32 10H28V14S28 18 24 18H16S12 18 12 22V32S12 36 20 36ZM24 33C22.9 33 22 32.1 22 31S22.9 29 24 29S26 29.9 26 31S25.1 33 24 33Z"
-          fill="currentColor"
-          opacity="0.7"
-        />
-      </svg>
-    ),
   },
   {
     name: "monday.com",
@@ -98,13 +49,6 @@ const tools = [
     description: "Work OS for project management",
     usage: "Managing projects, tracking tasks, and team collaboration workflows",
     color: "#FF3D57",
-    icon: (
-      <svg viewBox="0 0 40 40" className="h-10 w-10">
-        <circle cx="10" cy="28" r="6" fill="currentColor" />
-        <circle cx="20" cy="18" r="6" fill="currentColor" opacity="0.8" />
-        <circle cx="30" cy="12" r="6" fill="currentColor" opacity="0.6" />
-      </svg>
-    ),
   },
   {
     name: "BigQuery",
@@ -112,25 +56,58 @@ const tools = [
     description: "Google's serverless data warehouse",
     usage: "Running complex SQL queries on large datasets and building data pipelines",
     color: "#4285F4",
-    icon: (
-      <svg viewBox="0 0 40 40" className="h-10 w-10">
-        <path
-          d="M20 4L6 12V28L20 36L34 28V12L20 4Z"
-          fill="currentColor"
-        />
-        <path
-          d="M20 12L12 16V24L20 28L28 24V16L20 12Z"
-          fill="white"
-          opacity="0.8"
-        />
-      </svg>
-    ),
   },
 ];
 
+// Split tools into two rows
+const row1Tools = tools.slice(0, 4);
+const row2Tools = tools.slice(4, 8);
+
+const ToolCard = ({ tool }: { tool: typeof tools[0] }) => (
+  <div
+    className="group relative flex-shrink-0 w-[280px] sm:w-[320px] overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-sm transition-all duration-300 hover:border-white/25 hover:bg-white/[0.06]"
+  >
+    {/* Top accent */}
+    <div
+      className="absolute top-0 left-0 right-0 h-1 opacity-70 group-hover:opacity-100 transition-opacity"
+      style={{ backgroundColor: tool.color }}
+    />
+
+    <div className="p-5">
+      {/* Icon placeholder with color */}
+      <div
+        className="mb-3 h-10 w-10 rounded-lg flex items-center justify-center text-white font-bold text-xs"
+        style={{ backgroundColor: tool.color }}
+      >
+        {tool.shortName.slice(0, 3)}
+      </div>
+
+      {/* Name */}
+      <h3 className="text-base font-display font-bold text-foreground mb-1.5">
+        {tool.name}
+      </h3>
+
+      {/* Description */}
+      <p className="text-xs text-muted-foreground mb-3 leading-relaxed">
+        {tool.description}
+      </p>
+
+      {/* Usage */}
+      <div className="pt-3 border-t border-white/10">
+        <p className="text-[10px] text-white/40 uppercase tracking-wider mb-1 font-semibold">
+          How I use it
+        </p>
+        <p className="text-xs text-muted-foreground leading-relaxed">
+          {tool.usage}
+        </p>
+      </div>
+    </div>
+  </div>
+);
+
 const TechStack = () => {
   return (
-    <section id="tech-stack" className="dark-section relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
+    <section id="tech-stack" className="dark-section relative py-24 sm:py-32 overflow-hidden">
       {/* Background */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute top-20 right-0 h-[300px] w-[300px] rounded-full bg-primary/6 blur-[120px]" />
@@ -138,9 +115,10 @@ const TechStack = () => {
       </div>
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.02)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
-      <div className="relative mx-auto max-w-6xl">
+      <div className="relative">
+        {/* Header */}
         <FadeInSection>
-          <div className="text-center mb-12 sm:mb-16">
+          <div className="text-center mb-12 sm:mb-16 px-4">
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="h-1 w-10 rounded-full bg-gradient-to-r from-primary to-accent" />
               <span className="text-sm font-display font-semibold uppercase tracking-[0.2em] text-primary">
@@ -157,48 +135,32 @@ const TechStack = () => {
           </div>
         </FadeInSection>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-          {tools.map((tool, idx) => (
-            <FadeInSection key={tool.name} delay={100 + idx * 50}>
-              <Card className="group relative h-full overflow-hidden border-white/10 bg-white/[0.03] backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:bg-white/[0.06]">
-                {/* Top accent */}
-                <div
-                  className="absolute top-0 left-0 right-0 h-1 opacity-60 group-hover:opacity-100 transition-opacity"
-                  style={{ backgroundColor: tool.color }}
-                />
-                
-                <CardContent className="p-5 sm:p-6">
-                  {/* Icon */}
-                  <div
-                    className="mb-4 text-white/70 group-hover:text-white transition-colors"
-                    style={{ color: tool.color }}
-                  >
-                    {tool.icon}
-                  </div>
+        {/* Row 1 - scrolls left */}
+        <div className="relative mb-6">
+          {/* Gradient fade edges */}
+          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-24 sm:w-40 z-10 bg-gradient-to-r from-[hsl(var(--dark-section))] to-transparent" />
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 sm:w-40 z-10 bg-gradient-to-l from-[hsl(var(--dark-section))] to-transparent" />
 
-                  {/* Name */}
-                  <h3 className="text-lg font-display font-bold text-foreground mb-2">
-                    {tool.name}
-                  </h3>
+          <div className="flex animate-ticker-row1 gap-6">
+            {/* Duplicate for seamless loop */}
+            {[...row1Tools, ...row1Tools, ...row1Tools, ...row1Tools].map((tool, i) => (
+              <ToolCard key={`row1-${i}`} tool={tool} />
+            ))}
+          </div>
+        </div>
 
-                  {/* Description */}
-                  <p className="text-xs text-muted-foreground mb-3">
-                    {tool.description}
-                  </p>
+        {/* Row 2 - scrolls right (reverse) */}
+        <div className="relative">
+          {/* Gradient fade edges */}
+          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-24 sm:w-40 z-10 bg-gradient-to-r from-[hsl(var(--dark-section))] to-transparent" />
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 sm:w-40 z-10 bg-gradient-to-l from-[hsl(var(--dark-section))] to-transparent" />
 
-                  {/* Usage */}
-                  <div className="pt-3 border-t border-white/10">
-                    <p className="text-xs text-white/50 uppercase tracking-wider mb-1">
-                      How I use it
-                    </p>
-                    <p className="text-xs text-muted-foreground leading-relaxed">
-                      {tool.usage}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            </FadeInSection>
-          ))}
+          <div className="flex animate-ticker-row2 gap-6">
+            {/* Duplicate for seamless loop */}
+            {[...row2Tools, ...row2Tools, ...row2Tools, ...row2Tools].map((tool, i) => (
+              <ToolCard key={`row2-${i}`} tool={tool} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
