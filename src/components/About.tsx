@@ -89,21 +89,21 @@ const About = () => (
     <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.02)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
     {/* Left side sticky notes */}
-    <div className="hidden md:block absolute top-0 bottom-0 left-2 lg:left-8 xl:left-16 w-[110px]">
+    <div className="hidden lg:block absolute top-0 bottom-0 left-2 lg:left-8 xl:left-16 w-[110px]">
       {leftNotes.map((note, idx) => (
         <StickyNote key={note.label} note={note} side="left" idx={idx} />
       ))}
     </div>
 
     {/* Right side sticky notes */}
-    <div className="hidden md:block absolute top-0 bottom-0 right-2 lg:right-8 xl:right-16 w-[110px]">
+    <div className="hidden lg:block absolute top-0 bottom-0 right-2 lg:right-8 xl:right-16 w-[110px]">
       {rightNotes.map((note, idx) => (
         <StickyNote key={note.label} note={note} side="right" idx={idx} />
       ))}
     </div>
 
     {/* Mobile: horizontal scrollable sticky notes */}
-    <div className="md:hidden relative mx-auto max-w-3xl mb-6">
+    <div className="lg:hidden relative mx-auto max-w-3xl mb-6">
       <FadeInSection delay={50}>
         <div className="-mx-4 px-4">
           <div className="flex gap-3 overflow-x-auto pb-3 scrollbar-themed">
