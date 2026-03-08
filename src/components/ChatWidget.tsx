@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { MessageCircle, X, Send, Bot, User } from "lucide-react";
+import { MessageCircle, X, Send, Bot, User, RotateCcw } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 
@@ -117,10 +117,9 @@ const ChatWidget = () => {
     }
   }, [isOpen]);
 
-  const saveLead = useCallback(async () => {
-    const msgs = messagesRef.current;
-    if (leadSaved || msgs.length < 2) return; // Need at least 1 exchange
-    setLeadSaved(true);
+  const saveLead = useCallback(async (msgs?: Msg[]) => {
+    const toSave = msgs || messagesRef.current;
+    if (toSave.length < 2) return;
 
     try {
       await fetch(SAVE_LEAD_URL, {
@@ -129,16 +128,31 @@ const ChatWidget = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages: msgs }),
+        body: JSON.stringify({ messages: toSave }),
       });
     } catch (e) {
       console.error("Failed to save lead:", e);
     }
-  }, [leadSaved]);
+  }, []);
 
   const handleClose = () => {
-    saveLead();
+    if (!leadSaved && messages.length >= 2) {
+      saveLead();
+      setLeadSaved(true);
+    }
     setIsOpen(false);
+  };
+
+  const handleNewChat = async () => {
+    // Save current conversation first (as its own row)
+    if (messages.length >= 2) {
+      await saveLead(messages);
+    }
+    // Reset everything for a fresh chat
+    setMessages([]);
+    setInput("");
+    setLeadSaved(false);
+    if (inputRef.current) inputRef.current.focus();
   };
 
   // Also save on page unload if chat had exchanges
@@ -272,12 +286,23 @@ const ChatWidget = () => {
                   <p className="text-[10px] text-muted-foreground">Ask me anything</p>
                 </div>
               </div>
-              <button
-                onClick={handleClose}
-                className="h-8 w-8 rounded-full hover:bg-white/10 flex items-center justify-center transition-colors"
-              >
-                <X className="h-4 w-4 text-muted-foreground" />
-              </button>
+              <div className="flex items-center gap-1">
+                {messages.length > 0 && (
+                  <button
+                    onClick={handleNewChat}
+                    className="h-8 w-8 rounded-full hover:bg-white/10 flex items-center justify-center transition-colors"
+                    title="New chat"
+                  >
+                    <RotateCcw className="h-3.5 w-3.5 text-muted-foreground" />
+                  </button>
+                )}
+                <button
+                  onClick={handleClose}
+                  className="h-8 w-8 rounded-full hover:bg-white/10 flex items-center justify-center transition-colors"
+                >
+                  <X className="h-4 w-4 text-muted-foreground" />
+                </button>
+              </div>
             </div>
 
             {/* Messages */}
