@@ -30,7 +30,7 @@ const testimonials: Testimonial[] = [
     rating: 5,
   },
   {
-    name: "David Chen",
+    name: "Nazir",
     role: "CEO",
     company: "GrowthStack",
     quote: "We needed someone who could bridge the gap between sales, marketing, and operations data. Sriram didn't just build dashboards — he built an entire intelligence layer for our business.",
