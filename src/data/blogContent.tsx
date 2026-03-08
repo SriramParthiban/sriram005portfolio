@@ -54,20 +54,20 @@ const N8nContent = () => (
           </tr>
         </thead>
         <tbody>
-          <tr className="border-b border-[hsl(270,15%,15%)]">
-            <td className="py-3 px-4 text-muted-foreground">Zapier</td>
-            <td className="py-3 px-4 text-red-400">~$400+/mo</td>
-            <td className="py-3 px-4 text-red-400">❌</td>
+          <tr className="border-b border-[hsl(270,15%,18%)]">
+            <td className="py-3.5 px-4 text-white/70">Zapier</td>
+            <td className="py-3.5 px-4 text-red-400 font-medium">~$400+/mo</td>
+            <td className="py-3.5 px-4 text-red-400">❌</td>
           </tr>
-          <tr className="border-b border-[hsl(270,15%,15%)]">
-            <td className="py-3 px-4 text-muted-foreground">Make</td>
-            <td className="py-3 px-4 text-red-400">~$200+/mo</td>
-            <td className="py-3 px-4 text-red-400">❌</td>
+          <tr className="border-b border-[hsl(270,15%,18%)]">
+            <td className="py-3.5 px-4 text-white/70">Make</td>
+            <td className="py-3.5 px-4 text-red-400 font-medium">~$200+/mo</td>
+            <td className="py-3.5 px-4 text-red-400">❌</td>
           </tr>
           <tr>
-            <td className="py-3 px-4 text-foreground font-medium">n8n</td>
-            <td className="py-3 px-4 text-[hsl(145,60%,50%)] font-bold">$0</td>
-            <td className="py-3 px-4 text-[hsl(145,60%,50%)]">✅</td>
+            <td className="py-3.5 px-4 text-white font-medium">n8n</td>
+            <td className="py-3.5 px-4 text-[hsl(145,60%,55%)] font-bold">$0</td>
+            <td className="py-3.5 px-4 text-[hsl(145,60%,55%)]">✅</td>
           </tr>
         </tbody>
       </table>
