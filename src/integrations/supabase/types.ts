@@ -50,6 +50,39 @@ export type Database = {
         }
         Relationships: []
       }
+      chat_leads: {
+        Row: {
+          ai_response_summary: string | null
+          created_at: string
+          email: string | null
+          full_conversation: Json | null
+          id: string
+          name: string | null
+          phone: string | null
+          summary: string | null
+        }
+        Insert: {
+          ai_response_summary?: string | null
+          created_at?: string
+          email?: string | null
+          full_conversation?: Json | null
+          id?: string
+          name?: string | null
+          phone?: string | null
+          summary?: string | null
+        }
+        Update: {
+          ai_response_summary?: string | null
+          created_at?: string
+          email?: string | null
+          full_conversation?: Json | null
+          id?: string
+          name?: string | null
+          phone?: string | null
+          summary?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
