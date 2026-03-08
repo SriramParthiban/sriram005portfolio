@@ -142,7 +142,7 @@ const KPIDashboardContent = () => (
       Not because the data is wrong — but because they answer <strong>questions nobody is asking.</strong>
     </p>
 
-    <StickyNote color="yellow" rotate={-0.5}>
+    <StickyNote color="yellow">
       I've built KPI systems for marketing agencies, SaaS companies, and service businesses. 
       The ones that <strong>stick</strong> all share the same principles.
     </StickyNote>
