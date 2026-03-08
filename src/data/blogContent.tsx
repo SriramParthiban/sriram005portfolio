@@ -263,7 +263,7 @@ const KPIDashboardContent = () => (
 
     <h2>The Business Impact</h2>
 
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 my-8">
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 my-10">
       <StatsCard label="Reporting" before="6 hrs/week" after="Real-time" />
       <StatsCard label="Time Saved" before="0" after="24 hrs/mo" change="+100%" />
       <StatsCard label="Ad Waste Found" before="Hidden" after="$3K/mo" change="Week 1" />
