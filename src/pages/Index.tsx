@@ -16,6 +16,7 @@ import Certifications from "@/components/Certifications";
 import GitHubRepos from "@/components/GitHubRepos";
 import Contact from "@/components/Contact";
 import FinalCTA from "@/components/FinalCTA";
+import QuoteStrip from "@/components/QuoteStrip";
 import Footer from "@/components/Footer";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
 import ChatWidget from "@/components/ChatWidget";
