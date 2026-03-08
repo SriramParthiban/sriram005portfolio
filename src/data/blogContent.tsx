@@ -243,17 +243,17 @@ const KPIDashboardContent = () => (
       Set up automated alerts that <strong>push</strong> insights to you instead of waiting for you to check.
     </CalloutBox>
 
-    <div className="space-y-3 my-8">
+    <div className="space-y-4 my-10">
       {[
         { trigger: "CPL spikes above threshold", action: "Slack notification → ad manager", icon: "📈" },
         { trigger: "Booking rate drops below 20%", action: "Email → sales team lead", icon: "📉" },
         { trigger: "Pipeline crosses monthly target", action: "Celebration message → team", icon: "🎉" },
       ].map((alert) => (
-        <div key={alert.trigger} className="flex items-center gap-4 bg-[hsl(270,15%,10%)] border border-[hsl(270,20%,18%)] rounded-xl p-4">
+        <div key={alert.trigger} className="flex items-center gap-4 bg-[hsl(270,12%,12%)] border border-[hsl(270,18%,22%)] rounded-xl p-5">
           <span className="text-2xl flex-shrink-0">{alert.icon}</span>
           <div>
-            <p className="text-sm text-foreground font-medium">{alert.trigger}</p>
-            <p className="text-xs text-primary mt-0.5">{alert.action}</p>
+            <p className="text-[15px] text-white font-medium">{alert.trigger}</p>
+            <p className="text-sm text-primary mt-1">{alert.action}</p>
           </div>
         </div>
       ))}
