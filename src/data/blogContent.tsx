@@ -44,8 +44,8 @@ const N8nContent = () => (
     </div>
 
     <h3>Pricing Comparison</h3>
-    <div className="overflow-x-auto my-6">
-      <table className="w-full text-sm border border-[hsl(270,15%,18%)] rounded-xl overflow-hidden">
+    <div className="overflow-x-auto my-8">
+      <table className="w-full text-sm border border-[hsl(270,15%,22%)] rounded-xl overflow-hidden">
         <thead className="bg-[hsl(270,15%,14%)]">
           <tr>
             <th className="text-left py-3 px-4 text-foreground font-semibold border-b border-[hsl(270,15%,20%)]">Platform</th>
