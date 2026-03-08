@@ -43,11 +43,13 @@ const Navbar = () => {
 
   const handleNav = (href: string) => {
     const id = href.replace("#", "");
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
     setMobileOpen(false);
+    if (isHome) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/#" + id);
+    }
   };
 
   const scrollToTop = () => {
