@@ -84,6 +84,14 @@ const Hero = () => {
               Sriram{" "}
               <span className="gradient-text-warm">Parthiban</span>
             </motion.h1>
+            {/* Handwritten arrow annotation */}
+            <motion.span 
+              variants={item} 
+              className="hidden md:block absolute -right-4 lg:-right-8 top-0 font-handwritten text-accent/50 text-base lg:text-lg"
+              style={{ transform: "rotate(8deg)" }}
+            >
+              that's me! →
+            </motion.span>
 
             {/* Role animation */}
             <motion.div variants={item} className="mt-4 h-8 sm:h-9 overflow-hidden">
