@@ -75,7 +75,9 @@ const Navbar = () => {
                 className={`relative rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
                   isActive
                     ? "bg-primary text-primary-foreground shadow-[0_0_20px_-4px_hsl(var(--primary)/0.3)]"
-                    : "text-muted-foreground hover:text-foreground hover:bg-primary/10 hover:shadow-[0_0_12px_-4px_hsl(var(--primary)/0.2)]"
+                    : scrolled
+                      ? "text-muted-foreground hover:text-foreground hover:bg-primary/10 hover:shadow-[0_0_12px_-4px_hsl(var(--primary)/0.2)]"
+                      : "text-white/80 hover:text-white hover:bg-white/15"
                 }`}
               >
                 {link.label}
