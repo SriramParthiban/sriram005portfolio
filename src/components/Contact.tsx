@@ -170,7 +170,7 @@ const Contact = () => {
                         {errors.email && <p className="mt-1 text-xs text-destructive">{errors.email}</p>}
                       </div>
                       <div>
-                        <label className="block text-[11px] font-mono font-bold text-[hsl(35,20%,30%)] uppercase tracking-widest mb-1">Message</label>
+                        <label className="block text-xs font-mono font-extrabold text-[hsl(35,25%,22%)] uppercase tracking-widest mb-1.5">Message</label>
                         <textarea
                           placeholder="Write your message here..."
                           required
@@ -178,7 +178,7 @@ const Contact = () => {
                           maxLength={2000}
                           value={form.message}
                           onChange={(e) => setForm({ ...form, message: e.target.value })}
-                          className="w-full bg-transparent border-b-2 border-dotted border-[hsl(35,20%,68%)] pb-2 text-sm font-semibold text-[hsl(35,20%,20%)] placeholder:text-[hsl(35,15%,45%)] placeholder:font-medium focus:outline-none focus:border-primary/40 transition-colors resize-none font-mono"
+                          className="w-full bg-transparent border-b-2 border-dotted border-[hsl(35,20%,60%)] pb-2 text-base font-bold text-[hsl(35,25%,15%)] placeholder:text-[hsl(35,20%,40%)] placeholder:font-semibold focus:outline-none focus:border-primary/40 transition-colors resize-none font-mono"
                           style={{
                             backgroundImage: "repeating-linear-gradient(transparent, transparent 27px, hsl(35 20% 78% / 0.5) 27px, hsl(35 20% 78% / 0.5) 28px)",
                             lineHeight: "28px",
