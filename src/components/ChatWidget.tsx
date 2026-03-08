@@ -374,7 +374,7 @@ const ChatWidget = () => {
                   <div className="h-6 w-6 rounded-full bg-primary/20 flex-shrink-0 flex items-center justify-center">
                     <Bot className="h-3 w-3 text-primary" />
                   </div>
-                  <div className="bg-white/[0.06] rounded-2xl rounded-bl-md px-4 py-3">
+                  <div className="bg-muted rounded-2xl rounded-bl-md px-4 py-3">
                     <div className="flex gap-1">
                       <span className="h-2 w-2 rounded-full bg-primary/50 animate-bounce [animation-delay:0ms]" />
                       <span className="h-2 w-2 rounded-full bg-primary/50 animate-bounce [animation-delay:150ms]" />
