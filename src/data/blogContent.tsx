@@ -171,12 +171,12 @@ const KPIDashboardContent = () => (
 
     <div className="bg-[hsl(270,12%,12%)] border border-[hsl(270,18%,22%)] rounded-xl p-7 my-10">
       <p className="text-xs text-white/40 mb-4 font-medium uppercase tracking-wider">My Standard Architecture</p>
-      <div className="flex flex-wrap items-center gap-3 text-sm">
+      <div className="flex flex-wrap items-center gap-2 sm:gap-3 text-sm">
         {["Source (API/Webhook)", "→", "n8n (Transform)", "→", "PostgreSQL (Store)", "→", "Looker/Power BI"].map((part, i) => (
           part === "→" ? (
-            <span key={i} className="text-primary text-xl">→</span>
+            <span key={i} className="text-primary text-lg sm:text-xl">→</span>
           ) : (
-            <span key={i} className="bg-[hsl(270,18%,17%)] border border-[hsl(270,22%,25%)] rounded-lg px-4 py-2 text-white/80 font-medium">
+            <span key={i} className="bg-[hsl(270,18%,17%)] border border-[hsl(270,22%,25%)] rounded-lg px-3 sm:px-4 py-2 text-white/80 font-medium text-xs sm:text-sm">
               {part}
             </span>
           )
