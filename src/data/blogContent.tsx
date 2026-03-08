@@ -123,7 +123,7 @@ const N8nContent = () => (
       </ol>
     </CalloutBox>
 
-    <StickyNote color="green" rotate={0.5}>
+    <StickyNote color="green">
       <strong>Automation isn't about replacing people — it's about giving them superpowers.</strong> n8n is the tool that makes that possible at scale.
     </StickyNote>
   </div>
