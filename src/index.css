@@ -229,6 +229,14 @@ input[type="number"] {
   .animate-ticker-row2 {
     animation: ticker-row2 45s linear infinite;
   }
+  @media (max-width: 640px) {
+    .animate-ticker-row1 {
+      animation: ticker-row1 20s linear infinite;
+    }
+    .animate-ticker-row2 {
+      animation: ticker-row2 22s linear infinite;
+    }
+  }
 }
 
 /* Decorative keyframe animations */

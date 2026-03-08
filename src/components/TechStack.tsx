@@ -100,7 +100,7 @@ const row2Tools = tools.slice(7, 13);
 
 const ToolCard = ({ tool }: { tool: typeof tools[0] }) => (
   <div
-    className="group relative flex-shrink-0 w-[280px] sm:w-[320px] overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-sm transition-all duration-300 hover:border-white/25 hover:bg-white/[0.06]"
+    className="group relative flex-shrink-0 w-[200px] sm:w-[320px] overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-sm transition-all duration-300 hover:border-white/25 hover:bg-white/[0.06]"
   >
     {/* Top accent */}
     <div
