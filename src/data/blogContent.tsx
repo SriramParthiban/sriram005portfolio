@@ -429,7 +429,7 @@ const AILeadQualContent = () => (
       <NumberHighlight number="67%" label="of sales time wasted on bad leads" color="amber" />
     </div>
 
-    <div className="grid grid-cols-3 gap-4 my-10">
+    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 my-10">
       {[
         { icon: "🐌", label: "Slow", desc: "Hours to research each lead" },
         { icon: "🎲", label: "Inconsistent", desc: "Depends on who's reviewing" },
