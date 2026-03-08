@@ -211,7 +211,7 @@ const AIWaveBars = () => (
 
 /* ─── Confetti Burst ─── */
 const ConfettiBurst = () => {
-  const colors = ["#7C6FFF", "#00D4FF", "#FFB800", "#00E87A", "#FF6B35", "#FF3CAC"];
+  const colors = ["#2D8B5E", "#D4A24C", "#F59E0B", "#34D399", "#FF6B35", "#FF3CAC"];
   const pieces = useRef(
     Array.from({ length: 24 }, (_, i) => ({
       color: colors[i % colors.length],
