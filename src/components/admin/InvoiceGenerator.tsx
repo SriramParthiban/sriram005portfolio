@@ -1,6 +1,11 @@
 import { useState, useRef } from "react";
-import { Plus, Trash2, FileDown, Printer } from "lucide-react";
+import { Plus, Trash2, FileDown, CalendarIcon } from "lucide-react";
 import { motion } from "framer-motion";
+import { format } from "date-fns";
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
 type LineItem = {
   id: string;
@@ -12,9 +17,9 @@ const generateId = () => Math.random().toString(36).slice(2, 9);
 
 const OWNER = {
   name: "Sriram Parthiban",
-  email: "sriramparthiban.work@gmail.com",
-  phone: "+91 93445 XXXXX",
-  address: "Chennai, Tamil Nadu, India",
+  email: "info@sriramparthiban.com",
+  phone: "+91 93459 73779",
+  address: "Plot No A2 F1, Ashraya Apartments, Brindavan Street, Secretariat Colony, Mapeedu, Chennai - 600126",
 };
 
 const InvoiceGenerator = () => {
@@ -30,10 +35,8 @@ const InvoiceGenerator = () => {
   const [invoiceNumber, setInvoiceNumber] = useState(
     `INV-${Date.now().toString().slice(-6)}`
   );
-  const [invoiceDate, setInvoiceDate] = useState(
-    new Date().toISOString().split("T")[0]
-  );
-  const [dueDate, setDueDate] = useState("");
+  const [invoiceDate, setInvoiceDate] = useState<Date>(new Date());
+  const [dueDate, setDueDate] = useState<Date | undefined>(undefined);
   const [notes, setNotes] = useState("");
 
   // Line items
@@ -103,8 +106,8 @@ const InvoiceGenerator = () => {
           </div>
           <div class="invoice-meta">
             <div><strong>${invoiceNumber}</strong></div>
-            <div>Date: ${new Date(invoiceDate).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</div>
-            ${dueDate ? `<div>Due: ${new Date(dueDate).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}</div>` : ""}
+            <div>Date: ${invoiceDate ? format(invoiceDate, "MMMM d, yyyy") : ""}</div>
+            ${dueDate ? `<div>Due: ${format(dueDate, "MMMM d, yyyy")}</div>` : ""}
           </div>
         </div>
 
@@ -149,7 +152,7 @@ const InvoiceGenerator = () => {
           <div class="sig-line">
             <div class="sig-name">Sriram Parthiban</div>
           </div>
-          <div class="sig-title">AI Automation & Data Analytics Specialist</div>
+          <div class="sig-title">AI Automation Specialist</div>
         </div>
 
         <div class="footer">
@@ -176,11 +179,31 @@ const InvoiceGenerator = () => {
         </div>
         <div>
           <label className={labelClass}>Invoice Date</label>
-          <input className={inputClass} type="date" value={invoiceDate} onChange={(e) => setInvoiceDate(e.target.value)} />
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button variant="outline" className={cn("w-full justify-start text-left font-normal bg-[hsl(270,15%,12%)] border-[hsl(270,20%,20%)] hover:bg-[hsl(270,15%,15%)]", !invoiceDate && "text-muted-foreground")}>
+                <CalendarIcon className="mr-2 h-4 w-4" />
+                {invoiceDate ? format(invoiceDate, "dd-MM-yyyy") : <span>Pick a date</span>}
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-auto p-0" align="start">
+              <Calendar mode="single" selected={invoiceDate} onSelect={(d) => d && setInvoiceDate(d)} initialFocus className={cn("p-3 pointer-events-auto")} />
+            </PopoverContent>
+          </Popover>
         </div>
         <div>
           <label className={labelClass}>Due Date</label>
-          <input className={inputClass} type="date" value={dueDate} onChange={(e) => setDueDate(e.target.value)} />
+          <Popover>
+            <PopoverTrigger asChild>
+              <Button variant="outline" className={cn("w-full justify-start text-left font-normal bg-[hsl(270,15%,12%)] border-[hsl(270,20%,20%)] hover:bg-[hsl(270,15%,15%)]", !dueDate && "text-muted-foreground")}>
+                <CalendarIcon className="mr-2 h-4 w-4" />
+                {dueDate ? format(dueDate, "dd-MM-yyyy") : <span>dd-mm-yyyy</span>}
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-auto p-0" align="start">
+              <Calendar mode="single" selected={dueDate} onSelect={setDueDate} initialFocus className={cn("p-3 pointer-events-auto")} />
+            </PopoverContent>
+          </Popover>
         </div>
       </div>
 
@@ -282,7 +305,7 @@ const InvoiceGenerator = () => {
             Sriram Parthiban
           </p>
           <div className="w-40 h-px bg-foreground/30 mt-1 ml-auto" />
-          <p className="text-[11px] text-muted-foreground mt-1">AI Automation & Data Analytics Specialist</p>
+          <p className="text-[11px] text-muted-foreground mt-1">AI Automation Specialist</p>
         </div>
       </div>
 
