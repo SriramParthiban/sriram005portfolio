@@ -18,11 +18,11 @@ const N8nContent = () => (
       and get you automated in minutes. But as operations scale, cracks appear fast.
     </p>
 
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 my-8">
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 my-10">
       {["Rate limits", "Limited logic", "Expensive pricing", "Zero data control"].map((issue) => (
-        <div key={issue} className="bg-[hsl(0,40%,12%)] border border-[hsl(0,40%,22%)] rounded-lg p-3 text-center">
-          <span className="text-red-400 text-xl">✕</span>
-          <p className="text-xs text-foreground/70 mt-1.5">{issue}</p>
+        <div key={issue} className="bg-[hsl(0,30%,14%)] border border-[hsl(0,30%,25%)] rounded-xl p-5 text-center">
+          <span className="text-red-400 text-2xl">✕</span>
+          <p className="text-sm text-white/70 mt-2 font-medium">{issue}</p>
         </div>
       ))}
     </div>
