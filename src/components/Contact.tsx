@@ -165,7 +165,7 @@ const Contact = () => {
                           maxLength={255}
                           value={form.email}
                           onChange={(e) => setForm({ ...form, email: e.target.value })}
-                          className="w-full bg-transparent border-b-2 border-dotted border-[hsl(35,20%,68%)] pb-2 text-sm text-[hsl(35,20%,25%)] placeholder:text-[hsl(35,10%,60%)] focus:outline-none focus:border-primary/40 transition-colors font-mono"
+                          className="w-full bg-transparent border-b-2 border-dotted border-[hsl(35,20%,68%)] pb-2 text-sm font-semibold text-[hsl(35,20%,20%)] placeholder:text-[hsl(35,15%,45%)] placeholder:font-medium focus:outline-none focus:border-primary/40 transition-colors font-mono"
                         />
                         {errors.email && <p className="mt-1 text-xs text-destructive">{errors.email}</p>}
                       </div>
