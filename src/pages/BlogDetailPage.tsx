@@ -92,10 +92,10 @@ const BlogDetailPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="blog-article
-              [&_h2]:font-display [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-foreground [&_h2]:mt-14 [&_h2]:mb-5 [&_h2]:pb-3 [&_h2]:border-b [&_h2]:border-white/[0.06]
-              [&_h3]:font-display [&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-foreground [&_h3]:mt-8 [&_h3]:mb-4
-              [&_p]:text-muted-foreground [&_p]:leading-[1.85] [&_p]:my-4 [&_p]:text-[15px]
-              [&_strong]:text-foreground
+              [&_h2]:font-display [&_h2]:text-[26px] [&_h2]:font-extrabold [&_h2]:text-white [&_h2]:mt-16 [&_h2]:mb-6 [&_h2]:pb-3 [&_h2]:border-b [&_h2]:border-white/[0.06]
+              [&_h3]:font-display [&_h3]:text-xl [&_h3]:font-bold [&_h3]:text-white [&_h3]:mt-10 [&_h3]:mb-5
+              [&_p]:text-white/70 [&_p]:leading-[1.9] [&_p]:my-5 [&_p]:text-[15px]
+              [&_strong]:text-white [&_strong]:font-semibold
             "
           >
             {blogContentMap[post.slug]}
