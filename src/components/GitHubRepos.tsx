@@ -70,28 +70,16 @@ const GitHubRepos = () => {
 
   return (
     <section id="github" className="dark-section relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
-      {/* Background */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 right-0 h-[300px] w-[300px] rounded-full bg-primary/6 blur-[120px]" />
-        <div className="absolute -bottom-20 left-20 h-[250px] w-[250px] rounded-full bg-accent/5 blur-[100px]" />
-      </div>
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.02)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
-
       <div className="relative mx-auto max-w-3xl">
         <FadeInSection>
-          <div className="flex items-center gap-3 mb-4">
-            <div className="h-1 w-10 rounded-full bg-gradient-to-r from-primary to-accent" />
-            <span className="text-sm font-display font-semibold uppercase tracking-[0.2em] text-primary">Open Source</span>
-          </div>
           <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground md:text-4xl lg:text-5xl">
-            GitHub <span className="gradient-text">Repositories</span>
+            GitHub Repositories
           </h2>
+          <p className="mt-3 text-sm text-muted-foreground">Open source work and side projects.</p>
         </FadeInSection>
 
-        {/* Terminal Window */}
         <FadeInSection delay={150}>
           <div className="mt-10 sm:mt-14 relative">
-            {/* CRT scanline overlay */}
             <div
               className="pointer-events-none absolute inset-0 z-20 rounded-lg opacity-[0.03]"
               style={{
@@ -103,7 +91,6 @@ const GitHubRepos = () => {
               <TerminalHeader />
 
               <div className="p-4 sm:p-6 font-mono text-sm space-y-1">
-                {/* Boot text */}
                 <div className="text-[hsl(120,40%,45%)] text-xs mb-4">
                   <TypewriterText text="$ ls -la ~/repos --sort=updated" />
                   <TypingCursor />
@@ -126,7 +113,6 @@ const GitHubRepos = () => {
 
                 {repos && (
                   <div className="space-y-0.5">
-                    {/* Table header */}
                     <div className="flex items-center gap-4 text-[10px] sm:text-xs text-white/25 border-b border-white/5 pb-1 mb-2">
                       <span className="w-4">$</span>
                       <span className="flex-1">NAME</span>
@@ -162,7 +148,6 @@ const GitHubRepos = () => {
                       </motion.a>
                     ))}
 
-                    {/* Footer prompt */}
                     <div className="mt-4 pt-2 border-t border-white/5 text-[hsl(120,40%,45%)] text-xs">
                       $ <span className="text-white/30">total {repos.length} repositories</span>
                     </div>

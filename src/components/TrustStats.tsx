@@ -39,9 +39,6 @@ const Counter = ({ value, prefix = "", suffix = "" }: { value: number; prefix?: 
 
 const TrustStats = () => (
   <section className="dark-section relative overflow-hidden py-16">
-    {/* Subtle grid overlay */}
-    <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.03)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.03)_1px,transparent_1px)] bg-[size:40px_40px]" />
-
     <div className="relative mx-auto max-w-5xl px-6">
       <div className="grid grid-cols-2 gap-6 sm:grid-cols-4">
         {stats.map((s, idx) => {

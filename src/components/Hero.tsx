@@ -3,6 +3,7 @@ import { ArrowDown, Mail } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import profilePhoto from "@/assets/profile-photo.jpeg";
+import natureWaterfall from "@/assets/nature-waterfall.jpg";
 
 const roles = [
   "AI Automation Specialist",
@@ -33,36 +34,18 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="dark-section relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 sm:px-6 pt-20">
-      {/* Ambient background — forest canopy glow */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-20 -left-20 h-[200px] w-[200px] md:h-[400px] md:w-[400px] rounded-full bg-[hsl(152,55%,35%)]/10 blur-[80px] md:blur-[120px]" />
-        <div className="absolute -bottom-20 -right-20 h-[200px] w-[200px] md:h-[400px] md:w-[400px] rounded-full bg-[hsl(38,75%,48%)]/10 blur-[80px] md:blur-[120px]" />
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[250px] w-[250px] md:h-[500px] md:w-[500px] rounded-full bg-[hsl(152,55%,35%)]/15 blur-[100px] md:blur-[150px]" />
+    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 sm:px-6 pt-20">
+      {/* Nature background image */}
+      <div className="absolute inset-0">
+        <img 
+          src={natureWaterfall} 
+          alt="" 
+          className="h-full w-full object-cover"
+          loading="eager"
+        />
+        <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.88)]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(155_25%_5%/0.4)] via-transparent to-[hsl(155_25%_5%)]" />
       </div>
-
-      {/* Organic leaf-like pattern overlay */}
-      <div className="pointer-events-none absolute inset-0 opacity-[0.03]" style={{
-        backgroundImage: `radial-gradient(ellipse 80px 60px at 20% 30%, hsl(152 55% 45% / 0.3) 0%, transparent 70%),
-                          radial-gradient(ellipse 60px 80px at 75% 60%, hsl(38 75% 48% / 0.2) 0%, transparent 70%),
-                          radial-gradient(ellipse 100px 40px at 50% 80%, hsl(152 55% 45% / 0.15) 0%, transparent 70%)`
-      }} />
-
-      {/* Mobile: animated gradient accent lines + floating orbs */}
-      <div className="pointer-events-none absolute top-[12%] left-4 h-16 w-[2px] rounded-full bg-gradient-to-b from-[hsl(152,55%,40%)]/30 to-transparent animate-[pulseFade_4s_ease-in-out_infinite] md:hidden" />
-      <div className="pointer-events-none absolute top-[8%] right-6 h-20 w-[2px] rounded-full bg-gradient-to-b from-[hsl(38,75%,52%)]/25 to-transparent animate-[pulseFade_5s_ease-in-out_infinite_1s] md:hidden" />
-      <div className="pointer-events-none absolute bottom-[15%] left-8 h-3 w-3 rounded-full bg-gradient-to-br from-[hsl(152,55%,40%)]/20 to-[hsl(38,75%,52%)]/15 blur-[2px] animate-drift md:hidden" />
-      <div className="pointer-events-none absolute bottom-[25%] right-6 h-2 w-2 rounded-full bg-[hsl(38,75%,52%)]/20 blur-[1px] animate-[drift_6s_ease-in-out_infinite_2s] md:hidden" />
-      {/* Mobile: corner flourish — vine-like */}
-      <div className="pointer-events-none absolute top-20 right-4 h-8 w-8 rounded-tr-xl border-t border-r border-[hsl(152,55%,40%)]/15 animate-border-glow md:hidden" />
-      <div className="pointer-events-none absolute bottom-24 left-4 h-8 w-8 rounded-bl-xl border-b border-l border-[hsl(38,75%,52%)]/15 animate-[borderGlow_4s_ease-in-out_infinite_2s] md:hidden" />
-
-      {/* Desktop: floating leaf-like dots */}
-      <div className="pointer-events-none absolute top-[15%] right-[10%] h-1.5 w-1.5 rounded-full bg-primary/20 animate-[float_4s_ease-in-out_infinite] hidden md:block" />
-      <div className="pointer-events-none absolute top-[20%] right-[15%] h-1 w-1 rounded-full bg-accent/20 animate-[float_5s_ease-in-out_infinite_0.5s] hidden md:block" />
-      <div className="pointer-events-none absolute top-[12%] right-[20%] h-1 w-1 rounded-full bg-primary/15 animate-[float_3.5s_ease-in-out_infinite_1s] hidden md:block" />
-      <div className="pointer-events-none absolute top-[18%] right-[8%] h-1 w-1 rounded-full bg-accent/15 animate-[float_4.5s_ease-in-out_infinite_0.3s] hidden md:block" />
-      <div className="pointer-events-none absolute top-[25%] right-[12%] h-1.5 w-1.5 rounded-full bg-primary/20 animate-[float_5.5s_ease-in-out_infinite_0.8s] hidden md:block" />
 
       <motion.div
         className="relative mx-auto max-w-5xl w-full"
@@ -70,7 +53,7 @@ const Hero = () => {
         initial="hidden"
         animate="visible"
       >
-        {/* Status badge - centered */}
+        {/* Status badge */}
         <motion.div variants={item} className="mb-10 text-center">
           <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-5 py-2 text-xs font-semibold text-primary backdrop-blur-sm">
             <span className="relative flex h-2 w-2">
@@ -102,7 +85,7 @@ const Hero = () => {
               <span className="gradient-text-warm">Parthiban</span>
             </motion.h1>
 
-            {/* Typing role animation */}
+            {/* Role animation */}
             <motion.div variants={item} className="mt-4 h-8 sm:h-9 overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.p
@@ -122,7 +105,6 @@ const Hero = () => {
               Designing intelligent automation systems that generate qualified pipeline,
               optimize GTM workflows, and build scalable AI-driven operations.
             </motion.p>
-
 
             <motion.div variants={item} className="mt-8 flex flex-wrap items-center justify-center md:justify-start gap-3 sm:gap-4">
               <Button size="lg" className="glow-md font-semibold text-[0.9rem] px-6 sm:px-7 py-6 transition-all duration-300 hover:glow-lg min-h-[44px]" asChild>

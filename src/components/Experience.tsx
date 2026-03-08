@@ -42,29 +42,17 @@ const tapeStyle = "absolute -top-3 left-1/2 -translate-x-1/2 h-6 w-16 bg-gradien
 
 const Experience = () => (
   <section id="experience" className="dark-section relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
-    {/* Background effects */}
-    <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      <div className="absolute top-20 -right-20 h-[175px] w-[175px] md:h-[350px] md:w-[350px] rounded-full bg-primary/6 blur-[80px] md:blur-[120px]" />
-      <div className="absolute -bottom-20 left-0 h-[125px] w-[125px] md:h-[250px] md:w-[250px] rounded-full bg-accent/5 blur-[60px] md:blur-[100px]" />
-    </div>
-    <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.02)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
-
     <div className="relative mx-auto max-w-4xl">
       <FadeInSection>
-        <div className="flex items-center gap-3 mb-4">
-          <div className="h-1 w-10 rounded-full bg-gradient-to-r from-primary to-accent" />
-          <span className="text-sm font-display font-semibold uppercase tracking-[0.2em] text-primary">Career</span>
-        </div>
         <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground md:text-4xl lg:text-5xl">
-          Professional <span className="gradient-text">Experience</span>
+          Professional Experience
         </h2>
+        <div className="mt-2 h-1 w-16 rounded-full bg-primary" />
       </FadeInSection>
 
       {/* Timeline */}
       <div className="relative mt-14 sm:mt-20">
-        {/* Glowing vertical line — left on mobile, center on desktop */}
         <div className="absolute left-4 sm:left-1/2 sm:-translate-x-px top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/50 via-primary/20 to-transparent" />
-        <div className="absolute left-4 sm:left-1/2 sm:-translate-x-px top-0 bottom-0 w-0.5 bg-primary/10 blur-[4px]" />
 
         <div className="space-y-16 sm:space-y-20">
           {experiences.map((exp, idx) => {
@@ -72,15 +60,12 @@ const Experience = () => (
             return (
               <FadeInSection key={exp.title + exp.company} delay={idx * 200}>
                 <div className="relative">
-                  {/* Timeline node — glowing dot */}
                   <div className="absolute left-4 sm:left-1/2 top-8 -translate-x-1/2 z-10">
                     <div className={`h-4 w-4 rounded-full border-2 ${exp.current ? "border-primary bg-primary/40" : "border-muted-foreground/30 bg-muted/30"} shadow-[0_0_12px_2px_hsl(var(--primary)/0.3)]`} />
                     {exp.current && <div className="absolute inset-0 h-4 w-4 rounded-full bg-primary/30 animate-ping" />}
                   </div>
 
-                  {/* Desktop: card + illustration side by side */}
                   <div className="ml-12 sm:ml-0 sm:flex sm:items-center">
-                    {/* Card */}
                     <div className={`sm:w-[calc(50%-40px)] ${isLeft ? "sm:order-1" : "sm:order-2 sm:ml-auto"}`}>
                       <motion.div
                         whileHover={{ rotate: isLeft ? -1 : 1, y: -6, scale: 1.01 }}
@@ -126,7 +111,6 @@ const Experience = () => (
                       </motion.div>
                     </div>
 
-                    {/* Pixel art illustration — desktop only */}
                     <div className={`hidden sm:flex sm:w-[calc(50%-40px)] items-center justify-center ${isLeft ? "sm:order-2 sm:ml-auto" : "sm:order-1"}`}>
                       <motion.img
                         src={exp.illustration}

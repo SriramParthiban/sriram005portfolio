@@ -1,6 +1,7 @@
 import FadeInSection from "./FadeInSection";
 import { motion } from "framer-motion";
 import { Sparkles, Brain, TrendingUp, Zap, Target, Users } from "lucide-react";
+import natureTree from "@/assets/nature-tree.webp";
 
 const highlights = [
   { icon: Brain, text: "AI-First Thinking", desc: "Building systems that learn and scale" },
@@ -76,12 +77,12 @@ const StickyNote = ({
 };
 
 const About = () => (
-  <section id="about" className="dark-section relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
-    <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      <div className="absolute -top-20 right-0 h-[150px] w-[150px] md:h-[300px] md:w-[300px] rounded-full bg-primary/8 blur-[80px] md:blur-[120px]" />
-      <div className="absolute bottom-0 -left-20 h-[125px] w-[125px] md:h-[250px] md:w-[250px] rounded-full bg-accent/6 blur-[60px] md:blur-[100px]" />
+  <section id="about" className="relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
+    {/* Nature image background — subtle */}
+    <div className="absolute inset-0">
+      <img src={natureTree} alt="" className="h-full w-full object-cover opacity-[0.06]" loading="lazy" />
+      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.95)]" />
     </div>
-    <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.02)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
     {/* Left side sticky notes */}
     <div className="hidden lg:block absolute top-0 bottom-0 left-2 lg:left-8 xl:left-16 w-[110px]">
@@ -143,12 +144,9 @@ const About = () => (
 
     <div className="relative mx-auto max-w-3xl">
       <FadeInSection>
-        <div className="flex items-center gap-3 mb-4">
-          <div className="h-1 w-10 rounded-full bg-gradient-to-r from-primary to-accent" />
-          <span className="text-sm font-display font-semibold uppercase tracking-[0.2em] text-primary">About</span>
-        </div>
+        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent mb-3">Who I Am</p>
         <h2 className="text-2xl sm:text-3xl font-display font-bold text-white md:text-4xl lg:text-5xl">
-          About <span className="gradient-text">Me</span>
+          About Me
         </h2>
       </FadeInSection>
 

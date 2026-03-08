@@ -10,7 +10,6 @@ interface Testimonial {
   quote: string;
   rating: number;
   videoUrl?: string;
-  avatar?: string;
 }
 
 const testimonials: Testimonial[] = [
@@ -20,7 +19,6 @@ const testimonials: Testimonial[] = [
     company: "",
     quote: "Sriram transformed our entire lead pipeline. What used to take our team hours of manual work now runs on autopilot with 99% accuracy. The automation systems he built have genuinely changed how we operate.",
     rating: 5,
-    
   },
   {
     name: "Rohit",
@@ -49,27 +47,14 @@ const Testimonials = () => {
 
   return (
     <section id="testimonials" className="dark-section relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
-      {/* Background */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute top-10 -left-20 h-[200px] w-[200px] md:h-[350px] md:w-[350px] rounded-full bg-primary/6 blur-[100px] md:blur-[140px]" />
-        <div className="absolute bottom-10 right-0 h-[180px] w-[180px] md:h-[300px] md:w-[300px] rounded-full bg-accent/5 blur-[80px] md:blur-[120px]" />
-      </div>
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.02)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
-
       <div className="relative mx-auto max-w-4xl">
-        {/* Header */}
+        {/* Header — different style */}
         <FadeInSection>
           <div className="text-center mb-12 sm:mb-16">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <div className="h-1 w-10 rounded-full bg-gradient-to-r from-primary to-accent" />
-              <span className="text-sm font-display font-semibold uppercase tracking-[0.2em] text-primary">
-                Testimonials
-              </span>
-              <div className="h-1 w-10 rounded-full bg-gradient-to-r from-accent to-primary" />
-            </div>
             <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground md:text-4xl lg:text-5xl">
-              What People <span className="gradient-text">Say</span>
+              What People Say
             </h2>
+            <p className="mt-3 text-sm text-muted-foreground">Real feedback from real collaborators.</p>
           </div>
         </FadeInSection>
 
@@ -85,13 +70,11 @@ const Testimonials = () => {
                 transition={{ duration: 0.4, ease: "easeInOut" }}
                 className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-6 sm:p-10"
               >
-                {/* Quote icon */}
                 <div className="absolute top-6 right-6 sm:top-8 sm:right-8">
                   <Quote className="h-10 w-10 sm:h-14 sm:w-14 text-primary/10" />
                 </div>
 
                 <div className="relative">
-                  {/* Video placeholder */}
                   {t.videoUrl && (
                     <div
                       className="mb-6 aspect-video w-full max-w-md mx-auto rounded-xl overflow-hidden bg-white/5 border border-white/10 cursor-pointer relative"
@@ -121,21 +104,17 @@ const Testimonials = () => {
                     </div>
                   )}
 
-                  {/* Stars */}
                   <div className="flex gap-1 mb-4">
                     {Array.from({ length: t.rating }).map((_, i) => (
                       <Star key={i} className="h-4 w-4 fill-[hsl(40,80%,55%)] text-[hsl(40,80%,55%)]" />
                     ))}
                   </div>
 
-                  {/* Quote text */}
                   <p className="text-base sm:text-lg leading-relaxed text-white/70 italic">
                     "{t.quote}"
                   </p>
 
-                  {/* Author */}
                   <div className="mt-6 sm:mt-8 flex items-center gap-4">
-                    {/* Avatar placeholder */}
                     <div className="h-12 w-12 rounded-full bg-gradient-to-br from-primary/30 to-accent/30 flex items-center justify-center text-white font-bold text-sm">
                       {t.name.split(" ").map((n) => n[0]).join("")}
                     </div>
@@ -160,7 +139,6 @@ const Testimonials = () => {
                 <ChevronLeft className="h-5 w-5" />
               </button>
 
-              {/* Dots */}
               <div className="flex gap-2">
                 {testimonials.map((_, idx) => (
                   <button
