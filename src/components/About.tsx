@@ -148,6 +148,9 @@ const About = () => (
         <h2 className="text-2xl sm:text-3xl font-display font-bold text-white md:text-4xl lg:text-5xl">
           About Me
         </h2>
+        <span className="font-handwritten text-base sm:text-lg text-primary/50 mt-2 block" style={{ transform: "rotate(-1deg)" }}>
+          (the short version — I promise it won't bore you)
+        </span>
       </FadeInSection>
 
       <FadeInSection delay={200}>

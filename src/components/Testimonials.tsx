@@ -62,6 +62,9 @@ const Testimonials = () => {
               What People Say
             </h2>
             <p className="mt-3 text-sm text-muted-foreground">Real feedback from real collaborators.</p>
+            <span className="font-handwritten text-base sm:text-lg text-primary/40 mt-2 inline-block" style={{ transform: "rotate(2deg)" }}>
+              (not my mom, I swear 😄)
+            </span>
           </div>
         </FadeInSection>
 

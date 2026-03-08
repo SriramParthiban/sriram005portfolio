@@ -23,6 +23,9 @@ const FinalCTA = () => (
           Ready to Build Something{" "}
           <span className="gradient-text-warm">Extraordinary?</span>
         </h2>
+        <p className="font-handwritten text-lg sm:text-xl text-accent/50 mt-2" style={{ transform: "rotate(-1deg)" }}>
+          (seriously, let's chat — no sales pitch, just a real conversation)
+        </p>
 
         <p className="mx-auto mt-5 max-w-md text-base text-white/60">
           Let's discuss how AI-driven automation can transform your operations and drive measurable results.

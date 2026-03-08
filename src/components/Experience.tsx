@@ -56,6 +56,9 @@ const Experience = () => (
           Professional Experience
         </h2>
         <div className="mt-2 h-1 w-16 rounded-full bg-primary" />
+        <p className="font-handwritten text-base sm:text-lg text-accent/50 mt-3" style={{ transform: "rotate(-1.5deg)" }}>
+          ↓ where the real magic happens
+        </p>
       </FadeInSection>
 
       {/* Timeline */}
