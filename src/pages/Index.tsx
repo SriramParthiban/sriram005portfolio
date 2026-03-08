@@ -45,6 +45,7 @@ const Index = () => {
       <About />
       
       <Experience />
+      <div className="py-10 sm:py-14" />
       <Projects />
       <Testimonials />
       <Skills />
