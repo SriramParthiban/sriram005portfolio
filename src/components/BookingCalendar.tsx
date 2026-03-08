@@ -220,7 +220,7 @@ const BookingCalendar = () => {
                 ))}
               </div>
               {selectedDate && (
-                <p className="text-[11px] text-muted-foreground mb-3">
+                <p className="text-xs font-semibold text-muted-foreground mb-3">
                   {format(selectedDate, "EEEE, MMMM d, yyyy")} • IST
                 </p>
               )}
