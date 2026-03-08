@@ -152,7 +152,7 @@ const InvoiceGenerator = () => {
           <div class="sig-line">
             <div class="sig-name">Sriram Parthiban</div>
           </div>
-          <div class="sig-title">AI Automation & Data Analytics Specialist</div>
+          <div class="sig-title">AI Automation Specialist</div>
         </div>
 
         <div class="footer">
