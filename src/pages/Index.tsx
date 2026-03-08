@@ -15,6 +15,7 @@ import Contact from "@/components/Contact";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
+import ChatWidget from "@/components/ChatWidget";
 
 const Index = () => (
   <div className="overflow-x-hidden">
@@ -36,6 +37,7 @@ const Index = () => (
     </main>
     <Footer />
     <StickyMobileCTA />
+    <ChatWidget />
   </div>
 );
 
