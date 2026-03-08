@@ -38,13 +38,10 @@ const StickyNote = ({
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.5, delay: idx * 0.12, ease: "easeOut" }}
       className="absolute z-10"
-      style={{
-        top: note.top,
-        ...(side === "left" ? { left: 0 } : { right: 0 }),
-      }}
+      style={{ top: note.top, [side]: "0" }}
     >
       <div
-        className="relative w-[90px] h-[90px] md:w-[110px] md:h-[110px] flex flex-col items-center justify-center gap-1.5 shadow-xl"
+        className="relative w-[90px] h-[90px] md:w-[100px] md:h-[100px] flex flex-col items-center justify-center gap-1.5 shadow-lg"
         style={{
           background: note.bg,
           borderRadius: "2px",
@@ -80,8 +77,8 @@ const About = () => (
   <section id="about" className="relative px-4 sm:px-6 py-20 sm:py-28 overflow-hidden">
     {/* Nature image background */}
     <div className="absolute inset-0">
-      <img src={natureTree} alt="" className="h-full w-full object-cover opacity-[0.08]" loading="lazy" />
-      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.94)]" />
+      <img src={natureTree} alt="" className="h-full w-full object-cover opacity-[0.06]" loading="lazy" />
+      <div className="absolute inset-0 bg-background/92" />
     </div>
 
     {/* Left side sticky notes */}
@@ -145,25 +142,25 @@ const About = () => (
     <div className="relative mx-auto max-w-3xl">
       <FadeInSection>
         <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent mb-3">Who I Am</p>
-        <h2 className="text-2xl sm:text-3xl font-display font-bold text-white md:text-4xl lg:text-5xl">
+        <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground md:text-4xl lg:text-5xl">
           About Me
         </h2>
       </FadeInSection>
 
       <FadeInSection delay={200}>
-        <div className="mt-10 space-y-5 text-sm sm:text-base leading-[1.9] text-white/60">
+        <div className="mt-10 space-y-5 text-sm sm:text-base leading-[1.9] text-muted-foreground">
           <p>
             I architect intelligent automation systems at the intersection of{" "}
-            <strong className="text-white font-semibold">AI, revenue operations, and go-to-market strategy</strong>.
+            <strong className="text-foreground font-semibold">AI, revenue operations, and go-to-market strategy</strong>.
             My work focuses on designing scalable outbound and qualification frameworks powered by AI agents—translating
             prospect signals into pipeline-ready opportunities with minimal manual overhead.
           </p>
           <p>
             With hands-on experience building systems that manage{" "}
-            <strong className="text-white font-semibold">1,000+ daily interactions</strong>, I bring a deep understanding
+            <strong className="text-foreground font-semibold">1,000+ daily interactions</strong>, I bring a deep understanding
             of workflow orchestration, CRM integration, and data-driven decision-making. I've designed KPI tracking engines,
             lead routing architectures, and spend monitoring systems that have prevented over{" "}
-            <strong className="text-white font-semibold">$40,000</strong> in unnecessary costs.
+            <strong className="text-foreground font-semibold">$40,000</strong> in unnecessary costs.
           </p>
           <p>
             My approach is rooted in experimentation and cross-functional collaboration. I build feedback loops between
@@ -181,13 +178,13 @@ const About = () => (
                 key={h.text}
                 whileHover={{ y: -4 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="group rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm transition-all duration-500 hover:border-primary/20 hover:bg-white/8"
+                className="group rounded-2xl border border-border bg-card p-5 transition-all duration-500 hover:border-primary/20 hover:shadow-md"
               >
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary/15 to-accent/10 text-primary transition-all duration-300 group-hover:from-primary group-hover:to-accent group-hover:text-white">
                   <Icon className="h-5 w-5" />
                 </div>
-                <p className="mt-3 text-sm font-bold text-white font-display">{h.text}</p>
-                <p className="mt-1 text-xs text-white/40">{h.desc}</p>
+                <p className="mt-3 text-sm font-bold text-foreground font-display">{h.text}</p>
+                <p className="mt-1 text-xs text-muted-foreground">{h.desc}</p>
               </motion.div>
             );
           })}
