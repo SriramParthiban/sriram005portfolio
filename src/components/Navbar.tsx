@@ -79,7 +79,7 @@ const Navbar = () => {
         </button>
 
         {/* Desktop */}
-        <div className="hidden items-center gap-1 md:flex">
+        <div className="hidden items-center gap-1 lg:flex">
           {navLinks.map((link) => {
             const isActive = activeSection === link.href.replace("#", "");
             return (
