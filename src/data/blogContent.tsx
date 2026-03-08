@@ -567,7 +567,7 @@ const AILeadQualContent = () => (
     <h2>Results</h2>
     <p>For a B2B SaaS client running <strong>$15K/month</strong> in ads:</p>
 
-    <div className="grid grid-cols-2 gap-3 my-8">
+    <div className="grid grid-cols-2 gap-4 my-10">
       <StatsCard label="Sales Efficiency" before="Baseline" after="+340%" change="🚀" />
       <StatsCard label="Hot Lead Response" before="2+ hours" after="47 seconds" change="99% faster" />
       <StatsCard label="Close Rate" before="8%" after="23%" change="2.9x" />
