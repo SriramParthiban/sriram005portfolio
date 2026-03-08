@@ -185,7 +185,7 @@ const AIVisual = () => (
       <div
         key={i}
         className="absolute w-2 h-2 rounded-full pg-orbit-dot"
-        style={{ backgroundColor: "rgba(0,212,255,0.7)", animationDelay: `${i * 0.66}s` }}
+        style={{ backgroundColor: "rgba(212,162,76,0.7)", animationDelay: `${i * 0.66}s` }}
       />
     ))}
     <div className="absolute w-full h-[2px] pg-scan-line" style={{ backgroundColor: "rgba(0,212,255,0.3)" }} />
