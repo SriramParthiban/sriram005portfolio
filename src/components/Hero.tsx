@@ -34,31 +34,35 @@ const Hero = () => {
 
   return (
     <section className="dark-section relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 sm:px-6 pt-20">
-      {/* Ambient background */}
+      {/* Ambient background — forest canopy glow */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-20 -left-20 h-[200px] w-[200px] md:h-[400px] md:w-[400px] rounded-full bg-[#7C3AED]/10 blur-[80px] md:blur-[120px]" />
-        <div className="absolute -bottom-20 -right-20 h-[200px] w-[200px] md:h-[400px] md:w-[400px] rounded-full bg-[#06B6D4]/10 blur-[80px] md:blur-[120px]" />
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[250px] w-[250px] md:h-[500px] md:w-[500px] rounded-full bg-[#7C3AED]/20 blur-[100px] md:blur-[150px]" />
+        <div className="absolute -top-20 -left-20 h-[200px] w-[200px] md:h-[400px] md:w-[400px] rounded-full bg-[hsl(152,55%,35%)]/10 blur-[80px] md:blur-[120px]" />
+        <div className="absolute -bottom-20 -right-20 h-[200px] w-[200px] md:h-[400px] md:w-[400px] rounded-full bg-[hsl(38,75%,48%)]/10 blur-[80px] md:blur-[120px]" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[250px] w-[250px] md:h-[500px] md:w-[500px] rounded-full bg-[hsl(152,55%,35%)]/15 blur-[100px] md:blur-[150px]" />
       </div>
 
-      {/* Dotted grid pattern */}
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.03)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.03)_1px,transparent_1px)] bg-[size:20px_20px] opacity-50" />
+      {/* Organic leaf-like pattern overlay */}
+      <div className="pointer-events-none absolute inset-0 opacity-[0.03]" style={{
+        backgroundImage: `radial-gradient(ellipse 80px 60px at 20% 30%, hsl(152 55% 45% / 0.3) 0%, transparent 70%),
+                          radial-gradient(ellipse 60px 80px at 75% 60%, hsl(38 75% 48% / 0.2) 0%, transparent 70%),
+                          radial-gradient(ellipse 100px 40px at 50% 80%, hsl(152 55% 45% / 0.15) 0%, transparent 70%)`
+      }} />
 
       {/* Mobile: animated gradient accent lines + floating orbs */}
-      <div className="pointer-events-none absolute top-[12%] left-4 h-16 w-[2px] rounded-full bg-gradient-to-b from-[#7C3AED]/30 to-transparent animate-[pulseFade_4s_ease-in-out_infinite] md:hidden" />
-      <div className="pointer-events-none absolute top-[8%] right-6 h-20 w-[2px] rounded-full bg-gradient-to-b from-[#06B6D4]/25 to-transparent animate-[pulseFade_5s_ease-in-out_infinite_1s] md:hidden" />
-      <div className="pointer-events-none absolute bottom-[15%] left-8 h-3 w-3 rounded-full bg-gradient-to-br from-[#7C3AED]/20 to-[#06B6D4]/15 blur-[2px] animate-drift md:hidden" />
-      <div className="pointer-events-none absolute bottom-[25%] right-6 h-2 w-2 rounded-full bg-[#06B6D4]/20 blur-[1px] animate-[drift_6s_ease-in-out_infinite_2s] md:hidden" />
-      {/* Mobile: corner flourish */}
-      <div className="pointer-events-none absolute top-20 right-4 h-8 w-8 rounded-tr-xl border-t border-r border-[#7C3AED]/15 animate-border-glow md:hidden" />
-      <div className="pointer-events-none absolute bottom-24 left-4 h-8 w-8 rounded-bl-xl border-b border-l border-[#06B6D4]/15 animate-[borderGlow_4s_ease-in-out_infinite_2s] md:hidden" />
+      <div className="pointer-events-none absolute top-[12%] left-4 h-16 w-[2px] rounded-full bg-gradient-to-b from-[hsl(152,55%,40%)]/30 to-transparent animate-[pulseFade_4s_ease-in-out_infinite] md:hidden" />
+      <div className="pointer-events-none absolute top-[8%] right-6 h-20 w-[2px] rounded-full bg-gradient-to-b from-[hsl(38,75%,52%)]/25 to-transparent animate-[pulseFade_5s_ease-in-out_infinite_1s] md:hidden" />
+      <div className="pointer-events-none absolute bottom-[15%] left-8 h-3 w-3 rounded-full bg-gradient-to-br from-[hsl(152,55%,40%)]/20 to-[hsl(38,75%,52%)]/15 blur-[2px] animate-drift md:hidden" />
+      <div className="pointer-events-none absolute bottom-[25%] right-6 h-2 w-2 rounded-full bg-[hsl(38,75%,52%)]/20 blur-[1px] animate-[drift_6s_ease-in-out_infinite_2s] md:hidden" />
+      {/* Mobile: corner flourish — vine-like */}
+      <div className="pointer-events-none absolute top-20 right-4 h-8 w-8 rounded-tr-xl border-t border-r border-[hsl(152,55%,40%)]/15 animate-border-glow md:hidden" />
+      <div className="pointer-events-none absolute bottom-24 left-4 h-8 w-8 rounded-bl-xl border-b border-l border-[hsl(38,75%,52%)]/15 animate-[borderGlow_4s_ease-in-out_infinite_2s] md:hidden" />
 
-      {/* Desktop: floating dots */}
-      <div className="pointer-events-none absolute top-[15%] right-[10%] h-1 w-1 rounded-full bg-[#7C3AED]/10 animate-[float_4s_ease-in-out_infinite] hidden md:block" />
-      <div className="pointer-events-none absolute top-[20%] right-[15%] h-1 w-1 rounded-full bg-[#7C3AED]/10 animate-[float_5s_ease-in-out_infinite_0.5s] hidden md:block" />
-      <div className="pointer-events-none absolute top-[12%] right-[20%] h-1 w-1 rounded-full bg-[#7C3AED]/10 animate-[float_3.5s_ease-in-out_infinite_1s] hidden md:block" />
-      <div className="pointer-events-none absolute top-[18%] right-[8%] h-1 w-1 rounded-full bg-[#7C3AED]/10 animate-[float_4.5s_ease-in-out_infinite_0.3s] hidden md:block" />
-      <div className="pointer-events-none absolute top-[25%] right-[12%] h-1 w-1 rounded-full bg-[#7C3AED]/10 animate-[float_5.5s_ease-in-out_infinite_0.8s] hidden md:block" />
+      {/* Desktop: floating leaf-like dots */}
+      <div className="pointer-events-none absolute top-[15%] right-[10%] h-1.5 w-1.5 rounded-full bg-primary/20 animate-[float_4s_ease-in-out_infinite] hidden md:block" />
+      <div className="pointer-events-none absolute top-[20%] right-[15%] h-1 w-1 rounded-full bg-accent/20 animate-[float_5s_ease-in-out_infinite_0.5s] hidden md:block" />
+      <div className="pointer-events-none absolute top-[12%] right-[20%] h-1 w-1 rounded-full bg-primary/15 animate-[float_3.5s_ease-in-out_infinite_1s] hidden md:block" />
+      <div className="pointer-events-none absolute top-[18%] right-[8%] h-1 w-1 rounded-full bg-accent/15 animate-[float_4.5s_ease-in-out_infinite_0.3s] hidden md:block" />
+      <div className="pointer-events-none absolute top-[25%] right-[12%] h-1.5 w-1.5 rounded-full bg-primary/20 animate-[float_5.5s_ease-in-out_infinite_0.8s] hidden md:block" />
 
       <motion.div
         className="relative mx-auto max-w-5xl w-full"
@@ -107,7 +111,7 @@ const Hero = () => {
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: -30, opacity: 0 }}
                   transition={{ duration: 0.4, ease: "easeInOut" }}
-                  className="text-base sm:text-lg md:text-xl font-semibold text-white/60 font-display"
+                  className="text-base sm:text-lg md:text-xl font-semibold text-white/60 font-display italic"
                 >
                   {roles[roleIdx]}
                 </motion.p>

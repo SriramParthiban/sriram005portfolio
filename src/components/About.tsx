@@ -8,17 +8,16 @@ const highlights = [
   { icon: Sparkles, text: "Cross-Functional", desc: "Sales × Marketing × Ops alignment" },
 ];
 
-// Sticky notes positioned on left & right sides with real sticky-note colors
 const leftNotes = [
-  { label: "Detail-Oriented", icon: Target, rotate: -4, bg: "#FBBF24", text: "#78350F", top: "8%" },
-  { label: "Team Player", icon: Users, rotate: 3, bg: "#F472B6", text: "#831843", top: "40%" },
-  { label: "Self-Starter", icon: Zap, rotate: -2, bg: "#34D399", text: "#064E3B", top: "72%" },
+  { label: "Detail-Oriented", icon: Target, rotate: -4, bg: "#4ADE80", text: "#064E3B", top: "8%" },
+  { label: "Team Player", icon: Users, rotate: 3, bg: "#FBBF24", text: "#78350F", top: "40%" },
+  { label: "Self-Starter", icon: Zap, rotate: -2, bg: "#86EFAC", text: "#065F46", top: "72%" },
 ];
 
 const rightNotes = [
-  { label: "Fast Learner", icon: Zap, rotate: 3, bg: "#60A5FA", text: "#1E3A5F", top: "12%" },
-  { label: "Problem Solver", icon: Brain, rotate: -3, bg: "#A78BFA", text: "#3B0764", top: "46%" },
-  { label: "Data-Driven", icon: TrendingUp, rotate: 2, bg: "#FB923C", text: "#7C2D12", top: "76%" },
+  { label: "Fast Learner", icon: Zap, rotate: 3, bg: "#FCD34D", text: "#713F12", top: "12%" },
+  { label: "Problem Solver", icon: Brain, rotate: -3, bg: "#6EE7B7", text: "#064E3B", top: "46%" },
+  { label: "Data-Driven", icon: TrendingUp, rotate: 2, bg: "#F59E0B", text: "#7C2D12", top: "76%" },
 ];
 
 const StickyNote = ({
@@ -48,20 +47,16 @@ const StickyNote = ({
         style={{
           background: note.bg,
           borderRadius: "2px",
-          // Folded corner effect via clip-path
           clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%)",
         }}
       >
-        {/* Paper texture lines */}
         <div className="absolute inset-0 opacity-[0.07]" style={{
           backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 11px, #000 11px, #000 12px)",
         }} />
-        {/* Tape strip at top */}
         <div
           className="absolute -top-1 left-1/2 -translate-x-1/2 w-8 h-3 rounded-sm opacity-40"
           style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.2))" }}
         />
-        {/* Folded corner shadow */}
         <div
           className="absolute bottom-0 right-0 w-[14px] h-[14px]"
           style={{
@@ -71,7 +66,7 @@ const StickyNote = ({
         <Icon className="h-5 w-5 md:h-6 md:w-6 drop-shadow-sm" style={{ color: note.text }} />
         <span
           className="text-[9px] md:text-[10px] font-bold tracking-wide text-center leading-tight px-1"
-          style={{ color: note.text, fontFamily: "'Inter', sans-serif" }}
+          style={{ color: note.text, fontFamily: "'Nunito Sans', sans-serif" }}
         >
           {note.label}
         </span>
@@ -83,8 +78,8 @@ const StickyNote = ({
 const About = () => (
   <section id="about" className="dark-section relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      <div className="absolute -top-20 right-0 h-[150px] w-[150px] md:h-[300px] md:w-[300px] rounded-full bg-[#7C3AED]/8 blur-[80px] md:blur-[120px]" />
-      <div className="absolute bottom-0 -left-20 h-[125px] w-[125px] md:h-[250px] md:w-[250px] rounded-full bg-[#06B6D4]/6 blur-[60px] md:blur-[100px]" />
+      <div className="absolute -top-20 right-0 h-[150px] w-[150px] md:h-[300px] md:w-[300px] rounded-full bg-primary/8 blur-[80px] md:blur-[120px]" />
+      <div className="absolute bottom-0 -left-20 h-[125px] w-[125px] md:h-[250px] md:w-[250px] rounded-full bg-accent/6 blur-[60px] md:blur-[100px]" />
     </div>
     <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.02)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
