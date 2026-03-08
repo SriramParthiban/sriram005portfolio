@@ -131,9 +131,12 @@ const BookingCalendar = () => {
       <h3 className="text-xl sm:text-2xl font-display font-bold text-foreground mb-2">
         Book an <span className="gradient-text">Appointment</span>
       </h3>
-      <p className="text-xs sm:text-sm text-muted-foreground mb-5">
-        Available every day, 9 AM – 8 PM IST
-      </p>
+      <div className="inline-flex items-center gap-2 mb-5 rounded-lg border border-primary/30 bg-primary/10 px-4 py-2">
+        <Clock className="h-4 w-4 text-primary shrink-0" />
+        <p className="text-sm sm:text-base font-semibold text-foreground">
+          Available every day, <span className="text-primary">9 AM – 8 PM IST</span>
+        </p>
+      </div>
 
       {/* Step dots */}
       <div className="flex items-center gap-2 mb-5">
