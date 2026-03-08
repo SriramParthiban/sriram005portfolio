@@ -119,6 +119,21 @@ const Hero = () => {
               optimize GTM workflows, and build scalable AI-driven operations.
             </motion.p>
 
+            {/* Video intro */}
+            <motion.div variants={item} className="mt-6 w-full max-w-md">
+              <div className="group relative aspect-video w-full rounded-xl overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur-sm cursor-pointer">
+                {/* Placeholder — replace src with your actual video URL */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
+                  <div className="h-14 w-14 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-300 shadow-[0_0_30px_-5px_hsl(var(--primary)/0.4)]">
+                    <svg className="h-5 w-5 text-primary ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                  </div>
+                  <span className="text-xs text-white/40 font-medium">Watch my intro</span>
+                </div>
+                {/* Shimmer overlay */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </div>
+            </motion.div>
+
             <motion.div variants={item} className="mt-8 flex flex-wrap items-center justify-center md:justify-start gap-3 sm:gap-4">
               <Button size="lg" className="glow-md font-semibold text-[0.9rem] px-6 sm:px-7 py-6 transition-all duration-300 hover:glow-lg min-h-[44px]" asChild>
                 <a href="#experience">
