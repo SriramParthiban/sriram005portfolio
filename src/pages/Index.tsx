@@ -9,7 +9,7 @@ import Skills from "@/components/Skills";
 import Education from "@/components/Education";
 import Certifications from "@/components/Certifications";
 import GitHubRepos from "@/components/GitHubRepos";
-import BookingCalendar from "@/components/BookingCalendar";
+
 import Contact from "@/components/Contact";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
