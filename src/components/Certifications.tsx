@@ -14,6 +14,10 @@ const certs = [
 
 const Certifications = () => (
   <section id="certifications" className="dark-section relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
+    <div className="absolute inset-0">
+      <img src={coralReef} alt="" className="h-full w-full object-cover opacity-[0.12]" loading="lazy" />
+      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.90)]" />
+    </div>
     <div className="relative mx-auto max-w-3xl">
       <FadeInSection>
         <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground md:text-4xl lg:text-5xl">
