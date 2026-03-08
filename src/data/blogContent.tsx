@@ -285,7 +285,7 @@ const GHLPlaybookContent = () => (
       GoHighLevel is incredibly powerful — but most agencies use about <strong>20%</strong> of its capabilities.
     </p>
 
-    <StickyNote color="orange" rotate={-0.5}>
+    <StickyNote color="orange">
       They set up a basic pipeline, maybe a follow-up email, and call it "automated." 
       <strong> Real automation means the system thinks for you.</strong>
     </StickyNote>
