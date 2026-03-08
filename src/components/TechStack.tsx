@@ -176,45 +176,29 @@ const TechStack = () => {
           </div>
         </FadeInSection>
 
-        {/* Row 1 */}
+        {/* Row 1 - scrolls left */}
         <div className="relative mb-6">
           <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-40 z-10 bg-gradient-to-r from-[hsl(var(--dark-section))] to-transparent" />
           <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-40 z-10 bg-gradient-to-l from-[hsl(var(--dark-section))] to-transparent" />
 
           <div className="flex animate-ticker-row1 gap-4 sm:gap-6">
-            {/* Mobile: no duplicates, Desktop: 4x duplicates */}
-            <div className="flex gap-4 sm:hidden">
-              {row1Tools.map((tool, i) => (
-                <ToolCard key={`m-row1-${i}`} tool={tool} />
-              ))}
-            </div>
-            <div className="hidden sm:flex gap-6">
-              {[...row1Tools, ...row1Tools, ...row1Tools, ...row1Tools].map((tool, i) => (
-                <ToolCard key={`row1-${i}`} tool={tool} />
-              ))}
-            </div>
+            {[...row1Tools, ...row1Tools, ...row1Tools, ...row1Tools].map((tool, i) => (
+              <ToolCard key={`row1-${i}`} tool={tool} />
+            ))}
           </div>
         </div>
 
-        {/* Row 2 */}
+        {/* Row 2 - scrolls right */}
         <div className="relative">
           <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-40 z-10 bg-gradient-to-r from-[hsl(var(--dark-section))] to-transparent" />
           <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-40 z-10 bg-gradient-to-l from-[hsl(var(--dark-section))] to-transparent" />
 
           <div className="flex animate-ticker-row2 gap-4 sm:gap-6">
-            <div className="flex gap-4 sm:hidden">
-              {row2Tools.map((tool, i) => (
-                <ToolCard key={`m-row2-${i}`} tool={tool} />
-              ))}
-            </div>
-            <div className="hidden sm:flex gap-6">
-              {[...row2Tools, ...row2Tools, ...row2Tools, ...row2Tools].map((tool, i) => (
-                <ToolCard key={`row2-${i}`} tool={tool} />
-              ))}
-            </div>
+            {[...row2Tools, ...row2Tools, ...row2Tools, ...row2Tools].map((tool, i) => (
+              <ToolCard key={`row2-${i}`} tool={tool} />
+            ))}
           </div>
         </div>
-      </div>
     </section>
   );
 };
