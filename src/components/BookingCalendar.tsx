@@ -237,7 +237,7 @@ const BookingCalendar = () => {
                       key={slot}
                       disabled={booked}
                       onClick={() => setSelectedTime(slot)}
-                      className={`py-2 px-1.5 rounded-lg text-xs font-medium transition-all duration-200 ${
+                      className={`py-2 px-1.5 rounded-lg text-sm font-semibold transition-all duration-200 ${
                         booked
                           ? "bg-white/[0.02] text-muted-foreground/30 cursor-not-allowed line-through"
                           : selected
