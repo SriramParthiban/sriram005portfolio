@@ -53,6 +53,7 @@ ${messages.map((m: any) => `${m.role}: ${m.content}`).join("\n")}`;
     let extractedName = contactInfo?.name || null;
     let extractedEmail = contactInfo?.email || null;
     let extractedPhone = contactInfo?.phone || null;
+    let tag: string | null = null;
 
     if (aiResp.ok) {
       const aiData = await aiResp.json();
