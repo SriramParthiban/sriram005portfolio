@@ -107,14 +107,14 @@ const Contact = () => {
         </FadeInSection>
 
         {/* Side-by-side: Booking + Contact Form */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:items-start">
           {/* Left: Booking Calendar */}
           <FadeInSection delay={200}>
             <BookingCalendar />
           </FadeInSection>
 
           {/* Right: Contact Form */}
-          <FadeInSection delay={300}>
+          <FadeInSection delay={200}>
             <div>
               <div className="flex items-center gap-3 mb-3">
                 <div className="h-1 w-8 rounded-full bg-gradient-to-r from-accent to-primary" />
