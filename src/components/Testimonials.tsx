@@ -20,6 +20,7 @@ const testimonials: Testimonial[] = [
     company: "Aspire Media",
     quote: "Sriram transformed our entire lead pipeline. What used to take our team hours of manual work now runs on autopilot with 99% accuracy. The automation systems he built have genuinely changed how we operate.",
     rating: 5,
+    videoUrl: "/videos/testimonial-1.mp4",
   },
   {
     name: "Priya Nair",
