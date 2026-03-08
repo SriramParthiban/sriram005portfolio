@@ -215,7 +215,7 @@ const KPIDashboardContent = () => (
 
     <h2>Principle 3: The 5-Metric Rule</h2>
 
-    <StickyNote color="pink" rotate={0.5}>
+    <StickyNote color="pink">
       <strong>🚨 No dashboard should have more than 5 primary KPIs visible at once.</strong> 
       Everything else is a drill-down. If you can't fit it on one screen, you're tracking too much.
     </StickyNote>
