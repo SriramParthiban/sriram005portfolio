@@ -82,6 +82,7 @@ ${messages.map((m: any) => `${m.role}: ${m.content}`).join("\n")}`;
       summary,
       ai_response_summary: aiResponseSummary,
       full_conversation: messages,
+      tag,
     });
 
     if (error) {

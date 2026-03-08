@@ -11,3 +11,9 @@ verify_jwt = false
 
 [functions.save-chat-lead]
 verify_jwt = false
+
+[functions.verify-admin]
+verify_jwt = false
+
+[functions.admin-leads]
+verify_jwt = false
