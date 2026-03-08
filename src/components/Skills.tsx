@@ -1,7 +1,17 @@
-import { Badge } from "@/components/ui/badge";
 import FadeInSection from "./FadeInSection";
 import { Target, Bot, Plug, LineChart, Code, Users } from "lucide-react";
 import { motion } from "framer-motion";
+
+const noteColors = [
+  { bg: "#FEF3C7", text: "#92400E", badge: "#FDE68A", badgeText: "#78350F" }, // yellow
+  { bg: "#FCE7F3", text: "#9D174D", badge: "#FBCFE8", badgeText: "#831843" }, // pink
+  { bg: "#D1FAE5", text: "#065F46", badge: "#A7F3D0", badgeText: "#064E3B" }, // green
+  { bg: "#DBEAFE", text: "#1E40AF", badge: "#BFDBFE", badgeText: "#1E3A8A" }, // blue
+  { bg: "#EDE9FE", text: "#5B21B6", badge: "#DDD6FE", badgeText: "#4C1D95" }, // purple
+  { bg: "#FFEDD5", text: "#9A3412", badge: "#FED7AA", badgeText: "#7C2D12" }, // orange
+];
+
+const rotations = [-2.5, 1.8, -1.2, 2.2, -1.8, 2.8];
 
 const categories = [
   { title: "GTM & RevOps", icon: Target, skills: ["Lead Qualification", "Pipeline Tracking", "KPI Management", "Process Optimization"] },
@@ -18,27 +28,8 @@ const Skills = () => (
       <div className="absolute -top-20 left-1/2 h-[200px] w-[200px] md:h-[400px] md:w-[400px] rounded-full bg-[#06B6D4]/6 blur-[80px] md:blur-[140px]" />
       <div className="absolute bottom-0 right-0 h-[125px] w-[125px] md:h-[250px] md:w-[250px] rounded-full bg-[#7C3AED]/6 blur-[60px] md:blur-[100px]" />
     </div>
-    <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.02)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
-    {/* Desktop: circuit pattern + floating squares */}
-    <svg className="pointer-events-none absolute inset-0 w-full h-full hidden md:block" xmlns="http://www.w3.org/2000/svg">
-      <pattern id="circuit" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-        <path d="M50 0 v30 M50 70 v30 M0 50 h30 M70 50 h30" stroke="white" strokeWidth="0.5" opacity="0.05" fill="none" />
-        <circle cx="50" cy="50" r="3" fill="none" stroke="white" strokeWidth="0.5" opacity="0.05" />
-      </pattern>
-      <rect width="100%" height="100%" fill="url(#circuit)" />
-    </svg>
-    <div className="pointer-events-none absolute top-[30%] right-[5%] h-2 w-2 rotate-45 border border-[#7C3AED]/15 animate-[floatSlow_6s_ease-in-out_infinite] hidden md:block" />
-    <div className="pointer-events-none absolute top-[60%] left-[8%] h-2 w-2 rotate-45 border border-[#7C3AED]/15 animate-[floatSlow_7s_ease-in-out_infinite_1s] hidden md:block" />
-    <div className="pointer-events-none absolute bottom-[20%] right-[15%] h-2 w-2 rotate-45 border border-[#7C3AED]/15 animate-[floatSlow_5s_ease-in-out_infinite_0.5s] hidden md:block" />
-
-    {/* Mobile: vertical gradient lines + drifting orbs + corner accents */}
-    <div className="pointer-events-none absolute top-16 left-3 h-20 w-[1.5px] rounded-full bg-gradient-to-b from-[#06B6D4]/25 to-transparent animate-[pulseFade_4s_ease-in-out_infinite] md:hidden" />
-    <div className="pointer-events-none absolute bottom-20 right-3 h-16 w-[1.5px] rounded-full bg-gradient-to-b from-[#7C3AED]/20 to-transparent animate-[pulseFade_5s_ease-in-out_infinite_1.5s] md:hidden" />
-    <div className="pointer-events-none absolute top-[35%] right-5 h-3.5 w-3.5 rounded-full bg-gradient-to-br from-[#06B6D4]/15 to-[#7C3AED]/10 blur-[2px] animate-drift md:hidden" />
-    <div className="pointer-events-none absolute bottom-[30%] left-5 h-7 w-7 rounded-tr-xl border-t border-r border-[#7C3AED]/10 animate-border-glow md:hidden" />
-
-    <div className="relative mx-auto max-w-3xl">
+    <div className="relative mx-auto max-w-4xl">
       <FadeInSection>
         <div className="flex items-center gap-3 mb-4">
           <div className="h-1 w-10 rounded-full bg-gradient-to-r from-primary to-accent" />
@@ -49,30 +40,75 @@ const Skills = () => (
         </h2>
       </FadeInSection>
 
-      <div className="mt-10 sm:mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-10 sm:mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {categories.map((cat, idx) => {
           const Icon = cat.icon;
+          const color = noteColors[idx];
+          const rotation = rotations[idx];
           return (
             <FadeInSection key={cat.title} delay={idx * 100}>
               <motion.div
-                whileHover={{ y: -4, scale: 1.01 }}
+                initial={{ rotate: rotation * 0.3 }}
+                whileInView={{ rotate: rotation }}
+                viewport={{ once: true }}
+                whileHover={{ y: -6, scale: 1.03, boxShadow: "0 20px 40px -12px rgba(0,0,0,0.4)" }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-5 sm:p-6 backdrop-blur-sm transition-all duration-500 hover:border-primary/20 hover:bg-white/8"
+                className="relative cursor-default"
+                style={{
+                  background: color.bg,
+                  clipPath: "polygon(0 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%)",
+                }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.03] to-accent/[0.03] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                {/* Tape strip */}
+                <div
+                  className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-[3px] w-12 h-5 rounded-sm z-10"
+                  style={{ background: "rgba(255,255,255,0.45)", backdropFilter: "blur(2px)", border: "1px solid rgba(255,255,255,0.3)" }}
+                />
 
-                <div className="relative flex items-center gap-3 mb-4 sm:mb-5">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary/15 to-accent/5 text-primary transition-all duration-500 group-hover:from-primary group-hover:to-accent group-hover:text-white group-hover:shadow-lg group-hover:shadow-primary/20">
-                    <Icon className="h-5 w-5" />
+                {/* Notebook lines */}
+                <div
+                  className="absolute inset-0 opacity-[0.06]"
+                  style={{ backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 13px, #000 13px, #000 14px)" }}
+                />
+
+                {/* Folded corner shadow */}
+                <div
+                  className="absolute bottom-0 right-0 w-5 h-5"
+                  style={{
+                    background: `linear-gradient(135deg, transparent 50%, rgba(0,0,0,0.08) 50%)`,
+                  }}
+                />
+
+                <div className="relative p-5 sm:p-6">
+                  {/* Header */}
+                  <div className="flex items-center gap-3 mb-4">
+                    <div
+                      className="flex h-9 w-9 items-center justify-center rounded-lg"
+                      style={{ background: `${color.badge}`, color: color.text }}
+                    >
+                      <Icon className="h-4.5 w-4.5" />
+                    </div>
+                    <h3 className="text-sm font-bold tracking-wide" style={{ color: color.text }}>
+                      {cat.title}
+                    </h3>
                   </div>
-                  <h3 className="text-sm font-display font-bold text-white">{cat.title}</h3>
-                </div>
-                <div className="relative flex flex-wrap gap-2">
-                  {cat.skills.map((s) => (
-                    <Badge key={s} variant="secondary" className="bg-white/5 border border-white/10 text-white/60 text-xs font-medium transition-all duration-300 group-hover:border-primary/15 group-hover:bg-primary/10 group-hover:text-primary">
-                      {s}
-                    </Badge>
-                  ))}
+
+                  {/* Skill badges */}
+                  <div className="flex flex-wrap gap-1.5">
+                    {cat.skills.map((s) => (
+                      <span
+                        key={s}
+                        className="inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-semibold border"
+                        style={{
+                          background: color.badge,
+                          color: color.badgeText,
+                          borderColor: `${color.badgeText}20`,
+                        }}
+                      >
+                        {s}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             </FadeInSection>
