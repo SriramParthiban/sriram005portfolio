@@ -19,7 +19,7 @@ import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
 import ChatWidget from "@/components/ChatWidget";
-import { NaturePhotoStrip } from "@/components/NatureDivider";
+
 
 const Index = () => {
   const location = useLocation();
