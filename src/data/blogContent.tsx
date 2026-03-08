@@ -418,7 +418,7 @@ const GHLPlaybookContent = () => (
       <StatsCard label="Close Rate" before="12%" after="28%" change="2.3x" />
     </div>
 
-    <StickyNote color="green" rotate={0.5}>
+    <StickyNote color="green">
       <strong>GHL automation isn't about sending more messages</strong> — it's about sending the 
       <em> right message at the right time.</em> Build workflows that respond to behavior, 
       personalize based on data, and track everything.
