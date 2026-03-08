@@ -61,12 +61,15 @@ const ProjectDetailPage = () => {
 
   return (
     <PageLayout>
-      <div className="relative min-h-screen">
-        {/* Background effects */}
+      <div className="dark-section relative min-h-screen">
+        {/* Background effects - matching main page theme */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute top-40 -left-20 h-[400px] w-[400px] rounded-full bg-primary/8 blur-[150px]" />
-          <div className="absolute -bottom-20 right-0 h-[350px] w-[350px] rounded-full bg-accent/6 blur-[120px]" />
+          <div className="absolute top-20 -left-40 h-[500px] w-[500px] rounded-full bg-primary/10 blur-[150px]" />
+          <div className="absolute top-[40%] -right-20 h-[400px] w-[400px] rounded-full bg-accent/8 blur-[120px]" />
+          <div className="absolute -bottom-40 left-1/3 h-[450px] w-[450px] rounded-full bg-primary/6 blur-[140px]" />
         </div>
+        {/* Grid overlay */}
+        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.02)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
         <div className="relative mx-auto max-w-4xl px-4 sm:px-6 py-24 sm:py-32">
           {/* Back navigation */}
