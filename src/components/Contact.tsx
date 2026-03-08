@@ -114,10 +114,10 @@ const Contact = () => {
 
           <FadeInSection delay={200}>
             <div>
-              <h3 className="text-xl sm:text-2xl font-display font-bold text-foreground mb-2">
+              <h3 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-2">
                 Get in Touch
               </h3>
-              <p className="text-xs sm:text-sm text-muted-foreground mb-5 lg:mb-[57px]">
+              <p className="text-sm sm:text-base text-muted-foreground mb-5 lg:mb-[57px]">
                 Prefer to write? Send me a message directly.
               </p>
 

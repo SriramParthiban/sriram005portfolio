@@ -41,7 +41,7 @@ const FinalCTA = () => (
           </Button>
         </div>
 
-        <div className="mt-10 flex items-center justify-center gap-6 text-sm text-muted-foreground/60">
+        <div className="mt-10 flex items-center justify-center gap-6 text-sm font-medium drop-shadow-[0_1px_4px_rgba(255,255,255,0.9)]" style={{ color: 'hsl(var(--foreground) / 0.7)' }}>
           <span className="flex items-center gap-1.5">
             <CheckCircle2 className="h-3.5 w-3.5 text-accent" />
             Quick Response
