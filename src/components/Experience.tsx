@@ -11,6 +11,7 @@ const experiences = [
     location: "Remote / Canada",
     period: "June 2024 – Present",
     current: true,
+    illustration: expAiAutomation,
     bullets: [
       "Designed and deployed outbound & qualification automation systems using AI voice, chat, and SMS agents across multiple channels.",
       "Built discovery logic that translates prospect signals into AE-ready handoffs, reducing manual qualification overhead significantly.",
@@ -27,6 +28,7 @@ const experiences = [
     location: "Chennai, India",
     period: "Aug 2023 – Jan 2024",
     current: false,
+    illustration: expDataAnalyst,
     bullets: [
       "Processed and analyzed 500,000+ records using BigQuery and SQL, building robust data pipelines for marketing and operations teams.",
       "Reduced average query execution time by 80% through schema optimization and indexing strategies.",
@@ -36,7 +38,6 @@ const experiences = [
     ],
   },
 ];
-
 const tapeStyle = "absolute -top-3 left-1/2 -translate-x-1/2 h-6 w-16 bg-gradient-to-b from-white/20 to-white/5 rounded-sm backdrop-blur-sm border border-white/10 z-10";
 
 const Experience = () => (
