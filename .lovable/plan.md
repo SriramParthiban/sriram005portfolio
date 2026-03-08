@@ -1,72 +1,85 @@
 
 
-## Unique Visual Styles for Each Section
+# Sriram Parthiban — Professional Portfolio Website
 
-Since **Skills** already uses the **sticky note** style, here are 5 distinct creative approaches — one per remaining section. No two sections will look alike.
-
----
-
-### 1. Professional Experience → **Vertical Timeline with Polaroid Snapshots**
-- A glowing vertical timeline line running down the center (desktop) or left edge (mobile)
-- Each job entry appears as a **polaroid-style card** — white border, slight drop shadow, tape/pin at the top
-- Cards alternate left/right on desktop; stack on mobile
-- The timeline has animated glowing dots at each node
-- Bullet points inside each polaroid with a typewriter-style font feel
+## Overview
+A minimal, high-performance, ATS-optimized portfolio website positioning Sriram Parthiban as a senior AI Automation & Revenue Operations Specialist. Clean white design with Inter font, excellent typography hierarchy, and semantic HTML throughout.
 
 ---
 
-### 2. Projects → **Interactive File Folder / Case Study Tabs**
-- Each project is presented as a **manila file folder tab** — the tab sticks up with the project name
-- Clicking a tab "opens" the folder to reveal the project details, images, metrics
-- Folder has a paper texture background, a paperclip graphic holding the proof images
-- Only one folder open at a time (accordion-style)
-- Color-coded folder tabs per project
+## Pages & Sections
+
+### 1. Sticky Navbar
+- Left: "Sriram Parthiban" text logo
+- Right: Smooth-scroll navigation links (About, Experience, Projects, Skills, Certifications, Contact)
+- "Download Resume" CTA button (links to a downloadable PDF)
+- Minimal, transparent-to-white on scroll
+
+### 2. Hero Section
+- Large heading with name and subtitle: "AI Automation & Revenue Operations Specialist"
+- Positioning statement paragraph
+- Two CTA buttons: "View Experience" and "Contact Me"
+- Four credibility metric counters displayed in a clean grid (1,000+ Daily AI Interactions, 99% Accuracy, $40K+ Cost Prevented, 500K+ Records)
+
+### 3. About Me
+- Executive-level summary written in confident, strategic tone
+- Covers AI automation expertise, RevOps architecture, GTM workflows, and cross-functional leadership
+- Clean text-based layout with proper heading hierarchy
+
+### 4. Professional Experience
+- **AI Automation Specialist** — Aspire Media Marketing (June 2024 – Present)
+  - Impact-driven bullet points: outbound automation, 1,000+ daily interactions, KPI dashboards, $40K+ savings, GTM experimentation
+- **Data Analyst Intern** — Wonkrew (Aug 2023 – Jan 2024)
+  - Analytical highlights: 500K+ records, 80% query time reduction, Power BI dashboards, 25% forecast accuracy improvement
+
+### 5. Key Projects
+Three detailed project cards with:
+- Project title and description
+- Key metrics and impact bullets
+- Technologies used
+- Projects: Multi-Channel Automation Platform, KPI Tracking Engine, Intelligent Data Integration System
+
+### 6. Technical Skills
+Categorized grid layout with six categories:
+- GTM & RevOps
+- Automation & AI
+- APIs & Integrations
+- Data & Analytics
+- Programming
+- Consulting
+
+### 7. Education
+- B.Tech in AI & Data Science, St. Joseph's Institute of Technology (CGPA: 7.56)
+- Relevant coursework listed
+
+### 8. Certifications
+- Clean list/cards for four certifications with issuing platforms
+
+### 9. GitHub Repositories
+- Fetches public repos dynamically from GitHub's public API (no auth needed)
+- Displays: repo name, description, language/tech stack, stars, last updated
+- Minimal card-based layout
+
+### 10. Contact Section
+- Positioning message
+- Email, LinkedIn, GitHub links
+- Simple contact form (Name, Email, Message) — frontend-only with mailto or toast confirmation
 
 ---
 
-### 3. Certifications & Education → **Achievement Wall / Trophy Shelf**
-- Certifications displayed as **framed certificates** hanging on a dark wall — gold/bronze frame borders, slight 3D perspective tilt
-- Each frame has a subtle shine/gloss animation on hover
-- Education section below styled as a **diploma scroll** — rolled parchment edges with the degree info inside
-- Ribbon/seal graphic for the degree
+## Design Approach
+- **Colors**: White background, near-black text, subtle gray accents, one muted accent color for CTAs
+- **Font**: Inter
+- **Layout**: Maximum ~800px content width, generous whitespace, clean section separators
+- **Responsive**: Mobile-first, fully responsive across all breakpoints
+- **Animations**: Minimal — smooth scroll only, no heavy libraries
+- **SEO**: Proper meta tags, Open Graph tags, semantic HTML, heading hierarchy (H1→H3), structured content for ATS parsing
 
 ---
 
-### 4. GitHub Repos → **Terminal / Code Console**
-- Styled as a **retro terminal window** — dark background, green/amber monospace text, window chrome (close/minimize/maximize dots)
-- Each repo is a "command output" row: `$ ls repo-name` with description, language dot, stars
-- Typing cursor animation at the top
-- Links styled as underlined terminal hyperlinks
-- Scanline overlay for CRT monitor effect (subtle)
-
----
-
-### 5. Contact → **Postcard / Letter**
-- The contact form styled as a **handwritten postcard** — cream/off-white card with stamp graphic in the corner, postmark overlay
-- Form fields appear as dotted lines on the postcard (like "write here" lines)
-- "Send" button styled as a wax seal or "mail it" stamp
-- Address side shows your contact details in a handwritten font style
-
----
-
-### Summary Table
-
-| Section | Visual Metaphor | Key Elements |
-|---------|----------------|--------------|
-| Skills | Sticky Notes *(done)* | Colored cards, tape, rotations |
-| Experience | Polaroid Timeline | Center line, alternating cards, pins |
-| Projects | File Folders | Tabbed manila folders, paperclips |
-| Certs + Education | Trophy Wall + Diploma | Gold frames, scroll, ribbons |
-| GitHub | Terminal Console | CRT window, monospace, scanlines |
-| Contact | Postcard / Letter | Stamp, dotted lines, wax seal |
-
-### Files to change
-- `src/components/Experience.tsx`
-- `src/components/Projects.tsx`
-- `src/components/Certifications.tsx`
-- `src/components/Education.tsx`
-- `src/components/GitHubRepos.tsx`
-- `src/components/Contact.tsx`
-
-Each component will be fully restyled while keeping the same data/content. All use `framer-motion` for entrance and hover animations. Let me know which ones you'd like me to proceed with (all at once, or one by one).
+## Technical Notes
+- No backend needed — static content + GitHub public API fetch
+- Contact form will be frontend-only (can be enhanced with backend later)
+- Resume download will link to a PDF file in the public folder (placeholder initially)
+- All content hardcoded for performance and ATS optimization
 
