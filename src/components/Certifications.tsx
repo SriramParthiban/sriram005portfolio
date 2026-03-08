@@ -17,8 +17,7 @@ const Certifications = () => (
     </div>
     <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.02)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
-    {/* Desktop: </> watermark + cyan orbs */}
-    <div className="pointer-events-none absolute bottom-16 left-6 text-8xl font-display font-bold text-white/[0.04] select-none hidden md:block">&lt;/&gt;</div>
+    {/* Desktop: subtle cyan orbs */}
     <div className="pointer-events-none absolute top-10 left-10 h-[80px] w-[80px] rounded-full bg-[#06B6D4]/10 blur-[50px] hidden md:block" />
     <div className="pointer-events-none absolute bottom-10 right-10 h-[80px] w-[80px] rounded-full bg-[#06B6D4]/10 blur-[50px] hidden md:block" />
 

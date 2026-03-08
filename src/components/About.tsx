@@ -1,11 +1,20 @@
 import FadeInSection from "./FadeInSection";
 import { motion } from "framer-motion";
-import { Sparkles, Brain, TrendingUp } from "lucide-react";
+import { Sparkles, Brain, TrendingUp, Zap, Target, Users } from "lucide-react";
 
 const highlights = [
   { icon: Brain, text: "AI-First Thinking", desc: "Building systems that learn and scale" },
   { icon: TrendingUp, text: "Revenue Impact", desc: "$40K+ in cost prevention" },
   { icon: Sparkles, text: "Cross-Functional", desc: "Sales × Marketing × Ops alignment" },
+];
+
+const stickyNotes = [
+  { label: "Detail-Oriented", icon: Target, rotate: "-3deg", top: "8%", left: "2%", delay: 0 },
+  { label: "Fast Learner", icon: Zap, rotate: "2.5deg", top: "45%", left: "0%", delay: 0.3 },
+  { label: "Team Player", icon: Users, rotate: "-2deg", bottom: "12%", left: "1%", delay: 0.6 },
+  { label: "Problem Solver", icon: Brain, rotate: "3deg", top: "10%", right: "1%", delay: 0.15 },
+  { label: "Self-Starter", icon: Zap, rotate: "-2.5deg", top: "48%", right: "0%", delay: 0.45 },
+  { label: "Data-Driven", icon: TrendingUp, rotate: "2deg", bottom: "10%", right: "2%", delay: 0.75 },
 ];
 
 const About = () => (
@@ -16,9 +25,32 @@ const About = () => (
     </div>
     <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.02)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
 
-    {/* Desktop: curly braces watermark */}
-    <div className="pointer-events-none absolute top-20 left-6 text-9xl font-display font-bold text-white/[0.05] select-none hidden md:block">{"{"}</div>
-    <div className="pointer-events-none absolute bottom-20 right-6 text-9xl font-display font-bold text-white/[0.05] select-none hidden md:block">{"}"}</div>
+    {/* Desktop: sticky-note trait cards */}
+    {stickyNotes.map((note) => {
+      const Icon = note.icon;
+      return (
+        <motion.div
+          key={note.label}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.5, delay: note.delay, ease: "easeOut" }}
+          className="pointer-events-none absolute hidden xl:flex flex-col items-center justify-center gap-1.5 rounded-xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] px-4 py-3 backdrop-blur-md shadow-lg shadow-black/20"
+          style={{
+            rotate: note.rotate,
+            top: note.top,
+            left: note.left,
+            right: note.right,
+            bottom: note.bottom,
+          }}
+        >
+          <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-primary/15 text-primary">
+            <Icon className="h-3.5 w-3.5" />
+          </div>
+          <span className="text-[10px] font-display font-semibold tracking-wide text-white/50 whitespace-nowrap">{note.label}</span>
+        </motion.div>
+      );
+    })}
 
     {/* Mobile: gradient accent lines + drifting orb */}
     <div className="pointer-events-none absolute top-16 right-4 h-24 w-[1.5px] rounded-full bg-gradient-to-b from-[#7C3AED]/25 via-[#06B6D4]/15 to-transparent animate-[pulseFade_5s_ease-in-out_infinite] md:hidden" />
