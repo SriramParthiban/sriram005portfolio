@@ -6,15 +6,15 @@ const NaturePhotoStrip = ({ variant = "canopy", className = "" }: { variant?: "c
   const img = variant === "canopy" ? mountainFog : coralSunlight;
 
   return (
-    <div className={`relative w-full h-44 sm:h-56 md:h-72 lg:h-80 overflow-hidden ${className}`}>
+    <div className={`relative w-full h-56 sm:h-72 md:h-80 lg:h-96 overflow-hidden ${className}`}>
       <img
         src={img}
         alt=""
-        className="h-full w-full object-cover"
+        className="h-full w-full object-cover object-bottom"
         loading="lazy"
       />
-      {/* Subtle edge blending only — let the photo dominate */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[hsl(155_25%_5%/0.5)] via-transparent to-[hsl(155_25%_5%/0.5)]" />
+      {/* Very subtle edge blending */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[hsl(155_25%_5%/0.3)] via-transparent to-[hsl(155_25%_5%/0.3)]" />
     </div>
   );
 };
