@@ -144,7 +144,7 @@ const Contact = () => {
 
                     <div className="space-y-4">
                       <div>
-                        <label className="block text-[11px] font-mono font-bold text-[hsl(35,20%,30%)] uppercase tracking-widest mb-1">From</label>
+                        <label className="block text-xs font-mono font-extrabold text-[hsl(35,25%,22%)] uppercase tracking-widest mb-1.5">From</label>
                         <input
                           type="text"
                           placeholder="Your name"
@@ -152,7 +152,7 @@ const Contact = () => {
                           maxLength={100}
                           value={form.name}
                           onChange={(e) => setForm({ ...form, name: e.target.value })}
-                          className="w-full bg-transparent border-b-2 border-dotted border-[hsl(35,20%,68%)] pb-2 text-sm font-semibold text-[hsl(35,20%,20%)] placeholder:text-[hsl(35,15%,45%)] placeholder:font-medium focus:outline-none focus:border-primary/40 transition-colors font-mono"
+                          className="w-full bg-transparent border-b-2 border-dotted border-[hsl(35,20%,60%)] pb-2 text-base font-bold text-[hsl(35,25%,15%)] placeholder:text-[hsl(35,20%,40%)] placeholder:font-semibold focus:outline-none focus:border-primary/40 transition-colors font-mono"
                         />
                         {errors.name && <p className="mt-1 text-xs text-destructive">{errors.name}</p>}
                       </div>
