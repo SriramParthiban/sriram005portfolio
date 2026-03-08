@@ -15,7 +15,7 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    name: "Alex Thompson",
+    name: "Marcelo",
     role: "Marketing Director",
     company: "Aspire Media",
     quote: "Sriram transformed our entire lead pipeline. What used to take our team hours of manual work now runs on autopilot with 99% accuracy. The automation systems he built have genuinely changed how we operate.",
@@ -23,14 +23,14 @@ const testimonials: Testimonial[] = [
     
   },
   {
-    name: "Priya Nair",
+    name: "Rohit",
     role: "Operations Manager",
     company: "TechVentures Inc.",
     quote: "The KPI tracking system Sriram built saved us over $40K in wasted ad spend. His ability to combine data analytics with intelligent automation is rare and incredibly valuable.",
     rating: 5,
   },
   {
-    name: "David Chen",
+    name: "Nazir",
     role: "CEO",
     company: "GrowthStack",
     quote: "We needed someone who could bridge the gap between sales, marketing, and operations data. Sriram didn't just build dashboards — he built an entire intelligence layer for our business.",
