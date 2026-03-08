@@ -79,9 +79,9 @@ const Hero = () => {
 
           {/* RIGHT: Content */}
           <div className="flex flex-1 flex-col items-center text-center md:items-start md:text-left">
-            <motion.h1 variants={item} className="font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-balance">
+            <motion.h1 variants={item} className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-balance" style={{ color: '#1a1a1a', textShadow: '0 0 20px rgba(255,255,255,0.9), 0 0 40px rgba(255,255,255,0.5)' }}>
               Sriram{" "}
-              <span className="gradient-text-warm">Parthiban</span>
+              <span className="gradient-text-warm" style={{ textShadow: '0 0 20px rgba(255,255,255,0.9), 0 0 40px rgba(255,255,255,0.5)' }}>Parthiban</span>
             </motion.h1>
 
             {/* Role animation */}
@@ -93,14 +93,14 @@ const Hero = () => {
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: -30, opacity: 0 }}
                   transition={{ duration: 0.4, ease: "easeInOut" }}
-                  className="text-base sm:text-lg md:text-xl font-semibold text-muted-foreground font-display italic"
+                  className="text-base sm:text-lg md:text-xl font-bold font-display italic" style={{ color: '#2a2a2a', textShadow: '0 0 16px rgba(255,255,255,0.9), 0 0 30px rgba(255,255,255,0.5)' }}
                 >
                   {roles[roleIdx]}
                 </motion.p>
               </AnimatePresence>
             </motion.div>
 
-            <motion.p variants={item} className="mt-5 max-w-xl text-sm sm:text-base leading-[1.8] text-muted-foreground">
+            <motion.p variants={item} className="mt-5 max-w-xl text-sm sm:text-base leading-[1.8] font-semibold" style={{ color: '#1a1a1a', textShadow: '0 0 14px rgba(255,255,255,0.9), 0 0 28px rgba(255,255,255,0.5)' }}>
               Designing intelligent automation systems that generate qualified pipeline,
               optimize GTM workflows, and build scalable AI-driven operations.
             </motion.p>
@@ -120,7 +120,7 @@ const Hero = () => {
               </Button>
             </motion.div>
 
-            <motion.p variants={item} className="mt-6 text-xs font-medium text-muted-foreground/60 tracking-wide">
+            <motion.p variants={item} className="mt-6 text-xs font-bold tracking-wide" style={{ color: '#333', textShadow: '0 0 12px rgba(255,255,255,0.9)' }}>
               AI-First · Data-Driven · Results-Oriented
             </motion.p>
           </div>
