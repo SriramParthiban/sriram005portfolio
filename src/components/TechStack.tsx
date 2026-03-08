@@ -20,10 +20,10 @@ const row1Tools = tools.slice(0, 7);
 const row2Tools = tools.slice(7, 13);
 
 const ToolCard = ({ tool }: { tool: typeof tools[0] }) => (
-  <div className="group relative flex-shrink-0 w-[200px] sm:w-[320px] overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-sm transition-all duration-300 hover:border-white/25 hover:bg-white/[0.06]">
+  <div className="group relative flex-shrink-0 w-[200px] sm:w-[320px] overflow-hidden rounded-xl border border-border bg-card transition-all duration-300 hover:border-primary/30 hover:shadow-md">
     <div className="absolute top-0 left-0 right-0 h-1 opacity-70 group-hover:opacity-100 transition-opacity" style={{ backgroundColor: tool.color }} />
     <div className="p-5">
-      <div className="mb-3 h-10 w-10 rounded-lg flex items-center justify-center overflow-hidden bg-white/10">
+      <div className="mb-3 h-10 w-10 rounded-lg flex items-center justify-center overflow-hidden bg-muted">
         {tool.logo ? (
           <img src={tool.logo} alt={tool.name} className="h-7 w-7 object-contain" />
         ) : (
@@ -32,12 +32,10 @@ const ToolCard = ({ tool }: { tool: typeof tools[0] }) => (
           </div>
         )}
       </div>
-      <h3 className="text-base font-display font-bold text-foreground mb-1.5">{tool.name}</h3>
-      <p className="text-xs text-muted-foreground mb-3 leading-relaxed">{tool.description}</p>
-      <div className="pt-3 border-t border-white/10">
-        <p className="text-[10px] text-white/40 uppercase tracking-wider mb-1 font-semibold">How I use it</p>
-        <p className="text-xs text-muted-foreground leading-relaxed">{tool.usage}</p>
-      </div>
+      <h3 className="text-sm font-bold text-foreground">{tool.name}</h3>
+      <p className="mt-1 text-[11px] text-muted-foreground line-clamp-2">{tool.description}</p>
+      <div className="mt-2 h-px bg-border" />
+      <p className="mt-2 text-[10px] text-muted-foreground/70 leading-relaxed line-clamp-2">{tool.usage}</p>
     </div>
   </div>
 );
