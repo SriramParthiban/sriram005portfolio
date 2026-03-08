@@ -1,5 +1,5 @@
-import natureWaterfall from "@/assets/nature-waterfall.jpg";
-import natureMountains from "@/assets/nature-mountains.jpg";
+import mountainFog from "@/assets/mountain-fog.jpg";
+import coralSunlight from "@/assets/coral-sunlight.jpg";
 
 const LeafDivider = ({ flip = false, className = "" }: { flip?: boolean; className?: string }) => (
   <div className={`relative w-full overflow-hidden ${className}`} style={{ transform: flip ? "scaleY(-1)" : undefined }}>
