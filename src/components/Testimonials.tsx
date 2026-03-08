@@ -23,7 +23,7 @@ const testimonials: Testimonial[] = [
     
   },
   {
-    name: "Priya Nair",
+    name: "Rohit",
     role: "Operations Manager",
     company: "TechVentures Inc.",
     quote: "The KPI tracking system Sriram built saved us over $40K in wasted ad spend. His ability to combine data analytics with intelligent automation is rare and incredibly valuable.",
