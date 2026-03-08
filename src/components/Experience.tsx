@@ -1,8 +1,6 @@
 import FadeInSection from "./FadeInSection";
 import { Briefcase, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
-import expAiAutomation from "@/assets/exp-ai-automation.png";
-import expDataAnalyst from "@/assets/exp-data-analyst.png";
 import forestCanopy from "@/assets/forest-canopy.jpg";
 
 const experiences = [
