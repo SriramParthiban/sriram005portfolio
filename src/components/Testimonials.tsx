@@ -93,13 +93,31 @@ const Testimonials = () => {
                 <div className="relative">
                   {/* Video placeholder */}
                   {t.videoUrl && (
-                    <div className="mb-6 aspect-video w-full max-w-md mx-auto rounded-xl overflow-hidden bg-white/5 border border-white/10 flex items-center justify-center cursor-pointer group">
-                      <div className="flex flex-col items-center gap-2">
-                        <div className="h-14 w-14 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
-                          <Play className="h-6 w-6 text-primary ml-1" />
+                    <div
+                      className="mb-6 aspect-video w-full max-w-md mx-auto rounded-xl overflow-hidden bg-white/5 border border-white/10 cursor-pointer relative"
+                      onClick={() => {
+                        if (vidRef.current) {
+                          if (videoPlaying) { vidRef.current.pause(); } else { vidRef.current.play(); }
+                          setVideoPlaying(!videoPlaying);
+                        }
+                      }}
+                    >
+                      <video
+                        ref={vidRef}
+                        src={t.videoUrl}
+                        className="absolute inset-0 h-full w-full object-cover"
+                        playsInline
+                        preload="metadata"
+                        onEnded={() => setVideoPlaying(false)}
+                      />
+                      {!videoPlaying && (
+                        <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center gap-2">
+                          <div className="h-14 w-14 rounded-full bg-primary/20 flex items-center justify-center hover:bg-primary/30 transition-colors">
+                            <Play className="h-6 w-6 text-primary ml-1" />
+                          </div>
+                          <span className="text-xs text-white/40">Watch testimonial</span>
                         </div>
-                        <span className="text-xs text-white/40">Watch testimonial</span>
-                      </div>
+                      )}
                     </div>
                   )}
 
