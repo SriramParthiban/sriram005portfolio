@@ -41,13 +41,13 @@ const FinalCTA = () => (
           </Button>
         </div>
 
-        <div className="mt-10 flex items-center justify-center gap-6 text-sm font-medium drop-shadow-[0_1px_4px_rgba(255,255,255,0.9)]" style={{ color: 'hsl(var(--foreground) / 0.7)' }}>
+        <div className="mt-10 flex items-center justify-center gap-6 text-sm font-semibold" style={{ color: 'white', textShadow: '0 1px 8px rgba(0,0,0,0.5), 0 0 20px rgba(0,0,0,0.3)' }}>
           <span className="flex items-center gap-1.5">
-            <CheckCircle2 className="h-3.5 w-3.5 text-accent" />
+            <CheckCircle2 className="h-3.5 w-3.5 text-accent drop-shadow-[0_0_4px_rgba(0,0,0,0.4)]" />
             Quick Response
           </span>
           <span className="flex items-center gap-1.5">
-            <CheckCircle2 className="h-3.5 w-3.5 text-accent" />
+            <CheckCircle2 className="h-3.5 w-3.5 text-accent drop-shadow-[0_0_4px_rgba(0,0,0,0.4)]" />
             No Obligation
           </span>
         </div>
