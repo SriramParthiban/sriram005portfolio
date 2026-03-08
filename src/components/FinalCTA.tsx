@@ -22,7 +22,7 @@ const FinalCTA = () => (
           <span className="gradient-text-warm drop-shadow-[0_2px_8px_rgba(255,255,255,0.8)]">Extraordinary?</span>
         </h2>
 
-        <p className="mx-auto mt-5 max-w-md text-base font-semibold" style={{ color: 'white', textShadow: '0 1px 8px rgba(0,0,0,0.5), 0 0 20px rgba(0,0,0,0.3)' }}>
+        <p className="mx-auto mt-5 max-w-md text-base font-bold" style={{ color: '#000', textShadow: '0 0 12px rgba(255,255,255,0.8)' }}>
           Let's discuss how AI-driven automation can transform your operations and drive measurable results.
         </p>
 
@@ -41,13 +41,13 @@ const FinalCTA = () => (
           </Button>
         </div>
 
-        <div className="mt-10 flex items-center justify-center gap-6 text-sm font-semibold" style={{ color: 'white', textShadow: '0 1px 8px rgba(0,0,0,0.5), 0 0 20px rgba(0,0,0,0.3)' }}>
+        <div className="mt-10 flex items-center justify-center gap-6 text-sm font-bold" style={{ color: '#000', textShadow: '0 0 12px rgba(255,255,255,0.8)' }}>
           <span className="flex items-center gap-1.5">
-            <CheckCircle2 className="h-3.5 w-3.5 text-accent drop-shadow-[0_0_4px_rgba(0,0,0,0.4)]" />
+            <CheckCircle2 className="h-3.5 w-3.5 text-accent" />
             Quick Response
           </span>
           <span className="flex items-center gap-1.5">
-            <CheckCircle2 className="h-3.5 w-3.5 text-accent drop-shadow-[0_0_4px_rgba(0,0,0,0.4)]" />
+            <CheckCircle2 className="h-3.5 w-3.5 text-accent" />
             No Obligation
           </span>
         </div>
