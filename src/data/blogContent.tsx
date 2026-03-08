@@ -545,7 +545,7 @@ const AILeadQualContent = () => (
 
     <h2>The Tech Stack</h2>
 
-    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 my-8">
+    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 my-10">
       {[
         { tool: "n8n", role: "Workflow Engine", why: "Complex branching, self-hosted" },
         { tool: "GPT API", role: "AI Scoring", why: "Best for unstructured text" },
@@ -554,10 +554,10 @@ const AILeadQualContent = () => (
         { tool: "Looker Studio", role: "Dashboard", why: "Real-time accuracy metrics" },
         { tool: "Slack + SMS", role: "Notifications", why: "Instant hot lead alerts" },
       ].map((t) => (
-        <div key={t.tool} className="bg-[hsl(270,15%,10%)] border border-[hsl(270,20%,18%)] rounded-xl p-4">
-          <p className="text-primary font-bold text-sm">{t.tool}</p>
-          <p className="text-xs text-foreground/80 mt-0.5">{t.role}</p>
-          <p className="text-[10px] text-muted-foreground mt-1">{t.why}</p>
+        <div key={t.tool} className="bg-[hsl(270,12%,12%)] border border-[hsl(270,18%,22%)] rounded-xl p-5">
+          <p className="text-primary font-bold text-[15px]">{t.tool}</p>
+          <p className="text-sm text-white/75 mt-1">{t.role}</p>
+          <p className="text-xs text-white/40 mt-1.5">{t.why}</p>
         </div>
       ))}
     </div>
