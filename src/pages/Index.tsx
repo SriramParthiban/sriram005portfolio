@@ -46,6 +46,7 @@ const Index = () => {
       <Projects />
       <Testimonials />
       <Skills />
+      <Playground />
       <TechStack />
       <Education />
       <Certifications />
