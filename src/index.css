@@ -231,10 +231,10 @@ input[type="number"] {
   }
   @media (max-width: 640px) {
     .animate-ticker-row1 {
-      animation: ticker-row1 20s linear infinite;
+      animation: ticker-row1 8s linear infinite;
     }
     .animate-ticker-row2 {
-      animation: ticker-row2 22s linear infinite;
+      animation: ticker-row2 9s linear infinite;
     }
   }
 }
