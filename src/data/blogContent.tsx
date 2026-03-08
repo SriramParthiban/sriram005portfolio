@@ -307,31 +307,31 @@ const GHLPlaybookContent = () => (
 
     <h3>My 3-Touch Sequence (Under 10 Min)</h3>
 
-    <div className="space-y-4 my-8">
-      <div className="bg-[hsl(145,25%,10%)] border border-[hsl(145,30%,20%)] rounded-xl p-5">
-        <div className="flex items-center gap-3 mb-2">
-          <span className="text-lg">✉️</span>
-          <p className="font-semibold text-foreground text-sm">Touch 1 — Instant SMS (0-2 min)</p>
+    <div className="space-y-5 my-10">
+      <div className="bg-[hsl(145,20%,13%)] border border-[hsl(145,25%,24%)] rounded-xl p-6">
+        <div className="flex items-center gap-3 mb-3">
+          <span className="text-xl">✉️</span>
+          <p className="font-semibold text-white text-[15px]">Touch 1 — Instant SMS (0-2 min)</p>
         </div>
-        <div className="bg-[hsl(145,15%,8%)] rounded-lg p-3 text-sm text-foreground/70 italic border border-[hsl(145,20%,15%)]">
+        <div className="bg-[hsl(145,12%,10%)] rounded-lg p-4 text-[14px] text-white/70 italic border border-[hsl(145,15%,18%)]">
           "Hey {'{{'}first_name{'}}'},  thanks for reaching out about {'{{'}service{'}}'}! I'm {'{{'}agent_name{'}}'} — when's a good time to chat today?"
         </div>
       </div>
 
-      <div className="bg-[hsl(210,25%,10%)] border border-[hsl(210,30%,20%)] rounded-xl p-5">
-        <div className="flex items-center gap-3 mb-2">
-          <span className="text-lg">📞</span>
-          <p className="font-semibold text-foreground text-sm">Touch 2 — Voicemail Drop (2-5 min)</p>
+      <div className="bg-[hsl(210,20%,13%)] border border-[hsl(210,25%,24%)] rounded-xl p-6">
+        <div className="flex items-center gap-3 mb-3">
+          <span className="text-xl">📞</span>
+          <p className="font-semibold text-white text-[15px]">Touch 2 — Voicemail Drop (2-5 min)</p>
         </div>
-        <p className="text-sm text-foreground/70">Only if no reply to SMS. Pre-recorded personal message — feels human, is automated.</p>
+        <p className="text-[14px] text-white/70 leading-relaxed">Only if no reply to SMS. Pre-recorded personal message — feels human, is automated.</p>
       </div>
 
-      <div className="bg-[hsl(270,25%,10%)] border border-[hsl(270,30%,20%)] rounded-xl p-5">
-        <div className="flex items-center gap-3 mb-2">
-          <span className="text-lg">📧</span>
-          <p className="font-semibold text-foreground text-sm">Touch 3 — Email with Value (5-10 min)</p>
+      <div className="bg-[hsl(270,20%,13%)] border border-[hsl(270,25%,24%)] rounded-xl p-6">
+        <div className="flex items-center gap-3 mb-3">
+          <span className="text-xl">📧</span>
+          <p className="font-semibold text-white text-[15px]">Touch 3 — Email with Value (5-10 min)</p>
         </div>
-        <p className="text-sm text-foreground/70">Case study or relevant resource. Subject: <em>"{'{{'}first_name{'}}'}, here's how we helped [similar business]"</em></p>
+        <p className="text-[14px] text-white/70 leading-relaxed">Case study or relevant resource. Subject: <em className="text-white/80">"{'{{'}first_name{'}}'}, here's how we helped [similar business]"</em></p>
       </div>
     </div>
 
