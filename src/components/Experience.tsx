@@ -27,7 +27,7 @@ const experiences = [
     location: "Chennai, India",
     period: "Aug 2023 – Jan 2024",
     current: false,
-    illustration: expDataAnalyst,
+    illustration: null,
     bullets: [
       "Performed cross-channel performance analysis across Google Ads, Meta Ads, and organic content — identifying high-ROI patterns that informed budget reallocation decisions.",
       "Built automated reporting dashboards in Power BI and Looker Studio, reducing manual reporting time by over 60%.",
