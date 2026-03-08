@@ -265,13 +265,13 @@ const BookingCalendar = () => {
             <motion.div key="details" variants={stepVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.2 }}>
               <h4 className="text-base font-display font-bold text-foreground mb-4">Your Details</h4>
               <div className="mb-4 p-3 rounded-lg bg-primary/5 border border-primary/10">
-                <div className="flex flex-wrap gap-2 text-xs">
+                <div className="flex flex-wrap gap-2 text-sm font-semibold">
                   <span className="flex items-center gap-1 text-foreground">
-                    <CalendarDays className="h-3 w-3 text-primary" />
+                    <CalendarDays className="h-3.5 w-3.5 text-primary" />
                     {selectedDate && format(selectedDate, "MMM d")}
                   </span>
                   <span className="flex items-center gap-1 text-foreground">
-                    <Clock className="h-3 w-3 text-primary" />
+                    <Clock className="h-3.5 w-3.5 text-primary" />
                     {selectedTime} IST
                   </span>
                   <span className="text-muted-foreground">• {duration}m</span>
