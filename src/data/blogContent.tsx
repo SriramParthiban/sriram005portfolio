@@ -435,16 +435,16 @@ const AILeadQualContent = () => (
       <NumberHighlight number="67%" label="of sales time wasted on bad leads" color="amber" />
     </div>
 
-    <div className="grid grid-cols-3 gap-3 my-8">
+    <div className="grid grid-cols-3 gap-4 my-10">
       {[
         { icon: "🐌", label: "Slow", desc: "Hours to research each lead" },
         { icon: "🎲", label: "Inconsistent", desc: "Depends on who's reviewing" },
         { icon: "📉", label: "Unscalable", desc: "Breaks at 100+ leads/week" },
       ].map((item) => (
-        <div key={item.label} className="bg-[hsl(0,25%,10%)] border border-[hsl(0,30%,20%)] rounded-xl p-4 text-center">
-          <span className="text-2xl">{item.icon}</span>
-          <p className="text-sm font-semibold text-foreground mt-2">{item.label}</p>
-          <p className="text-[11px] text-muted-foreground mt-1">{item.desc}</p>
+        <div key={item.label} className="bg-[hsl(0,20%,14%)] border border-[hsl(0,25%,24%)] rounded-xl p-5 text-center">
+          <span className="text-3xl">{item.icon}</span>
+          <p className="text-[15px] font-semibold text-white mt-2">{item.label}</p>
+          <p className="text-xs text-white/50 mt-1.5">{item.desc}</p>
         </div>
       ))}
     </div>
