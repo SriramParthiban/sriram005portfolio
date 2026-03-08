@@ -157,7 +157,7 @@ const Contact = () => {
                         {errors.name && <p className="mt-1 text-xs text-destructive">{errors.name}</p>}
                       </div>
                       <div>
-                        <label className="block text-[10px] font-mono text-[hsl(35,15%,45%)] uppercase tracking-widest mb-1">Return Address</label>
+                        <label className="block text-[11px] font-mono font-bold text-[hsl(35,20%,30%)] uppercase tracking-widest mb-1">Return Address</label>
                         <input
                           type="email"
                           placeholder="Your email"
