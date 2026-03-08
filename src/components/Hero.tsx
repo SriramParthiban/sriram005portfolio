@@ -79,9 +79,9 @@ const Hero = () => {
 
           {/* RIGHT: Content */}
           <div className="flex flex-1 flex-col items-center text-center md:items-start md:text-left">
-            <motion.h1 variants={item} className="font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-balance">
+            <motion.h1 variants={item} className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-balance" style={{ color: '#1a1a1a', textShadow: '0 0 20px rgba(255,255,255,0.9), 0 0 40px rgba(255,255,255,0.5)' }}>
               Sriram{" "}
-              <span className="gradient-text-warm">Parthiban</span>
+              <span className="gradient-text-warm" style={{ textShadow: '0 0 20px rgba(255,255,255,0.9), 0 0 40px rgba(255,255,255,0.5)' }}>Parthiban</span>
             </motion.h1>
 
             {/* Role animation */}
