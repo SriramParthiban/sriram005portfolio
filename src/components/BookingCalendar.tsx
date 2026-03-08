@@ -173,8 +173,8 @@ const BookingCalendar = () => {
           {step === "date" && (
             <motion.div key="date" variants={stepVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.2 }}>
               <div className="flex items-center gap-2 mb-4">
-                <CalendarDays className="h-4 w-4 text-primary" />
-                <h4 className="text-sm font-display font-semibold text-foreground">Select a Date</h4>
+                <CalendarDays className="h-5 w-5 text-primary" />
+                <h4 className="text-base font-display font-bold text-foreground">Select a Date</h4>
               </div>
               <div className="flex justify-center">
                 <Calendar
@@ -201,15 +201,15 @@ const BookingCalendar = () => {
           {step === "time" && (
             <motion.div key="time" variants={stepVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.2 }}>
               <div className="flex items-center gap-2 mb-4">
-                <Clock className="h-4 w-4 text-primary" />
-                <h4 className="text-sm font-display font-semibold text-foreground">Pick a Time</h4>
+                <Clock className="h-5 w-5 text-primary" />
+                <h4 className="text-base font-display font-bold text-foreground">Pick a Time</h4>
               </div>
               <div className="flex gap-2 mb-4">
                 {([30, 60] as const).map((d) => (
                   <button
                     key={d}
                     onClick={() => { setDuration(d); setSelectedTime(""); }}
-                    className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all duration-300 ${
+                    className={`px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${
                       duration === d
                         ? "bg-primary text-primary-foreground shadow-[0_0_12px_hsl(var(--primary)/0.3)]"
                         : "bg-white/5 text-muted-foreground border border-white/10 hover:bg-white/10"
@@ -220,7 +220,7 @@ const BookingCalendar = () => {
                 ))}
               </div>
               {selectedDate && (
-                <p className="text-[11px] text-muted-foreground mb-3">
+                <p className="text-xs font-semibold text-muted-foreground mb-3">
                   {format(selectedDate, "EEEE, MMMM d, yyyy")} • IST
                 </p>
               )}
@@ -237,7 +237,7 @@ const BookingCalendar = () => {
                       key={slot}
                       disabled={booked}
                       onClick={() => setSelectedTime(slot)}
-                      className={`py-2 px-1.5 rounded-lg text-xs font-medium transition-all duration-200 ${
+                      className={`py-2 px-1.5 rounded-lg text-sm font-semibold transition-all duration-200 ${
                         booked
                           ? "bg-white/[0.02] text-muted-foreground/30 cursor-not-allowed line-through"
                           : selected
@@ -263,15 +263,15 @@ const BookingCalendar = () => {
 
           {step === "details" && (
             <motion.div key="details" variants={stepVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.2 }}>
-              <h4 className="text-sm font-display font-semibold text-foreground mb-4">Your Details</h4>
+              <h4 className="text-base font-display font-bold text-foreground mb-4">Your Details</h4>
               <div className="mb-4 p-3 rounded-lg bg-primary/5 border border-primary/10">
-                <div className="flex flex-wrap gap-2 text-xs">
+                <div className="flex flex-wrap gap-2 text-sm font-semibold">
                   <span className="flex items-center gap-1 text-foreground">
-                    <CalendarDays className="h-3 w-3 text-primary" />
+                    <CalendarDays className="h-3.5 w-3.5 text-primary" />
                     {selectedDate && format(selectedDate, "MMM d")}
                   </span>
                   <span className="flex items-center gap-1 text-foreground">
-                    <Clock className="h-3 w-3 text-primary" />
+                    <Clock className="h-3.5 w-3.5 text-primary" />
                     {selectedTime} IST
                   </span>
                   <span className="text-muted-foreground">• {duration}m</span>
@@ -279,19 +279,19 @@ const BookingCalendar = () => {
               </div>
               <div className="space-y-3">
                 <div>
-                  <label className="block text-[10px] font-medium text-muted-foreground mb-1 uppercase tracking-wider">Name *</label>
+                  <label className="block text-xs font-bold text-muted-foreground mb-1 uppercase tracking-wider">Name *</label>
                   <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="Your name" maxLength={100}
-                    className="h-9 text-sm bg-white/5 border-white/10 text-foreground placeholder:text-muted-foreground/50 focus:border-primary/40" />
+                    className="h-10 text-base font-semibold bg-white/5 border-white/10 text-foreground placeholder:text-muted-foreground/50 focus:border-primary/40" />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-medium text-muted-foreground mb-1 uppercase tracking-wider">Email *</label>
+                  <label className="block text-xs font-bold text-muted-foreground mb-1 uppercase tracking-wider">Email *</label>
                   <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="your@email.com" maxLength={255}
-                    className="h-9 text-sm bg-white/5 border-white/10 text-foreground placeholder:text-muted-foreground/50 focus:border-primary/40" />
+                    className="h-10 text-base font-semibold bg-white/5 border-white/10 text-foreground placeholder:text-muted-foreground/50 focus:border-primary/40" />
                 </div>
                 <div>
-                  <label className="block text-[10px] font-medium text-muted-foreground mb-1 uppercase tracking-wider">Note (optional)</label>
+                  <label className="block text-xs font-bold text-muted-foreground mb-1 uppercase tracking-wider">Note (optional)</label>
                   <textarea value={message} onChange={(e) => setMessage(e.target.value)} placeholder="What to discuss?" maxLength={500} rows={2}
-                    className="w-full rounded-md bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground/50 focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-ring px-3 py-2 text-sm resize-none" />
+                    className="w-full rounded-md bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground/50 focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-ring px-3 py-2 text-base font-semibold resize-none" />
                 </div>
               </div>
               <div className="mt-4 flex justify-between">
