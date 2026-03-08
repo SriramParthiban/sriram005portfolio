@@ -59,8 +59,8 @@ const Navbar = () => {
       }`}
     >
       <nav className="mx-auto flex max-w-5xl items-center justify-between px-6 py-4 lg:px-8">
-        <button onClick={scrollToTop} className="group flex items-center gap-2.5 text-xl font-display font-bold tracking-tight text-foreground">
-          <img src={profilePhoto} alt="Sriram Parthiban" className="h-8 w-8 rounded-full object-cover ring-2 ring-primary/30" />
+        <button onClick={scrollToTop} className={`group flex items-center gap-2.5 text-xl font-display font-bold tracking-tight ${scrolled ? 'text-foreground' : 'text-white'}`}>
+          <img src={profilePhoto} alt="Sriram Parthiban" className="h-8 w-8 rounded-full object-cover ring-2 ring-white/40" />
           SP<span className="gradient-text">.</span>
         </button>
 
