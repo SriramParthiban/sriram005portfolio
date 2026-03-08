@@ -9,7 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import FadeInSection from "./FadeInSection";
 import { format, addDays, isBefore, startOfDay } from "date-fns";
 
-const MEET_LINK = "https://meet.google.com/ptr-jaru-cjn";
+const MEET_LINK = "https://calendly.com/sriramparthiban1970/30min";
 
 const TIME_SLOTS_30 = [
   "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
@@ -322,7 +322,7 @@ const BookingCalendar = () => {
                       <span className="text-muted-foreground">• {duration} min</span>
                       {MEET_LINK && (
                         <span className="flex items-center gap-1.5 text-accent">
-                          <Video className="h-3.5 w-3.5" /> Google Meet
+                          <CalendarDays className="h-3.5 w-3.5" /> Calendly
                         </span>
                       )}
                     </div>
@@ -405,7 +405,7 @@ const BookingCalendar = () => {
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent/10 text-accent text-sm font-medium hover:bg-accent/20 transition-colors mb-6"
                     >
-                      <Video className="h-4 w-4" /> Join Google Meet
+                      <CalendarDays className="h-4 w-4" /> Open Calendly
                     </a>
                   )}
                   <div>
