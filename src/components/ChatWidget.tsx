@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { MessageCircle, X, Send, Bot, User } from "lucide-react";
+import { MessageCircle, X, Send, Bot, User, RotateCcw } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 
