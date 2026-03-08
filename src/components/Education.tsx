@@ -2,7 +2,7 @@ import FadeInSection from "./FadeInSection";
 import { GraduationCap, BookOpen } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
-import fernDetail from "@/assets/fern-detail.jpg";
+import coralDeep from "@/assets/coral-deep.jpg";
 
 const coursework = ["Machine Learning", "Supply Chain Operations", "Statistical Forecasting", "Business Analytics"];
 
