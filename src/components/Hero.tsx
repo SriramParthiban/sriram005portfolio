@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowDown, Mail } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import profilePhoto from "@/assets/profile-photo.jpeg";
 
 const roles = [
@@ -26,8 +26,6 @@ const item = {
 
 const Hero = () => {
   const [roleIdx, setRoleIdx] = useState(0);
-  const [videoPlaying, setVideoPlaying] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const interval = setInterval(() => setRoleIdx((i) => (i + 1) % roles.length), 3000);
@@ -121,40 +119,6 @@ const Hero = () => {
               optimize GTM workflows, and build scalable AI-driven operations.
             </motion.p>
 
-            {/* Video intro */}
-            <motion.div variants={item} className="mt-6 w-full max-w-md">
-              <div
-                className="group relative aspect-video w-full rounded-xl overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur-sm cursor-pointer"
-                onClick={() => {
-                  if (videoRef.current) {
-                    if (videoPlaying) {
-                      videoRef.current.pause();
-                    } else {
-                      videoRef.current.play();
-                    }
-                    setVideoPlaying(!videoPlaying);
-                  }
-                }}
-              >
-                <video
-                  ref={videoRef}
-                  src="/videos/intro.mp4"
-                  className="absolute inset-0 h-full w-full object-cover"
-                  playsInline
-                  preload="metadata"
-                  onEnded={() => setVideoPlaying(false)}
-                />
-                {/* Play overlay — hides when playing */}
-                {!videoPlaying && (
-                  <div className="absolute inset-0 bg-black/40 flex flex-col items-center justify-center gap-2 transition-opacity">
-                    <div className="h-14 w-14 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center group-hover:bg-primary/30 group-hover:scale-110 transition-all duration-300 shadow-[0_0_30px_-5px_hsl(var(--primary)/0.4)]">
-                      <svg className="h-5 w-5 text-primary ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                    </div>
-                    <span className="text-xs text-white/40 font-medium">Watch my intro</span>
-                  </div>
-                )}
-              </div>
-            </motion.div>
 
             <motion.div variants={item} className="mt-8 flex flex-wrap items-center justify-center md:justify-start gap-3 sm:gap-4">
               <Button size="lg" className="glow-md font-semibold text-[0.9rem] px-6 sm:px-7 py-6 transition-all duration-300 hover:glow-lg min-h-[44px]" asChild>
