@@ -295,7 +295,7 @@ const BookingCalendar = () => {
                 </div>
               </div>
               <div className="mt-4 flex justify-between">
-                <Button variant="ghost" size="sm" onClick={() => setStep("time")} className="text-muted-foreground gap-1.5">
+                <Button variant="ghost" size="sm" onClick={() => setStep("time")} className="text-foreground font-bold gap-1.5">
                   <ChevronLeft className="h-3.5 w-3.5" /> Back
                 </Button>
                 <Button onClick={handleBook} disabled={sending || !name.trim() || !email.trim()} size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90 gap-1.5">
