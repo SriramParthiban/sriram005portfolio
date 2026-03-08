@@ -539,7 +539,7 @@ const AILeadQualContent = () => (
 
     <h2>The Tech Stack</h2>
 
-    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 my-10">
+    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 my-10">
       {[
         { tool: "n8n", role: "Workflow Engine", why: "Complex branching, self-hosted" },
         { tool: "GPT API", role: "AI Scoring", why: "Best for unstructured text" },
