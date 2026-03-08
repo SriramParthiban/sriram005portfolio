@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import {
   Lock, LogOut, Search, MessageCircle, Mail, Phone, User, Tag, Clock,
   ChevronDown, ChevronUp, Eye, Users, CalendarCheck, MousePointerClick,
-  TrendingUp, BarChart3, MessageSquare, UserCheck, RefreshCw
+  TrendingUp, BarChart3, MessageSquare, UserCheck, RefreshCw, FileText
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import InvoiceGenerator from "@/components/admin/InvoiceGenerator";
 
 const VERIFY_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/verify-admin`;
 const LEADS_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/admin-leads`;
@@ -89,7 +90,7 @@ const AdminPage = () => {
   const [error, setError] = useState("");
   const [search, setSearch] = useState("");
   const [expandedId, setExpandedId] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<"stats" | "leads" | "bookings">("stats");
+  const [activeTab, setActiveTab] = useState<"stats" | "leads" | "bookings" | "invoice">("stats");
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -243,8 +244,8 @@ const AdminPage = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-6">
         {/* Tabs */}
-        <div className="flex gap-1 bg-[hsl(270,15%,10%)] p-1 rounded-xl w-fit border border-[hsl(270,20%,15%)]">
-          {(["stats", "leads", "bookings"] as const).map((tab) => (
+        <div className="flex gap-1 bg-[hsl(270,15%,10%)] p-1 rounded-xl w-fit border border-[hsl(270,20%,15%)] flex-wrap">
+          {(["stats", "leads", "bookings", "invoice"] as const).map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
@@ -257,7 +258,8 @@ const AdminPage = () => {
               {tab === "stats" && <BarChart3 className="h-4 w-4" />}
               {tab === "leads" && <MessageSquare className="h-4 w-4" />}
               {tab === "bookings" && <CalendarCheck className="h-4 w-4" />}
-              {tab.charAt(0).toUpperCase() + tab.slice(1)}
+              {tab === "invoice" && <FileText className="h-4 w-4" />}
+              {tab === "invoice" ? "Invoice" : tab.charAt(0).toUpperCase() + tab.slice(1)}
             </button>
           ))}
         </div>
@@ -478,6 +480,9 @@ const AdminPage = () => {
             )}
           </motion.div>
         )}
+
+        {/* Invoice Tab */}
+        {activeTab === "invoice" && <InvoiceGenerator />}
       </div>
     </div>
   );
