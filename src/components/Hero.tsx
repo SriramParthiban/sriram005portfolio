@@ -3,7 +3,7 @@ import { ArrowDown, Mail } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import profilePhoto from "@/assets/profile-photo.jpeg";
-import heroBackground from "@/assets/hero-waterfall-mist.png";
+import heroBackground from "@/assets/hero-japanese-garden.jpg";
 
 const roles = [
   "AI Automation Specialist",
