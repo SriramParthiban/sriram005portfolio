@@ -233,19 +233,19 @@ input[type="number"] {
     50% { transform: translateX(0); }
     100% { transform: translateX(-75%); }
   }
+  @keyframes ticker-mobile {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(calc(-100% + 100vw)); }
+    100% { transform: translateX(0); }
+  }
   .animate-ticker-row1 {
     animation: ticker-row1 40s linear infinite;
   }
   .animate-ticker-row2 {
     animation: ticker-row2 45s linear infinite;
   }
-  @media (max-width: 640px) {
-    .animate-ticker-row1 {
-      animation: ticker-row1-bounce 8s ease-in-out infinite;
-    }
-    .animate-ticker-row2 {
-      animation: ticker-row2-bounce 8s ease-in-out infinite;
-    }
+  .animate-ticker-mobile {
+    animation: ticker-mobile 10s ease-in-out infinite;
   }
 }
 
