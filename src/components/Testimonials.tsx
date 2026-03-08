@@ -33,8 +33,8 @@ const Testimonials = () => {
   return (
     <section id="testimonials" className="relative px-4 sm:px-6 py-20 sm:py-24 overflow-hidden">
       <div className="absolute inset-0">
-        <img src={fernDetail} alt="" className="h-full w-full object-cover opacity-[0.07]" loading="lazy" />
-        <div className="absolute inset-0 bg-muted/80" />
+        <img src={fernDetail} alt="" className="h-full w-full object-cover opacity-[0.2]" loading="lazy" />
+        <div className="absolute inset-0 bg-muted/70" />
       </div>
 
       <div className="relative mx-auto max-w-3xl">
