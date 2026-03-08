@@ -362,7 +362,7 @@ const ChatWidget = () => {
                     )}
                   </div>
                   {msg.role === "user" && (
-                    <div className="h-6 w-6 rounded-full bg-white/10 flex-shrink-0 flex items-center justify-center mt-1">
+                    <div className="h-6 w-6 rounded-full bg-muted flex-shrink-0 flex items-center justify-center mt-1">
                       <User className="h-3 w-3 text-muted-foreground" />
                     </div>
                   )}
