@@ -34,7 +34,7 @@ const NaturePhotoStrip = ({ variant = "canopy", className = "" }: { variant?: "c
         loading="lazy"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-[hsl(155_25%_5%)] via-transparent to-[hsl(155_25%_5%)]" />
-      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.45)]" />
+      <div className="absolute inset-0 bg-[hsl(155_25%_5%/0.30)]" />
     </div>
   );
 };
