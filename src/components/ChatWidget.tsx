@@ -326,7 +326,7 @@ const ChatWidget = () => {
                         <button
                           key={q}
                           onClick={() => handleQuickQuestion(q)}
-                          className="text-[11px] px-3 py-1.5 rounded-full border border-white/10 text-muted-foreground hover:border-primary/50 hover:text-primary transition-colors"
+                          className="text-[11px] px-3 py-1.5 rounded-full border border-border text-muted-foreground hover:border-primary/50 hover:text-primary transition-colors"
                         >
                           {q}
                         </button>
