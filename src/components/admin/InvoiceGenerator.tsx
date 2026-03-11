@@ -325,8 +325,8 @@ const InvoiceGenerator = () => {
             <p className="text-xl font-bold italic text-[#427a43]" style={{ fontFamily: "Georgia, serif" }}>
               Sriram Parthiban
             </p>
-            <div className="w-40 h-px mt-1 ml-auto" style={{ background: `${ADM_ACCENT}40` }} />
-            <p className="text-[11px] mt-1" style={{ color: ADM_MUTED }}>{customRole || "Your Role"}</p>
+            <div className="w-40 h-px mt-1 ml-auto" style={{ background: "#c0b87a40" }} />
+            <p className="text-[11px] mt-1" style={{ color: "hsl(53,25%,55%)" }}>{customRole || "Your Role"}</p>
           </div>
         </div>
       </div>
