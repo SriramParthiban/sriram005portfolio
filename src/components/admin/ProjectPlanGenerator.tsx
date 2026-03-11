@@ -319,10 +319,10 @@ const ProjectPlanGenerator = () => {
       {showPricing && (
         <div className={sectionCardClass}>
           <div className="flex items-center justify-between mb-4">
-            <p className="text-xs font-bold text-primary uppercase tracking-widest">Cost & Pricing</p>
+            <p className="text-xs font-bold text-[#c0b87a] uppercase tracking-widest">Cost & Pricing</p>
             <div className="w-40">
               <Select value={currency} onValueChange={(v) => setCurrency(v as "INR" | "USD" | "CAD")}>
-                <SelectTrigger className="w-full bg-[hsl(270,12%,10%)] border-[hsl(270,20%,22%)] text-white text-xs">
+                <SelectTrigger className="w-full bg-[hsl(121,20%,7%)] border-[hsl(121,18%,18%)] text-[#f2e3bb] text-xs">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
