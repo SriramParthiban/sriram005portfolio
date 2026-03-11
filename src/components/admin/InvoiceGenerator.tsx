@@ -207,7 +207,7 @@ const InvoiceGenerator = () => {
           <label className={labelClass}>Due Date</label>
           <Popover>
             <PopoverTrigger asChild>
-              <Button variant="outline" className={cn("w-full justify-start text-left font-normal bg-[hsl(270,15%,12%)] border-[hsl(270,20%,20%)] hover:bg-[hsl(270,15%,15%)]", !dueDate && "text-muted-foreground")}>
+              <Button variant="outline" className={cn("w-full justify-start text-left font-normal bg-[hsl(121,20%,7%)] border-[hsl(121,18%,18%)] hover:bg-[hsl(121,20%,10%)] text-[#f2e3bb]", !dueDate && "text-[hsl(53,25%,40%)]")}>
                 <CalendarIcon className="mr-2 h-4 w-4" />
                 {dueDate ? format(dueDate, "dd-MM-yyyy") : <span>dd-mm-yyyy</span>}
               </Button>
