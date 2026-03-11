@@ -71,7 +71,7 @@ const KPICard = ({ label, value, icon, color, subtitle }: KPICardProps) => (
   >
     <div className="absolute top-0 right-0 w-20 h-20 bg-white/5 rounded-full -translate-x-4 -translate-y-4" />
     <div className="flex items-start justify-between mb-3">
-      <span className="text-white/80 text-xs font-medium uppercase tracking-wide">{label}</span>
+      <span className="text-white text-xs font-bold uppercase tracking-wide">{label}</span>
       <div className="text-white/60">{icon}</div>
     </div>
     <p className="text-2xl font-bold text-white">{value}</p>
