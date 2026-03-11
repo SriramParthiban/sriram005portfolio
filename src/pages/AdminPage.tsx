@@ -217,11 +217,11 @@ const AdminPage = () => {
       style={{ background: "radial-gradient(ellipse at 50% 0%, hsl(270 50% 10% / 0.6), hsl(0 0% 3%))" }}
     >
       {/* Header */}
-      <div className="border-b border-[hsl(270,20%,15%)] bg-[hsl(270,15%,6%/0.8)] backdrop-blur-md sticky top-0 z-10">
+      <div className="border-b border-[hsl(270,20%,18%)] bg-[hsl(270,15%,5%/0.95)] backdrop-blur-md sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
           <div>
-            <h1 className="text-lg font-bold text-foreground">Dashboard</h1>
-            <p className="text-xs text-muted-foreground">Portfolio Analytics & Leads</p>
+            <h1 className="text-lg font-bold text-white">Dashboard</h1>
+            <p className="text-xs text-[hsl(270,60%,70%)]">Portfolio Analytics & Leads</p>
           </div>
           <div className="flex items-center gap-3">
             <button
