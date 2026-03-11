@@ -295,9 +295,9 @@ const InvoiceGenerator = () => {
         </div>
 
         {/* Total */}
-        <div className="mt-6 pt-5 border-t border-[hsl(270,20%,15%)] flex items-center justify-between">
-          <span className="text-sm text-muted-foreground font-medium">Total Amount</span>
-          <span className="text-2xl font-extrabold text-foreground">
+        <div className="mt-6 pt-5 border-t border-[hsl(121,20%,16%)] flex items-center justify-between">
+          <span className="text-sm text-[hsl(53,25%,55%)] font-bold">Total Amount</span>
+          <span className="text-2xl font-extrabold text-[#f2e3bb]">
             {currencySymbol}{total.toLocaleString(currencyLocale, { minimumFractionDigits: 2 })}
           </span>
         </div>
