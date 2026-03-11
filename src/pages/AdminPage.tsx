@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import {
   Lock, LogOut, Search, MessageCircle, Mail, Phone, User, Tag, Clock,
   ChevronDown, ChevronUp, Eye, Users, CalendarCheck, MousePointerClick,
-  TrendingUp, BarChart3, MessageSquare, UserCheck, RefreshCw, FileText
+  TrendingUp, BarChart3, MessageSquare, UserCheck, RefreshCw, FileText, ClipboardList
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import InvoiceGenerator from "@/components/admin/InvoiceGenerator";
-
+import ProjectPlanGenerator from "@/components/admin/ProjectPlanGenerator";
 const VERIFY_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/verify-admin`;
 const LEADS_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/admin-leads`;
 
@@ -71,11 +71,11 @@ const KPICard = ({ label, value, icon, color, subtitle }: KPICardProps) => (
   >
     <div className="absolute top-0 right-0 w-20 h-20 bg-white/5 rounded-full -translate-x-4 -translate-y-4" />
     <div className="flex items-start justify-between mb-3">
-      <span className="text-white/80 text-xs font-medium uppercase tracking-wide">{label}</span>
+      <span className="text-white text-xs font-bold uppercase tracking-wide">{label}</span>
       <div className="text-white/60">{icon}</div>
     </div>
     <p className="text-2xl font-bold text-white">{value}</p>
-    {subtitle && <p className="text-[11px] text-white/50 mt-1">{subtitle}</p>}
+    {subtitle && <p className="text-[11px] text-white/70 font-medium mt-1">{subtitle}</p>}
   </motion.div>
 );
 
@@ -90,7 +90,7 @@ const AdminPage = () => {
   const [error, setError] = useState("");
   const [search, setSearch] = useState("");
   const [expandedId, setExpandedId] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<"stats" | "leads" | "bookings" | "invoice">("stats");
+  const [activeTab, setActiveTab] = useState<"stats" | "leads" | "bookings" | "invoice" | "plan">("stats");
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -213,15 +213,15 @@ const AdminPage = () => {
   const maxDailyView = Math.max(1, ...last7Days.map((d) => stats?.dailyViews[d] || 0));
 
   return (
-    <div className="min-h-screen bg-background"
-      style={{ background: "radial-gradient(ellipse at 50% 0%, hsl(270 50% 12% / 0.4), hsl(0 0% 4%))" }}
+    <div className="min-h-screen"
+      style={{ background: "radial-gradient(ellipse at 50% 0%, hsl(270 50% 10% / 0.6), hsl(0 0% 3%))" }}
     >
       {/* Header */}
-      <div className="border-b border-[hsl(270,20%,15%)] bg-[hsl(270,15%,6%/0.8)] backdrop-blur-md sticky top-0 z-10">
+      <div className="border-b border-[hsl(270,20%,18%)] bg-[hsl(270,15%,5%/0.95)] backdrop-blur-md sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
           <div>
-            <h1 className="text-lg font-bold text-foreground">Dashboard</h1>
-            <p className="text-xs text-muted-foreground">Portfolio Analytics & Leads</p>
+            <h1 className="text-lg font-bold text-white">Dashboard</h1>
+            <p className="text-xs text-[hsl(270,60%,70%)]">Portfolio Analytics & Leads</p>
           </div>
           <div className="flex items-center gap-3">
             <button
@@ -244,22 +244,23 @@ const AdminPage = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-6">
         {/* Tabs */}
-        <div className="flex gap-1 bg-[hsl(270,15%,10%)] p-1 rounded-xl w-fit border border-[hsl(270,20%,15%)] flex-wrap">
-          {(["stats", "leads", "bookings", "invoice"] as const).map((tab) => (
+        <div className="flex gap-1 bg-[hsl(270,12%,8%)] p-1 rounded-xl w-fit border border-[hsl(270,20%,18%)] flex-wrap">
+          {(["stats", "leads", "bookings", "invoice", "plan"] as const).map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-5 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 ${
+              className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${
                 activeTab === tab
                   ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
-                  : "text-muted-foreground hover:text-foreground"
+                  : "text-[hsl(270,30%,65%)] hover:text-white"
               }`}
             >
               {tab === "stats" && <BarChart3 className="h-4 w-4" />}
               {tab === "leads" && <MessageSquare className="h-4 w-4" />}
               {tab === "bookings" && <CalendarCheck className="h-4 w-4" />}
               {tab === "invoice" && <FileText className="h-4 w-4" />}
-              {tab === "invoice" ? "Invoice" : tab.charAt(0).toUpperCase() + tab.slice(1)}
+              {tab === "plan" && <ClipboardList className="h-4 w-4" />}
+              {tab === "plan" ? "Plan" : tab === "invoice" ? "Invoice" : tab.charAt(0).toUpperCase() + tab.slice(1)}
             </button>
           ))}
         </div>
@@ -280,8 +281,8 @@ const AdminPage = () => {
             {/* Chart + Tag breakdown */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
               {/* Mini bar chart - last 7 days */}
-              <div className="lg:col-span-2 bg-[hsl(270,15%,8%)] border border-[hsl(270,20%,15%)] rounded-xl p-5">
-                <h3 className="text-sm font-semibold text-foreground mb-4">Page Views — Last 7 Days</h3>
+              <div className="lg:col-span-2 bg-[hsl(270,12%,7%)] border border-[hsl(270,20%,18%)] rounded-xl p-5">
+                <h3 className="text-sm font-bold text-white mb-4">Page Views — Last 7 Days</h3>
                 <div className="flex items-end gap-2 h-32">
                   {last7Days.map((day) => {
                     const count = stats.dailyViews[day] || 0;
@@ -303,8 +304,8 @@ const AdminPage = () => {
               </div>
 
               {/* Tag breakdown */}
-              <div className="bg-[hsl(270,15%,8%)] border border-[hsl(270,20%,15%)] rounded-xl p-5">
-                <h3 className="text-sm font-semibold text-foreground mb-4">Lead Tags</h3>
+              <div className="bg-[hsl(270,12%,7%)] border border-[hsl(270,20%,18%)] rounded-xl p-5">
+                <h3 className="text-sm font-bold text-white mb-4">Lead Tags</h3>
                 <div className="space-y-2">
                   {Object.entries(stats.tagCounts)
                     .sort(([, a], [, b]) => b - a)
@@ -483,6 +484,9 @@ const AdminPage = () => {
 
         {/* Invoice Tab */}
         {activeTab === "invoice" && <InvoiceGenerator />}
+
+        {/* Plan Tab */}
+        {activeTab === "plan" && <ProjectPlanGenerator />}
       </div>
     </div>
   );
