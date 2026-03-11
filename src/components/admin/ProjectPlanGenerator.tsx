@@ -239,7 +239,7 @@ const ProjectPlanGenerator = () => {
           <label className={labelClass}>Date</label>
           <Popover>
             <PopoverTrigger asChild>
-              <Button variant="outline" className={cn("w-full justify-start text-left font-normal bg-[hsl(270,12%,10%)] border-[hsl(270,20%,22%)] hover:bg-[hsl(270,12%,14%)] text-white", !date && "text-[hsl(270,20%,45%)]")}>
+              <Button variant="outline" className={cn("w-full justify-start text-left font-normal bg-[hsl(121,20%,7%)] border-[hsl(121,18%,18%)] hover:bg-[hsl(121,20%,10%)] text-[#f2e3bb]", !date && "text-[hsl(53,25%,40%)]")}>
                 <CalendarIcon className="mr-2 h-4 w-4" />
                 {date ? format(date, "dd-MM-yyyy") : <span>Pick a date</span>}
               </Button>
