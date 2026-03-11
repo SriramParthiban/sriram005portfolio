@@ -244,22 +244,23 @@ const AdminPage = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-6">
         {/* Tabs */}
-        <div className="flex gap-1 bg-[hsl(270,15%,10%)] p-1 rounded-xl w-fit border border-[hsl(270,20%,15%)] flex-wrap">
-          {(["stats", "leads", "bookings", "invoice"] as const).map((tab) => (
+        <div className="flex gap-1 bg-[hsl(270,12%,8%)] p-1 rounded-xl w-fit border border-[hsl(270,20%,18%)] flex-wrap">
+          {(["stats", "leads", "bookings", "invoice", "plan"] as const).map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-5 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 ${
+              className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${
                 activeTab === tab
                   ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
-                  : "text-muted-foreground hover:text-foreground"
+                  : "text-[hsl(270,30%,65%)] hover:text-white"
               }`}
             >
               {tab === "stats" && <BarChart3 className="h-4 w-4" />}
               {tab === "leads" && <MessageSquare className="h-4 w-4" />}
               {tab === "bookings" && <CalendarCheck className="h-4 w-4" />}
               {tab === "invoice" && <FileText className="h-4 w-4" />}
-              {tab === "invoice" ? "Invoice" : tab.charAt(0).toUpperCase() + tab.slice(1)}
+              {tab === "plan" && <ClipboardList className="h-4 w-4" />}
+              {tab === "plan" ? "Plan" : tab === "invoice" ? "Invoice" : tab.charAt(0).toUpperCase() + tab.slice(1)}
             </button>
           ))}
         </div>
