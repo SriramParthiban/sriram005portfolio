@@ -334,7 +334,7 @@ const ProjectPlanGenerator = () => {
             </div>
           </div>
           <div className="space-y-3">
-            <div className="hidden sm:grid grid-cols-[1fr_150px_40px] gap-3 text-xs text-[hsl(270,30%,55%)] font-bold px-1">
+            <div className="hidden sm:grid grid-cols-[1fr_150px_40px] gap-3 text-xs text-[hsl(53,25%,50%)] font-bold px-1">
               <span>Description</span>
               <span>Amount ({currencySymbol})</span>
               <span></span>
