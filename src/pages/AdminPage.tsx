@@ -281,8 +281,8 @@ const AdminPage = () => {
             {/* Chart + Tag breakdown */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
               {/* Mini bar chart - last 7 days */}
-              <div className="lg:col-span-2 bg-[hsl(270,15%,8%)] border border-[hsl(270,20%,15%)] rounded-xl p-5">
-                <h3 className="text-sm font-semibold text-foreground mb-4">Page Views — Last 7 Days</h3>
+              <div className="lg:col-span-2 bg-[hsl(270,12%,7%)] border border-[hsl(270,20%,18%)] rounded-xl p-5">
+                <h3 className="text-sm font-bold text-white mb-4">Page Views — Last 7 Days</h3>
                 <div className="flex items-end gap-2 h-32">
                   {last7Days.map((day) => {
                     const count = stats.dailyViews[day] || 0;
