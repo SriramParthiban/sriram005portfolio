@@ -233,8 +233,8 @@ const InvoiceGenerator = () => {
         </div>
 
         {/* TO - editable */}
-        <div className="bg-[hsl(270,15%,8%)] border border-[hsl(270,20%,15%)] rounded-xl p-5">
-          <p className="text-xs font-bold text-primary uppercase tracking-widest mb-4">Bill To</p>
+        <div className="bg-[hsl(121,25%,8%)] border border-[hsl(121,20%,16%)] rounded-xl p-5">
+          <p className="text-xs font-bold text-[#c0b87a] uppercase tracking-widest mb-4">Bill To</p>
           <div className="space-y-3">
             <input className={inputClass} placeholder="Client Name" value={clientName} onChange={(e) => setClientName(e.target.value)} />
             <input className={inputClass} placeholder="Email Address" type="email" value={clientEmail} onChange={(e) => setClientEmail(e.target.value)} />
