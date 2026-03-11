@@ -75,7 +75,7 @@ const KPICard = ({ label, value, icon, color, subtitle }: KPICardProps) => (
       <div className="text-white/60">{icon}</div>
     </div>
     <p className="text-2xl font-bold text-white">{value}</p>
-    {subtitle && <p className="text-[11px] text-white/50 mt-1">{subtitle}</p>}
+    {subtitle && <p className="text-[11px] text-white/70 font-medium mt-1">{subtitle}</p>}
   </motion.div>
 );
 
