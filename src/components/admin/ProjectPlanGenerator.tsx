@@ -209,9 +209,10 @@ const ProjectPlanGenerator = () => {
   };
 
   const inputClass =
-    "w-full bg-[hsl(270,12%,10%)] border border-[hsl(270,20%,22%)] rounded-lg px-3 py-2.5 text-sm text-white placeholder:text-[hsl(270,20%,45%)] focus:outline-none focus:border-primary/60 transition-colors";
-  const labelClass = "text-xs font-bold text-[hsl(270,50%,75%)] mb-1.5 block uppercase tracking-wider";
-  const sectionCardClass = "bg-[hsl(270,12%,6%)] border border-[hsl(270,20%,18%)] rounded-xl p-5";
+    "w-full rounded-lg px-3 py-2.5 text-sm focus:outline-none transition-colors"
+    + " bg-[hsl(121,20%,7%)] border border-[hsl(121,18%,18%)] text-[#f2e3bb] placeholder:text-[hsl(53,25%,40%)] focus:border-[#427a43]";
+  const labelClass = "text-xs font-bold text-[#c0b87a] mb-1.5 block uppercase tracking-wider";
+  const sectionCardClass = "bg-[hsl(121,25%,8%)] border border-[hsl(121,20%,16%)] rounded-xl p-5";
 
   const toggleSections = [
     { key: "requirements", label: "Requirements", state: showRequirements, toggle: setShowRequirements },
