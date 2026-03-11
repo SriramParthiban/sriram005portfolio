@@ -352,9 +352,9 @@ const ProjectPlanGenerator = () => {
               <Plus className="h-4 w-4" /> Add Line Item
             </button>
           </div>
-          <div className="mt-6 pt-5 border-t border-[hsl(270,20%,18%)] flex items-center justify-between">
-            <span className="text-sm text-[hsl(270,30%,60%)] font-bold">Total Amount</span>
-            <span className="text-2xl font-extrabold text-white">
+          <div className="mt-6 pt-5 border-t border-[hsl(121,20%,16%)] flex items-center justify-between">
+            <span className="text-sm text-[hsl(53,25%,55%)] font-bold">Total Amount</span>
+            <span className="text-2xl font-extrabold text-[#f2e3bb]">
               {currencySymbol}{total.toLocaleString(currencyLocale, { minimumFractionDigits: 2 })}
             </span>
           </div>
