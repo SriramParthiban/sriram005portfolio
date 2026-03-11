@@ -484,6 +484,9 @@ const AdminPage = () => {
 
         {/* Invoice Tab */}
         {activeTab === "invoice" && <InvoiceGenerator />}
+
+        {/* Plan Tab */}
+        {activeTab === "plan" && <ProjectPlanGenerator />}
       </div>
     </div>
   );
