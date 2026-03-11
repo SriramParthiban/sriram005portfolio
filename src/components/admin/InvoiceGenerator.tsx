@@ -168,8 +168,9 @@ const InvoiceGenerator = () => {
   };
 
   const inputClass =
-    "w-full bg-[hsl(270,12%,10%)] border border-[hsl(270,20%,22%)] rounded-lg px-3 py-2.5 text-sm text-white placeholder:text-[hsl(270,20%,45%)] focus:outline-none focus:border-primary/60 transition-colors";
-  const labelClass = "text-xs font-bold text-[hsl(270,50%,75%)] mb-1.5 block uppercase tracking-wider";
+    "w-full rounded-lg px-3 py-2.5 text-sm focus:outline-none transition-colors"
+    + " bg-[hsl(121,20%,7%)] border border-[hsl(121,18%,18%)] text-[#f2e3bb] placeholder:text-[hsl(53,25%,40%)] focus:border-[#427a43]";
+  const labelClass = "text-xs font-bold text-[#c0b87a] mb-1.5 block uppercase tracking-wider";
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
@@ -178,7 +179,7 @@ const InvoiceGenerator = () => {
         <div>
           <label className={labelClass}>Currency</label>
           <Select value={currency} onValueChange={(v) => setCurrency(v as "INR" | "USD" | "CAD")}>
-            <SelectTrigger className="w-full bg-[hsl(270,15%,12%)] border-[hsl(270,20%,20%)]">
+            <SelectTrigger className="w-full bg-[hsl(121,20%,7%)] border-[hsl(121,18%,18%)] text-[#f2e3bb]">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -192,7 +193,7 @@ const InvoiceGenerator = () => {
           <label className={labelClass}>Invoice Date</label>
           <Popover>
             <PopoverTrigger asChild>
-              <Button variant="outline" className={cn("w-full justify-start text-left font-normal bg-[hsl(270,15%,12%)] border-[hsl(270,20%,20%)] hover:bg-[hsl(270,15%,15%)]", !invoiceDate && "text-muted-foreground")}>
+              <Button variant="outline" className={cn("w-full justify-start text-left font-normal bg-[hsl(121,20%,7%)] border-[hsl(121,18%,18%)] hover:bg-[hsl(121,20%,10%)] text-[#f2e3bb]", !invoiceDate && "text-[hsl(53,25%,40%)]")}>
                 <CalendarIcon className="mr-2 h-4 w-4" />
                 {invoiceDate ? format(invoiceDate, "dd-MM-yyyy") : <span>Pick a date</span>}
               </Button>
@@ -206,7 +207,7 @@ const InvoiceGenerator = () => {
           <label className={labelClass}>Due Date</label>
           <Popover>
             <PopoverTrigger asChild>
-              <Button variant="outline" className={cn("w-full justify-start text-left font-normal bg-[hsl(270,15%,12%)] border-[hsl(270,20%,20%)] hover:bg-[hsl(270,15%,15%)]", !dueDate && "text-muted-foreground")}>
+              <Button variant="outline" className={cn("w-full justify-start text-left font-normal bg-[hsl(121,20%,7%)] border-[hsl(121,18%,18%)] hover:bg-[hsl(121,20%,10%)] text-[#f2e3bb]", !dueDate && "text-[hsl(53,25%,40%)]")}>
                 <CalendarIcon className="mr-2 h-4 w-4" />
                 {dueDate ? format(dueDate, "dd-MM-yyyy") : <span>dd-mm-yyyy</span>}
               </Button>
@@ -221,19 +222,19 @@ const InvoiceGenerator = () => {
       {/* From / To */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         {/* FROM - readonly */}
-        <div className="bg-[hsl(270,15%,8%)] border border-[hsl(270,20%,15%)] rounded-xl p-5">
-          <p className="text-xs font-bold text-primary uppercase tracking-widest mb-4">From</p>
+        <div className="bg-[hsl(121,25%,8%)] border border-[hsl(121,20%,16%)] rounded-xl p-5">
+          <p className="text-xs font-bold text-[#c0b87a] uppercase tracking-widest mb-4">From</p>
           <div className="space-y-1.5 text-sm">
-            <p className="text-foreground font-semibold">{OWNER.name}</p>
-            <p className="text-muted-foreground">{OWNER.email}</p>
-            <p className="text-muted-foreground">{OWNER.phone}</p>
-            <p className="text-muted-foreground">{OWNER.address}</p>
+            <p className="text-[#f2e3bb] font-semibold">{OWNER.name}</p>
+            <p className="text-[hsl(53,25%,55%)]">{OWNER.email}</p>
+            <p className="text-[hsl(53,25%,55%)]">{OWNER.phone}</p>
+            <p className="text-[hsl(53,25%,55%)]">{OWNER.address}</p>
           </div>
         </div>
 
         {/* TO - editable */}
-        <div className="bg-[hsl(270,15%,8%)] border border-[hsl(270,20%,15%)] rounded-xl p-5">
-          <p className="text-xs font-bold text-primary uppercase tracking-widest mb-4">Bill To</p>
+        <div className="bg-[hsl(121,25%,8%)] border border-[hsl(121,20%,16%)] rounded-xl p-5">
+          <p className="text-xs font-bold text-[#c0b87a] uppercase tracking-widest mb-4">Bill To</p>
           <div className="space-y-3">
             <input className={inputClass} placeholder="Client Name" value={clientName} onChange={(e) => setClientName(e.target.value)} />
             <input className={inputClass} placeholder="Email Address" type="email" value={clientEmail} onChange={(e) => setClientEmail(e.target.value)} />
@@ -244,16 +245,16 @@ const InvoiceGenerator = () => {
       </div>
 
       {/* Line Items */}
-      <div className="bg-[hsl(270,15%,8%)] border border-[hsl(270,20%,15%)] rounded-xl p-5">
+      <div className="bg-[hsl(121,25%,8%)] border border-[hsl(121,20%,16%)] rounded-xl p-5">
         <div className="flex items-center justify-between mb-4">
-          <p className="text-xs font-bold text-primary uppercase tracking-widest">Services & Pricing</p>
-          <span className="text-xs font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">
+          <p className="text-xs font-bold text-[#c0b87a] uppercase tracking-widest">Services & Pricing</p>
+          <span className="text-xs font-bold text-[#005f02] bg-[#005f02]/15 px-3 py-1 rounded-full border border-[#005f02]/30">
             Currency: {currencySymbol} {currency}
           </span>
         </div>
         <div className="space-y-3">
           {/* Header */}
-          <div className="hidden sm:grid grid-cols-[1fr_150px_40px] gap-3 text-xs text-muted-foreground font-medium px-1">
+          <div className="hidden sm:grid grid-cols-[1fr_150px_40px] gap-3 text-xs text-[hsl(53,25%,55%)] font-bold px-1">
             <span>Description</span>
             <span>Amount ({currencySymbol})</span>
             <span></span>
@@ -287,16 +288,16 @@ const InvoiceGenerator = () => {
 
           <button
             onClick={addItem}
-            className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 font-medium mt-2 transition-colors"
+            className="flex items-center gap-2 text-sm text-[#427a43] hover:text-[#005f02] font-bold mt-2 transition-colors"
           >
             <Plus className="h-4 w-4" /> Add Line Item
           </button>
         </div>
 
         {/* Total */}
-        <div className="mt-6 pt-5 border-t border-[hsl(270,20%,15%)] flex items-center justify-between">
-          <span className="text-sm text-muted-foreground font-medium">Total Amount</span>
-          <span className="text-2xl font-extrabold text-foreground">
+        <div className="mt-6 pt-5 border-t border-[hsl(121,20%,16%)] flex items-center justify-between">
+          <span className="text-sm text-[hsl(53,25%,55%)] font-bold">Total Amount</span>
+          <span className="text-2xl font-extrabold text-[#f2e3bb]">
             {currencySymbol}{total.toLocaleString(currencyLocale, { minimumFractionDigits: 2 })}
           </span>
         </div>
@@ -314,18 +315,18 @@ const InvoiceGenerator = () => {
       </div>
 
       {/* Signature Preview */}
-      <div className="bg-[hsl(270,15%,8%)] border border-[hsl(270,20%,15%)] rounded-xl p-5">
+      <div className="bg-[hsl(121,25%,8%)] border border-[hsl(121,20%,16%)] rounded-xl p-5">
         <div className="flex flex-col sm:flex-row gap-4 sm:items-end sm:justify-between">
           <div className="flex-1">
             <label className={labelClass}>Your Role / Title</label>
             <input className={inputClass} placeholder="e.g. AI Automation Specialist" value={customRole} onChange={(e) => setCustomRole(e.target.value)} />
           </div>
           <div className="text-right">
-            <p className="text-xl font-bold italic text-primary" style={{ fontFamily: "Georgia, serif" }}>
+            <p className="text-xl font-bold italic text-[#427a43]" style={{ fontFamily: "Georgia, serif" }}>
               Sriram Parthiban
             </p>
-            <div className="w-40 h-px bg-foreground/30 mt-1 ml-auto" />
-            <p className="text-[11px] text-muted-foreground mt-1">{customRole || "Your Role"}</p>
+            <div className="w-40 h-px mt-1 ml-auto" style={{ background: "#c0b87a40" }} />
+            <p className="text-[11px] mt-1" style={{ color: "hsl(53,25%,55%)" }}>{customRole || "Your Role"}</p>
           </div>
         </div>
       </div>
@@ -335,7 +336,8 @@ const InvoiceGenerator = () => {
         <button
           onClick={handlePrint}
           disabled={!clientName.trim() || items.every((i) => !i.description.trim())}
-          className="flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-xl text-sm font-medium hover:brightness-110 disabled:opacity-40 transition-all shadow-lg shadow-primary/20"
+          className="flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold hover:brightness-110 disabled:opacity-40 transition-all shadow-lg"
+          style={{ background: "#005f02", color: "#f2e3bb", boxShadow: "0 4px 12px #005f0240" }}
         >
           <FileDown className="h-4 w-4" />
           Generate Invoice PDF

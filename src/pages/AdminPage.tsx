@@ -1,14 +1,46 @@
 import { useState, useEffect } from "react";
 import {
   Lock, LogOut, Search, MessageCircle, Mail, Phone, User, Tag, Clock,
-  ChevronDown, ChevronUp, Eye, Users, CalendarCheck, MousePointerClick,
+  ChevronDown, ChevronUp, Eye, Users, CalendarCheck,
   TrendingUp, BarChart3, MessageSquare, UserCheck, RefreshCw, FileText, ClipboardList
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import InvoiceGenerator from "@/components/admin/InvoiceGenerator";
 import ProjectPlanGenerator from "@/components/admin/ProjectPlanGenerator";
+
 const VERIFY_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/verify-admin`;
 const LEADS_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/admin-leads`;
+
+/*
+ * Admin palette (used ONLY on this page):
+ * --admin-dark:    #005f02  hsl(121, 100%, 19%)
+ * --admin-mid:     #427a43  hsl(121, 30%, 37%)
+ * --admin-gold:    #c0b87a  hsl(53, 36%, 61%)
+ * --admin-cream:   #f2e3bb  hsl(40, 72%, 84%)
+ *
+ * Background: very dark desaturated green
+ * Cards/surfaces: dark green tones
+ * Primary accent: gold (#c0b87a)
+ * Text: cream (#f2e3bb) for max readability
+ * Secondary text: gold toned
+ */
+
+const ADM = {
+  bg: "hsl(121, 60%, 4%)",              // near-black green
+  bgGradient: "radial-gradient(ellipse at 50% 0%, hsl(121, 50%, 10%), hsl(121, 40%, 3%))",
+  surface: "hsl(121, 25%, 8%)",          // card bg
+  surfaceBorder: "hsl(121, 20%, 16%)",   // card border
+  surfaceHover: "hsl(121, 20%, 12%)",
+  accent: "#c0b87a",                     // gold
+  accentHsl: "hsl(53, 36%, 61%)",
+  cream: "#f2e3bb",                      // main text
+  creamHsl: "hsl(40, 72%, 84%)",
+  midGreen: "#427a43",
+  darkGreen: "#005f02",
+  mutedText: "hsl(53, 25%, 55%)",        // readable muted
+  inputBg: "hsl(121, 20%, 7%)",
+  inputBorder: "hsl(121, 18%, 18%)",
+};
 
 type Lead = {
   id: string;
@@ -50,32 +82,23 @@ type KPICardProps = {
   label: string;
   value: string | number;
   icon: React.ReactNode;
-  color: "purple" | "green" | "blue" | "amber" | "red" | "cyan";
+  gradient: string;
   subtitle?: string;
 };
 
-const colorMap = {
-  purple: "from-[hsl(270,70%,50%)] to-[hsl(270,60%,35%)]",
-  green: "from-[hsl(145,65%,42%)] to-[hsl(145,55%,30%)]",
-  blue: "from-[hsl(215,70%,50%)] to-[hsl(215,60%,35%)]",
-  amber: "from-[hsl(35,90%,50%)] to-[hsl(35,80%,38%)]",
-  red: "from-[hsl(0,70%,50%)] to-[hsl(0,60%,35%)]",
-  cyan: "from-[hsl(185,65%,45%)] to-[hsl(185,55%,32%)]",
-};
-
-const KPICard = ({ label, value, icon, color, subtitle }: KPICardProps) => (
+const KPICard = ({ label, value, icon, gradient, subtitle }: KPICardProps) => (
   <motion.div
     initial={{ opacity: 0, y: 10 }}
     animate={{ opacity: 1, y: 0 }}
-    className={`bg-gradient-to-br ${colorMap[color]} rounded-xl p-4 relative overflow-hidden group`}
+    className={`bg-gradient-to-br ${gradient} rounded-xl p-4 relative overflow-hidden`}
   >
     <div className="absolute top-0 right-0 w-20 h-20 bg-white/5 rounded-full -translate-x-4 -translate-y-4" />
     <div className="flex items-start justify-between mb-3">
       <span className="text-white text-xs font-bold uppercase tracking-wide">{label}</span>
-      <div className="text-white/60">{icon}</div>
+      <div className="text-white/70">{icon}</div>
     </div>
     <p className="text-2xl font-bold text-white">{value}</p>
-    {subtitle && <p className="text-[11px] text-white/70 font-medium mt-1">{subtitle}</p>}
+    {subtitle && <p className="text-[11px] text-white/80 font-medium mt-1">{subtitle}</p>}
   </motion.div>
 );
 
@@ -153,35 +176,56 @@ const AdminPage = () => {
     setStats(null);
   };
 
-  // Login screen
+  // ─── Login screen ─────────────────────────────────────
   if (!authenticated) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center p-4"
-        style={{ background: "radial-gradient(ellipse at 50% 0%, hsl(270 50% 15% / 0.5), hsl(0 0% 4%))" }}
+      <div
+        className="min-h-screen flex items-center justify-center p-4"
+        style={{ background: ADM.bgGradient }}
       >
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full max-w-sm">
-          <div className="bg-[hsl(270,20%,8%)] border border-[hsl(270,30%,20%)] rounded-2xl p-8 shadow-[0_0_60px_-15px_hsl(270,70%,50%/0.15)]">
+          <div
+            className="rounded-2xl p-8"
+            style={{
+              background: ADM.surface,
+              border: `1px solid ${ADM.surfaceBorder}`,
+              boxShadow: `0 0 60px -15px ${ADM.darkGreen}80`,
+            }}
+          >
             <div className="flex items-center justify-center mb-6">
-              <div className="h-14 w-14 rounded-full bg-primary/10 flex items-center justify-center ring-2 ring-primary/20">
-                <Lock className="h-6 w-6 text-primary" />
+              <div
+                className="h-14 w-14 rounded-full flex items-center justify-center"
+                style={{ background: `${ADM.midGreen}25`, boxShadow: `0 0 0 2px ${ADM.midGreen}40` }}
+              >
+                <Lock className="h-6 w-6" style={{ color: ADM.accent }} />
               </div>
             </div>
-            <h1 className="text-xl font-bold text-center text-foreground mb-1">Admin Dashboard</h1>
-            <p className="text-sm text-muted-foreground text-center mb-6">Enter password to continue</p>
+            <h1 className="text-xl font-bold text-center mb-1" style={{ color: ADM.cream }}>
+              Admin Dashboard
+            </h1>
+            <p className="text-sm text-center mb-6" style={{ color: ADM.mutedText }}>
+              Enter password to continue
+            </p>
             <form onSubmit={handleLogin} className="space-y-4">
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Password"
-                className="w-full bg-[hsl(270,15%,12%)] border border-[hsl(270,20%,20%)] rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
+                className="w-full rounded-xl px-4 py-3 text-sm focus:outline-none transition-colors"
+                style={{
+                  background: ADM.inputBg,
+                  border: `1px solid ${ADM.inputBorder}`,
+                  color: ADM.cream,
+                }}
                 autoFocus
               />
-              {error && <p className="text-sm text-destructive text-center">{error}</p>}
+              {error && <p className="text-sm text-red-400 text-center font-medium">{error}</p>}
               <button
                 type="submit"
                 disabled={!password || loading}
-                className="w-full bg-primary text-primary-foreground rounded-xl py-3 text-sm font-medium hover:brightness-110 disabled:opacity-40 transition-all"
+                className="w-full rounded-xl py-3 text-sm font-bold hover:brightness-110 disabled:opacity-40 transition-all"
+                style={{ background: ADM.darkGreen, color: ADM.cream }}
               >
                 {loading ? "Verifying..." : "Log In"}
               </button>
@@ -204,7 +248,6 @@ const AdminPage = () => {
       : "0.0"
     : "—";
 
-  // Get last 7 days labels
   const last7Days = Array.from({ length: 7 }, (_, i) => {
     const d = new Date();
     d.setDate(d.getDate() - (6 - i));
@@ -212,29 +255,46 @@ const AdminPage = () => {
   });
   const maxDailyView = Math.max(1, ...last7Days.map((d) => stats?.dailyViews[d] || 0));
 
+  // Card / input style helpers
+  const cardStyle = {
+    background: ADM.surface,
+    border: `1px solid ${ADM.surfaceBorder}`,
+  };
+  const inputStyle = {
+    background: ADM.inputBg,
+    border: `1px solid ${ADM.inputBorder}`,
+    color: ADM.cream,
+  };
+
   return (
-    <div className="min-h-screen"
-      style={{ background: "radial-gradient(ellipse at 50% 0%, hsl(270 50% 10% / 0.6), hsl(0 0% 3%))" }}
-    >
+    <div className="min-h-screen" style={{ background: ADM.bgGradient }}>
       {/* Header */}
-      <div className="border-b border-[hsl(270,20%,18%)] bg-[hsl(270,15%,5%/0.95)] backdrop-blur-md sticky top-0 z-10">
+      <div
+        className="backdrop-blur-md sticky top-0 z-10"
+        style={{
+          borderBottom: `1px solid ${ADM.surfaceBorder}`,
+          background: `${ADM.surface}ee`,
+        }}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
           <div>
-            <h1 className="text-lg font-bold text-white">Dashboard</h1>
-            <p className="text-xs text-[hsl(270,60%,70%)]">Portfolio Analytics & Leads</p>
+            <h1 className="text-lg font-bold" style={{ color: ADM.cream }}>Dashboard</h1>
+            <p className="text-xs font-medium" style={{ color: ADM.accent }}>Portfolio Analytics & Leads</p>
           </div>
           <div className="flex items-center gap-3">
             <button
               onClick={fetchData}
               disabled={loading}
-              className="h-9 w-9 rounded-lg border border-[hsl(270,20%,20%)] flex items-center justify-center hover:bg-primary/10 transition-colors"
+              className="h-9 w-9 rounded-lg flex items-center justify-center transition-colors"
+              style={{ border: `1px solid ${ADM.surfaceBorder}` }}
               title="Refresh"
             >
-              <RefreshCw className={`h-4 w-4 text-muted-foreground ${loading ? "animate-spin" : ""}`} />
+              <RefreshCw className={`h-4 w-4 ${loading ? "animate-spin" : ""}`} style={{ color: ADM.mutedText }} />
             </button>
             <button
               onClick={handleLogout}
-              className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+              className="flex items-center gap-2 text-sm transition-colors hover:brightness-125"
+              style={{ color: ADM.mutedText }}
             >
               <LogOut className="h-4 w-4" />
             </button>
@@ -244,16 +304,22 @@ const AdminPage = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 space-y-6">
         {/* Tabs */}
-        <div className="flex gap-1 bg-[hsl(270,12%,8%)] p-1 rounded-xl w-fit border border-[hsl(270,20%,18%)] flex-wrap">
+        <div
+          className="flex gap-1 p-1 rounded-xl w-fit flex-wrap"
+          style={{ background: ADM.inputBg, border: `1px solid ${ADM.surfaceBorder}` }}
+        >
           {(["stats", "leads", "bookings", "invoice", "plan"] as const).map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all flex items-center gap-2 ${
+              className="px-5 py-2 rounded-lg text-sm font-bold transition-all flex items-center gap-2"
+              style={
                 activeTab === tab
-                  ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
-                  : "text-[hsl(270,30%,65%)] hover:text-white"
-              }`}
+                  ? { background: ADM.darkGreen, color: ADM.cream, boxShadow: `0 4px 12px ${ADM.darkGreen}60` }
+                  : { color: ADM.mutedText }
+              }
+              onMouseEnter={(e) => { if (activeTab !== tab) e.currentTarget.style.color = ADM.cream; }}
+              onMouseLeave={(e) => { if (activeTab !== tab) e.currentTarget.style.color = ADM.mutedText; }}
             >
               {tab === "stats" && <BarChart3 className="h-4 w-4" />}
               {tab === "leads" && <MessageSquare className="h-4 w-4" />}
@@ -265,36 +331,36 @@ const AdminPage = () => {
           ))}
         </div>
 
-        {/* Stats Tab */}
+        {/* ─── Stats Tab ──────────────────────────────────── */}
         {activeTab === "stats" && stats && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
-            {/* KPI Grid */}
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-              <KPICard label="Total Views" value={stats.totalViews} icon={<Eye className="h-4 w-4" />} color="purple" />
-              <KPICard label="Today" value={stats.todayViews} icon={<TrendingUp className="h-4 w-4" />} color="blue" subtitle="Page views today" />
-              <KPICard label="Unique Visitors" value={stats.uniqueVisitors} icon={<Users className="h-4 w-4" />} color="cyan" />
-              <KPICard label="Chat Leads" value={stats.totalLeads} icon={<MessageCircle className="h-4 w-4" />} color="green" />
-              <KPICard label="Contact Rate" value={`${conversionRate}%`} icon={<UserCheck className="h-4 w-4" />} color="amber" subtitle={`${stats.leadsWithContact} with info`} />
-              <KPICard label="Bookings" value={stats.totalBookings} icon={<CalendarCheck className="h-4 w-4" />} color="red" subtitle={`${bookingRate}% booking rate`} />
+              <KPICard label="Total Views" value={stats.totalViews} icon={<Eye className="h-4 w-4" />} gradient="from-[#005f02] to-[#003d01]" />
+              <KPICard label="Today" value={stats.todayViews} icon={<TrendingUp className="h-4 w-4" />} gradient="from-[#427a43] to-[#2d5a2e]" subtitle="Page views today" />
+              <KPICard label="Unique Visitors" value={stats.uniqueVisitors} icon={<Users className="h-4 w-4" />} gradient="from-[#3a6b3b] to-[#1e4a1f]" />
+              <KPICard label="Chat Leads" value={stats.totalLeads} icon={<MessageCircle className="h-4 w-4" />} gradient="from-[#005f02] to-[#427a43]" />
+              <KPICard label="Contact Rate" value={`${conversionRate}%`} icon={<UserCheck className="h-4 w-4" />} gradient="from-[#8a7a30] to-[#5e5420]" subtitle={`${stats.leadsWithContact} with info`} />
+              <KPICard label="Bookings" value={stats.totalBookings} icon={<CalendarCheck className="h-4 w-4" />} gradient="from-[#7a5c27] to-[#4d3a18]" subtitle={`${bookingRate}% booking rate`} />
             </div>
 
-            {/* Chart + Tag breakdown */}
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-              {/* Mini bar chart - last 7 days */}
-              <div className="lg:col-span-2 bg-[hsl(270,12%,7%)] border border-[hsl(270,20%,18%)] rounded-xl p-5">
-                <h3 className="text-sm font-bold text-white mb-4">Page Views — Last 7 Days</h3>
+              {/* Chart */}
+              <div className="lg:col-span-2 rounded-xl p-5" style={cardStyle}>
+                <h3 className="text-sm font-bold mb-4" style={{ color: ADM.cream }}>
+                  Page Views — Last 7 Days
+                </h3>
                 <div className="flex items-end gap-2 h-32">
                   {last7Days.map((day) => {
                     const count = stats.dailyViews[day] || 0;
                     const height = Math.max(4, (count / maxDailyView) * 100);
                     return (
                       <div key={day} className="flex-1 flex flex-col items-center gap-1">
-                        <span className="text-[10px] text-muted-foreground">{count}</span>
+                        <span className="text-[10px] font-bold" style={{ color: ADM.accent }}>{count}</span>
                         <div
-                          className="w-full bg-gradient-to-t from-primary/80 to-primary rounded-t-md transition-all"
-                          style={{ height: `${height}%` }}
+                          className="w-full rounded-t-md transition-all"
+                          style={{ height: `${height}%`, background: `linear-gradient(to top, ${ADM.darkGreen}, ${ADM.midGreen})` }}
                         />
-                        <span className="text-[10px] text-muted-foreground">
+                        <span className="text-[10px] font-medium" style={{ color: ADM.mutedText }}>
                           {new Date(day + "T00:00:00").toLocaleDateString("en-US", { weekday: "short" })}
                         </span>
                       </div>
@@ -303,24 +369,24 @@ const AdminPage = () => {
                 </div>
               </div>
 
-              {/* Tag breakdown */}
-              <div className="bg-[hsl(270,12%,7%)] border border-[hsl(270,20%,18%)] rounded-xl p-5">
-                <h3 className="text-sm font-bold text-white mb-4">Lead Tags</h3>
-                <div className="space-y-2">
+              {/* Tags */}
+              <div className="rounded-xl p-5" style={cardStyle}>
+                <h3 className="text-sm font-bold mb-4" style={{ color: ADM.cream }}>Lead Tags</h3>
+                <div className="space-y-2.5">
                   {Object.entries(stats.tagCounts)
                     .sort(([, a], [, b]) => b - a)
                     .slice(0, 8)
                     .map(([tag, count]) => (
                       <div key={tag} className="flex items-center justify-between text-sm">
-                        <span className="text-muted-foreground truncate flex items-center gap-2">
-                          <Tag className="h-3 w-3 text-primary" />
+                        <span className="truncate flex items-center gap-2 font-medium" style={{ color: ADM.mutedText }}>
+                          <Tag className="h-3 w-3" style={{ color: ADM.accent }} />
                           {tag}
                         </span>
-                        <span className="text-foreground font-medium ml-2">{count}</span>
+                        <span className="font-bold ml-2" style={{ color: ADM.cream }}>{count}</span>
                       </div>
                     ))}
                   {Object.keys(stats.tagCounts).length === 0 && (
-                    <p className="text-xs text-muted-foreground">No tags yet</p>
+                    <p className="text-xs" style={{ color: ADM.mutedText }}>No tags yet</p>
                   )}
                 </div>
               </div>
@@ -328,48 +394,48 @@ const AdminPage = () => {
           </motion.div>
         )}
 
-        {/* Leads Tab */}
+        {/* ─── Leads Tab ──────────────────────────────────── */}
         {activeTab === "leads" && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4" style={{ color: ADM.mutedText }} />
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search by name, email, phone, tag..."
-                className="w-full bg-[hsl(270,15%,10%)] border border-[hsl(270,20%,15%)] rounded-xl pl-10 pr-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors"
+                className="w-full rounded-xl pl-10 pr-4 py-3 text-sm focus:outline-none transition-colors"
+                style={{ ...inputStyle, borderColor: ADM.inputBorder }}
               />
             </div>
 
             {loading ? (
-              <div className="text-center py-12 text-muted-foreground">Loading...</div>
+              <div className="text-center py-12 font-medium" style={{ color: ADM.mutedText }}>Loading...</div>
             ) : filtered.length === 0 ? (
-              <div className="text-center py-12 text-muted-foreground">No leads found</div>
+              <div className="text-center py-12 font-medium" style={{ color: ADM.mutedText }}>No leads found</div>
             ) : (
               <div className="space-y-3">
                 {filtered.map((lead) => (
-                  <motion.div
-                    key={lead.id}
-                    layout
-                    className="bg-[hsl(270,15%,8%)] border border-[hsl(270,20%,15%)] rounded-xl overflow-hidden"
-                  >
+                  <motion.div key={lead.id} layout className="rounded-xl overflow-hidden" style={cardStyle}>
                     <button
                       onClick={() => setExpandedId(expandedId === lead.id ? null : lead.id)}
                       className="w-full text-left px-5 py-4 flex items-start justify-between gap-4"
                     >
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-3 flex-wrap mb-1">
-                          <span className="font-semibold text-foreground text-sm">
+                          <span className="font-bold text-sm" style={{ color: ADM.cream }}>
                             {lead.name || "Anonymous"}
                           </span>
                           {lead.tag && (
-                            <span className="inline-flex items-center gap-1 text-[11px] px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
+                            <span
+                              className="inline-flex items-center gap-1 text-[11px] px-2.5 py-0.5 rounded-full font-semibold"
+                              style={{ background: `${ADM.darkGreen}30`, color: ADM.accent, border: `1px solid ${ADM.darkGreen}60` }}
+                            >
                               <Tag className="h-3 w-3" />
                               {lead.tag}
                             </span>
                           )}
                         </div>
-                        <div className="flex items-center gap-4 text-xs text-muted-foreground flex-wrap">
+                        <div className="flex items-center gap-4 text-xs flex-wrap font-medium" style={{ color: ADM.mutedText }}>
                           {lead.email && (
                             <span className="flex items-center gap-1"><Mail className="h-3 w-3" />{lead.email}</span>
                           )}
@@ -385,9 +451,9 @@ const AdminPage = () => {
                         </div>
                       </div>
                       {expandedId === lead.id ? (
-                        <ChevronUp className="h-4 w-4 text-muted-foreground mt-1 flex-shrink-0" />
+                        <ChevronUp className="h-4 w-4 mt-1 flex-shrink-0" style={{ color: ADM.accent }} />
                       ) : (
-                        <ChevronDown className="h-4 w-4 text-muted-foreground mt-1 flex-shrink-0" />
+                        <ChevronDown className="h-4 w-4 mt-1 flex-shrink-0" style={{ color: ADM.mutedText }} />
                       )}
                     </button>
 
@@ -400,30 +466,33 @@ const AdminPage = () => {
                           transition={{ duration: 0.2 }}
                           className="overflow-hidden"
                         >
-                          <div className="px-5 pb-5 space-y-4 border-t border-[hsl(270,20%,15%)] pt-4">
+                          <div className="px-5 pb-5 space-y-4 pt-4" style={{ borderTop: `1px solid ${ADM.surfaceBorder}` }}>
                             {lead.summary && (
                               <div>
-                                <p className="text-xs font-medium text-muted-foreground mb-1 flex items-center gap-1">
+                                <p className="text-xs font-bold mb-1 flex items-center gap-1" style={{ color: ADM.accent }}>
                                   <User className="h-3 w-3" /> Visitor Summary
                                 </p>
-                                <p className="text-sm text-foreground leading-relaxed">{lead.summary}</p>
+                                <p className="text-sm leading-relaxed" style={{ color: ADM.cream }}>{lead.summary}</p>
                               </div>
                             )}
                             {lead.ai_response_summary && (
                               <div>
-                                <p className="text-xs font-medium text-muted-foreground mb-1 flex items-center gap-1">
+                                <p className="text-xs font-bold mb-1 flex items-center gap-1" style={{ color: ADM.accent }}>
                                   <MessageCircle className="h-3 w-3" /> AI Response Summary
                                 </p>
-                                <p className="text-sm text-foreground leading-relaxed">{lead.ai_response_summary}</p>
+                                <p className="text-sm leading-relaxed" style={{ color: ADM.cream }}>{lead.ai_response_summary}</p>
                               </div>
                             )}
                             {lead.full_conversation && lead.full_conversation.length > 0 && (
                               <div>
-                                <p className="text-xs font-medium text-muted-foreground mb-2">Full Conversation</p>
-                                <div className="bg-[hsl(270,10%,6%)] rounded-lg p-3 max-h-64 overflow-y-auto space-y-2 border border-[hsl(270,15%,12%)]">
+                                <p className="text-xs font-bold mb-2" style={{ color: ADM.accent }}>Full Conversation</p>
+                                <div
+                                  className="rounded-lg p-3 max-h-64 overflow-y-auto space-y-2"
+                                  style={{ background: ADM.inputBg, border: `1px solid ${ADM.inputBorder}` }}
+                                >
                                   {lead.full_conversation.map((msg, i) => (
-                                    <div key={i} className={`text-xs ${msg.role === "user" ? "text-primary" : "text-muted-foreground"}`}>
-                                      <span className="font-medium">{msg.role === "user" ? "Visitor" : "AI"}:</span>{" "}
+                                    <div key={i} className="text-xs font-medium" style={{ color: msg.role === "user" ? ADM.accent : ADM.mutedText }}>
+                                      <span className="font-bold">{msg.role === "user" ? "Visitor" : "AI"}:</span>{" "}
                                       {msg.content}
                                     </div>
                                   ))}
@@ -441,22 +510,19 @@ const AdminPage = () => {
           </motion.div>
         )}
 
-        {/* Bookings Tab */}
+        {/* ─── Bookings Tab ──────────────────────────────── */}
         {activeTab === "bookings" && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             {bookings.length === 0 ? (
-              <div className="text-center py-12 text-muted-foreground">No bookings yet</div>
+              <div className="text-center py-12 font-medium" style={{ color: ADM.mutedText }}>No bookings yet</div>
             ) : (
               <div className="space-y-3">
                 {bookings.map((b) => (
-                  <div
-                    key={b.id}
-                    className="bg-[hsl(270,15%,8%)] border border-[hsl(270,20%,15%)] rounded-xl px-5 py-4"
-                  >
+                  <div key={b.id} className="rounded-xl px-5 py-4" style={cardStyle}>
                     <div className="flex items-start justify-between gap-4">
                       <div>
-                        <p className="font-semibold text-foreground text-sm">{b.name}</p>
-                        <div className="flex items-center gap-3 text-xs text-muted-foreground mt-1 flex-wrap">
+                        <p className="font-bold text-sm" style={{ color: ADM.cream }}>{b.name}</p>
+                        <div className="flex items-center gap-3 text-xs mt-1 flex-wrap font-medium" style={{ color: ADM.mutedText }}>
                           <span className="flex items-center gap-1"><Mail className="h-3 w-3" />{b.email}</span>
                           <span className="flex items-center gap-1">
                             <CalendarCheck className="h-3 w-3" />
@@ -465,13 +531,20 @@ const AdminPage = () => {
                             {b.booking_time}
                           </span>
                         </div>
-                        {b.message && <p className="text-xs text-muted-foreground mt-2 italic">"{b.message}"</p>}
+                        {b.message && (
+                          <p className="text-xs mt-2 italic font-medium" style={{ color: ADM.mutedText }}>
+                            "{b.message}"
+                          </p>
+                        )}
                       </div>
-                      <span className={`text-[11px] px-2.5 py-0.5 rounded-full font-medium ${
-                        b.status === "confirmed"
-                          ? "bg-[hsl(145,65%,42%/0.15)] text-[hsl(145,65%,55%)] border border-[hsl(145,65%,42%/0.3)]"
-                          : "bg-[hsl(35,90%,50%/0.15)] text-[hsl(35,90%,60%)] border border-[hsl(35,90%,50%/0.3)]"
-                      }`}>
+                      <span
+                        className="text-[11px] px-2.5 py-0.5 rounded-full font-bold"
+                        style={
+                          b.status === "confirmed"
+                            ? { background: `${ADM.darkGreen}30`, color: "#6bdf6e", border: `1px solid ${ADM.darkGreen}60` }
+                            : { background: `${ADM.accent}20`, color: ADM.accent, border: `1px solid ${ADM.accent}40` }
+                        }
+                      >
                         {b.status}
                       </span>
                     </div>
@@ -482,10 +555,10 @@ const AdminPage = () => {
           </motion.div>
         )}
 
-        {/* Invoice Tab */}
+        {/* ─── Invoice Tab ───────────────────────────────── */}
         {activeTab === "invoice" && <InvoiceGenerator />}
 
-        {/* Plan Tab */}
+        {/* ─── Plan Tab ──────────────────────────────────── */}
         {activeTab === "plan" && <ProjectPlanGenerator />}
       </div>
     </div>

@@ -209,9 +209,10 @@ const ProjectPlanGenerator = () => {
   };
 
   const inputClass =
-    "w-full bg-[hsl(270,12%,10%)] border border-[hsl(270,20%,22%)] rounded-lg px-3 py-2.5 text-sm text-white placeholder:text-[hsl(270,20%,45%)] focus:outline-none focus:border-primary/60 transition-colors";
-  const labelClass = "text-xs font-bold text-[hsl(270,50%,75%)] mb-1.5 block uppercase tracking-wider";
-  const sectionCardClass = "bg-[hsl(270,12%,6%)] border border-[hsl(270,20%,18%)] rounded-xl p-5";
+    "w-full rounded-lg px-3 py-2.5 text-sm focus:outline-none transition-colors"
+    + " bg-[hsl(121,20%,7%)] border border-[hsl(121,18%,18%)] text-[#f2e3bb] placeholder:text-[hsl(53,25%,40%)] focus:border-[#427a43]";
+  const labelClass = "text-xs font-bold text-[#c0b87a] mb-1.5 block uppercase tracking-wider";
+  const sectionCardClass = "bg-[hsl(121,25%,8%)] border border-[hsl(121,20%,16%)] rounded-xl p-5";
 
   const toggleSections = [
     { key: "requirements", label: "Requirements", state: showRequirements, toggle: setShowRequirements },
@@ -238,7 +239,7 @@ const ProjectPlanGenerator = () => {
           <label className={labelClass}>Date</label>
           <Popover>
             <PopoverTrigger asChild>
-              <Button variant="outline" className={cn("w-full justify-start text-left font-normal bg-[hsl(270,12%,10%)] border-[hsl(270,20%,22%)] hover:bg-[hsl(270,12%,14%)] text-white", !date && "text-[hsl(270,20%,45%)]")}>
+              <Button variant="outline" className={cn("w-full justify-start text-left font-normal bg-[hsl(121,20%,7%)] border-[hsl(121,18%,18%)] hover:bg-[hsl(121,20%,10%)] text-[#f2e3bb]", !date && "text-[hsl(53,25%,40%)]")}>
                 <CalendarIcon className="mr-2 h-4 w-4" />
                 {date ? format(date, "dd-MM-yyyy") : <span>Pick a date</span>}
               </Button>
@@ -252,8 +253,8 @@ const ProjectPlanGenerator = () => {
 
       {/* Section toggles */}
       <div className={sectionCardClass}>
-        <p className="text-xs font-bold text-primary uppercase tracking-widest mb-3">Include Sections</p>
-        <p className="text-xs text-[hsl(270,20%,55%)] mb-4">Toggle which sections appear in the final PDF. Only filled sections will be included.</p>
+        <p className="text-xs font-bold text-[#c0b87a] uppercase tracking-widest mb-3">Include Sections</p>
+        <p className="text-xs text-[hsl(53,25%,50%)] mb-4">Toggle which sections appear in the final PDF. Only filled sections will be included.</p>
         <div className="flex flex-wrap gap-2">
           {toggleSections.map((s) => (
             <button
@@ -261,8 +262,8 @@ const ProjectPlanGenerator = () => {
               onClick={() => s.toggle(!s.state)}
               className={`px-4 py-2 rounded-lg text-xs font-bold transition-all border ${
                 s.state
-                  ? "bg-primary/20 text-primary border-primary/40"
-                  : "bg-[hsl(270,10%,12%)] text-[hsl(270,15%,40%)] border-[hsl(270,15%,18%)]"
+                  ? "bg-[#005f02]/25 text-[#c0b87a] border-[#005f02]/50"
+                  : "bg-[hsl(121,10%,10%)] text-[hsl(53,15%,35%)] border-[hsl(121,15%,16%)]"
               }`}
             >
               {s.label}
@@ -274,7 +275,7 @@ const ProjectPlanGenerator = () => {
       {/* Requirements */}
       {showRequirements && (
         <div className={sectionCardClass}>
-          <p className="text-xs font-bold text-primary uppercase tracking-widest mb-3">Client Requirements</p>
+          <p className="text-xs font-bold text-[#c0b87a] uppercase tracking-widest mb-3">Client Requirements</p>
           <textarea
             className={`${inputClass} min-h-[100px] resize-y`}
             placeholder="Describe what the client needs..."
@@ -287,11 +288,11 @@ const ProjectPlanGenerator = () => {
       {/* Deliverables */}
       {showDeliverables && (
         <div className={sectionCardClass}>
-          <p className="text-xs font-bold text-primary uppercase tracking-widest mb-3">Deliverables</p>
+          <p className="text-xs font-bold text-[#c0b87a] uppercase tracking-widest mb-3">Deliverables</p>
           <div className="space-y-3">
             {deliverables.map((d, idx) => (
               <div key={d.id} className="flex gap-3 items-center">
-                <span className="text-xs font-bold text-[hsl(270,40%,60%)] w-6 text-center flex-shrink-0">{idx + 1}</span>
+                <span className="text-xs font-bold text-[#427a43] w-6 text-center flex-shrink-0">{idx + 1}</span>
                 <input
                   className={inputClass}
                   placeholder={`Deliverable ${idx + 1}`}
@@ -307,7 +308,7 @@ const ProjectPlanGenerator = () => {
                 </button>
               </div>
             ))}
-            <button onClick={addDeliverable} className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 font-bold mt-1 transition-colors">
+            <button onClick={addDeliverable} className="flex items-center gap-2 text-sm text-[#427a43] hover:text-[#005f02] font-bold mt-1 transition-colors">
               <Plus className="h-4 w-4" /> Add Deliverable
             </button>
           </div>
@@ -318,10 +319,10 @@ const ProjectPlanGenerator = () => {
       {showPricing && (
         <div className={sectionCardClass}>
           <div className="flex items-center justify-between mb-4">
-            <p className="text-xs font-bold text-primary uppercase tracking-widest">Cost & Pricing</p>
+            <p className="text-xs font-bold text-[#c0b87a] uppercase tracking-widest">Cost & Pricing</p>
             <div className="w-40">
               <Select value={currency} onValueChange={(v) => setCurrency(v as "INR" | "USD" | "CAD")}>
-                <SelectTrigger className="w-full bg-[hsl(270,12%,10%)] border-[hsl(270,20%,22%)] text-white text-xs">
+                <SelectTrigger className="w-full bg-[hsl(121,20%,7%)] border-[hsl(121,18%,18%)] text-[#f2e3bb] text-xs">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -333,7 +334,7 @@ const ProjectPlanGenerator = () => {
             </div>
           </div>
           <div className="space-y-3">
-            <div className="hidden sm:grid grid-cols-[1fr_150px_40px] gap-3 text-xs text-[hsl(270,30%,55%)] font-bold px-1">
+            <div className="hidden sm:grid grid-cols-[1fr_150px_40px] gap-3 text-xs text-[hsl(53,25%,50%)] font-bold px-1">
               <span>Description</span>
               <span>Amount ({currencySymbol})</span>
               <span></span>
@@ -347,13 +348,13 @@ const ProjectPlanGenerator = () => {
                 </button>
               </div>
             ))}
-            <button onClick={addPricingItem} className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 font-bold mt-1 transition-colors">
+            <button onClick={addPricingItem} className="flex items-center gap-2 text-sm text-[#427a43] hover:text-[#005f02] font-bold mt-1 transition-colors">
               <Plus className="h-4 w-4" /> Add Line Item
             </button>
           </div>
-          <div className="mt-6 pt-5 border-t border-[hsl(270,20%,18%)] flex items-center justify-between">
-            <span className="text-sm text-[hsl(270,30%,60%)] font-bold">Total Amount</span>
-            <span className="text-2xl font-extrabold text-white">
+          <div className="mt-6 pt-5 border-t border-[hsl(121,20%,16%)] flex items-center justify-between">
+            <span className="text-sm text-[hsl(53,25%,55%)] font-bold">Total Amount</span>
+            <span className="text-2xl font-extrabold text-[#f2e3bb]">
               {currencySymbol}{total.toLocaleString(currencyLocale, { minimumFractionDigits: 2 })}
             </span>
           </div>
@@ -363,7 +364,7 @@ const ProjectPlanGenerator = () => {
       {/* Tech Stack */}
       {showTechStack && (
         <div className={sectionCardClass}>
-          <p className="text-xs font-bold text-primary uppercase tracking-widest mb-3">Tech Stack & Tools</p>
+          <p className="text-xs font-bold text-[#c0b87a] uppercase tracking-widest mb-3">Tech Stack & Tools</p>
           <textarea
             className={`${inputClass} min-h-[80px] resize-y`}
             placeholder="e.g. React, Python, GoHighLevel, Make.com, PostgreSQL..."
@@ -376,7 +377,7 @@ const ProjectPlanGenerator = () => {
       {/* Timeline */}
       {showTimeline && (
         <div className={sectionCardClass}>
-          <p className="text-xs font-bold text-primary uppercase tracking-widest mb-3">Timeline</p>
+          <p className="text-xs font-bold text-[#c0b87a] uppercase tracking-widest mb-3">Timeline</p>
           <textarea
             className={`${inputClass} min-h-[80px] resize-y`}
             placeholder="e.g. Phase 1: Discovery (1 week)&#10;Phase 2: Development (2 weeks)..."
@@ -389,7 +390,7 @@ const ProjectPlanGenerator = () => {
       {/* Notes */}
       {showNotes && (
         <div className={sectionCardClass}>
-          <p className="text-xs font-bold text-primary uppercase tracking-widest mb-3">Additional Notes</p>
+          <p className="text-xs font-bold text-[#c0b87a] uppercase tracking-widest mb-3">Additional Notes</p>
           <textarea
             className={`${inputClass} min-h-[80px] resize-y`}
             placeholder="Payment terms, special conditions, assumptions..."
@@ -404,7 +405,8 @@ const ProjectPlanGenerator = () => {
         <button
           onClick={handleGeneratePDF}
           disabled={!clientName.trim() || !projectTitle.trim()}
-          className="flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3.5 rounded-xl text-sm font-bold hover:brightness-110 disabled:opacity-40 transition-all shadow-lg shadow-primary/20"
+          className="flex items-center gap-2 px-8 py-3.5 rounded-xl text-sm font-bold hover:brightness-110 disabled:opacity-40 transition-all shadow-lg"
+          style={{ background: "#005f02", color: "#f2e3bb", boxShadow: "0 4px 12px #005f0240" }}
         >
           <FileDown className="h-4 w-4" />
           Submit & Finalize PDF
