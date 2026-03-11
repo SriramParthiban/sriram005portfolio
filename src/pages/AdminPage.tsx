@@ -213,8 +213,8 @@ const AdminPage = () => {
   const maxDailyView = Math.max(1, ...last7Days.map((d) => stats?.dailyViews[d] || 0));
 
   return (
-    <div className="min-h-screen bg-background"
-      style={{ background: "radial-gradient(ellipse at 50% 0%, hsl(270 50% 12% / 0.4), hsl(0 0% 4%))" }}
+    <div className="min-h-screen"
+      style={{ background: "radial-gradient(ellipse at 50% 0%, hsl(270 50% 10% / 0.6), hsl(0 0% 3%))" }}
     >
       {/* Header */}
       <div className="border-b border-[hsl(270,20%,15%)] bg-[hsl(270,15%,6%/0.8)] backdrop-blur-md sticky top-0 z-10">
