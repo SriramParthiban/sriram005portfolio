@@ -364,7 +364,7 @@ const ProjectPlanGenerator = () => {
       {/* Tech Stack */}
       {showTechStack && (
         <div className={sectionCardClass}>
-          <p className="text-xs font-bold text-primary uppercase tracking-widest mb-3">Tech Stack & Tools</p>
+          <p className="text-xs font-bold text-[#c0b87a] uppercase tracking-widest mb-3">Tech Stack & Tools</p>
           <textarea
             className={`${inputClass} min-h-[80px] resize-y`}
             placeholder="e.g. React, Python, GoHighLevel, Make.com, PostgreSQL..."
