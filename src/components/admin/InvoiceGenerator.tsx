@@ -168,8 +168,8 @@ const InvoiceGenerator = () => {
   };
 
   const inputClass =
-    "w-full bg-[hsl(270,15%,12%)] border border-[hsl(270,20%,20%)] rounded-lg px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary/50 transition-colors";
-  const labelClass = "text-xs font-medium text-muted-foreground mb-1 block";
+    "w-full bg-[hsl(270,12%,10%)] border border-[hsl(270,20%,22%)] rounded-lg px-3 py-2.5 text-sm text-white placeholder:text-[hsl(270,20%,45%)] focus:outline-none focus:border-primary/60 transition-colors";
+  const labelClass = "text-xs font-bold text-[hsl(270,50%,75%)] mb-1.5 block uppercase tracking-wider";
 
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
