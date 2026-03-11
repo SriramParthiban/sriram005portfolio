@@ -336,7 +336,8 @@ const InvoiceGenerator = () => {
         <button
           onClick={handlePrint}
           disabled={!clientName.trim() || items.every((i) => !i.description.trim())}
-          className="flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-xl text-sm font-medium hover:brightness-110 disabled:opacity-40 transition-all shadow-lg shadow-primary/20"
+          className="flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold hover:brightness-110 disabled:opacity-40 transition-all shadow-lg"
+          style={{ background: "#005f02", color: "#f2e3bb", boxShadow: "0 4px 12px #005f0240" }}
         >
           <FileDown className="h-4 w-4" />
           Generate Invoice PDF
