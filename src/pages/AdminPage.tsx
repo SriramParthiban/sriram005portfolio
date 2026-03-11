@@ -304,8 +304,8 @@ const AdminPage = () => {
               </div>
 
               {/* Tag breakdown */}
-              <div className="bg-[hsl(270,15%,8%)] border border-[hsl(270,20%,15%)] rounded-xl p-5">
-                <h3 className="text-sm font-semibold text-foreground mb-4">Lead Tags</h3>
+              <div className="bg-[hsl(270,12%,7%)] border border-[hsl(270,20%,18%)] rounded-xl p-5">
+                <h3 className="text-sm font-bold text-white mb-4">Lead Tags</h3>
                 <div className="space-y-2">
                   {Object.entries(stats.tagCounts)
                     .sort(([, a], [, b]) => b - a)
