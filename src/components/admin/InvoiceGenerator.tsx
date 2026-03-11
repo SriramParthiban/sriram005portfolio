@@ -222,13 +222,13 @@ const InvoiceGenerator = () => {
       {/* From / To */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         {/* FROM - readonly */}
-        <div className="bg-[hsl(270,15%,8%)] border border-[hsl(270,20%,15%)] rounded-xl p-5">
-          <p className="text-xs font-bold text-primary uppercase tracking-widest mb-4">From</p>
+        <div className="bg-[hsl(121,25%,8%)] border border-[hsl(121,20%,16%)] rounded-xl p-5">
+          <p className="text-xs font-bold text-[#c0b87a] uppercase tracking-widest mb-4">From</p>
           <div className="space-y-1.5 text-sm">
-            <p className="text-foreground font-semibold">{OWNER.name}</p>
-            <p className="text-muted-foreground">{OWNER.email}</p>
-            <p className="text-muted-foreground">{OWNER.phone}</p>
-            <p className="text-muted-foreground">{OWNER.address}</p>
+            <p className="text-[#f2e3bb] font-semibold">{OWNER.name}</p>
+            <p className="text-[hsl(53,25%,55%)]">{OWNER.email}</p>
+            <p className="text-[hsl(53,25%,55%)]">{OWNER.phone}</p>
+            <p className="text-[hsl(53,25%,55%)]">{OWNER.address}</p>
           </div>
         </div>
 
