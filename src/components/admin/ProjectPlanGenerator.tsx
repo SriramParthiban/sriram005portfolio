@@ -377,7 +377,7 @@ const ProjectPlanGenerator = () => {
       {/* Timeline */}
       {showTimeline && (
         <div className={sectionCardClass}>
-          <p className="text-xs font-bold text-primary uppercase tracking-widest mb-3">Timeline</p>
+          <p className="text-xs font-bold text-[#c0b87a] uppercase tracking-widest mb-3">Timeline</p>
           <textarea
             className={`${inputClass} min-h-[80px] resize-y`}
             placeholder="e.g. Phase 1: Discovery (1 week)&#10;Phase 2: Development (2 weeks)..."
