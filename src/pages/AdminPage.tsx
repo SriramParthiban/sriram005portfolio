@@ -562,6 +562,9 @@ const AdminPage = () => {
 
         {/* ─── Plan Tab ──────────────────────────────────── */}
         {activeTab === "plan" && <ProjectPlanGenerator />}
+
+        {/* ─── Content Planner Tab ───────────────────────── */}
+        {activeTab === "content" && <ContentPlanner />}
       </div>
     </div>
   );
