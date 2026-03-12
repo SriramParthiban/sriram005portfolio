@@ -241,7 +241,7 @@ const ContentPlanner = () => {
         </div>
         <textarea
           className={`${inputClass} min-h-[80px] resize-y`}
-          placeholder='e.g. "How I automated my mom\'s portfolio dashboard using AI"'
+          placeholder="e.g. How I automated my mom's portfolio dashboard using AI"
           value={postIdea}
           onChange={(e) => setPostIdea(e.target.value)}
         />
