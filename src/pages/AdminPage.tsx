@@ -327,7 +327,8 @@ const AdminPage = () => {
               {tab === "bookings" && <CalendarCheck className="h-4 w-4" />}
               {tab === "invoice" && <FileText className="h-4 w-4" />}
               {tab === "plan" && <ClipboardList className="h-4 w-4" />}
-              {tab === "plan" ? "Plan" : tab === "invoice" ? "Invoice" : tab.charAt(0).toUpperCase() + tab.slice(1)}
+              {tab === "content" && <PenLine className="h-4 w-4" />}
+              {tab === "content" ? "Content" : tab === "plan" ? "Plan" : tab === "invoice" ? "Invoice" : tab.charAt(0).toUpperCase() + tab.slice(1)}
             </button>
           ))}
         </div>
