@@ -309,7 +309,7 @@ const AdminPage = () => {
           className="flex gap-1 p-1 rounded-xl w-fit flex-wrap"
           style={{ background: ADM.inputBg, border: `1px solid ${ADM.surfaceBorder}` }}
         >
-          {(["stats", "leads", "bookings", "invoice", "plan"] as const).map((tab) => (
+          {(["stats", "leads", "bookings", "invoice", "plan", "content"] as const).map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
