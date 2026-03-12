@@ -6,19 +6,19 @@ import fernDetail from "@/assets/fern-detail.jpg";
 
 const testimonials = [
   {
-    name: "Dean Meader",
-    role: "CEO",
-    company: "Aspire Media Marketing",
+    name: "Arjun Reddy",
+    role: "Founder",
+    company: "TechFlow Solutions",
     quote:
-      "Sriram consistently demonstrates an exceptional ability to translate complex automation requirements into elegant, high-performance solutions. His work on our AI-driven outbound systems was transformative — reducing qualification time while significantly improving pipeline quality. He's not just a builder, he's a strategic thinker who connects technical execution with real business outcomes.",
+      "Sriram consistently demonstrates an exceptional ability to translate complex automation requirements into elegant, high-performance solutions. His work on our CRM automation and lead management systems was transformative — reducing response time while significantly improving conversion rates. He's not just a builder, he's a strategic thinker who connects technical execution with real business outcomes.",
     rating: 5,
   },
   {
-    name: "Jesiha",
-    role: "Program Director",
-    company: "Wonkrew",
+    name: "Priya Sharma",
+    role: "Operations Director",
+    company: "Growth Dynamics",
     quote:
-      "What sets Sriram apart is his analytical rigor combined with genuine curiosity. During his time with our team, he didn't just analyze data — he uncovered insights that directly influenced our campaign strategy. His automated dashboards saved our team hours of manual work every week.",
+      "What sets Sriram apart is his analytical rigor combined with genuine curiosity. During his engagement with our team, he didn't just analyze data — he uncovered insights that directly influenced our marketing strategy. His automated dashboards and reporting systems saved our team hours of manual work every week.",
     rating: 5,
   },
 ];
