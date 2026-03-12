@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import {
   Lock, LogOut, Search, MessageCircle, Mail, Phone, User, Tag, Clock,
   ChevronDown, ChevronUp, Eye, Users, CalendarCheck,
-  TrendingUp, BarChart3, MessageSquare, UserCheck, RefreshCw, FileText, ClipboardList
+  TrendingUp, BarChart3, MessageSquare, UserCheck, RefreshCw, FileText, ClipboardList, PenLine
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import InvoiceGenerator from "@/components/admin/InvoiceGenerator";
 import ProjectPlanGenerator from "@/components/admin/ProjectPlanGenerator";
+import ContentPlanner from "@/components/admin/ContentPlanner";
 
 const VERIFY_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/verify-admin`;
 const LEADS_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/admin-leads`;
@@ -113,7 +114,7 @@ const AdminPage = () => {
   const [error, setError] = useState("");
   const [search, setSearch] = useState("");
   const [expandedId, setExpandedId] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<"stats" | "leads" | "bookings" | "invoice" | "plan">("stats");
+  const [activeTab, setActiveTab] = useState<"stats" | "leads" | "bookings" | "invoice" | "plan" | "content">("stats");
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -308,7 +309,7 @@ const AdminPage = () => {
           className="flex gap-1 p-1 rounded-xl w-fit flex-wrap"
           style={{ background: ADM.inputBg, border: `1px solid ${ADM.surfaceBorder}` }}
         >
-          {(["stats", "leads", "bookings", "invoice", "plan"] as const).map((tab) => (
+          {(["stats", "leads", "bookings", "invoice", "plan", "content"] as const).map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
@@ -326,7 +327,8 @@ const AdminPage = () => {
               {tab === "bookings" && <CalendarCheck className="h-4 w-4" />}
               {tab === "invoice" && <FileText className="h-4 w-4" />}
               {tab === "plan" && <ClipboardList className="h-4 w-4" />}
-              {tab === "plan" ? "Plan" : tab === "invoice" ? "Invoice" : tab.charAt(0).toUpperCase() + tab.slice(1)}
+              {tab === "content" && <PenLine className="h-4 w-4" />}
+              {tab === "content" ? "Content" : tab === "plan" ? "Plan" : tab === "invoice" ? "Invoice" : tab.charAt(0).toUpperCase() + tab.slice(1)}
             </button>
           ))}
         </div>
@@ -560,6 +562,9 @@ const AdminPage = () => {
 
         {/* ─── Plan Tab ──────────────────────────────────── */}
         {activeTab === "plan" && <ProjectPlanGenerator />}
+
+        {/* ─── Content Planner Tab ───────────────────────── */}
+        {activeTab === "content" && <ContentPlanner />}
       </div>
     </div>
   );
