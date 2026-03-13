@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ProjectDetailPage from "./pages/ProjectDetailPage";
 import AdminPage from "./pages/AdminPage";
+import SubThemePage from "./pages/SubThemePage";
 import PageTracker from "./components/PageTracker";
 
 const queryClient = new QueryClient();
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/projects/:slug" element={<ProjectDetailPage />} />
           
+          <Route path="/sub-theme" element={<SubThemePage />} />
           <Route path="/admin" element={<AdminPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
