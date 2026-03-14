@@ -13,34 +13,28 @@ const VERIFY_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/verify-adm
 const LEADS_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/admin-leads`;
 
 /*
- * Admin palette (used ONLY on this page):
- * --admin-dark:    #005f02  hsl(121, 100%, 19%)
- * --admin-mid:     #427a43  hsl(121, 30%, 37%)
- * --admin-gold:    #c0b87a  hsl(53, 36%, 61%)
- * --admin-cream:   #f2e3bb  hsl(40, 72%, 84%)
- *
- * Background: very dark desaturated green
- * Cards/surfaces: dark green tones
- * Primary accent: gold (#c0b87a)
- * Text: cream (#f2e3bb) for max readability
- * Secondary text: gold toned
+ * Admin palette — Mediterranean Citrus (used ONLY on this page):
+ * --admin-citrus:   #FFA62B  hsl(37, 100%, 58%)
+ * --admin-sea:      #86C5FF  hsl(211, 100%, 76%)
+ * --admin-tile:     #2E5AA7  hsl(220, 57%, 42%)
+ * --admin-cream:    #F8E6A0  hsl(46, 88%, 80%)
  */
 
 const ADM = {
-  bg: "hsl(121, 60%, 4%)",              // near-black green
-  bgGradient: "radial-gradient(ellipse at 50% 0%, hsl(121, 50%, 10%), hsl(121, 40%, 3%))",
-  surface: "hsl(121, 25%, 8%)",          // card bg
-  surfaceBorder: "hsl(121, 20%, 16%)",   // card border
-  surfaceHover: "hsl(121, 20%, 12%)",
-  accent: "#c0b87a",                     // gold
-  accentHsl: "hsl(53, 36%, 61%)",
-  cream: "#f2e3bb",                      // main text
-  creamHsl: "hsl(40, 72%, 84%)",
-  midGreen: "#427a43",
-  darkGreen: "#005f02",
-  mutedText: "hsl(53, 25%, 55%)",        // readable muted
-  inputBg: "hsl(121, 20%, 7%)",
-  inputBorder: "hsl(121, 18%, 18%)",
+  bg: "hsl(220, 50%, 8%)",                // deep navy-black
+  bgGradient: "radial-gradient(ellipse at 50% 0%, hsl(220, 45%, 14%), hsl(220, 50%, 5%))",
+  surface: "hsl(220, 35%, 12%)",           // card bg
+  surfaceBorder: "hsl(220, 25%, 20%)",     // card border
+  surfaceHover: "hsl(220, 25%, 16%)",
+  accent: "#FFA62B",                       // citrus zest
+  accentHsl: "hsl(37, 100%, 58%)",
+  cream: "#F8E6A0",                        // cream gelato — main text
+  creamHsl: "hsl(46, 88%, 80%)",
+  midGreen: "#86C5FF",                     // sea breeze
+  darkGreen: "#2E5AA7",                    // amalfi tile
+  mutedText: "hsl(46, 40%, 60%)",          // warm muted
+  inputBg: "hsl(220, 30%, 9%)",
+  inputBorder: "hsl(220, 22%, 22%)",
 };
 
 type Lead = {
@@ -337,12 +331,12 @@ const AdminPage = () => {
         {activeTab === "stats" && stats && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-              <KPICard label="Total Views" value={stats.totalViews} icon={<Eye className="h-4 w-4" />} gradient="from-[#005f02] to-[#003d01]" />
-              <KPICard label="Today" value={stats.todayViews} icon={<TrendingUp className="h-4 w-4" />} gradient="from-[#427a43] to-[#2d5a2e]" subtitle="Page views today" />
-              <KPICard label="Unique Visitors" value={stats.uniqueVisitors} icon={<Users className="h-4 w-4" />} gradient="from-[#3a6b3b] to-[#1e4a1f]" />
-              <KPICard label="Chat Leads" value={stats.totalLeads} icon={<MessageCircle className="h-4 w-4" />} gradient="from-[#005f02] to-[#427a43]" />
-              <KPICard label="Contact Rate" value={`${conversionRate}%`} icon={<UserCheck className="h-4 w-4" />} gradient="from-[#8a7a30] to-[#5e5420]" subtitle={`${stats.leadsWithContact} with info`} />
-              <KPICard label="Bookings" value={stats.totalBookings} icon={<CalendarCheck className="h-4 w-4" />} gradient="from-[#7a5c27] to-[#4d3a18]" subtitle={`${bookingRate}% booking rate`} />
+              <KPICard label="Total Views" value={stats.totalViews} icon={<Eye className="h-4 w-4" />} gradient="from-[#2E5AA7] to-[#1a3a70]" />
+              <KPICard label="Today" value={stats.todayViews} icon={<TrendingUp className="h-4 w-4" />} gradient="from-[#3a6db8] to-[#2E5AA7]" subtitle="Page views today" />
+              <KPICard label="Unique Visitors" value={stats.uniqueVisitors} icon={<Users className="h-4 w-4" />} gradient="from-[#4a7dc0] to-[#2a4f90]" />
+              <KPICard label="Chat Leads" value={stats.totalLeads} icon={<MessageCircle className="h-4 w-4" />} gradient="from-[#2E5AA7] to-[#86C5FF]/60" />
+              <KPICard label="Contact Rate" value={`${conversionRate}%`} icon={<UserCheck className="h-4 w-4" />} gradient="from-[#c48a1a] to-[#8a6010]" subtitle={`${stats.leadsWithContact} with info`} />
+              <KPICard label="Bookings" value={stats.totalBookings} icon={<CalendarCheck className="h-4 w-4" />} gradient="from-[#b07818] to-[#6e4c10]" subtitle={`${bookingRate}% booking rate`} />
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
