@@ -90,7 +90,7 @@ const Navbar = () => {
             );
           })}
           <Button size="sm" className="ml-5 font-medium" asChild>
-            <a href="/resume.pdf" download>
+            <a href="/resume.pdf" download="Sriram_Parthiban_Resume.pdf">
               <Download className="mr-1.5 h-3.5 w-3.5" />
               Resume
             </a>
