@@ -331,12 +331,12 @@ const AdminPage = () => {
         {activeTab === "stats" && stats && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-              <KPICard label="Total Views" value={stats.totalViews} icon={<Eye className="h-4 w-4" />} gradient="from-[#005f02] to-[#003d01]" />
-              <KPICard label="Today" value={stats.todayViews} icon={<TrendingUp className="h-4 w-4" />} gradient="from-[#427a43] to-[#2d5a2e]" subtitle="Page views today" />
-              <KPICard label="Unique Visitors" value={stats.uniqueVisitors} icon={<Users className="h-4 w-4" />} gradient="from-[#3a6b3b] to-[#1e4a1f]" />
-              <KPICard label="Chat Leads" value={stats.totalLeads} icon={<MessageCircle className="h-4 w-4" />} gradient="from-[#005f02] to-[#427a43]" />
-              <KPICard label="Contact Rate" value={`${conversionRate}%`} icon={<UserCheck className="h-4 w-4" />} gradient="from-[#8a7a30] to-[#5e5420]" subtitle={`${stats.leadsWithContact} with info`} />
-              <KPICard label="Bookings" value={stats.totalBookings} icon={<CalendarCheck className="h-4 w-4" />} gradient="from-[#7a5c27] to-[#4d3a18]" subtitle={`${bookingRate}% booking rate`} />
+              <KPICard label="Total Views" value={stats.totalViews} icon={<Eye className="h-4 w-4" />} gradient="from-[#2E5AA7] to-[#1a3a70]" />
+              <KPICard label="Today" value={stats.todayViews} icon={<TrendingUp className="h-4 w-4" />} gradient="from-[#3a6db8] to-[#2E5AA7]" subtitle="Page views today" />
+              <KPICard label="Unique Visitors" value={stats.uniqueVisitors} icon={<Users className="h-4 w-4" />} gradient="from-[#4a7dc0] to-[#2a4f90]" />
+              <KPICard label="Chat Leads" value={stats.totalLeads} icon={<MessageCircle className="h-4 w-4" />} gradient="from-[#2E5AA7] to-[#86C5FF]/60" />
+              <KPICard label="Contact Rate" value={`${conversionRate}%`} icon={<UserCheck className="h-4 w-4" />} gradient="from-[#c48a1a] to-[#8a6010]" subtitle={`${stats.leadsWithContact} with info`} />
+              <KPICard label="Bookings" value={stats.totalBookings} icon={<CalendarCheck className="h-4 w-4" />} gradient="from-[#b07818] to-[#6e4c10]" subtitle={`${bookingRate}% booking rate`} />
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
