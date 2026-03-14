@@ -37,10 +37,15 @@ const Navbar = () => {
   const handleNav = (href: string) => {
     setMobileOpen(false);
     const id = href.replace("#", "");
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
+    // Delay scroll to let mobile menu close animation finish
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) {
+        const navbarHeight = 80;
+        const top = el.getBoundingClientRect().top + window.scrollY - navbarHeight;
+        window.scrollTo({ top, behavior: "smooth" });
+      }
+    }, 350);
   };
 
   const scrollToTop = () => {
@@ -143,7 +148,7 @@ const Navbar = () => {
                 );
               })}
               <Button size="sm" asChild className="mt-3 w-fit font-medium">
-                <a href="/resume.pdf" download>
+                <a href="/resume.pdf" download="Sriram_Parthiban_Resume.pdf" target="_blank" rel="noopener noreferrer">
                   <Download className="mr-1.5 h-3.5 w-3.5" />
                   Resume
                 </a>
