@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Send, Bot, FolderKanban, Database, Monitor, PartyPopper, RotateCcw, CheckCircle2, HelpCircle } from "lucide-react";
+import playgroundBg from "@/assets/playground-bg.jpg";
 import FadeInSection from "./FadeInSection";
 
 /* ─── Stage Timing (ms) ─── */
