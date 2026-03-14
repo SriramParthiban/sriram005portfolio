@@ -679,9 +679,9 @@ const Playground = () => {
         )}
 
         <FadeInSection>
-          <p className="mt-8 text-center text-xs text-muted-foreground/50">
+          <p className="mt-8 text-center text-xs font-bold text-foreground drop-shadow-[0_1px_4px_rgba(255,255,255,0.8)]">
             This is a visual demo — no actual data is sent or stored. Want this for your business?{" "}
-            <a href="#contact" className="text-primary hover:underline">Let's talk!</a>
+            <a href="#contact" className="text-primary hover:underline font-bold">Let's talk!</a>
           </p>
         </FadeInSection>
       </div>
