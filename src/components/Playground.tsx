@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Send, Bot, FolderKanban, Database, Monitor, PartyPopper, RotateCcw, CheckCircle2, HelpCircle } from "lucide-react";
+import playgroundBg from "@/assets/playground-bg.jpg";
 import FadeInSection from "./FadeInSection";
 
 /* ─── Stage Timing (ms) ─── */
@@ -332,7 +333,10 @@ const Playground = () => {
       className="relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden"
     >
       {/* BG */}
-      <div className="absolute inset-0 bg-muted/50" />
+      <div className="absolute inset-0">
+        <img src={playgroundBg} alt="" className="h-full w-full object-cover" loading="lazy" />
+        <div className="absolute inset-0 bg-background/70" />
+      </div>
       <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
         <div className="absolute top-20 left-0 h-[250px] w-[250px] md:h-[400px] md:w-[400px] rounded-full bg-primary/8 blur-[120px]" />
         <div className="absolute bottom-10 right-10 h-[200px] w-[200px] md:h-[350px] md:w-[350px] rounded-full bg-accent/6 blur-[100px]" />
