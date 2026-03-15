@@ -288,7 +288,7 @@ const InvoiceGenerator = () => {
 
           <button
             onClick={addItem}
-            className="flex items-center gap-2 text-sm text-[#427a43] hover:text-[#005f02] font-bold mt-2 transition-colors"
+            className="flex items-center gap-2 text-sm text-[#86C5FF] hover:text-[#2E5AA7] font-bold mt-2 transition-colors"
           >
             <Plus className="h-4 w-4" /> Add Line Item
           </button>
