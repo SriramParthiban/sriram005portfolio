@@ -315,18 +315,18 @@ const InvoiceGenerator = () => {
       </div>
 
       {/* Signature Preview */}
-      <div className="bg-[hsl(121,25%,8%)] border border-[hsl(121,20%,16%)] rounded-xl p-5">
+      <div className="bg-[hsl(220,35%,12%)] border border-[hsl(220,25%,20%)] rounded-xl p-5">
         <div className="flex flex-col sm:flex-row gap-4 sm:items-end sm:justify-between">
           <div className="flex-1">
             <label className={labelClass}>Your Role / Title</label>
             <input className={inputClass} placeholder="e.g. AI Automation Specialist" value={customRole} onChange={(e) => setCustomRole(e.target.value)} />
           </div>
           <div className="text-right">
-            <p className="text-xl font-bold italic text-[#427a43]" style={{ fontFamily: "Georgia, serif" }}>
+            <p className="text-xl font-bold italic text-[#86C5FF]" style={{ fontFamily: "Georgia, serif" }}>
               Sriram Parthiban
             </p>
-            <div className="w-40 h-px mt-1 ml-auto" style={{ background: "#c0b87a40" }} />
-            <p className="text-[11px] mt-1" style={{ color: "hsl(53,25%,55%)" }}>{customRole || "Your Role"}</p>
+            <div className="w-40 h-px mt-1 ml-auto" style={{ background: "#FFA62B40" }} />
+            <p className="text-[11px] mt-1" style={{ color: "hsl(46,40%,60%)" }}>{customRole || "Your Role"}</p>
           </div>
         </div>
       </div>
