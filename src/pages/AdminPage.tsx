@@ -447,11 +447,34 @@ const AdminPage = () => {
                           </span>
                         </div>
                       </div>
-                      {expandedId === lead.id ? (
-                        <ChevronUp className="h-4 w-4 mt-1 flex-shrink-0" style={{ color: ADM.accent }} />
-                      ) : (
-                        <ChevronDown className="h-4 w-4 mt-1 flex-shrink-0" style={{ color: ADM.mutedText }} />
-                      )}
+                      <div className="flex items-center gap-2 flex-shrink-0 mt-1">
+                        <button
+                          onClick={async (e) => {
+                            e.stopPropagation();
+                            if (!confirm("Delete this lead?")) return;
+                            try {
+                              const resp = await fetch(LEADS_URL, {
+                                method: "DELETE",
+                                headers: { "x-admin-password": storedPassword, "Content-Type": "application/json" },
+                                body: JSON.stringify({ type: "lead", id: lead.id }),
+                              });
+                              if (resp.ok) {
+                                setLeads(leads.filter((l) => l.id !== lead.id));
+                              }
+                            } catch {}
+                          }}
+                          className="h-7 w-7 rounded-lg flex items-center justify-center transition-colors hover:bg-red-500/20"
+                          style={{ border: `1px solid ${ADM.surfaceBorder}` }}
+                          title="Delete lead"
+                        >
+                          <Trash2 className="h-3 w-3 text-red-400" />
+                        </button>
+                        {expandedId === lead.id ? (
+                          <ChevronUp className="h-4 w-4" style={{ color: ADM.accent }} />
+                        ) : (
+                          <ChevronDown className="h-4 w-4" style={{ color: ADM.mutedText }} />
+                        )}
+                      </div>
                     </button>
 
                     <AnimatePresence>
