@@ -390,7 +390,7 @@ const ProjectPlanGenerator = () => {
       {/* Notes */}
       {showNotes && (
         <div className={sectionCardClass}>
-          <p className="text-xs font-bold text-[#c0b87a] uppercase tracking-widest mb-3">Additional Notes</p>
+          <p className="text-xs font-bold text-[#FFA62B] uppercase tracking-widest mb-3">Additional Notes</p>
           <textarea
             className={`${inputClass} min-h-[80px] resize-y`}
             placeholder="Payment terms, special conditions, assumptions..."
