@@ -292,7 +292,7 @@ const ProjectPlanGenerator = () => {
           <div className="space-y-3">
             {deliverables.map((d, idx) => (
               <div key={d.id} className="flex gap-3 items-center">
-                <span className="text-xs font-bold text-[#427a43] w-6 text-center flex-shrink-0">{idx + 1}</span>
+                <span className="text-xs font-bold text-[#86C5FF] w-6 text-center flex-shrink-0">{idx + 1}</span>
                 <input
                   className={inputClass}
                   placeholder={`Deliverable ${idx + 1}`}
