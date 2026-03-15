@@ -8,21 +8,21 @@ import {
 const GENERATE_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/generate-content-plan`;
 
 const ADM = {
-  surface: "hsl(121, 25%, 8%)",
-  surfaceBorder: "hsl(121, 20%, 16%)",
-  accent: "#c0b87a",
-  cream: "#f2e3bb",
-  midGreen: "#427a43",
-  darkGreen: "#005f02",
-  mutedText: "hsl(53, 25%, 55%)",
-  inputBg: "hsl(121, 20%, 7%)",
-  inputBorder: "hsl(121, 18%, 18%)",
+  surface: "hsl(220, 35%, 12%)",
+  surfaceBorder: "hsl(220, 25%, 20%)",
+  accent: "#FFA62B",
+  cream: "#F8E6A0",
+  midGreen: "#86C5FF",
+  darkGreen: "#2E5AA7",
+  mutedText: "hsl(46, 40%, 60%)",
+  inputBg: "hsl(220, 30%, 9%)",
+  inputBorder: "hsl(220, 22%, 22%)",
 };
 
 type ContentPlan = {
   subject: string;
   contentAngle: string;
-  captions: string[];
+  content: string;
   keywords: string[];
   hashtags: string[];
   hook: string;
@@ -37,9 +37,9 @@ const TONES = ["Professional", "Storytelling", "Educational", "Personal", "Motiv
 
 const inputClass =
   "w-full rounded-lg px-3 py-2.5 text-sm focus:outline-none transition-colors"
-  + " bg-[hsl(121,20%,7%)] border border-[hsl(121,18%,18%)] text-[#f2e3bb] placeholder:text-[hsl(53,25%,40%)] focus:border-[#427a43]";
-const labelClass = "text-xs font-bold text-[#c0b87a] mb-1.5 block uppercase tracking-wider";
-const sectionCard = "bg-[hsl(121,25%,8%)] border border-[hsl(121,20%,16%)] rounded-xl p-5";
+  + " bg-[hsl(220,30%,9%)] border border-[hsl(220,22%,22%)] text-[#F8E6A0] placeholder:text-[hsl(46,25%,40%)] focus:border-[#2E5AA7]";
+const labelClass = "text-xs font-bold text-[#FFA62B] mb-1.5 block uppercase tracking-wider";
+const sectionCard = "bg-[hsl(220,35%,12%)] border border-[hsl(220,25%,20%)] rounded-xl p-5";
 
 const ContentPlanner = () => {
   const [postIdea, setPostIdea] = useState("");
@@ -109,36 +109,35 @@ const ContentPlanner = () => {
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; color: #1a1a2e; padding: 50px; max-width: 850px; margin: 0 auto; line-height: 1.7; }
     
-    .header { text-align: center; margin-bottom: 45px; padding-bottom: 28px; border-bottom: 3px solid #005f02; }
-    .header-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #427a43; margin-bottom: 10px; }
+    .header { text-align: center; margin-bottom: 45px; padding-bottom: 28px; border-bottom: 3px solid #2E5AA7; }
+    .header-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: #2E5AA7; margin-bottom: 10px; }
     .header-title { font-size: 26px; font-weight: 800; color: #1a1a2e; margin-bottom: 8px; }
     .header-meta { font-size: 13px; color: #888; margin-top: 6px; }
     .header-meta span { display: inline-block; margin: 0 10px; }
 
     .section { margin-bottom: 30px; }
-    .section-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #005f02; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid #e8f0e8; }
+    .section-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #2E5AA7; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid #e0e8f0; }
     .section-body { font-size: 14px; color: #333; }
     
-    .subject-box { background: #f4f9f4; border-left: 4px solid #005f02; padding: 16px 20px; border-radius: 0 8px 8px 0; margin-bottom: 24px; }
+    .subject-box { background: #f0f4fa; border-left: 4px solid #2E5AA7; padding: 16px 20px; border-radius: 0 8px 8px 0; margin-bottom: 24px; }
     .subject-box p { font-size: 18px; font-weight: 700; color: #1a1a2e; font-style: italic; }
     
     .angle-text { font-size: 14px; color: #333; line-height: 1.8; background: #fafafa; padding: 16px 20px; border-radius: 8px; border: 1px solid #eee; }
     
-    .caption-block { background: #fafafa; border-radius: 8px; padding: 16px 20px; margin-bottom: 12px; border: 1px solid #eee; }
-    .caption-num { font-size: 11px; font-weight: 700; color: #427a43; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
-    .caption-text { font-size: 14px; color: #333; line-height: 1.7; white-space: pre-wrap; }
+    .content-block { background: #fafafa; border-radius: 8px; padding: 20px; margin-bottom: 12px; border: 1px solid #eee; }
+    .content-text { font-size: 14px; color: #333; line-height: 1.8; white-space: pre-wrap; }
     
     .tag-container { display: flex; flex-wrap: wrap; gap: 8px; }
-    .keyword-tag { background: #e8f0e8; color: #005f02; padding: 5px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; }
-    .hashtag-tag { background: #f0ede4; color: #8a7a30; padding: 5px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; }
+    .keyword-tag { background: #e0e8f0; color: #2E5AA7; padding: 5px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; }
+    .hashtag-tag { background: #fff3e0; color: #c47a00; padding: 5px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; }
     
     .structure-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .structure-card { background: #fafafa; border-radius: 8px; padding: 16px; border: 1px solid #eee; }
-    .structure-label { font-size: 11px; font-weight: 700; color: #427a43; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+    .structure-label { font-size: 11px; font-weight: 700; color: #2E5AA7; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
     .structure-text { font-size: 14px; color: #333; line-height: 1.6; }
     
-    .footer { margin-top: 50px; padding-top: 20px; border-top: 2px solid #e8f0e8; text-align: center; }
-    .footer-name { font-size: 16px; font-weight: 700; color: #005f02; font-style: italic; font-family: Georgia, serif; }
+    .footer { margin-top: 50px; padding-top: 20px; border-top: 2px solid #e0e8f0; text-align: center; }
+    .footer-name { font-size: 16px; font-weight: 700; color: #2E5AA7; font-style: italic; font-family: Georgia, serif; }
     .footer-contact { font-size: 12px; color: #888; margin-top: 6px; }
 
     @media print { body { padding: 30px; } }
@@ -167,13 +166,10 @@ const ContentPlanner = () => {
   </div>
 
   <div class="section">
-    <div class="section-title">Caption Suggestions</div>
-    ${plan.captions.map((c, i) => `
-      <div class="caption-block">
-        <div class="caption-num">Option ${i + 1}</div>
-        <div class="caption-text">${c.replace(/\n/g, "<br/>")}</div>
-      </div>
-    `).join("")}
+    <div class="section-title">Generated Content</div>
+    <div class="content-block">
+      <div class="content-text">${plan.content.replace(/\n/g, "<br/>")}</div>
+    </div>
   </div>
 
   <div class="section">
@@ -366,7 +362,7 @@ const ContentPlanner = () => {
         {loading ? (
           <>
             <Loader2 className="h-4 w-4 animate-spin" />
-            Generating Content Plan...
+            Generating Content...
           </>
         ) : (
           <>
@@ -423,25 +419,17 @@ const ContentPlanner = () => {
               <p className="text-sm leading-relaxed" style={{ color: ADM.cream }}>{plan.contentAngle}</p>
             </div>
 
-            {/* Captions */}
+            {/* Generated Content */}
             <div className={sectionCard}>
               <div className="flex items-center gap-2 mb-3">
                 <Quote className="h-4 w-4" style={{ color: ADM.accent }} />
-                <span className="text-xs font-bold uppercase tracking-wider" style={{ color: ADM.accent }}>Caption Suggestions</span>
+                <span className="text-xs font-bold uppercase tracking-wider" style={{ color: ADM.accent }}>Generated Content</span>
               </div>
-              <div className="space-y-3">
-                {plan.captions.map((caption, i) => (
-                  <div
-                    key={i}
-                    className="rounded-lg p-4"
-                    style={{ background: ADM.inputBg, border: `1px solid ${ADM.inputBorder}` }}
-                  >
-                    <span className="text-[11px] font-bold uppercase tracking-wider block mb-2" style={{ color: ADM.midGreen }}>
-                      Option {i + 1}
-                    </span>
-                    <p className="text-sm whitespace-pre-wrap" style={{ color: ADM.cream }}>{caption}</p>
-                  </div>
-                ))}
+              <div
+                className="rounded-lg p-4"
+                style={{ background: ADM.inputBg, border: `1px solid ${ADM.inputBorder}` }}
+              >
+                <p className="text-sm whitespace-pre-wrap leading-relaxed" style={{ color: ADM.cream }}>{plan.content}</p>
               </div>
             </div>
 

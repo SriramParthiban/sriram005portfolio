@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import {
   Lock, LogOut, Search, MessageCircle, Mail, Phone, User, Tag, Clock,
   ChevronDown, ChevronUp, Eye, Users, CalendarCheck,
-  TrendingUp, BarChart3, MessageSquare, UserCheck, RefreshCw, FileText, ClipboardList, PenLine
+  TrendingUp, BarChart3, MessageSquare, UserCheck, RefreshCw, FileText, ClipboardList, PenLine,
+  Trash2, MoreVertical
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import InvoiceGenerator from "@/components/admin/InvoiceGenerator";
@@ -446,11 +447,34 @@ const AdminPage = () => {
                           </span>
                         </div>
                       </div>
-                      {expandedId === lead.id ? (
-                        <ChevronUp className="h-4 w-4 mt-1 flex-shrink-0" style={{ color: ADM.accent }} />
-                      ) : (
-                        <ChevronDown className="h-4 w-4 mt-1 flex-shrink-0" style={{ color: ADM.mutedText }} />
-                      )}
+                      <div className="flex items-center gap-2 flex-shrink-0 mt-1">
+                        <button
+                          onClick={async (e) => {
+                            e.stopPropagation();
+                            if (!confirm("Delete this lead?")) return;
+                            try {
+                              const resp = await fetch(LEADS_URL, {
+                                method: "DELETE",
+                                headers: { "x-admin-password": storedPassword, "Content-Type": "application/json" },
+                                body: JSON.stringify({ type: "lead", id: lead.id }),
+                              });
+                              if (resp.ok) {
+                                setLeads(leads.filter((l) => l.id !== lead.id));
+                              }
+                            } catch {}
+                          }}
+                          className="h-7 w-7 rounded-lg flex items-center justify-center transition-colors hover:bg-red-500/20"
+                          style={{ border: `1px solid ${ADM.surfaceBorder}` }}
+                          title="Delete lead"
+                        >
+                          <Trash2 className="h-3 w-3 text-red-400" />
+                        </button>
+                        {expandedId === lead.id ? (
+                          <ChevronUp className="h-4 w-4" style={{ color: ADM.accent }} />
+                        ) : (
+                          <ChevronDown className="h-4 w-4" style={{ color: ADM.mutedText }} />
+                        )}
+                      </div>
                     </button>
 
                     <AnimatePresence>
@@ -516,7 +540,7 @@ const AdminPage = () => {
                 {bookings.map((b) => (
                   <div key={b.id} className="rounded-xl px-5 py-4" style={cardStyle}>
                     <div className="flex items-start justify-between gap-4">
-                      <div>
+                      <div className="flex-1">
                         <p className="font-bold text-sm" style={{ color: ADM.cream }}>{b.name}</p>
                         <div className="flex items-center gap-3 text-xs mt-1 flex-wrap font-medium" style={{ color: ADM.mutedText }}>
                           <span className="flex items-center gap-1"><Mail className="h-3 w-3" />{b.email}</span>
@@ -533,16 +557,55 @@ const AdminPage = () => {
                           </p>
                         )}
                       </div>
-                      <span
-                        className="text-[11px] px-2.5 py-0.5 rounded-full font-bold"
-                        style={
-                          b.status === "confirmed"
-                            ? { background: `${ADM.darkGreen}30`, color: "#6bdf6e", border: `1px solid ${ADM.darkGreen}60` }
-                            : { background: `${ADM.accent}20`, color: ADM.accent, border: `1px solid ${ADM.accent}40` }
-                        }
-                      >
-                        {b.status}
-                      </span>
+                      <div className="flex items-center gap-2">
+                        <select
+                          value={b.status}
+                          onChange={async (e) => {
+                            const newStatus = e.target.value;
+                            try {
+                              const resp = await fetch(LEADS_URL, {
+                                method: "PATCH",
+                                headers: { "x-admin-password": storedPassword, "Content-Type": "application/json" },
+                                body: JSON.stringify({ type: "booking", id: b.id, status: newStatus }),
+                              });
+                              if (resp.ok) {
+                                setBookings(bookings.map((bk) => bk.id === b.id ? { ...bk, status: newStatus } : bk));
+                              }
+                            } catch {}
+                          }}
+                          className="text-[11px] px-2 py-1 rounded-lg font-bold cursor-pointer focus:outline-none"
+                          style={{
+                            background: ADM.inputBg,
+                            border: `1px solid ${ADM.surfaceBorder}`,
+                            color: b.status === "confirmed" ? "#6bdf6e" : ADM.accent,
+                          }}
+                        >
+                          <option value="confirmed">confirmed</option>
+                          <option value="pending">pending</option>
+                          <option value="completed">completed</option>
+                          <option value="cancelled">cancelled</option>
+                        </select>
+                        <button
+                          onClick={async () => {
+                            if (!confirm("Delete this booking?")) return;
+                            try {
+                              const resp = await fetch(LEADS_URL, {
+                                method: "DELETE",
+                                headers: { "x-admin-password": storedPassword, "Content-Type": "application/json" },
+                                body: JSON.stringify({ type: "booking", id: b.id }),
+                              });
+                              if (resp.ok) {
+                                setBookings(bookings.filter((bk) => bk.id !== b.id));
+                              }
+                            } catch {}
+                          }}
+                          className="h-8 w-8 rounded-lg flex items-center justify-center transition-colors hover:bg-red-500/20"
+                          style={{ border: `1px solid ${ADM.surfaceBorder}` }}
+                          title="Delete booking"
+                        >
+                          <Trash2 className="h-3.5 w-3.5 text-red-400" />
+                        </button>
+                      </div>
                     </div>
                   </div>
                 ))}
