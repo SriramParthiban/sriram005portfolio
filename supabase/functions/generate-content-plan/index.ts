@@ -13,7 +13,6 @@ CRITICAL RULES:
 - NEVER use generic AI phrases like "In today's fast-paced world", "As technology evolves", "Let's dive in", "Here's the thing", "Game-changer", "Unlock the power of", "Leverage", "Harness".
 - Write like a real person sharing something they genuinely experienced or learned.
 - Be specific, authentic, and personal. Use casual but professional tone.
-- Captions should feel like someone typed them on their phone while excited about something they built.
 - Avoid buzzwords and corporate speak.
 
 You will receive a JSON object with:
@@ -26,7 +25,7 @@ You MUST respond with a valid JSON object (no markdown, no code blocks) with the
 {
   "subject": "An attention-grabbing subject/hook line (1 sentence, must feel like a real person wrote it)",
   "contentAngle": "2-3 sentences explaining what the post is about, why it matters, and what value the audience gets",
-  "captions": ["caption1", "caption2", "caption3"],
+  "content": "A single, well-written piece of content around 150 words. This should be ready-to-post quality — friendly, professional, and engaging. Match the tone if specified. Write it as if you're sharing something real with your audience.",
   "keywords": ["keyword1", "keyword2", ...up to 15],
   "hashtags": ["#hashtag1", "#hashtag2", ...10-15 hashtags],
   "hook": "Opening line that grabs attention",
@@ -35,7 +34,7 @@ You MUST respond with a valid JSON object (no markdown, no code blocks) with the
   "callToAction": "What you want the audience to do"
 }
 
-Make captions feel real. Like someone sharing their work, not marketing copy. Each caption should have a different angle — one personal, one educational, one storytelling.`;
+The "content" field is the main output — a single polished piece of content (~150 words). Make it feel real, like someone sharing their work, not marketing copy.`;
 
 serve(async (req) => {
   if (req.method === "OPTIONS") {
@@ -99,7 +98,6 @@ serve(async (req) => {
     const data = await resp.json();
     const raw = data.choices?.[0]?.message?.content || "";
 
-    // Try to parse JSON from the response (strip markdown fences if present)
     let cleaned = raw.trim();
     if (cleaned.startsWith("```")) {
       cleaned = cleaned.replace(/^```(?:json)?\s*/, "").replace(/\s*```$/, "");
