@@ -245,10 +245,10 @@ const InvoiceGenerator = () => {
       </div>
 
       {/* Line Items */}
-      <div className="bg-[hsl(121,25%,8%)] border border-[hsl(121,20%,16%)] rounded-xl p-5">
+      <div className="bg-[hsl(220,35%,12%)] border border-[hsl(220,25%,20%)] rounded-xl p-5">
         <div className="flex items-center justify-between mb-4">
-          <p className="text-xs font-bold text-[#c0b87a] uppercase tracking-widest">Services & Pricing</p>
-          <span className="text-xs font-bold text-[#005f02] bg-[#005f02]/15 px-3 py-1 rounded-full border border-[#005f02]/30">
+          <p className="text-xs font-bold text-[#FFA62B] uppercase tracking-widest">Services & Pricing</p>
+          <span className="text-xs font-bold text-[#2E5AA7] bg-[#2E5AA7]/15 px-3 py-1 rounded-full border border-[#2E5AA7]/30">
             Currency: {currencySymbol} {currency}
           </span>
         </div>
