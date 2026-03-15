@@ -322,7 +322,7 @@ const ProjectPlanGenerator = () => {
             <p className="text-xs font-bold text-[#FFA62B] uppercase tracking-widest">Cost & Pricing</p>
             <div className="w-40">
               <Select value={currency} onValueChange={(v) => setCurrency(v as "INR" | "USD" | "CAD")}>
-                <SelectTrigger className="w-full bg-[hsl(121,20%,7%)] border-[hsl(121,18%,18%)] text-[#f2e3bb] text-xs">
+                <SelectTrigger className="w-full bg-[hsl(220,30%,9%)] border-[hsl(220,22%,22%)] text-[#F8E6A0] text-xs">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
