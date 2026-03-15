@@ -406,7 +406,7 @@ const ProjectPlanGenerator = () => {
           onClick={handleGeneratePDF}
           disabled={!clientName.trim() || !projectTitle.trim()}
           className="flex items-center gap-2 px-8 py-3.5 rounded-xl text-sm font-bold hover:brightness-110 disabled:opacity-40 transition-all shadow-lg"
-          style={{ background: "#005f02", color: "#f2e3bb", boxShadow: "0 4px 12px #005f0240" }}
+          style={{ background: "#2E5AA7", color: "#F8E6A0", boxShadow: "0 4px 12px #2E5AA740" }}
         >
           <FileDown className="h-4 w-4" />
           Submit & Finalize PDF
