@@ -254,7 +254,7 @@ const InvoiceGenerator = () => {
         </div>
         <div className="space-y-3">
           {/* Header */}
-          <div className="hidden sm:grid grid-cols-[1fr_150px_40px] gap-3 text-xs text-[hsl(53,25%,55%)] font-bold px-1">
+          <div className="hidden sm:grid grid-cols-[1fr_150px_40px] gap-3 text-xs text-[hsl(46,40%,60%)] font-bold px-1">
             <span>Description</span>
             <span>Amount ({currencySymbol})</span>
             <span></span>
