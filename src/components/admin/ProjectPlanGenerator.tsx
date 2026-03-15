@@ -275,7 +275,7 @@ const ProjectPlanGenerator = () => {
       {/* Requirements */}
       {showRequirements && (
         <div className={sectionCardClass}>
-          <p className="text-xs font-bold text-[#c0b87a] uppercase tracking-widest mb-3">Client Requirements</p>
+          <p className="text-xs font-bold text-[#FFA62B] uppercase tracking-widest mb-3">Client Requirements</p>
           <textarea
             className={`${inputClass} min-h-[100px] resize-y`}
             placeholder="Describe what the client needs..."
