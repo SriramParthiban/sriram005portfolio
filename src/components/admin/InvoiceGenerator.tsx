@@ -179,7 +179,7 @@ const InvoiceGenerator = () => {
         <div>
           <label className={labelClass}>Currency</label>
           <Select value={currency} onValueChange={(v) => setCurrency(v as "INR" | "USD" | "CAD")}>
-            <SelectTrigger className="w-full bg-[hsl(121,20%,7%)] border-[hsl(121,18%,18%)] text-[#f2e3bb]">
+            <SelectTrigger className="w-full bg-[hsl(220,30%,9%)] border-[hsl(220,22%,22%)] text-[#F8E6A0]">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
