@@ -288,7 +288,7 @@ const ProjectPlanGenerator = () => {
       {/* Deliverables */}
       {showDeliverables && (
         <div className={sectionCardClass}>
-          <p className="text-xs font-bold text-[#c0b87a] uppercase tracking-widest mb-3">Deliverables</p>
+          <p className="text-xs font-bold text-[#FFA62B] uppercase tracking-widest mb-3">Deliverables</p>
           <div className="space-y-3">
             {deliverables.map((d, idx) => (
               <div key={d.id} className="flex gap-3 items-center">
