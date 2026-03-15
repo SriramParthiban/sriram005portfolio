@@ -262,8 +262,8 @@ const ProjectPlanGenerator = () => {
               onClick={() => s.toggle(!s.state)}
               className={`px-4 py-2 rounded-lg text-xs font-bold transition-all border ${
                 s.state
-                  ? "bg-[#005f02]/25 text-[#c0b87a] border-[#005f02]/50"
-                  : "bg-[hsl(121,10%,10%)] text-[hsl(53,15%,35%)] border-[hsl(121,15%,16%)]"
+                  ? "bg-[#2E5AA7]/25 text-[#FFA62B] border-[#2E5AA7]/50"
+                  : "bg-[hsl(220,20%,10%)] text-[hsl(46,15%,35%)] border-[hsl(220,15%,16%)]"
               }`}
             >
               {s.label}
