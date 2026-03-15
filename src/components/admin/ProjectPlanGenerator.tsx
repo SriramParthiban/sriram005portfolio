@@ -253,8 +253,8 @@ const ProjectPlanGenerator = () => {
 
       {/* Section toggles */}
       <div className={sectionCardClass}>
-        <p className="text-xs font-bold text-[#c0b87a] uppercase tracking-widest mb-3">Include Sections</p>
-        <p className="text-xs text-[hsl(53,25%,50%)] mb-4">Toggle which sections appear in the final PDF. Only filled sections will be included.</p>
+        <p className="text-xs font-bold text-[#FFA62B] uppercase tracking-widest mb-3">Include Sections</p>
+        <p className="text-xs text-[hsl(46,40%,60%)] mb-4">Toggle which sections appear in the final PDF. Only filled sections will be included.</p>
         <div className="flex flex-wrap gap-2">
           {toggleSections.map((s) => (
             <button
