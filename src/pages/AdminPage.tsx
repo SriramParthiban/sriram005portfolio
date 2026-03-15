@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import {
   Lock, LogOut, Search, MessageCircle, Mail, Phone, User, Tag, Clock,
   ChevronDown, ChevronUp, Eye, Users, CalendarCheck,
-  TrendingUp, BarChart3, MessageSquare, UserCheck, RefreshCw, FileText, ClipboardList, PenLine
+  TrendingUp, BarChart3, MessageSquare, UserCheck, RefreshCw, FileText, ClipboardList, PenLine,
+  Trash2, MoreVertical
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import InvoiceGenerator from "@/components/admin/InvoiceGenerator";
