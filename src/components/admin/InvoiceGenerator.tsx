@@ -193,7 +193,7 @@ const InvoiceGenerator = () => {
           <label className={labelClass}>Invoice Date</label>
           <Popover>
             <PopoverTrigger asChild>
-              <Button variant="outline" className={cn("w-full justify-start text-left font-normal bg-[hsl(121,20%,7%)] border-[hsl(121,18%,18%)] hover:bg-[hsl(121,20%,10%)] text-[#f2e3bb]", !invoiceDate && "text-[hsl(53,25%,40%)]")}>
+              <Button variant="outline" className={cn("w-full justify-start text-left font-normal bg-[hsl(220,30%,9%)] border-[hsl(220,22%,22%)] hover:bg-[hsl(220,30%,12%)] text-[#F8E6A0]", !invoiceDate && "text-[hsl(46,25%,40%)]")}>
                 <CalendarIcon className="mr-2 h-4 w-4" />
                 {invoiceDate ? format(invoiceDate, "dd-MM-yyyy") : <span>Pick a date</span>}
               </Button>
