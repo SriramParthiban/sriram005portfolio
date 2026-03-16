@@ -170,12 +170,21 @@ const Navbar = () => {
                   </motion.button>
                 );
               })}
-              <Button size="sm" asChild className="mt-3 w-fit font-medium">
-                <a href="/resume.pdf" download="Sriram_Parthiban_Resume.pdf">
-                  <Download className="mr-1.5 h-3.5 w-3.5" />
-                  Resume
-                </a>
-              </Button>
+              <div className="mt-3 flex items-center gap-3">
+                <button
+                  onClick={toggleTheme}
+                  className="flex items-center gap-2 rounded-xl px-4 py-3 text-sm font-medium text-muted-foreground hover:bg-foreground/5 hover:text-foreground transition-all"
+                >
+                  {theme === "light" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+                  {theme === "light" ? "Dark Mode" : "Light Mode"}
+                </button>
+                <Button size="sm" asChild className="w-fit font-medium">
+                  <a href="/resume.pdf" download="Sriram_Parthiban_Resume.pdf">
+                    <Download className="mr-1.5 h-3.5 w-3.5" />
+                    Resume
+                  </a>
+                </Button>
+              </div>
             </div>
           </motion.div>
         )}
