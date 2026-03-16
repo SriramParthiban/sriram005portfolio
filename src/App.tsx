@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "@/hooks/use-theme";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ProjectDetailPage from "./pages/ProjectDetailPage";
@@ -13,23 +14,25 @@ import PageTracker from "./components/PageTracker";
 const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <PageTracker />
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/projects/:slug" element={<ProjectDetailPage />} />
-          
-          <Route path="/sub-theme" element={<SubThemePage />} />
-          <Route path="/admin" element={<AdminPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+  <ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <PageTracker />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/projects/:slug" element={<ProjectDetailPage />} />
+            
+            <Route path="/sub-theme" element={<SubThemePage />} />
+            <Route path="/admin" element={<AdminPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  </ThemeProvider>
 );
 
 export default App;

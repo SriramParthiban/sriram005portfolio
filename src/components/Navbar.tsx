@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Download } from "lucide-react";
+import { Menu, X, Download, Sun, Moon } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useTheme } from "@/hooks/use-theme";
 import profilePhoto from "@/assets/profile-photo.jpeg";
 
 const navLinks = [
@@ -13,6 +14,7 @@ const navLinks = [
 ];
 
 const Navbar = () => {
+  const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
@@ -89,7 +91,28 @@ const Navbar = () => {
               </button>
             );
           })}
-          <Button size="sm" className="ml-5 font-medium" asChild>
+          <button
+            onClick={toggleTheme}
+            className={`ml-3 rounded-full p-2 transition-all duration-300 ${
+              scrolled
+                ? "text-muted-foreground hover:text-foreground hover:bg-primary/10"
+                : "text-white/80 hover:text-white hover:bg-white/15"
+            }`}
+            aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+          >
+            <AnimatePresence mode="wait">
+              {theme === "light" ? (
+                <motion.div key="moon" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}>
+                  <Moon className="h-4 w-4" />
+                </motion.div>
+              ) : (
+                <motion.div key="sun" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.2 }}>
+                  <Sun className="h-4 w-4" />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </button>
+          <Button size="sm" className="ml-2 font-medium" asChild>
             <a href="/resume.pdf" download="Sriram_Parthiban_Resume.pdf">
               <Download className="mr-1.5 h-3.5 w-3.5" />
               Resume
@@ -147,12 +170,21 @@ const Navbar = () => {
                   </motion.button>
                 );
               })}
-              <Button size="sm" asChild className="mt-3 w-fit font-medium">
-                <a href="/resume.pdf" download="Sriram_Parthiban_Resume.pdf">
-                  <Download className="mr-1.5 h-3.5 w-3.5" />
-                  Resume
-                </a>
-              </Button>
+              <div className="mt-3 flex items-center gap-3">
+                <button
+                  onClick={toggleTheme}
+                  className="flex items-center gap-2 rounded-xl px-4 py-3 text-sm font-medium text-muted-foreground hover:bg-foreground/5 hover:text-foreground transition-all"
+                >
+                  {theme === "light" ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
+                  {theme === "light" ? "Dark Mode" : "Light Mode"}
+                </button>
+                <Button size="sm" asChild className="w-fit font-medium">
+                  <a href="/resume.pdf" download="Sriram_Parthiban_Resume.pdf">
+                    <Download className="mr-1.5 h-3.5 w-3.5" />
+                    Resume
+                  </a>
+                </Button>
+              </div>
             </div>
           </motion.div>
         )}
