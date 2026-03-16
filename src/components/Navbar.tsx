@@ -91,7 +91,28 @@ const Navbar = () => {
               </button>
             );
           })}
-          <Button size="sm" className="ml-5 font-medium" asChild>
+          <button
+            onClick={toggleTheme}
+            className={`ml-3 rounded-full p-2 transition-all duration-300 ${
+              scrolled
+                ? "text-muted-foreground hover:text-foreground hover:bg-primary/10"
+                : "text-white/80 hover:text-white hover:bg-white/15"
+            }`}
+            aria-label={`Switch to ${theme === "light" ? "dark" : "light"} mode`}
+          >
+            <AnimatePresence mode="wait">
+              {theme === "light" ? (
+                <motion.div key="moon" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}>
+                  <Moon className="h-4 w-4" />
+                </motion.div>
+              ) : (
+                <motion.div key="sun" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.2 }}>
+                  <Sun className="h-4 w-4" />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </button>
+          <Button size="sm" className="ml-2 font-medium" asChild>
             <a href="/resume.pdf" download="Sriram_Parthiban_Resume.pdf">
               <Download className="mr-1.5 h-3.5 w-3.5" />
               Resume
