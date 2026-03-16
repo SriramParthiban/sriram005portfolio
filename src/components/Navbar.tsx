@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Download } from "lucide-react";
+import { Menu, X, Download, Sun, Moon } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useTheme } from "@/hooks/use-theme";
 import profilePhoto from "@/assets/profile-photo.jpeg";
 
 const navLinks = [
