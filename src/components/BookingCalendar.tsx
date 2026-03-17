@@ -286,7 +286,7 @@ const BookingCalendar = () => {
                 <div>
                   <label className="block text-sm font-extrabold text-foreground mb-1.5 uppercase tracking-wider">Email *</label>
                   <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="your@email.com" maxLength={255}
-                    className="h-11 text-base font-bold bg-white/5 border-white/10 text-foreground placeholder:text-muted-foreground/60 placeholder:font-medium focus:border-primary/40" />
+                    className="h-11 text-base font-bold bg-muted/50 border-border text-foreground placeholder:text-muted-foreground/60 placeholder:font-medium focus:border-primary/40" />
                 </div>
                 <div>
                   <label className="block text-sm font-extrabold text-foreground mb-1.5 uppercase tracking-wider">Note (optional)</label>
