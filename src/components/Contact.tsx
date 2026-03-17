@@ -131,22 +131,19 @@ const Contact = () => {
                   style={{ transform: "rotate(0.3deg)" }}
                 >
                   <div
-                    className="relative p-5 sm:p-6 border-2 border-[hsl(35,25%,75%)]"
-                    style={{
-                      background: "linear-gradient(145deg, hsl(35 30% 90%) 0%, hsl(35 25% 86%) 100%)",
-                    }}
+                    className="relative p-5 sm:p-6 border-2 border-[hsl(35,25%,75%)] dark:border-[hsl(35,15%,30%)] bg-[hsl(35,30%,90%)] dark:bg-[hsl(35,10%,16%)]"
                   >
-                    <div className="absolute top-3 right-3 h-12 w-10 rounded-sm border-2 border-dashed border-[hsl(35,20%,70%)] bg-[hsl(35,15%,84%)] flex items-center justify-center">
+                    <div className="absolute top-3 right-3 h-12 w-10 rounded-sm border-2 border-dashed border-[hsl(35,20%,70%)] dark:border-[hsl(35,15%,30%)] bg-[hsl(35,15%,84%)] dark:bg-[hsl(35,10%,20%)] flex items-center justify-center">
                       <Mail className="h-4 w-4 text-primary/40" />
                     </div>
 
-                    <div className="mb-5 text-base font-mono font-bold text-[hsl(35,20%,20%)] italic pr-16">
+                    <div className="mb-5 text-base font-mono font-bold text-[hsl(35,20%,20%)] dark:text-[hsl(35,25%,80%)] italic pr-16">
                       Dear Sriram,
                     </div>
 
                     <div className="space-y-4">
                       <div>
-                        <label className="block text-xs font-mono font-extrabold text-[hsl(35,25%,22%)] uppercase tracking-widest mb-1.5">From</label>
+                        <label className="block text-xs font-mono font-extrabold text-[hsl(35,25%,22%)] dark:text-[hsl(35,25%,75%)] uppercase tracking-widest mb-1.5">From</label>
                         <input
                           type="text"
                           placeholder="Your name"
@@ -154,12 +151,12 @@ const Contact = () => {
                           maxLength={100}
                           value={form.name}
                           onChange={(e) => setForm({ ...form, name: e.target.value })}
-                          className="w-full bg-transparent border-b-2 border-dotted border-[hsl(35,20%,60%)] pb-2 text-base font-bold text-[hsl(35,25%,15%)] placeholder:text-[hsl(35,20%,40%)] placeholder:font-semibold focus:outline-none focus:border-primary/40 transition-colors font-mono"
+                          className="w-full bg-transparent border-b-2 border-dotted border-[hsl(35,20%,60%)] dark:border-[hsl(35,15%,35%)] pb-2 text-base font-bold text-[hsl(35,25%,15%)] dark:text-[hsl(35,25%,85%)] placeholder:text-[hsl(35,20%,40%)] dark:placeholder:text-[hsl(35,15%,50%)] placeholder:font-semibold focus:outline-none focus:border-primary/40 transition-colors font-mono"
                         />
                         {errors.name && <p className="mt-1 text-xs text-destructive">{errors.name}</p>}
                       </div>
                       <div>
-                        <label className="block text-xs font-mono font-extrabold text-[hsl(35,25%,22%)] uppercase tracking-widest mb-1.5">Return Address</label>
+                        <label className="block text-xs font-mono font-extrabold text-[hsl(35,25%,22%)] dark:text-[hsl(35,25%,75%)] uppercase tracking-widest mb-1.5">Return Address</label>
                         <input
                           type="email"
                           placeholder="Your email"
@@ -167,12 +164,12 @@ const Contact = () => {
                           maxLength={255}
                           value={form.email}
                           onChange={(e) => setForm({ ...form, email: e.target.value })}
-                          className="w-full bg-transparent border-b-2 border-dotted border-[hsl(35,20%,60%)] pb-2 text-base font-bold text-[hsl(35,25%,15%)] placeholder:text-[hsl(35,20%,40%)] placeholder:font-semibold focus:outline-none focus:border-primary/40 transition-colors font-mono"
+                          className="w-full bg-transparent border-b-2 border-dotted border-[hsl(35,20%,60%)] dark:border-[hsl(35,15%,35%)] pb-2 text-base font-bold text-[hsl(35,25%,15%)] dark:text-[hsl(35,25%,85%)] placeholder:text-[hsl(35,20%,40%)] dark:placeholder:text-[hsl(35,15%,50%)] placeholder:font-semibold focus:outline-none focus:border-primary/40 transition-colors font-mono"
                         />
                         {errors.email && <p className="mt-1 text-xs text-destructive">{errors.email}</p>}
                       </div>
                       <div>
-                        <label className="block text-xs font-mono font-extrabold text-[hsl(35,25%,22%)] uppercase tracking-widest mb-1.5">Message</label>
+                        <label className="block text-xs font-mono font-extrabold text-[hsl(35,25%,22%)] dark:text-[hsl(35,25%,75%)] uppercase tracking-widest mb-1.5">Message</label>
                         <textarea
                           placeholder="Write your message here..."
                           required
@@ -180,7 +177,7 @@ const Contact = () => {
                           maxLength={2000}
                           value={form.message}
                           onChange={(e) => setForm({ ...form, message: e.target.value })}
-                          className="w-full bg-transparent border-b-2 border-dotted border-[hsl(35,20%,60%)] pb-2 text-base font-bold text-[hsl(35,25%,15%)] placeholder:text-[hsl(35,20%,40%)] placeholder:font-semibold focus:outline-none focus:border-primary/40 transition-colors resize-none font-mono"
+                          className="w-full bg-transparent border-b-2 border-dotted border-[hsl(35,20%,60%)] dark:border-[hsl(35,15%,35%)] pb-2 text-base font-bold text-[hsl(35,25%,15%)] dark:text-[hsl(35,25%,85%)] placeholder:text-[hsl(35,20%,40%)] dark:placeholder:text-[hsl(35,15%,50%)] placeholder:font-semibold focus:outline-none focus:border-primary/40 transition-colors resize-none font-mono"
                           style={{
                             backgroundImage: "repeating-linear-gradient(transparent, transparent 27px, hsl(35 20% 78% / 0.5) 27px, hsl(35 20% 78% / 0.5) 28px)",
                             lineHeight: "28px",

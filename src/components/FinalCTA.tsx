@@ -17,12 +17,12 @@ const FinalCTA = () => (
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="text-3xl font-display font-bold sm:text-4xl lg:text-5xl text-balance drop-shadow-[0_2px_8px_rgba(255,255,255,0.8)]" style={{ color: 'hsl(var(--foreground))' }}>
+        <h2 className="text-3xl font-display font-bold sm:text-4xl lg:text-5xl text-balance text-foreground drop-shadow-[0_2px_8px_rgba(255,255,255,0.8)] dark:drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
           Ready to Build Something{" "}
-          <span className="gradient-text-warm drop-shadow-[0_2px_8px_rgba(255,255,255,0.8)]">Extraordinary?</span>
+          <span className="gradient-text-warm drop-shadow-[0_2px_8px_rgba(255,255,255,0.8)] dark:drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">Extraordinary?</span>
         </h2>
 
-        <p className="mx-auto mt-5 max-w-md text-base font-bold" style={{ color: '#000', textShadow: '0 0 12px rgba(255,255,255,0.8)' }}>
+        <p className="mx-auto mt-5 max-w-md text-base font-bold text-foreground [text-shadow:0_0_12px_rgba(255,255,255,0.8)] dark:[text-shadow:0_2px_12px_rgba(0,0,0,0.9)]">
           Let's discuss how AI-driven automation can transform your operations and drive measurable results.
         </p>
 
@@ -41,7 +41,7 @@ const FinalCTA = () => (
           </Button>
         </div>
 
-        <div className="mt-10 flex items-center justify-center gap-6 text-sm font-bold" style={{ color: '#000', textShadow: '0 0 12px rgba(255,255,255,0.8)' }}>
+        <div className="mt-10 flex items-center justify-center gap-6 text-sm font-bold text-foreground [text-shadow:0_0_12px_rgba(255,255,255,0.8)] dark:[text-shadow:0_2px_12px_rgba(0,0,0,0.9)]">
           <span className="flex items-center gap-1.5">
             <CheckCircle2 className="h-3.5 w-3.5 text-accent" />
             Quick Response

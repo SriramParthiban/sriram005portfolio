@@ -148,7 +148,7 @@ const BookingCalendar = () => {
                   ? "bg-primary text-primary-foreground shadow-[0_0_16px_hsl(var(--primary)/0.4)]"
                   : step === "confirmed" || (["date", "time", "details"].indexOf(step) > i)
                   ? "bg-primary/20 text-primary"
-                  : "bg-white/5 text-muted-foreground border border-white/10"
+                  : "bg-muted text-muted-foreground border border-border"
               }`}
             >
               {step === "confirmed" || (["date", "time", "details"].indexOf(step) > i) ? (
@@ -160,7 +160,7 @@ const BookingCalendar = () => {
             {i < 2 && (
               <div className={`h-px w-6 sm:w-8 transition-colors duration-300 ${
                 (["date", "time", "details"].indexOf(step) > i) || step === "confirmed"
-                  ? "bg-primary/40" : "bg-white/10"
+                  ? "bg-primary/40" : "bg-border"
               }`} />
             )}
           </div>
@@ -168,7 +168,7 @@ const BookingCalendar = () => {
       </div>
 
       {/* Wizard content */}
-      <div className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-4 sm:p-6">
+      <div className="rounded-2xl border border-border bg-card/80 backdrop-blur-sm p-4 sm:p-6">
         <AnimatePresence mode="wait">
           {step === "date" && (
             <motion.div key="date" variants={stepVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.2 }}>
@@ -182,7 +182,7 @@ const BookingCalendar = () => {
                   selected={selectedDate}
                   onSelect={(d) => setSelectedDate(d)}
                   disabled={(date) => isBefore(date, startOfDay(new Date()))}
-                  className="p-2 pointer-events-auto rounded-xl border border-white/10 bg-white/[0.02]
+                  className="p-2 pointer-events-auto rounded-xl border border-border bg-card/50
                     [&_.rdp-day]:text-foreground [&_.rdp-day_selected]:bg-primary [&_.rdp-day_selected]:text-primary-foreground
                     [&_.rdp-day_today]:bg-accent/20 [&_.rdp-day_today]:text-accent
                     [&_.rdp-head_cell]:text-muted-foreground [&_.rdp-caption_label]:text-foreground [&_.rdp-caption_label]:font-display
@@ -212,7 +212,7 @@ const BookingCalendar = () => {
                     className={`px-3 py-1.5 rounded-full text-sm font-semibold transition-all duration-300 ${
                       duration === d
                         ? "bg-primary text-primary-foreground shadow-[0_0_12px_hsl(var(--primary)/0.3)]"
-                        : "bg-white/5 text-muted-foreground border border-white/10 hover:bg-white/10"
+                        : "bg-muted text-muted-foreground border border-border hover:bg-muted/80"
                     }`}
                   >
                     {d} min
@@ -239,10 +239,10 @@ const BookingCalendar = () => {
                       onClick={() => setSelectedTime(slot)}
                       className={`py-2 px-1.5 rounded-lg text-sm font-semibold transition-all duration-200 ${
                         booked
-                          ? "bg-white/[0.02] text-muted-foreground/30 cursor-not-allowed line-through"
+                          ? "bg-muted/50 text-muted-foreground/30 cursor-not-allowed line-through"
                           : selected
                           ? "bg-primary text-primary-foreground shadow-[0_0_16px_hsl(var(--primary)/0.4)]"
-                          : "bg-white/5 text-muted-foreground border border-white/10 hover:bg-primary/10 hover:text-foreground hover:border-primary/20"
+                          : "bg-muted text-muted-foreground border border-border hover:bg-primary/10 hover:text-foreground hover:border-primary/20"
                       }`}
                     >
                       {displayTime}
@@ -281,17 +281,17 @@ const BookingCalendar = () => {
                 <div>
                   <label className="block text-sm font-extrabold text-foreground mb-1.5 uppercase tracking-wider">Name *</label>
                   <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="Your name" maxLength={100}
-                    className="h-11 text-base font-bold bg-white/5 border-white/10 text-foreground placeholder:text-muted-foreground/60 placeholder:font-medium focus:border-primary/40" />
+                    className="h-11 text-base font-bold bg-muted/50 border-border text-foreground placeholder:text-muted-foreground/60 placeholder:font-medium focus:border-primary/40" />
                 </div>
                 <div>
                   <label className="block text-sm font-extrabold text-foreground mb-1.5 uppercase tracking-wider">Email *</label>
                   <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="your@email.com" maxLength={255}
-                    className="h-11 text-base font-bold bg-white/5 border-white/10 text-foreground placeholder:text-muted-foreground/60 placeholder:font-medium focus:border-primary/40" />
+                    className="h-11 text-base font-bold bg-muted/50 border-border text-foreground placeholder:text-muted-foreground/60 placeholder:font-medium focus:border-primary/40" />
                 </div>
                 <div>
                   <label className="block text-sm font-extrabold text-foreground mb-1.5 uppercase tracking-wider">Note (optional)</label>
                   <textarea value={message} onChange={(e) => setMessage(e.target.value)} placeholder="What to discuss?" maxLength={500} rows={2}
-                    className="w-full rounded-md bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground/60 placeholder:font-medium focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-ring px-3 py-2.5 text-base font-bold resize-none" />
+                    className="w-full rounded-md bg-muted/50 border border-border text-foreground placeholder:text-muted-foreground/60 placeholder:font-medium focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-ring px-3 py-2.5 text-base font-bold resize-none" />
                 </div>
               </div>
               <div className="mt-4 flex justify-between">

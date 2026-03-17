@@ -8,7 +8,7 @@ const coursework = ["Machine Learning", "Supply Chain Operations", "Statistical 
 
 const Education = () => (
   <section id="education" className="relative px-6 py-20 sm:py-24 overflow-hidden">
-    <div className="absolute inset-0 bg-muted/40" />
+    <div className="absolute inset-0 bg-muted/40 dark:bg-muted/20" />
 
     <div className="relative mx-auto max-w-3xl">
       <FadeInSection>
@@ -24,12 +24,11 @@ const Education = () => (
           transition={{ type: "spring", stiffness: 200, damping: 20 }}
           className="group relative mt-12"
         >
-          <div className="relative z-10 h-5 rounded-t-full bg-gradient-to-b from-[hsl(35,30%,70%)] to-[hsl(35,25%,60%)] shadow-sm border-x border-t border-[hsl(35,30%,75%)]" />
+          <div className="relative z-10 h-5 rounded-t-full bg-gradient-to-b from-[hsl(35,30%,70%)] to-[hsl(35,25%,60%)] dark:from-[hsl(35,20%,35%)] dark:to-[hsl(35,15%,28%)] shadow-sm border-x border-t border-[hsl(35,30%,75%)] dark:border-[hsl(35,15%,30%)]" />
 
           <div
-            className="relative border-x border-[hsl(35,25%,75%)] px-6 sm:px-10 py-8 sm:py-10"
+            className="relative border-x border-[hsl(35,25%,75%)] dark:border-[hsl(35,15%,30%)] px-6 sm:px-10 py-8 sm:py-10 bg-[hsl(35,25%,92%)] dark:bg-[hsl(35,10%,18%)]"
             style={{
-              background: "linear-gradient(180deg, hsl(35 25% 92%) 0%, hsl(35 20% 88%) 50%, hsl(35 25% 92%) 100%)",
               backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 3px, hsl(35 20% 82% / 0.3) 3px, hsl(35 20% 82% / 0.3) 4px)",
             }}
           >
@@ -46,10 +45,10 @@ const Education = () => (
             </div>
 
             <div className="relative">
-              <h3 className="text-lg sm:text-xl font-display font-bold text-[hsl(35,30%,25%)] pr-20">
+              <h3 className="text-lg sm:text-xl font-display font-bold text-[hsl(35,30%,25%)] dark:text-[hsl(35,30%,85%)] pr-20">
                 B.Tech in Artificial Intelligence & Data Science
               </h3>
-              <p className="mt-2 text-sm font-medium text-[hsl(35,15%,40%)]">
+              <p className="mt-2 text-sm font-medium text-[hsl(35,15%,40%)] dark:text-[hsl(35,20%,65%)]">
                 St. Joseph's Institute of Technology
               </p>
               <span className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-accent/15 px-3.5 py-1 text-xs font-bold text-accent">
@@ -58,12 +57,12 @@ const Education = () => (
 
               <div className="mt-8">
                 <div className="flex items-center gap-2 mb-3">
-                  <BookOpen className="h-4 w-4 text-[hsl(35,40%,40%)]" />
-                  <span className="text-sm font-display font-semibold text-[hsl(35,25%,30%)]">Relevant Coursework</span>
+                  <BookOpen className="h-4 w-4 text-accent" />
+                  <span className="text-sm font-display font-semibold text-[hsl(35,25%,30%)] dark:text-[hsl(35,25%,80%)]">Relevant Coursework</span>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {coursework.map((c) => (
-                    <Badge key={c} variant="secondary" className="bg-[hsl(35,20%,85%)] border border-[hsl(35,20%,75%)] text-[hsl(35,15%,35%)] text-xs font-medium">
+                    <Badge key={c} variant="secondary" className="bg-[hsl(35,20%,85%)] dark:bg-[hsl(35,15%,25%)] border border-[hsl(35,20%,75%)] dark:border-[hsl(35,15%,35%)] text-[hsl(35,15%,35%)] dark:text-[hsl(35,20%,75%)] text-xs font-medium">
                       {c}
                     </Badge>
                   ))}
@@ -72,7 +71,7 @@ const Education = () => (
             </div>
           </div>
 
-          <div className="relative z-10 h-5 rounded-b-full bg-gradient-to-t from-[hsl(35,30%,70%)] to-[hsl(35,25%,60%)] shadow-sm border-x border-b border-[hsl(35,30%,75%)]" />
+          <div className="relative z-10 h-5 rounded-b-full bg-gradient-to-t from-[hsl(35,30%,70%)] to-[hsl(35,25%,60%)] dark:from-[hsl(35,20%,35%)] dark:to-[hsl(35,15%,28%)] shadow-sm border-x border-b border-[hsl(35,30%,75%)] dark:border-[hsl(35,15%,30%)]" />
         </motion.div>
       </FadeInSection>
     </div>
