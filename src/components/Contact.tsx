@@ -133,7 +133,7 @@ const Contact = () => {
                   <div
                     className="relative p-5 sm:p-6 border-2 border-[hsl(35,25%,75%)] dark:border-[hsl(35,15%,30%)] bg-[hsl(35,30%,90%)] dark:bg-[hsl(35,10%,16%)]"
                   >
-                    <div className="absolute top-3 right-3 h-12 w-10 rounded-sm border-2 border-dashed border-[hsl(35,20%,70%)] bg-[hsl(35,15%,84%)] flex items-center justify-center">
+                    <div className="absolute top-3 right-3 h-12 w-10 rounded-sm border-2 border-dashed border-[hsl(35,20%,70%)] dark:border-[hsl(35,15%,30%)] bg-[hsl(35,15%,84%)] dark:bg-[hsl(35,10%,20%)] flex items-center justify-center">
                       <Mail className="h-4 w-4 text-primary/40" />
                     </div>
 
