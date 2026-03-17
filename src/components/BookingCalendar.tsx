@@ -182,7 +182,7 @@ const BookingCalendar = () => {
                   selected={selectedDate}
                   onSelect={(d) => setSelectedDate(d)}
                   disabled={(date) => isBefore(date, startOfDay(new Date()))}
-                  className="p-2 pointer-events-auto rounded-xl border border-white/10 bg-white/[0.02]
+                  className="p-2 pointer-events-auto rounded-xl border border-border bg-card/50
                     [&_.rdp-day]:text-foreground [&_.rdp-day_selected]:bg-primary [&_.rdp-day_selected]:text-primary-foreground
                     [&_.rdp-day_today]:bg-accent/20 [&_.rdp-day_today]:text-accent
                     [&_.rdp-head_cell]:text-muted-foreground [&_.rdp-caption_label]:text-foreground [&_.rdp-caption_label]:font-display
