@@ -291,7 +291,7 @@ const BookingCalendar = () => {
                 <div>
                   <label className="block text-sm font-extrabold text-foreground mb-1.5 uppercase tracking-wider">Note (optional)</label>
                   <textarea value={message} onChange={(e) => setMessage(e.target.value)} placeholder="What to discuss?" maxLength={500} rows={2}
-                    className="w-full rounded-md bg-white/5 border border-white/10 text-foreground placeholder:text-muted-foreground/60 placeholder:font-medium focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-ring px-3 py-2.5 text-base font-bold resize-none" />
+                    className="w-full rounded-md bg-muted/50 border border-border text-foreground placeholder:text-muted-foreground/60 placeholder:font-medium focus:border-primary/40 focus:outline-none focus:ring-2 focus:ring-ring px-3 py-2.5 text-base font-bold resize-none" />
                 </div>
               </div>
               <div className="mt-4 flex justify-between">
