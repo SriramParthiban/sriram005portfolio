@@ -281,7 +281,7 @@ const BookingCalendar = () => {
                 <div>
                   <label className="block text-sm font-extrabold text-foreground mb-1.5 uppercase tracking-wider">Name *</label>
                   <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="Your name" maxLength={100}
-                    className="h-11 text-base font-bold bg-white/5 border-white/10 text-foreground placeholder:text-muted-foreground/60 placeholder:font-medium focus:border-primary/40" />
+                    className="h-11 text-base font-bold bg-muted/50 border-border text-foreground placeholder:text-muted-foreground/60 placeholder:font-medium focus:border-primary/40" />
                 </div>
                 <div>
                   <label className="block text-sm font-extrabold text-foreground mb-1.5 uppercase tracking-wider">Email *</label>
