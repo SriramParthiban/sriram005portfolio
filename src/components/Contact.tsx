@@ -169,7 +169,7 @@ const Contact = () => {
                         {errors.email && <p className="mt-1 text-xs text-destructive">{errors.email}</p>}
                       </div>
                       <div>
-                        <label className="block text-xs font-mono font-extrabold text-[hsl(35,25%,22%)] uppercase tracking-widest mb-1.5">Message</label>
+                        <label className="block text-xs font-mono font-extrabold text-[hsl(35,25%,22%)] dark:text-[hsl(35,25%,75%)] uppercase tracking-widest mb-1.5">Message</label>
                         <textarea
                           placeholder="Write your message here..."
                           required
