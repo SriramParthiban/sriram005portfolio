@@ -143,7 +143,7 @@ const Contact = () => {
 
                     <div className="space-y-4">
                       <div>
-                        <label className="block text-xs font-mono font-extrabold text-[hsl(35,25%,22%)] uppercase tracking-widest mb-1.5">From</label>
+                        <label className="block text-xs font-mono font-extrabold text-[hsl(35,25%,22%)] dark:text-[hsl(35,25%,75%)] uppercase tracking-widest mb-1.5">From</label>
                         <input
                           type="text"
                           placeholder="Your name"
