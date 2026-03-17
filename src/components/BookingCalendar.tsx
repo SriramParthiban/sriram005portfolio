@@ -239,10 +239,10 @@ const BookingCalendar = () => {
                       onClick={() => setSelectedTime(slot)}
                       className={`py-2 px-1.5 rounded-lg text-sm font-semibold transition-all duration-200 ${
                         booked
-                          ? "bg-white/[0.02] text-muted-foreground/30 cursor-not-allowed line-through"
+                          ? "bg-muted/50 text-muted-foreground/30 cursor-not-allowed line-through"
                           : selected
                           ? "bg-primary text-primary-foreground shadow-[0_0_16px_hsl(var(--primary)/0.4)]"
-                          : "bg-white/5 text-muted-foreground border border-white/10 hover:bg-primary/10 hover:text-foreground hover:border-primary/20"
+                          : "bg-muted text-muted-foreground border border-border hover:bg-primary/10 hover:text-foreground hover:border-primary/20"
                       }`}
                     >
                       {displayTime}
