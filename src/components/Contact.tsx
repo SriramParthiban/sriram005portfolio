@@ -137,7 +137,7 @@ const Contact = () => {
                       <Mail className="h-4 w-4 text-primary/40" />
                     </div>
 
-                    <div className="mb-5 text-base font-mono font-bold text-[hsl(35,20%,20%)] italic pr-16">
+                    <div className="mb-5 text-base font-mono font-bold text-[hsl(35,20%,20%)] dark:text-[hsl(35,25%,80%)] italic pr-16">
                       Dear Sriram,
                     </div>
 
