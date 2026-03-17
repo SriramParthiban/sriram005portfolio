@@ -168,7 +168,7 @@ const BookingCalendar = () => {
       </div>
 
       {/* Wizard content */}
-      <div className="rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-sm p-4 sm:p-6">
+      <div className="rounded-2xl border border-border bg-card/80 backdrop-blur-sm p-4 sm:p-6">
         <AnimatePresence mode="wait">
           {step === "date" && (
             <motion.div key="date" variants={stepVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.2 }}>
