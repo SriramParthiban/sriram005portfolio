@@ -148,7 +148,7 @@ const BookingCalendar = () => {
                   ? "bg-primary text-primary-foreground shadow-[0_0_16px_hsl(var(--primary)/0.4)]"
                   : step === "confirmed" || (["date", "time", "details"].indexOf(step) > i)
                   ? "bg-primary/20 text-primary"
-                  : "bg-white/5 text-muted-foreground border border-white/10"
+                  : "bg-muted text-muted-foreground border border-border"
               }`}
             >
               {step === "confirmed" || (["date", "time", "details"].indexOf(step) > i) ? (
