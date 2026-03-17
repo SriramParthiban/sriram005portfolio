@@ -160,7 +160,7 @@ const BookingCalendar = () => {
             {i < 2 && (
               <div className={`h-px w-6 sm:w-8 transition-colors duration-300 ${
                 (["date", "time", "details"].indexOf(step) > i) || step === "confirmed"
-                  ? "bg-primary/40" : "bg-white/10"
+                  ? "bg-primary/40" : "bg-border"
               }`} />
             )}
           </div>
