@@ -16,6 +16,7 @@ import Certifications from "@/components/Certifications";
 import GitHubRepos from "@/components/GitHubRepos";
 import Contact from "@/components/Contact";
 import FinalCTA from "@/components/FinalCTA";
+import MagicCodeHint from "@/components/MagicCodeHint";
 import QuoteStrip from "@/components/QuoteStrip";
 import Footer from "@/components/Footer";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
@@ -58,6 +59,7 @@ const Index = () => {
       <Contact />
       <QuoteStrip />
       <FinalCTA />
+      <MagicCodeHint />
     </main>
     <Footer />
     <StickyMobileCTA />
