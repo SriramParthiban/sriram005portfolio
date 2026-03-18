@@ -59,6 +59,7 @@ const Index = () => {
       <Contact />
       <QuoteStrip />
       <FinalCTA />
+      <MagicCodeHint />
     </main>
     <Footer />
     <StickyMobileCTA />
