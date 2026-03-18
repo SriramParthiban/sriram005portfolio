@@ -10,6 +10,7 @@ import ProjectDetailPage from "./pages/ProjectDetailPage";
 import AdminPage from "./pages/AdminPage";
 import SubThemePage from "./pages/SubThemePage";
 import PageTracker from "./components/PageTracker";
+import EasterEgg from "./components/EasterEgg";
 
 const queryClient = new QueryClient();
 
