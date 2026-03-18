@@ -342,3 +342,85 @@ input[type="number"] {
 .scrollbar-themed::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--primary) / 0.4);
 }
+
+/* ===== HACKER MODE EASTER EGG ===== */
+html.hacker-mode,
+html.hacker-mode .dark,
+html.hacker-mode .light {
+  --background: 120 100% 2%;
+  --foreground: 120 100% 65%;
+  --card: 120 30% 5%;
+  --card-foreground: 120 100% 65%;
+  --popover: 120 30% 4%;
+  --popover-foreground: 120 100% 65%;
+  --primary: 120 100% 45%;
+  --primary-foreground: 0 0% 0%;
+  --secondary: 120 20% 8%;
+  --secondary-foreground: 120 100% 60%;
+  --muted: 120 15% 8%;
+  --muted-foreground: 120 50% 40%;
+  --accent: 120 100% 50%;
+  --accent-foreground: 0 0% 0%;
+  --destructive: 0 100% 50%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 120 60% 15%;
+  --input: 120 60% 15%;
+  --ring: 120 100% 45%;
+  --glow: 120 100% 50%;
+  --surface: 120 20% 4%;
+  --surface-elevated: 120 20% 7%;
+  --dark-section: 120 30% 3%;
+  --dark-section-foreground: 120 100% 65%;
+}
+
+html.hacker-mode body {
+  font-family: 'Courier New', 'Fira Code', monospace !important;
+}
+
+html.hacker-mode * {
+  font-family: inherit !important;
+  border-color: hsl(120 60% 15%) !important;
+}
+
+html.hacker-mode .font-display,
+html.hacker-mode .font-handwritten {
+  font-family: 'Courier New', monospace !important;
+}
+
+/* Scanline overlay */
+html.hacker-mode body::after {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 0, 0.03) 2px,
+    rgba(0, 255, 0, 0.03) 4px
+  ) !important;
+  opacity: 1 !important;
+  mix-blend-mode: normal !important;
+}
+
+/* Green glow on images */
+html.hacker-mode img {
+  filter: grayscale(100%) brightness(0.7) sepia(100%) hue-rotate(70deg) saturate(300%);
+  transition: filter 0.5s ease;
+}
+
+/* Glowing borders on cards */
+html.hacker-mode .glass,
+html.hacker-mode .glass-strong {
+  box-shadow: 0 0 15px -5px hsl(120 100% 45% / 0.2), inset 0 0 15px -5px hsl(120 100% 45% / 0.05);
+}
+
+/* Gradient text override */
+html.hacker-mode .gradient-text,
+html.hacker-mode .gradient-text-warm {
+  background: linear-gradient(135deg, hsl(120 100% 45%), hsl(120 100% 65%)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+html.hacker-mode ::selection {
+  background: hsl(120 100% 45% / 0.3);
+  color: hsl(120 100% 80%);
+}
