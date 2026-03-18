@@ -21,6 +21,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <EasterEgg />
           <PageTracker />
           <Routes>
             <Route path="/" element={<Index />} />
