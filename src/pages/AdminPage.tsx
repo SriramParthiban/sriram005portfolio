@@ -133,21 +133,19 @@ const CategoryCard = ({ category, leads }: { category: string; leads: Lead[] }) 
     <div className="rounded-xl overflow-hidden" style={cardStyle}>
       <button
         onClick={() => setExpanded(!expanded)}
-        className="w-full text-left p-4 transition-colors"
+        className="w-full text-left px-5 py-3.5 transition-colors flex items-center gap-4"
         style={{ background: expanded ? ADM.surfaceHover : ADM.surface }}
         onMouseEnter={(e) => { if (!expanded) e.currentTarget.style.background = ADM.surfaceHover; }}
         onMouseLeave={(e) => { if (!expanded) e.currentTarget.style.background = ADM.surface; }}
       >
-        <div className="flex items-center justify-between mb-2">
-          <Tag className="h-4 w-4" style={{ color: ADM.accent }} />
-          {expanded ? (
-            <ChevronUp className="h-4 w-4" style={{ color: ADM.mutedText }} />
-          ) : (
-            <ChevronDown className="h-4 w-4" style={{ color: ADM.mutedText }} />
-          )}
-        </div>
-        <p className="text-2xl font-bold" style={{ color: ADM.cream }}>{leads.length}</p>
-        <p className="text-xs font-semibold mt-1 truncate" style={{ color: ADM.mutedText }}>{category}</p>
+        <Tag className="h-4 w-4 shrink-0" style={{ color: ADM.accent }} />
+        <span className="text-sm font-semibold flex-1 truncate" style={{ color: ADM.cream }}>{category}</span>
+        <span className="text-lg font-bold mr-2" style={{ color: ADM.accent }}>{leads.length}</span>
+        {expanded ? (
+          <ChevronUp className="h-4 w-4 shrink-0" style={{ color: ADM.mutedText }} />
+        ) : (
+          <ChevronDown className="h-4 w-4 shrink-0" style={{ color: ADM.mutedText }} />
+        )}
       </button>
 
       <AnimatePresence>
@@ -490,7 +488,7 @@ const AdminPage = () => {
             </div>
 
             {/* Category Cards — each category is its own card */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="flex flex-col gap-3">
               {LEAD_CATEGORIES.map((cat) => {
                 const catLeads = leads.filter((l) => categoriseLead(l.tag) === cat);
                 return (
