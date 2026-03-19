@@ -98,6 +98,117 @@ const KPICard = ({ label, value, icon, gradient, subtitle }: KPICardProps) => (
   </motion.div>
 );
 
+const LEAD_CATEGORIES = [
+  "Website Project",
+  "Appointment / Booking",
+  "Service Inquiry",
+  "AI & Automation",
+  "Data & Analytics",
+  "E-commerce",
+  "General Inquiry",
+  "Other",
+] as const;
+
+function categoriseLead(tag: string | null): string {
+  if (!tag) return "Other";
+  const t = tag.toLowerCase();
+  if (t.includes("website") || t.includes("web") || t.includes("landing")) return "Website Project";
+  if (t.includes("appointment") || t.includes("book")) return "Appointment / Booking";
+  if (t.includes("service") || t.includes("consult")) return "Service Inquiry";
+  if (t.includes("ai") || t.includes("automat") || t.includes("workflow")) return "AI & Automation";
+  if (t.includes("data") || t.includes("analyt") || t.includes("dashboard") || t.includes("report")) return "Data & Analytics";
+  if (t.includes("ecommerce") || t.includes("e-commerce") || t.includes("shop") || t.includes("store")) return "E-commerce";
+  if (t.includes("inquiry") || t.includes("question") || t.includes("info")) return "General Inquiry";
+  return "Other";
+}
+
+const LeadCategorySection = ({ leads }: { leads: Lead[] }) => {
+  const [expandedCat, setExpandedCat] = useState<string | null>(null);
+
+  const grouped: Record<string, Lead[]> = {};
+  LEAD_CATEGORIES.forEach((c) => (grouped[c] = []));
+  leads.forEach((l) => {
+    const cat = categoriseLead(l.tag);
+    grouped[cat].push(l);
+  });
+
+  return (
+    <div className="space-y-1.5">
+      {LEAD_CATEGORIES.map((cat) => {
+        const catLeads = grouped[cat];
+        const isOpen = expandedCat === cat;
+        return (
+          <div key={cat}>
+            <button
+              onClick={() => setExpandedCat(isOpen ? null : cat)}
+              className="w-full flex items-center justify-between text-sm py-2 px-2 rounded-lg transition-colors"
+              style={{ background: isOpen ? ADM.surfaceHover : "transparent" }}
+              onMouseEnter={(e) => { if (!isOpen) e.currentTarget.style.background = `${ADM.surfaceHover}80`; }}
+              onMouseLeave={(e) => { if (!isOpen) e.currentTarget.style.background = "transparent"; }}
+            >
+              <span className="truncate flex items-center gap-2 font-medium" style={{ color: ADM.mutedText }}>
+                <Tag className="h-3 w-3" style={{ color: ADM.accent }} />
+                {cat}
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="font-bold text-xs" style={{ color: ADM.cream }}>{catLeads.length}</span>
+                {isOpen ? (
+                  <ChevronUp className="h-3.5 w-3.5" style={{ color: ADM.mutedText }} />
+                ) : (
+                  <ChevronDown className="h-3.5 w-3.5" style={{ color: ADM.mutedText }} />
+                )}
+              </span>
+            </button>
+            <AnimatePresence>
+              {isOpen && catLeads.length > 0 && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: "auto", opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="overflow-hidden"
+                >
+                  <div className="ml-5 mt-1 mb-2 space-y-1.5 max-h-48 overflow-y-auto pr-1">
+                    {catLeads.map((lead) => (
+                      <div
+                        key={lead.id}
+                        className="rounded-lg px-3 py-2 text-xs"
+                        style={{ background: ADM.inputBg, border: `1px solid ${ADM.inputBorder}` }}
+                      >
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="font-semibold truncate" style={{ color: ADM.cream }}>
+                            {lead.name || "Anonymous"}
+                          </span>
+                          <span className="text-[10px] whitespace-nowrap" style={{ color: ADM.mutedText }}>
+                            {new Date(lead.created_at).toLocaleDateString()}
+                          </span>
+                        </div>
+                        {(lead.email || lead.phone) && (
+                          <p className="mt-0.5 truncate" style={{ color: ADM.midGreen }}>
+                            {lead.email || lead.phone}
+                          </p>
+                        )}
+                        {lead.summary && (
+                          <p className="mt-1 line-clamp-2" style={{ color: ADM.mutedText }}>
+                            {lead.summary}
+                          </p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+              {isOpen && catLeads.length === 0 && (
+                <p className="ml-7 text-[11px] py-1" style={{ color: ADM.mutedText }}>No leads in this category</p>
+              )}
+            </AnimatePresence>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
 const AdminPage = () => {
   const [password, setPassword] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
