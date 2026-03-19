@@ -497,10 +497,14 @@ const AdminPage = () => {
               </div>
             </div>
 
-            {/* Category Detail Viewer — full width below */}
-            <div className="rounded-xl p-5" style={cardStyle}>
-              <h3 className="text-sm font-bold mb-4" style={{ color: ADM.cream }}>Category Explorer</h3>
-              <LeadCategorySection leads={leads} />
+            {/* Category Cards — each category is its own card */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {LEAD_CATEGORIES.map((cat) => {
+                const catLeads = leads.filter((l) => categoriseLead(l.tag) === cat);
+                return (
+                  <CategoryCard key={cat} category={cat} leads={catLeads} />
+                );
+              })}
             </div>
           </motion.div>
         )}
