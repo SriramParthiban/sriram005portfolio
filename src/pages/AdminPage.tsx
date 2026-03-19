@@ -366,26 +366,10 @@ const AdminPage = () => {
                 </div>
               </div>
 
-              {/* Tags */}
+              {/* Categories & Category Viewer */}
               <div className="rounded-xl p-5" style={cardStyle}>
-                <h3 className="text-sm font-bold mb-4" style={{ color: ADM.cream }}>Lead Tags</h3>
-                <div className="space-y-2.5">
-                  {Object.entries(stats.tagCounts)
-                    .sort(([, a], [, b]) => b - a)
-                    .slice(0, 8)
-                    .map(([tag, count]) => (
-                      <div key={tag} className="flex items-center justify-between text-sm">
-                        <span className="truncate flex items-center gap-2 font-medium" style={{ color: ADM.mutedText }}>
-                          <Tag className="h-3 w-3" style={{ color: ADM.accent }} />
-                          {tag}
-                        </span>
-                        <span className="font-bold ml-2" style={{ color: ADM.cream }}>{count}</span>
-                      </div>
-                    ))}
-                  {Object.keys(stats.tagCounts).length === 0 && (
-                    <p className="text-xs" style={{ color: ADM.mutedText }}>No tags yet</p>
-                  )}
-                </div>
+                <h3 className="text-sm font-bold mb-4" style={{ color: ADM.cream }}>Lead Categories</h3>
+                <LeadCategorySection leads={leads} />
               </div>
             </div>
           </motion.div>
