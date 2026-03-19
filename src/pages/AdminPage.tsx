@@ -477,11 +477,30 @@ const AdminPage = () => {
                 </div>
               </div>
 
-              {/* Categories & Category Viewer */}
+              {/* Categories count - small card */}
               <div className="rounded-xl p-5" style={cardStyle}>
                 <h3 className="text-sm font-bold mb-4" style={{ color: ADM.cream }}>Lead Categories</h3>
-                <LeadCategorySection leads={leads} />
+                <div className="space-y-2.5">
+                  {LEAD_CATEGORIES.map((cat) => {
+                    const count = leads.filter((l) => categoriseLead(l.tag) === cat).length;
+                    return (
+                      <div key={cat} className="flex items-center justify-between text-sm">
+                        <span className="truncate flex items-center gap-2 font-medium" style={{ color: ADM.mutedText }}>
+                          <Tag className="h-3 w-3" style={{ color: ADM.accent }} />
+                          {cat}
+                        </span>
+                        <span className="font-bold ml-2" style={{ color: ADM.cream }}>{count}</span>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
+            </div>
+
+            {/* Category Detail Viewer — full width below */}
+            <div className="rounded-xl p-5" style={cardStyle}>
+              <h3 className="text-sm font-bold mb-4" style={{ color: ADM.cream }}>Category Explorer</h3>
+              <LeadCategorySection leads={leads} />
             </div>
           </motion.div>
         )}
