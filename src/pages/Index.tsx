@@ -1,27 +1,34 @@
-import { useEffect } from "react";
+import { useEffect, lazy, Suspense } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import TrustStats from "@/components/TrustStats";
 import SkillsTicker from "@/components/SkillsTicker";
-import About from "@/components/About";
-import Experience from "@/components/Experience";
-import Projects from "@/components/Projects";
-import Skills from "@/components/Skills";
-import TechStack from "@/components/TechStack";
-import Testimonials from "@/components/Testimonials";
-import Playground from "@/components/Playground";
-import Education from "@/components/Education";
-import Certifications from "@/components/Certifications";
-import GitHubRepos from "@/components/GitHubRepos";
-import Contact from "@/components/Contact";
-import FinalCTA from "@/components/FinalCTA";
-import MagicCodeHint from "@/components/MagicCodeHint";
-import QuoteStrip from "@/components/QuoteStrip";
-import Footer from "@/components/Footer";
-import StickyMobileCTA from "@/components/StickyMobileCTA";
-import ChatWidget from "@/components/ChatWidget";
 
+// Lazy-load everything below the fold
+const About = lazy(() => import("@/components/About"));
+const Experience = lazy(() => import("@/components/Experience"));
+const Projects = lazy(() => import("@/components/Projects"));
+const Skills = lazy(() => import("@/components/Skills"));
+const TechStack = lazy(() => import("@/components/TechStack"));
+const Testimonials = lazy(() => import("@/components/Testimonials"));
+const Playground = lazy(() => import("@/components/Playground"));
+const Education = lazy(() => import("@/components/Education"));
+const Certifications = lazy(() => import("@/components/Certifications"));
+const GitHubRepos = lazy(() => import("@/components/GitHubRepos"));
+const Contact = lazy(() => import("@/components/Contact"));
+const FinalCTA = lazy(() => import("@/components/FinalCTA"));
+const MagicCodeHint = lazy(() => import("@/components/MagicCodeHint"));
+const QuoteStrip = lazy(() => import("@/components/QuoteStrip"));
+const Footer = lazy(() => import("@/components/Footer"));
+const StickyMobileCTA = lazy(() => import("@/components/StickyMobileCTA"));
+const ChatWidget = lazy(() => import("@/components/ChatWidget"));
+
+const SectionFallback = () => (
+  <div className="flex items-center justify-center py-20">
+    <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
+  </div>
+);
 
 const Index = () => {
   const location = useLocation();
@@ -43,27 +50,29 @@ const Index = () => {
       <Hero />
       <TrustStats />
       <SkillsTicker />
-      <About />
-      
-      <Experience />
-      <div className="py-10 sm:py-14" />
-      <Projects />
-      <Testimonials />
-      <Skills />
-      
-      <Playground />
-      <TechStack />
-      <Education />
-      <Certifications />
-      <GitHubRepos />
-      <Contact />
-      <QuoteStrip />
-      <FinalCTA />
-      <MagicCodeHint />
+      <Suspense fallback={<SectionFallback />}>
+        <About />
+        <Experience />
+        <div className="py-10 sm:py-14" />
+        <Projects />
+        <Testimonials />
+        <Skills />
+        <Playground />
+        <TechStack />
+        <Education />
+        <Certifications />
+        <GitHubRepos />
+        <Contact />
+        <QuoteStrip />
+        <FinalCTA />
+        <MagicCodeHint />
+      </Suspense>
     </main>
-    <Footer />
-    <StickyMobileCTA />
-    <ChatWidget />
+    <Suspense fallback={null}>
+      <Footer />
+      <StickyMobileCTA />
+      <ChatWidget />
+    </Suspense>
   </div>
   );
 };
