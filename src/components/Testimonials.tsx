@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import FadeInSection from "./FadeInSection";
 import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
-import fernDetail from "@/assets/fern-detail.jpg";
+import fernDetail from "@/assets/fern-detail.webp";
 
 const testimonials = [
   {

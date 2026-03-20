@@ -1,7 +1,7 @@
 import { Award } from "lucide-react";
 import FadeInSection from "./FadeInSection";
 import { motion } from "framer-motion";
-import coralReef from "@/assets/coral-reef.jpg";
+import coralReef from "@/assets/coral-reef.webp";
 
 const certs = [
   { name: "n8n Course Certificate", platform: "Udemy" },

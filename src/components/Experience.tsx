@@ -1,7 +1,7 @@
 import FadeInSection from "./FadeInSection";
 import { Briefcase, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
-import forestCanopy from "@/assets/forest-canopy.jpg";
+import forestCanopy from "@/assets/forest-canopy.webp";
 
 const experiences = [
   {

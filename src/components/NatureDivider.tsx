@@ -1,5 +1,5 @@
-import mountainFog from "@/assets/mountain-fog.jpg";
-import coralSunlight from "@/assets/coral-sunlight.jpg";
+import mountainFog from "@/assets/mountain-fog.webp";
+import coralSunlight from "@/assets/coral-sunlight.webp";
 
 /** Full-bleed nature photo strip */
 const NaturePhotoStrip = ({ variant = "canopy", className = "" }: { variant?: "canopy" | "leaves"; className?: string }) => {

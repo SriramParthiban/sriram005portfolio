@@ -2,8 +2,8 @@ import { Button } from "@/components/ui/button";
 import { ArrowDown, Mail } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
-import profilePhoto from "@/assets/profile-photo.jpeg";
-import heroBackground from "@/assets/hero-japanese-garden.jpg";
+import profilePhoto from "@/assets/profile-photo.webp";
+import heroBackground from "@/assets/hero-japanese-garden.webp";
 
 const roles = [
   "AI Automation Specialist",
