@@ -28,10 +28,9 @@ const App = () => (
           <PageTracker />
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/projects/:slug" element={<ProjectDetailPage />} />
-            
-            <Route path="/sub-theme" element={<SubThemePage />} />
-            <Route path="/admin" element={<AdminPage />} />
+            <Route path="/projects/:slug" element={<Suspense fallback={null}><ProjectDetailPage /></Suspense>} />
+            <Route path="/sub-theme" element={<Suspense fallback={null}><SubThemePage /></Suspense>} />
+            <Route path="/admin" element={<Suspense fallback={null}><AdminPage /></Suspense>} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
