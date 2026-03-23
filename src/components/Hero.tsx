@@ -42,6 +42,8 @@ const Hero = () => {
           alt="" 
           className="h-full w-full object-cover"
           loading="eager"
+          decoding="async"
+          fetchPriority="high"
         />
         <div className="absolute inset-0 bg-background/15" />
       </div>
