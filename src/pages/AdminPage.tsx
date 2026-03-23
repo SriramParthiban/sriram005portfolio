@@ -732,6 +732,9 @@ const AdminPage = () => {
 
         {/* ─── Content Planner Tab ───────────────────────── */}
         {activeTab === "content" && <ContentPlanner />}
+
+        {/* ─── Performance Tab ───────────────────────────── */}
+        {activeTab === "performance" && <PerformanceMonitor />}
       </div>
     </div>
   );
