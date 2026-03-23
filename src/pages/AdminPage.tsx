@@ -9,6 +9,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import InvoiceGenerator from "@/components/admin/InvoiceGenerator";
 import ProjectPlanGenerator from "@/components/admin/ProjectPlanGenerator";
 import ContentPlanner from "@/components/admin/ContentPlanner";
+import PerformanceMonitor from "@/components/admin/PerformanceMonitor";
 
 const VERIFY_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/verify-admin`;
 const LEADS_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/admin-leads`;
