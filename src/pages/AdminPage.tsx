@@ -425,7 +425,8 @@ const AdminPage = () => {
               {tab === "invoice" && <FileText className="h-4 w-4" />}
               {tab === "plan" && <ClipboardList className="h-4 w-4" />}
               {tab === "content" && <PenLine className="h-4 w-4" />}
-              {tab === "content" ? "Content" : tab === "plan" ? "Plan" : tab === "invoice" ? "Invoice" : tab.charAt(0).toUpperCase() + tab.slice(1)}
+              {tab === "performance" && <Zap className="h-4 w-4" />}
+              {tab === "performance" ? "Performance" : tab === "content" ? "Content" : tab === "plan" ? "Plan" : tab === "invoice" ? "Invoice" : tab.charAt(0).toUpperCase() + tab.slice(1)}
             </button>
           ))}
         </div>
