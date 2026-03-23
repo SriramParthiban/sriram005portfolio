@@ -211,7 +211,7 @@ const AdminPage = () => {
   const [error, setError] = useState("");
   const [search, setSearch] = useState("");
   const [expandedId, setExpandedId] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<"stats" | "leads" | "bookings" | "invoice" | "plan" | "content">("stats");
+  const [activeTab, setActiveTab] = useState<"stats" | "leads" | "bookings" | "invoice" | "plan" | "content" | "performance">("stats");
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
