@@ -27,6 +27,21 @@ serve(async (req) => {
     const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
+    // Handle POST requests (save invoice)
+    if (req.method === "POST") {
+      const body = await req.json();
+      if (body.action === "save_invoice") {
+        const { client_name, client_email, client_phone, client_address, currency, invoice_date, due_date, items, total, notes, custom_role } = body;
+        const { data, error } = await supabase.from("invoices").insert({
+          client_name, client_email, client_phone, client_address, currency, invoice_date, due_date, items, total, notes, custom_role,
+        }).select().single();
+        if (error) throw error;
+        return new Response(JSON.stringify({ success: true, invoice: data }), {
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+    }
+
     // Handle DELETE requests
     if (req.method === "DELETE") {
       const { type, id } = await req.json();
@@ -36,7 +51,7 @@ serve(async (req) => {
         });
       }
 
-      const table = type === "booking" ? "bookings" : type === "lead" ? "chat_leads" : null;
+      const table = type === "booking" ? "bookings" : type === "lead" ? "chat_leads" : type === "invoice" ? "invoices" : null;
       if (!table) {
         return new Response(JSON.stringify({ error: "Invalid type" }), {
           status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },
