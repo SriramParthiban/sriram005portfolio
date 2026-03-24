@@ -150,10 +150,16 @@ const PerformanceMonitor = () => {
     try {
       const startTime = performance.now();
 
-      // Measure response time with fetch
-      const fetchStart = performance.now();
-      const response = await fetch(SITE_URL, { mode: "no-cors", cache: "no-store" });
-      const ttfb = Math.round(performance.now() - fetchStart);
+      // Measure response time — use Navigation Timing for accuracy, fetch as fallback
+      let ttfb = 0;
+      const navEntriesEarly = performance.getEntriesByType("navigation") as PerformanceNavigationTiming[];
+      if (navEntriesEarly[0] && navEntriesEarly[0].responseStart > 0) {
+        ttfb = Math.round(navEntriesEarly[0].responseStart - navEntriesEarly[0].requestStart);
+      } else {
+        const fetchStart = performance.now();
+        await fetch(SITE_URL, { mode: "no-cors", cache: "no-store" });
+        ttfb = Math.round(performance.now() - fetchStart);
+      }
 
       // Use Navigation Timing API for current page metrics
       const navEntries = performance.getEntriesByType("navigation") as PerformanceNavigationTiming[];
