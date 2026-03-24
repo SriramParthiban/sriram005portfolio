@@ -725,7 +725,7 @@ const AdminPage = () => {
         )}
 
         {/* ─── Invoice Tab ───────────────────────────────── */}
-        {activeTab === "invoice" && <InvoiceGenerator />}
+        {activeTab === "invoice" && <InvoiceGenerator adminPassword={storedPassword} />}
 
         {/* ─── Plan Tab ──────────────────────────────────── */}
         {activeTab === "plan" && <ProjectPlanGenerator />}
