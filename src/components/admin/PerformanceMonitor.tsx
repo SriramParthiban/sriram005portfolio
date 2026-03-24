@@ -194,12 +194,12 @@ const PerformanceMonitor = () => {
       ));
 
       const recommendations: string[] = [];
-      if (responseTime > 600) recommendations.push("Server response time is high — consider CDN or edge caching");
+      if (ttfb > 800) recommendations.push("Server response time is high — consider CDN or edge caching");
       if (totalTransfer > 2 * 1024 * 1024) recommendations.push("Total transfer size exceeds 2MB — optimize assets");
       if (scripts.length > 30) recommendations.push("Too many script files — consider bundling or code splitting");
       if (images.length > 0 && sumSize(images) > 500 * 1024) recommendations.push("Images account for large transfer — use WebP/AVIF and lazy loading");
-      if (fonts.length > 3) recommendations.push("Multiple font files loaded — consider reducing font variants");
-      if (domLoad > 2000) recommendations.push("DOM content load is slow — defer non-critical scripts");
+      if (fonts.length > 4) recommendations.push("Multiple font files loaded — consider reducing font variants");
+      if (domLoad > 2500) recommendations.push("DOM content load is slow — defer non-critical scripts");
       if (recommendations.length === 0) recommendations.push("Site performance looks great! No major issues detected.");
 
       const status: TestResult["status"] =
