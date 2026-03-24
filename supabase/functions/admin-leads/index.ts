@@ -130,6 +130,7 @@ serve(async (req) => {
       JSON.stringify({
         leads,
         bookings,
+        invoices,
         stats: {
           totalViews,
           todayViews,
