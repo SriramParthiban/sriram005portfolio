@@ -82,13 +82,14 @@ serve(async (req) => {
     }
 
     // GET: Fetch all data
-    const [leadsRes, bookingsRes, viewsRes, viewsTodayRes, uniqueSessionsRes] = await Promise.all([
+    const [leadsRes, bookingsRes, viewsRes, viewsTodayRes, uniqueSessionsRes, invoicesRes] = await Promise.all([
       supabase.from("chat_leads").select("*").order("created_at", { ascending: false }),
       supabase.from("bookings").select("*").order("created_at", { ascending: false }),
       supabase.from("page_views").select("id", { count: "exact", head: true }),
       supabase.from("page_views").select("id", { count: "exact", head: true })
         .gte("created_at", new Date(new Date().setHours(0, 0, 0, 0)).toISOString()),
       supabase.from("page_views").select("session_id"),
+      supabase.from("invoices").select("*").order("created_at", { ascending: false }),
     ]);
 
     const leads = leadsRes.data || [];
