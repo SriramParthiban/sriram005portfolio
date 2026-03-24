@@ -150,15 +150,14 @@ const PerformanceMonitor = () => {
     try {
       const startTime = performance.now();
 
-      // Measure response time — use Navigation Timing for accuracy, fetch as fallback
+      // Detect if running in dev mode (Vite HMR present)
+      const isDevMode = import.meta.env.DEV;
+
+      // Measure TTFB from Navigation Timing (most accurate)
       let ttfb = 0;
       const navEntriesEarly = performance.getEntriesByType("navigation") as PerformanceNavigationTiming[];
       if (navEntriesEarly[0] && navEntriesEarly[0].responseStart > 0) {
-        ttfb = Math.round(navEntriesEarly[0].responseStart - navEntriesEarly[0].requestStart);
-      } else {
-        const fetchStart = performance.now();
-        await fetch(SITE_URL, { mode: "no-cors", cache: "no-store" });
-        ttfb = Math.round(performance.now() - fetchStart);
+        ttfb = Math.round(navEntriesEarly[0].responseStart - navEntriesEarly[0].startTime);
       }
 
       // Use Navigation Timing API for current page metrics
@@ -184,23 +183,34 @@ const PerformanceMonitor = () => {
       const domLoad = nav ? Math.round(nav.domContentLoadedEventEnd - nav.startTime) : 0;
       const fullLoad = nav ? Math.round(nav.loadEventEnd - nav.startTime) : 0;
 
-      // Estimate scores based on metrics
+      // Dev mode uses relaxed thresholds since Vite serves unbundled modules
+      const thresholds = isDevMode
+        ? { ttfb: 2000, transfer: 5 * 1024 * 1024, scripts: 100, images: 1024 * 1024, fonts: 8, domLoad: 5000 }
+        : { ttfb: 800, transfer: 2 * 1024 * 1024, scripts: 30, images: 500 * 1024, fonts: 4, domLoad: 2500 };
+
+      // Estimate scores — adjust for dev mode overhead
       const responseTime = ttfb;
+      const devPenaltyReduction = isDevMode ? 0.5 : 1;
       const perfScore = Math.min(100, Math.max(0,
-        100 - (responseTime > 800 ? 30 : responseTime > 400 ? 15 : 0)
-        - (totalTransfer > 3 * 1024 * 1024 ? 25 : totalTransfer > 1.5 * 1024 * 1024 ? 15 : totalTransfer > 500 * 1024 ? 5 : 0)
-        - (scripts.length > 50 ? 15 : scripts.length > 20 ? 8 : 0)
-        - (domLoad > 3000 ? 15 : domLoad > 1500 ? 8 : 0)
+        100 - Math.round((
+          (responseTime > thresholds.ttfb ? 30 : responseTime > thresholds.ttfb / 2 ? 15 : 0)
+          + (totalTransfer > thresholds.transfer * 1.5 ? 25 : totalTransfer > thresholds.transfer * 0.75 ? 15 : totalTransfer > thresholds.transfer * 0.25 ? 5 : 0)
+          + (scripts.length > thresholds.scripts * 1.5 ? 15 : scripts.length > thresholds.scripts * 0.7 ? 8 : 0)
+          + (domLoad > thresholds.domLoad * 1.2 ? 15 : domLoad > thresholds.domLoad * 0.6 ? 8 : 0)
+        ) * devPenaltyReduction)
       ));
 
       const recommendations: string[] = [];
-      if (ttfb > 800) recommendations.push("Server response time is high — consider CDN or edge caching");
-      if (totalTransfer > 2 * 1024 * 1024) recommendations.push("Total transfer size exceeds 2MB — optimize assets");
-      if (scripts.length > 30) recommendations.push("Too many script files — consider bundling or code splitting");
-      if (images.length > 0 && sumSize(images) > 500 * 1024) recommendations.push("Images account for large transfer — use WebP/AVIF and lazy loading");
-      if (fonts.length > 4) recommendations.push("Multiple font files loaded — consider reducing font variants");
-      if (domLoad > 2500) recommendations.push("DOM content load is slow — defer non-critical scripts");
-      if (recommendations.length === 0) recommendations.push("Site performance looks great! No major issues detected.");
+      if (isDevMode) {
+        recommendations.push("⚡ Dev mode detected — metrics reflect unbundled Vite. Production will be significantly faster.");
+      }
+      if (ttfb > thresholds.ttfb) recommendations.push("Server response time is high — consider CDN or edge caching");
+      if (totalTransfer > thresholds.transfer) recommendations.push("Total transfer size exceeds budget — optimize assets");
+      if (scripts.length > thresholds.scripts) recommendations.push("Too many script files — consider bundling or code splitting");
+      if (images.length > 0 && sumSize(images) > thresholds.images) recommendations.push("Images account for large transfer — use WebP/AVIF and lazy loading");
+      if (fonts.length > thresholds.fonts) recommendations.push("Multiple font files loaded — consider reducing font variants");
+      if (domLoad > thresholds.domLoad) recommendations.push("DOM content load is slow — defer non-critical scripts");
+      if (recommendations.length === 0 || (recommendations.length === 1 && isDevMode)) recommendations.push("✅ Site performance looks great! No major issues detected.");
 
       const status: TestResult["status"] =
         perfScore >= 80 ? "good" : perfScore >= 50 ? "needs-work" : "poor";
