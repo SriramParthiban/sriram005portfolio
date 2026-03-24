@@ -86,6 +86,54 @@ export type Database = {
         }
         Relationships: []
       }
+      invoices: {
+        Row: {
+          client_address: string | null
+          client_email: string | null
+          client_name: string
+          client_phone: string | null
+          created_at: string
+          currency: string
+          custom_role: string | null
+          due_date: string | null
+          id: string
+          invoice_date: string
+          items: Json
+          notes: string | null
+          total: number
+        }
+        Insert: {
+          client_address?: string | null
+          client_email?: string | null
+          client_name: string
+          client_phone?: string | null
+          created_at?: string
+          currency?: string
+          custom_role?: string | null
+          due_date?: string | null
+          id?: string
+          invoice_date: string
+          items?: Json
+          notes?: string | null
+          total?: number
+        }
+        Update: {
+          client_address?: string | null
+          client_email?: string | null
+          client_name?: string
+          client_phone?: string | null
+          created_at?: string
+          currency?: string
+          custom_role?: string | null
+          due_date?: string | null
+          id?: string
+          invoice_date?: string
+          items?: Json
+          notes?: string | null
+          total?: number
+        }
+        Relationships: []
+      }
       page_views: {
         Row: {
           created_at: string
