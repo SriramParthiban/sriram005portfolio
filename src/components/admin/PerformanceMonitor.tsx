@@ -45,7 +45,7 @@ type TestResult = {
   recommendations: string[];
 };
 
-const SITE_URL = "https://sriramparthiban.lovable.app";
+const SITE_URL = "https://sriramparthiban.com";
 
 function getScoreColor(score: number) {
   if (score >= 80) return "#6bdf6e";
