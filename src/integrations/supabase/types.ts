@@ -86,6 +86,63 @@ export type Database = {
         }
         Relationships: []
       }
+      content_plans: {
+        Row: {
+          call_to_action: string | null
+          content: string | null
+          content_angle: string | null
+          created_at: string
+          hashtags: Json
+          hook: string | null
+          id: string
+          key_insight: string | null
+          keywords: Json
+          main_idea: string | null
+          notes: string | null
+          platform: string | null
+          post_idea: string
+          posting_day: string | null
+          subject: string | null
+          tone: string | null
+        }
+        Insert: {
+          call_to_action?: string | null
+          content?: string | null
+          content_angle?: string | null
+          created_at?: string
+          hashtags?: Json
+          hook?: string | null
+          id?: string
+          key_insight?: string | null
+          keywords?: Json
+          main_idea?: string | null
+          notes?: string | null
+          platform?: string | null
+          post_idea: string
+          posting_day?: string | null
+          subject?: string | null
+          tone?: string | null
+        }
+        Update: {
+          call_to_action?: string | null
+          content?: string | null
+          content_angle?: string | null
+          created_at?: string
+          hashtags?: Json
+          hook?: string | null
+          id?: string
+          key_insight?: string | null
+          keywords?: Json
+          main_idea?: string | null
+          notes?: string | null
+          platform?: string | null
+          post_idea?: string
+          posting_day?: string | null
+          subject?: string | null
+          tone?: string | null
+        }
+        Relationships: []
+      }
       invoices: {
         Row: {
           client_address: string | null
