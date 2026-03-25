@@ -106,6 +106,7 @@ serve(async (req) => {
     const leads = leadsRes.data || [];
     const bookings = bookingsRes.data || [];
     const invoices = invoicesRes.data || [];
+    const contentPlans = contentPlansRes.data || [];
     const totalViews = viewsRes.count || 0;
     const todayViews = viewsTodayRes.count || 0;
     
