@@ -27,9 +27,19 @@ serve(async (req) => {
     const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
 
-    // Handle POST requests (save invoice)
+    // Handle POST requests
     if (req.method === "POST") {
       const body = await req.json();
+      if (body.action === "save_content_plan") {
+        const { post_idea, platform, tone, posting_day, subject, content_angle, content, keywords, hashtags, hook, main_idea, key_insight, call_to_action, notes } = body;
+        const { data, error } = await supabase.from("content_plans").insert({
+          post_idea, platform, tone, posting_day, subject, content_angle, content, keywords, hashtags, hook, main_idea, key_insight, call_to_action, notes,
+        }).select().single();
+        if (error) throw error;
+        return new Response(JSON.stringify({ success: true, content_plan: data }), {
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
       if (body.action === "save_invoice") {
         const { client_name, client_email, client_phone, client_address, currency, invoice_date, due_date, items, total, notes, custom_role } = body;
         const { data, error } = await supabase.from("invoices").insert({
