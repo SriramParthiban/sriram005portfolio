@@ -731,7 +731,7 @@ const AdminPage = () => {
         {activeTab === "plan" && <ProjectPlanGenerator />}
 
         {/* ─── Content Planner Tab ───────────────────────── */}
-        {activeTab === "content" && <ContentPlanner />}
+        {activeTab === "content" && <ContentPlanner adminPassword={storedPassword} />}
 
         {/* ─── Performance Tab ───────────────────────────── */}
         {activeTab === "performance" && <PerformanceMonitor />}
