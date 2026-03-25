@@ -61,7 +61,7 @@ serve(async (req) => {
         });
       }
 
-      const table = type === "booking" ? "bookings" : type === "lead" ? "chat_leads" : type === "invoice" ? "invoices" : null;
+      const table = type === "booking" ? "bookings" : type === "lead" ? "chat_leads" : type === "invoice" ? "invoices" : type === "content_plan" ? "content_plans" : null;
       if (!table) {
         return new Response(JSON.stringify({ error: "Invalid type" }), {
           status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -92,7 +92,7 @@ serve(async (req) => {
     }
 
     // GET: Fetch all data
-    const [leadsRes, bookingsRes, viewsRes, viewsTodayRes, uniqueSessionsRes, invoicesRes] = await Promise.all([
+    const [leadsRes, bookingsRes, viewsRes, viewsTodayRes, uniqueSessionsRes, invoicesRes, contentPlansRes] = await Promise.all([
       supabase.from("chat_leads").select("*").order("created_at", { ascending: false }),
       supabase.from("bookings").select("*").order("created_at", { ascending: false }),
       supabase.from("page_views").select("id", { count: "exact", head: true }),
@@ -100,6 +100,7 @@ serve(async (req) => {
         .gte("created_at", new Date(new Date().setHours(0, 0, 0, 0)).toISOString()),
       supabase.from("page_views").select("session_id"),
       supabase.from("invoices").select("*").order("created_at", { ascending: false }),
+      supabase.from("content_plans").select("*").order("created_at", { ascending: false }),
     ]);
 
     const leads = leadsRes.data || [];
