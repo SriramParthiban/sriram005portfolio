@@ -143,6 +143,7 @@ serve(async (req) => {
         leads,
         bookings,
         invoices,
+        contentPlans,
         stats: {
           totalViews,
           todayViews,
