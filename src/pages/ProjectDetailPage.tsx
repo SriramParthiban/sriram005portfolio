@@ -28,154 +28,202 @@ import {
   Sparkles,
   Zap,
   Star,
+  Heart,
+  Award,
+  Flame,
+  Crown,
+  Trophy,
+  PartyPopper,
+  Gem,
 } from "lucide-react";
 
-/* ─── Floating decorative shapes ─── */
-const FloatingShape = ({
+// Real tech logos
+import pythonLogo from "@/assets/logos/python.svg";
+import n8nLogo from "@/assets/logos/n8n.svg";
+import bigqueryLogo from "@/assets/logos/bigquery.svg";
+import makeLogo from "@/assets/logos/make.svg";
+import lookerLogo from "@/assets/logos/looker.svg";
+import jsLogo from "@/assets/logos/javascript.svg";
+import pgLogo from "@/assets/logos/postgresql.svg";
+import powerbiLogo from "@/assets/logos/powerbi.svg";
+
+const techLogos: Record<string, string> = {
+  python: pythonLogo, n8n: n8nLogo, bigquery: bigqueryLogo, "google bigquery": bigqueryLogo,
+  make: makeLogo, looker: lookerLogo, javascript: jsLogo, postgresql: pgLogo,
+  "power bi": powerbiLogo, powerbi: powerbiLogo,
+};
+
+const getTechLogo = (tech: string) => techLogos[tech.toLowerCase()] || null;
+
+/* ─── Animated sticker ─── */
+const Sticker = ({
+  emoji,
   className,
   delay = 0,
-  size = 60,
-  color,
+  size = "text-2xl",
 }: {
+  emoji: string;
   className?: string;
   delay?: number;
-  size?: number;
-  color: string;
+  size?: string;
 }) => (
   <motion.div
-    className={`absolute pointer-events-none ${className}`}
+    className={`absolute pointer-events-none select-none ${className}`}
     animate={{
-      y: [0, -15, 0],
-      rotate: [0, 8, -8, 0],
-      scale: [1, 1.05, 1],
+      y: [0, -8, 0],
+      rotate: [0, 6, -6, 0],
+      scale: [1, 1.1, 1],
     }}
-    transition={{
-      duration: 6 + delay,
-      repeat: Infinity,
-      ease: "easeInOut",
-      delay,
-    }}
-    style={{ width: size, height: size }}
+    transition={{ duration: 4 + delay, repeat: Infinity, ease: "easeInOut", delay }}
   >
-    <div
-      className={`w-full h-full rounded-2xl ${color} blur-sm opacity-40`}
-      style={{ transform: `rotate(${delay * 15}deg)` }}
-    />
+    <span className={`${size} drop-shadow-lg`}>{emoji}</span>
   </motion.div>
 );
 
-/* ─── Animated metric card ─── */
-const MetricCard = ({
-  label,
-  idx,
+/* ─── Colorful blob ─── */
+const ColorBlob = ({
+  className,
+  color,
+  size = 200,
 }: {
-  label: string;
-  idx: number;
-}) => {
-  const colors = [
-    "from-primary/20 to-accent/20 border-primary/30",
-    "from-accent/20 to-primary/20 border-accent/30",
-    "from-emerald-500/20 to-teal-500/20 border-emerald-500/30",
-    "from-amber-500/20 to-orange-500/20 border-amber-500/30",
-    "from-violet-500/20 to-fuchsia-500/20 border-violet-500/30",
+  className?: string;
+  color: string;
+  size?: number;
+}) => (
+  <motion.div
+    className={`absolute pointer-events-none rounded-full ${className}`}
+    style={{ width: size, height: size }}
+    animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.5, 0.3] }}
+    transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+  >
+    <div className={`w-full h-full rounded-full ${color} blur-3xl`} />
+  </motion.div>
+);
+
+/* ─── Animated metric card with vivid colors ─── */
+const MetricCard = ({ label, idx }: { label: string; idx: number }) => {
+  const colorSets = [
+    { bg: "from-emerald-400/25 to-teal-500/20", border: "border-emerald-400/40", icon: "text-emerald-500", glow: "shadow-emerald-500/20" },
+    { bg: "from-amber-400/25 to-orange-500/20", border: "border-amber-400/40", icon: "text-amber-500", glow: "shadow-amber-500/20" },
+    { bg: "from-violet-400/25 to-purple-500/20", border: "border-violet-400/40", icon: "text-violet-500", glow: "shadow-violet-500/20" },
+    { bg: "from-rose-400/25 to-pink-500/20", border: "border-rose-400/40", icon: "text-rose-500", glow: "shadow-rose-500/20" },
+    { bg: "from-cyan-400/25 to-blue-500/20", border: "border-cyan-400/40", icon: "text-cyan-500", glow: "shadow-cyan-500/20" },
   ];
-  const icons = [CheckCircle2, Zap, Star, TrendingUp, Sparkles];
+  const emojis = ["🎯", "⚡", "🌟", "📈", "🔥"];
+  const icons = [CheckCircle2, Zap, Star, TrendingUp, Flame];
   const IconComp = icons[idx % icons.length];
+  const c = colorSets[idx % colorSets.length];
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20, scale: 0.9 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      initial={{ opacity: 0, y: 20, scale: 0.85, rotate: -2 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
       viewport={{ once: true }}
-      transition={{ delay: idx * 0.1, type: "spring", stiffness: 100 }}
-      whileHover={{ y: -4, scale: 1.03 }}
-      className={`relative overflow-hidden rounded-2xl border bg-gradient-to-br ${colors[idx % colors.length]} p-5 backdrop-blur-sm`}
+      transition={{ delay: idx * 0.12, type: "spring", stiffness: 120, damping: 12 }}
+      whileHover={{ y: -6, scale: 1.05, rotate: 1 }}
+      className={`relative overflow-hidden rounded-2xl border-2 ${c.border} bg-gradient-to-br ${c.bg} p-5 backdrop-blur-sm shadow-lg ${c.glow} cursor-default`}
     >
-      <div className="absolute -top-4 -right-4 w-20 h-20 rounded-full bg-primary/5 blur-xl" />
+      <div className="absolute -top-3 -right-3 text-3xl opacity-20 rotate-12">{emojis[idx % emojis.length]}</div>
       <div className="flex items-start gap-3">
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-background/60 backdrop-blur-sm">
-          <IconComp className="h-4 w-4 text-primary" />
+        <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-background/70 backdrop-blur-sm shadow-sm`}>
+          <IconComp className={`h-5 w-5 ${c.icon}`} />
         </div>
-        <span className="text-sm font-semibold text-foreground leading-snug">{label}</span>
+        <span className="text-sm font-bold text-foreground leading-snug">{label}</span>
       </div>
     </motion.div>
   );
 };
 
-/* ─── Colorful section divider ─── */
-const SectionDivider = ({ variant = "default" }: { variant?: "default" | "accent" | "gradient" }) => {
-  const styles = {
-    default: "from-transparent via-primary/30 to-transparent",
-    accent: "from-transparent via-accent/30 to-transparent",
-    gradient: "from-primary/20 via-accent/30 to-primary/20",
-  };
-  return (
-    <div className="relative my-16 flex items-center justify-center">
-      <div className={`h-px w-full bg-gradient-to-r ${styles[variant]}`} />
-      <div className="absolute flex items-center justify-center">
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="h-8 w-8 rounded-lg border border-border bg-background flex items-center justify-center"
-        >
-          <Sparkles className="h-3.5 w-3.5 text-primary/60" />
-        </motion.div>
-      </div>
-    </div>
-  );
-};
-
-/* ─── Section header with gradient underline ─── */
+/* ─── Section header with emoji and gradient ─── */
 const SectionHeader = ({
   icon: Icon,
   title,
   subtitle,
-  color,
-  bgColor,
+  emoji,
+  gradientFrom,
+  gradientTo,
 }: {
   icon: React.ElementType;
   title: string;
   subtitle?: string;
-  color: string;
-  bgColor: string;
+  emoji: string;
+  gradientFrom: string;
+  gradientTo: string;
 }) => (
   <div className="mb-8">
-    <div className="flex items-center gap-3 mb-2">
+    <div className="flex items-center gap-3 mb-3">
       <motion.div
-        whileHover={{ rotate: 12, scale: 1.1 }}
-        className={`p-3 rounded-2xl ${bgColor} shadow-sm`}
+        whileHover={{ rotate: 15, scale: 1.15 }}
+        className={`relative p-3.5 rounded-2xl bg-gradient-to-br ${gradientFrom} ${gradientTo} shadow-md`}
       >
-        <Icon className={`h-5 w-5 ${color}`} />
+        <Icon className="h-5 w-5 text-white" />
+        <span className="absolute -top-2 -right-2 text-lg">{emoji}</span>
       </motion.div>
       <div>
-        <h2 className="text-xl sm:text-2xl font-display font-bold text-foreground">{title}</h2>
-        {subtitle && (
-          <p className="text-xs text-muted-foreground mt-0.5">{subtitle}</p>
-        )}
+        <h2 className="text-xl sm:text-2xl font-display font-extrabold text-foreground">{title}</h2>
+        {subtitle && <p className="text-xs text-muted-foreground mt-0.5">{subtitle}</p>}
       </div>
     </div>
-    <div className="ml-14 h-1 w-20 rounded-full bg-gradient-to-r from-primary via-accent to-primary/30" />
+    <div className={`ml-16 h-1.5 w-24 rounded-full bg-gradient-to-r ${gradientFrom} ${gradientTo} opacity-60`} />
   </div>
 );
+
+/* ─── Fun divider with emoji ─── */
+const FunDivider = ({ emoji = "✨" }: { emoji?: string }) => (
+  <div className="relative my-20 flex items-center justify-center">
+    <div className="h-px w-full bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+    <motion.div
+      className="absolute flex items-center justify-center bg-background px-4"
+      animate={{ y: [0, -4, 0] }}
+      transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+    >
+      <span className="text-2xl">{emoji}</span>
+    </motion.div>
+  </div>
+);
+
+/* ─── Tech badge with real logo ─── */
+const TechBadge = ({ name, idx }: { name: string; idx: number }) => {
+  const logo = getTechLogo(name);
+  const colors = [
+    "border-emerald-400/30 bg-emerald-500/10 hover:bg-emerald-500/20",
+    "border-amber-400/30 bg-amber-500/10 hover:bg-amber-500/20",
+    "border-violet-400/30 bg-violet-500/10 hover:bg-violet-500/20",
+    "border-cyan-400/30 bg-cyan-500/10 hover:bg-cyan-500/20",
+    "border-rose-400/30 bg-rose-500/10 hover:bg-rose-500/20",
+    "border-blue-400/30 bg-blue-500/10 hover:bg-blue-500/20",
+  ];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.7, rotate: -5 }}
+      animate={{ opacity: 1, scale: 1, rotate: 0 }}
+      transition={{ delay: 0.5 + idx * 0.07, type: "spring", stiffness: 150 }}
+      whileHover={{ scale: 1.12, rotate: 3, y: -3 }}
+      className={`inline-flex items-center gap-2 rounded-xl border-2 ${colors[idx % colors.length]} px-3.5 py-2 cursor-default transition-colors`}
+    >
+      {logo && <img src={logo} alt={name} className="h-4 w-4" />}
+      <span className="text-xs font-bold text-foreground">{name}</span>
+    </motion.div>
+  );
+};
 
 const ProjectDetailPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const project = projects.find((p) => p.slug === slug);
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: containerRef });
-  const parallaxY = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [0, -80]);
 
   if (!project) {
     return (
       <PageLayout>
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
+            <span className="text-6xl mb-4 block">🔍</span>
             <h1 className="text-2xl font-bold text-foreground mb-4">Project Not Found</h1>
             <Link to="/#projects">
-              <Button variant="outline">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Back to Portfolio
-              </Button>
+              <Button variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Back to Portfolio</Button>
             </Link>
           </div>
         </div>
@@ -191,27 +239,26 @@ const ProjectDetailPage = () => {
   return (
     <PageLayout>
       <div ref={containerRef} className="dark-section relative min-h-screen overflow-hidden">
-        {/* ─── Rich background with multiple gradient orbs ─── */}
+        {/* ─── Vivid background blobs ─── */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <motion.div style={{ y: parallaxY }}>
-            <div className="absolute top-10 -left-40 h-[600px] w-[600px] rounded-full bg-primary/12 blur-[180px]" />
-            <div className="absolute top-[30%] -right-20 h-[500px] w-[500px] rounded-full bg-accent/10 blur-[150px]" />
-            <div className="absolute top-[55%] left-[20%] h-[400px] w-[400px] rounded-full bg-emerald-500/8 blur-[140px]" />
-            <div className="absolute top-[75%] right-[15%] h-[350px] w-[350px] rounded-full bg-amber-500/6 blur-[130px]" />
-            <div className="absolute -bottom-20 left-1/2 h-[500px] w-[500px] rounded-full bg-violet-500/6 blur-[160px]" />
+            <ColorBlob className="top-0 -left-20" color="bg-emerald-500/30" size={500} />
+            <ColorBlob className="top-[25%] -right-10" color="bg-amber-500/20" size={400} />
+            <ColorBlob className="top-[50%] left-[15%]" color="bg-violet-500/15" size={450} />
+            <ColorBlob className="top-[70%] right-[10%]" color="bg-rose-500/15" size={350} />
+            <ColorBlob className="bottom-0 left-1/3" color="bg-cyan-500/15" size={400} />
           </motion.div>
         </div>
 
-        {/* Grid pattern */}
-        <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(hsl(0_0%_100%/0.015)_1px,transparent_1px),linear-gradient(90deg,hsl(0_0%_100%/0.015)_1px,transparent_1px)] bg-[size:50px_50px]" />
-
-        {/* Floating decorative shapes */}
-        <FloatingShape className="top-32 left-[8%]" delay={0} size={50} color="bg-primary/30" />
-        <FloatingShape className="top-[20%] right-[10%]" delay={1.5} size={40} color="bg-accent/30" />
-        <FloatingShape className="top-[40%] left-[5%]" delay={3} size={35} color="bg-emerald-500/30" />
-        <FloatingShape className="top-[55%] right-[7%]" delay={2} size={45} color="bg-amber-500/25" />
-        <FloatingShape className="top-[70%] left-[12%]" delay={4} size={30} color="bg-violet-500/25" />
-        <FloatingShape className="top-[85%] right-[15%]" delay={1} size={55} color="bg-primary/20" />
+        {/* ─── Floating stickers ─── */}
+        <Sticker emoji="🚀" className="top-28 left-[5%]" delay={0} size="text-3xl" />
+        <Sticker emoji="💡" className="top-[18%] right-[8%]" delay={1.2} size="text-2xl" />
+        <Sticker emoji="⚡" className="top-[32%] left-[3%]" delay={2.5} size="text-2xl" />
+        <Sticker emoji="🎯" className="top-[45%] right-[5%]" delay={0.8} size="text-3xl" />
+        <Sticker emoji="🔧" className="top-[58%] left-[7%]" delay={3} size="text-xl" />
+        <Sticker emoji="✨" className="top-[72%] right-[12%]" delay={1.5} size="text-2xl" />
+        <Sticker emoji="🏆" className="top-[85%] left-[10%]" delay={2} size="text-2xl" />
+        <Sticker emoji="💎" className="top-[15%] left-[85%]" delay={3.5} size="text-xl" />
 
         <div className="relative mx-auto max-w-5xl px-4 sm:px-6 py-24 sm:py-32">
           {/* Back navigation */}
@@ -227,36 +274,38 @@ const ProjectDetailPage = () => {
 
           {/* ═══════════════════ HERO ═══════════════════ */}
           <FadeInSection delay={100}>
-            <div className="relative mb-16 p-8 sm:p-10 rounded-3xl border border-primary/20 bg-gradient-to-br from-card/80 via-card/60 to-accent/5 backdrop-blur-sm overflow-hidden">
-              {/* Decorative corner accents */}
-              <div className="absolute top-0 left-0 w-24 h-24 border-t-2 border-l-2 border-primary/20 rounded-tl-3xl" />
-              <div className="absolute bottom-0 right-0 w-24 h-24 border-b-2 border-r-2 border-accent/20 rounded-br-3xl" />
-              <div className="absolute top-4 right-4">
-                <motion.div
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                >
-                  <Sparkles className="h-5 w-5 text-accent/30" />
-                </motion.div>
-              </div>
+            <div className="relative mb-16 p-8 sm:p-10 rounded-3xl border-2 border-primary/25 bg-gradient-to-br from-card/90 via-card/70 to-accent/10 backdrop-blur-xl overflow-hidden shadow-2xl shadow-primary/10">
+              {/* Decorative corner stickers */}
+              <span className="absolute top-4 right-4 text-3xl opacity-30 rotate-12">🌿</span>
+              <span className="absolute bottom-4 left-4 text-2xl opacity-25 -rotate-12">🍃</span>
 
-              <div className="flex items-start gap-5 sm:gap-7 mb-7">
+              {/* Gradient border glow */}
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-primary/10 via-accent/5 to-emerald-500/10 opacity-50" />
+
+              <div className="relative flex items-start gap-5 sm:gap-7 mb-7">
                 <motion.div
-                  initial={{ scale: 0.5, opacity: 0, rotate: -15 }}
+                  initial={{ scale: 0.3, opacity: 0, rotate: -20 }}
                   animate={{ scale: 1, opacity: 1, rotate: 0 }}
-                  transition={{ duration: 0.7, type: "spring", bounce: 0.4 }}
-                  className={`flex h-20 w-20 sm:h-24 sm:w-24 shrink-0 items-center justify-center rounded-3xl bg-gradient-to-br ${project.color} p-[3px] shadow-lg shadow-primary/20`}
+                  transition={{ duration: 0.8, type: "spring", bounce: 0.5 }}
+                  className={`relative flex h-20 w-20 sm:h-24 sm:w-24 shrink-0 items-center justify-center rounded-3xl bg-gradient-to-br ${project.color} p-[3px] shadow-xl shadow-primary/25`}
                 >
                   <div className="flex h-full w-full items-center justify-center rounded-[21px] bg-background/90 backdrop-blur-sm">
                     <Icon className="h-10 w-10 sm:h-12 sm:w-12 text-primary" />
                   </div>
+                  <motion.span
+                    className="absolute -top-3 -right-3 text-xl"
+                    animate={{ rotate: [0, 15, -15, 0] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
+                    ⚡
+                  </motion.span>
                 </motion.div>
                 <div className="flex-1">
                   <motion.h1
-                    initial={{ opacity: 0, y: 10 }}
+                    initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                    className="text-2xl sm:text-3xl md:text-4xl font-display font-bold text-foreground leading-tight"
+                    transition={{ delay: 0.2, type: "spring" }}
+                    className="text-2xl sm:text-3xl md:text-4xl font-display font-extrabold text-foreground leading-tight"
                   >
                     {project.fullTitle}
                   </motion.h1>
@@ -271,32 +320,27 @@ const ProjectDetailPage = () => {
                 </div>
               </div>
 
-              <div className="flex flex-wrap gap-2">
+              {/* Tech badges with real logos */}
+              <div className="relative flex flex-wrap gap-2.5">
                 {project.tech.map((t, i) => (
-                  <motion.div
-                    key={t}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.5 + i * 0.05 }}
-                  >
-                    <Badge
-                      variant="secondary"
-                      className="border border-primary/20 bg-primary/5 text-primary text-xs font-semibold px-3 py-1"
-                    >
-                      {t}
-                    </Badge>
-                  </motion.div>
+                  <TechBadge key={t} name={t} idx={i} />
                 ))}
               </div>
             </div>
           </FadeInSection>
 
-          {/* ═══════════════════ KEY METRICS GRID ═══════════════════ */}
+          {/* ═══════════════════ KEY METRICS ═══════════════════ */}
           <FadeInSection delay={200}>
             <div className="mb-16">
-              <div className="flex items-center gap-2 mb-6">
-                <TrendingUp className="h-5 w-5 text-accent" />
-                <h3 className="text-sm font-bold uppercase tracking-widest text-accent">Key Results at a Glance</h3>
+              <div className="flex items-center gap-3 mb-6">
+                <motion.span
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                  className="text-2xl"
+                >
+                  🏅
+                </motion.span>
+                <h3 className="text-sm font-extrabold uppercase tracking-widest text-primary">Key Results at a Glance</h3>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {project.metrics.map((m, idx) => (
@@ -306,22 +350,29 @@ const ProjectDetailPage = () => {
             </div>
           </FadeInSection>
 
-          <SectionDivider variant="gradient" />
+          <FunDivider emoji="🎨" />
 
           {/* ═══════════════════ PROBLEM STATEMENT ═══════════════════ */}
           <FadeInSection delay={250}>
-            <div className="mb-16 relative">
+            <div className="mb-16">
               <SectionHeader
                 icon={AlertCircle}
                 title="Problem Statement"
                 subtitle="The challenge we set out to solve"
-                color="text-destructive"
-                bgColor="bg-destructive/10"
+                emoji="🔴"
+                gradientFrom="from-red-500"
+                gradientTo="to-orange-500"
               />
-              <div className="ml-0 sm:ml-14 relative">
-                <div className="absolute -left-3 top-0 bottom-0 w-1 rounded-full bg-gradient-to-b from-destructive/40 via-destructive/20 to-transparent hidden sm:block" />
-                <p className="text-muted-foreground leading-relaxed text-base">{project.problemStatement}</p>
-              </div>
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="relative ml-0 sm:ml-16 p-6 rounded-2xl border-2 border-red-400/20 bg-gradient-to-br from-red-500/8 to-orange-500/5 backdrop-blur-sm"
+              >
+                <span className="absolute -top-3 -left-3 text-2xl">😰</span>
+                <div className="absolute left-0 top-0 bottom-0 w-1.5 rounded-full bg-gradient-to-b from-red-400 to-orange-400" />
+                <p className="text-muted-foreground leading-relaxed text-base pl-4">{project.problemStatement}</p>
+              </motion.div>
             </div>
           </FadeInSection>
 
@@ -329,17 +380,18 @@ const ProjectDetailPage = () => {
           <FadeInSection delay={300}>
             <div className="mb-16">
               <SectionHeader
-                icon={AlertCircle}
+                icon={Flame}
                 title="Key Challenges"
                 subtitle="Obstacles encountered during the build"
-                color="text-destructive"
-                bgColor="bg-destructive/10"
+                emoji="🧗"
+                gradientFrom="from-orange-500"
+                gradientTo="to-amber-500"
               />
               <ChallengesGrid challenges={project.challenges} />
             </div>
           </FadeInSection>
 
-          <SectionDivider variant="accent" />
+          <FunDivider emoji="💪" />
 
           {/* ═══════════════════ PURPOSE & GOALS ═══════════════════ */}
           <FadeInSection delay={350}>
@@ -348,12 +400,19 @@ const ProjectDetailPage = () => {
                 icon={Target}
                 title="Purpose & Goals"
                 subtitle="What we aimed to achieve"
-                color="text-primary"
-                bgColor="bg-primary/10"
+                emoji="🎯"
+                gradientFrom="from-emerald-500"
+                gradientTo="to-teal-500"
               />
-              <div className="ml-0 sm:ml-14 p-6 rounded-2xl border border-primary/15 bg-gradient-to-br from-primary/5 to-transparent">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="relative ml-0 sm:ml-16 p-6 rounded-2xl border-2 border-emerald-400/25 bg-gradient-to-br from-emerald-500/10 to-teal-500/5"
+              >
+                <span className="absolute -top-3 right-4 text-2xl">🎯</span>
                 <p className="text-muted-foreground leading-relaxed text-base">{project.purpose}</p>
-              </div>
+              </motion.div>
             </div>
           </FadeInSection>
 
@@ -364,19 +423,19 @@ const ProjectDetailPage = () => {
                 icon={Layers}
                 title="System Architecture"
                 subtitle="How everything connects"
-                color="text-primary"
-                bgColor="bg-primary/10"
+                emoji="🏗️"
+                gradientFrom="from-violet-500"
+                gradientTo="to-purple-500"
               />
-              <div className="relative rounded-3xl border border-border bg-gradient-to-br from-card/80 to-card/50 backdrop-blur-sm p-6 sm:p-10 overflow-hidden">
-                {/* Decorative background elements */}
-                <div className="absolute top-0 right-0 w-40 h-40 bg-primary/5 rounded-full blur-3xl" />
-                <div className="absolute bottom-0 left-0 w-32 h-32 bg-accent/5 rounded-full blur-3xl" />
+              <div className="relative rounded-3xl border-2 border-violet-400/20 bg-gradient-to-br from-violet-500/8 via-card/80 to-purple-500/5 backdrop-blur-sm p-6 sm:p-10 overflow-hidden">
+                <span className="absolute top-4 right-4 text-3xl opacity-20">🔗</span>
+                <span className="absolute bottom-4 left-4 text-2xl opacity-15">⚙️</span>
                 <ArchitectureDiagram steps={project.architectureSteps} color={project.color} />
               </div>
             </div>
           </FadeInSection>
 
-          <SectionDivider />
+          <FunDivider emoji="🔨" />
 
           {/* ═══════════════════ IMPLEMENTATION ═══════════════════ */}
           <FadeInSection delay={450}>
@@ -385,26 +444,41 @@ const ProjectDetailPage = () => {
                 icon={Wrench}
                 title="Implementation Details"
                 subtitle="Step-by-step technical breakdown"
-                color="text-primary"
-                bgColor="bg-primary/10"
+                emoji="🛠️"
+                gradientFrom="from-blue-500"
+                gradientTo="to-cyan-500"
               />
-              <div className="ml-0 sm:ml-14 space-y-4">
-                {project.implementation.map((step, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.08, type: "spring", stiffness: 100 }}
-                    whileHover={{ x: 4 }}
-                    className="flex items-start gap-4 group"
-                  >
-                    <div className="mt-1 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-primary/15 to-accent/15 border border-primary/20 text-[10px] font-bold text-primary group-hover:from-primary/25 group-hover:to-accent/25 transition-colors">
-                      {String(idx + 1).padStart(2, "0")}
-                    </div>
-                    <p className="text-muted-foreground leading-relaxed text-sm">{step}</p>
-                  </motion.div>
-                ))}
+              <div className="ml-0 sm:ml-16 space-y-4">
+                {project.implementation.map((step, idx) => {
+                  const stepColors = [
+                    "border-blue-400/30 bg-blue-500/8",
+                    "border-cyan-400/30 bg-cyan-500/8",
+                    "border-teal-400/30 bg-teal-500/8",
+                    "border-indigo-400/30 bg-indigo-500/8",
+                    "border-sky-400/30 bg-sky-500/8",
+                    "border-violet-400/30 bg-violet-500/8",
+                  ];
+                  const stepEmojis = ["📌", "🔧", "⚙️", "🔗", "📊", "🎛️"];
+                  return (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, x: -25, rotate: -1 }}
+                      whileInView={{ opacity: 1, x: 0, rotate: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: idx * 0.08, type: "spring", stiffness: 100 }}
+                      whileHover={{ x: 6, scale: 1.01 }}
+                      className={`flex items-start gap-4 p-4 rounded-xl border-2 ${stepColors[idx % stepColors.length]} transition-all cursor-default`}
+                    >
+                      <div className="flex items-center gap-2 shrink-0">
+                        <span className="text-lg">{stepEmojis[idx % stepEmojis.length]}</span>
+                        <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 text-[10px] font-bold text-white shadow-sm">
+                          {String(idx + 1).padStart(2, "0")}
+                        </div>
+                      </div>
+                      <p className="text-muted-foreground leading-relaxed text-sm">{step}</p>
+                    </motion.div>
+                  );
+                })}
               </div>
             </div>
           </FadeInSection>
@@ -416,14 +490,15 @@ const ProjectDetailPage = () => {
                 icon={Calendar}
                 title="Project Timeline"
                 subtitle="From kickoff to launch"
-                color="text-accent"
-                bgColor="bg-accent/10"
+                emoji="📅"
+                gradientFrom="from-amber-500"
+                gradientTo="to-yellow-500"
               />
               <ProjectTimeline items={project.timeline} color={project.color} />
             </div>
           </FadeInSection>
 
-          <SectionDivider variant="gradient" />
+          <FunDivider emoji="📊" />
 
           {/* ═══════════════════ BEFORE VS AFTER ═══════════════════ */}
           <FadeInSection delay={550}>
@@ -432,8 +507,9 @@ const ProjectDetailPage = () => {
                 icon={ArrowLeftRight}
                 title="Before vs After"
                 subtitle="Measurable transformation"
-                color="text-accent"
-                bgColor="bg-accent/10"
+                emoji="🔄"
+                gradientFrom="from-teal-500"
+                gradientTo="to-emerald-500"
               />
               <BeforeAfterTable items={project.beforeAfter} />
             </div>
@@ -441,48 +517,52 @@ const ProjectDetailPage = () => {
 
           {/* ═══════════════════ IMPACT ═══════════════════ */}
           <FadeInSection delay={600}>
-            <div className="mb-16 relative overflow-hidden rounded-3xl border border-primary/25 bg-gradient-to-br from-primary/8 via-accent/5 to-primary/8 p-8 sm:p-10">
-              {/* Decorative elements */}
-              <div className="absolute top-4 right-4 w-32 h-32 rounded-full bg-primary/10 blur-3xl" />
-              <div className="absolute bottom-4 left-4 w-24 h-24 rounded-full bg-accent/10 blur-2xl" />
-              <motion.div
-                className="absolute top-6 right-6"
+            <div className="relative mb-16 overflow-hidden rounded-3xl border-2 border-emerald-400/30 bg-gradient-to-br from-emerald-500/12 via-teal-500/8 to-cyan-500/12 p-8 sm:p-10 shadow-xl shadow-emerald-500/10">
+              {/* Fun background emojis */}
+              <span className="absolute top-4 right-6 text-4xl opacity-15">🚀</span>
+              <span className="absolute bottom-6 left-6 text-3xl opacity-15">📈</span>
+              <motion.span
+                className="absolute top-6 right-20 text-2xl"
                 animate={{ rotate: [0, 360] }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
               >
-                <Star className="h-4 w-4 text-accent/20" />
-              </motion.div>
+                ⭐
+              </motion.span>
 
               <SectionHeader
-                icon={TrendingUp}
+                icon={Trophy}
                 title="Impact & Results"
                 subtitle="The bottom-line difference"
-                color="text-primary"
-                bgColor="bg-primary/20"
+                emoji="🏆"
+                gradientFrom="from-emerald-500"
+                gradientTo="to-green-500"
               />
-              <div className="pl-0 sm:pl-14">
-                <motion.p
-                  initial={{ opacity: 0, scale: 0.95 }}
+              <div className="pl-0 sm:pl-16">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  className="text-xl sm:text-2xl font-display font-bold text-primary mb-6"
+                  className="inline-flex items-center gap-3 rounded-2xl bg-gradient-to-r from-emerald-500/20 to-teal-500/15 border-2 border-emerald-400/30 px-6 py-3 mb-6 shadow-sm"
                 >
-                  🚀 {project.impact.headline}
-                </motion.p>
+                  <span className="text-2xl">🚀</span>
+                  <p className="text-xl sm:text-2xl font-display font-extrabold text-foreground">
+                    {project.impact.headline}
+                  </p>
+                </motion.div>
                 <div className="space-y-3">
                   {project.impact.details.map((detail, idx) => (
                     <motion.div
                       key={idx}
-                      initial={{ opacity: 0, x: -10 }}
+                      initial={{ opacity: 0, x: -15 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
-                      transition={{ delay: idx * 0.08 }}
-                      className="flex items-center gap-3"
+                      transition={{ delay: idx * 0.1, type: "spring" }}
+                      className="flex items-center gap-3 p-2 rounded-lg hover:bg-emerald-500/5 transition-colors"
                     >
-                      <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/15">
-                        <CheckCircle2 className="h-3.5 w-3.5 text-primary" />
+                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-emerald-500/25 to-teal-500/20 shadow-sm">
+                        <CheckCircle2 className="h-4 w-4 text-emerald-500" />
                       </div>
-                      <span className="text-sm text-foreground">{detail}</span>
+                      <span className="text-sm font-medium text-foreground">{detail}</span>
                     </motion.div>
                   ))}
                 </div>
@@ -494,34 +574,36 @@ const ProjectDetailPage = () => {
           <FadeInSection delay={650}>
             <div className="mb-16">
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, scale: 0.9, rotate: -1 }}
+                whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                 viewport={{ once: true }}
-                className="relative rounded-3xl border-2 border-dashed border-primary/25 bg-gradient-to-br from-primary/8 via-accent/5 to-emerald-500/5 p-8 sm:p-10 overflow-hidden"
+                className="relative rounded-3xl border-2 border-amber-400/30 bg-gradient-to-br from-amber-500/12 via-yellow-500/8 to-orange-500/10 p-8 sm:p-10 overflow-hidden shadow-xl shadow-amber-500/10"
               >
-                {/* Decorative corner dots */}
-                <div className="absolute top-4 left-4 w-2 h-2 rounded-full bg-primary/40" />
-                <div className="absolute top-4 right-4 w-2 h-2 rounded-full bg-accent/40" />
-                <div className="absolute bottom-4 left-4 w-2 h-2 rounded-full bg-accent/40" />
-                <div className="absolute bottom-4 right-4 w-2 h-2 rounded-full bg-primary/40" />
+                {/* Corner emojis */}
+                <span className="absolute top-4 left-4 text-2xl">💡</span>
+                <span className="absolute top-4 right-4 text-2xl opacity-40">🧠</span>
+                <span className="absolute bottom-4 left-4 text-xl opacity-30">📝</span>
+                <span className="absolute bottom-4 right-4 text-2xl opacity-40">💭</span>
 
-                <Quote className="h-10 w-10 text-primary/15 mb-4" />
-                <p className="text-lg sm:text-xl font-display font-medium text-foreground leading-relaxed italic mb-6">
-                  "{project.keyTakeaway}"
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="h-px flex-1 bg-gradient-to-r from-primary/20 to-transparent" />
-                  <div className="flex items-center gap-2 bg-accent/10 rounded-full px-4 py-1.5">
-                    <Lightbulb className="h-4 w-4 text-accent" />
-                    <span className="text-xs font-bold uppercase tracking-widest text-accent">Key Takeaway</span>
+                <div className="relative">
+                  <Quote className="h-12 w-12 text-amber-500/25 mb-4" />
+                  <p className="text-lg sm:text-xl font-display font-bold text-foreground leading-relaxed italic mb-6">
+                    "{project.keyTakeaway}"
+                  </p>
+                  <div className="flex items-center gap-3">
+                    <div className="h-px flex-1 bg-gradient-to-r from-amber-400/30 to-transparent" />
+                    <div className="flex items-center gap-2 bg-amber-500/15 rounded-full px-5 py-2 border border-amber-400/25">
+                      <span className="text-base">💡</span>
+                      <span className="text-xs font-extrabold uppercase tracking-widest text-amber-600 dark:text-amber-400">Key Takeaway</span>
+                    </div>
+                    <div className="h-px flex-1 bg-gradient-to-l from-amber-400/30 to-transparent" />
                   </div>
-                  <div className="h-px flex-1 bg-gradient-to-l from-accent/20 to-transparent" />
                 </div>
               </motion.div>
             </div>
           </FadeInSection>
 
-          <SectionDivider variant="accent" />
+          <FunDivider emoji="💼" />
 
           {/* ═══════════════════ USE CASES ═══════════════════ */}
           <FadeInSection delay={700}>
@@ -530,28 +612,36 @@ const ProjectDetailPage = () => {
                 icon={Briefcase}
                 title="Real Use Cases"
                 subtitle="How this works in practice"
-                color="text-accent"
-                bgColor="bg-accent/10"
+                emoji="💼"
+                gradientFrom="from-indigo-500"
+                gradientTo="to-blue-500"
               />
-              <div className="ml-0 sm:ml-14 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {project.useCases.map((useCase, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, y: 12 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.1 }}
-                    whileHover={{ y: -2 }}
-                    className="p-4 rounded-xl border border-accent/15 bg-accent/5 hover:bg-accent/8 transition-colors"
-                  >
-                    <div className="flex items-start gap-3">
-                      <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-accent/15">
-                        <ChevronRight className="h-3.5 w-3.5 text-accent" />
+              <div className="ml-0 sm:ml-16 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {project.useCases.map((useCase, idx) => {
+                  const caseEmojis = ["📋", "🎫", "📊", "📅", "🔍", "💬"];
+                  const caseColors = [
+                    "border-indigo-400/25 bg-indigo-500/8 hover:bg-indigo-500/15",
+                    "border-blue-400/25 bg-blue-500/8 hover:bg-blue-500/15",
+                    "border-violet-400/25 bg-violet-500/8 hover:bg-violet-500/15",
+                    "border-sky-400/25 bg-sky-500/8 hover:bg-sky-500/15",
+                  ];
+                  return (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, y: 15, rotate: idx % 2 === 0 ? -1 : 1 }}
+                      whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: idx * 0.1, type: "spring" }}
+                      whileHover={{ y: -4, scale: 1.02 }}
+                      className={`p-5 rounded-xl border-2 ${caseColors[idx % caseColors.length]} transition-all cursor-default`}
+                    >
+                      <div className="flex items-start gap-3">
+                        <span className="text-lg shrink-0">{caseEmojis[idx % caseEmojis.length]}</span>
+                        <p className="text-muted-foreground leading-relaxed text-sm">{useCase}</p>
                       </div>
-                      <p className="text-muted-foreground leading-relaxed text-sm">{useCase}</p>
-                    </div>
-                  </motion.div>
-                ))}
+                    </motion.div>
+                  );
+                })}
               </div>
             </div>
           </FadeInSection>
@@ -563,30 +653,33 @@ const ProjectDetailPage = () => {
                 icon={Rocket}
                 title="Possible Improvements"
                 subtitle="What's next on the roadmap"
-                color="text-accent"
-                bgColor="bg-accent/10"
+                emoji="🚀"
+                gradientFrom="from-rose-500"
+                gradientTo="to-pink-500"
               />
-              <div className="ml-0 sm:ml-14 grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {project.improvements.map((improvement, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0, x: idx % 2 === 0 ? -10 : 10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: idx * 0.1 }}
-                    className="flex items-start gap-3 p-3 rounded-xl border border-border/50 bg-card/50 hover:border-accent/20 transition-colors"
-                  >
-                    <div className="mt-0.5 h-5 w-5 shrink-0 rounded-full border-2 border-dashed border-accent/40 flex items-center justify-center">
-                      <div className="h-1.5 w-1.5 rounded-full bg-accent/60" />
-                    </div>
-                    <p className="text-muted-foreground leading-relaxed text-sm">{improvement}</p>
-                  </motion.div>
-                ))}
+              <div className="ml-0 sm:ml-16 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {project.improvements.map((improvement, idx) => {
+                  const impEmojis = ["🔮", "🎯", "⚡", "🌐", "🤖", "📱"];
+                  return (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, x: idx % 2 === 0 ? -15 : 15 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: idx * 0.1, type: "spring" }}
+                      whileHover={{ scale: 1.02 }}
+                      className="flex items-start gap-3 p-4 rounded-xl border-2 border-rose-400/20 bg-rose-500/5 hover:bg-rose-500/10 transition-all cursor-default"
+                    >
+                      <span className="text-base shrink-0">{impEmojis[idx % impEmojis.length]}</span>
+                      <p className="text-muted-foreground leading-relaxed text-sm">{improvement}</p>
+                    </motion.div>
+                  );
+                })}
               </div>
             </div>
           </FadeInSection>
 
-          <SectionDivider />
+          <FunDivider emoji="📸" />
 
           {/* ═══════════════════ SCREENSHOTS ═══════════════════ */}
           <FadeInSection delay={800}>
@@ -595,44 +688,40 @@ const ProjectDetailPage = () => {
                 icon={Sparkles}
                 title="Screenshots & Proof"
                 subtitle="See it in action"
-                color="text-primary"
-                bgColor="bg-primary/10"
+                emoji="📸"
+                gradientFrom="from-primary"
+                gradientTo="to-accent"
               />
               <div className="space-y-6">
                 <motion.div
                   whileHover={{ scale: 1.01 }}
-                  className="overflow-hidden rounded-2xl border-2 border-primary/20 bg-card shadow-lg shadow-primary/5"
+                  className="overflow-hidden rounded-2xl border-2 border-primary/25 bg-card shadow-xl shadow-primary/10"
                 >
-                  <div className="border-b border-border bg-gradient-to-r from-primary/10 to-accent/5 px-5 py-3 flex items-center gap-3">
+                  <div className="border-b border-border bg-gradient-to-r from-primary/15 to-accent/10 px-5 py-3 flex items-center gap-3">
                     <div className="flex gap-1.5">
-                      <div className="w-2.5 h-2.5 rounded-full bg-red-400/60" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-amber-400/60" />
-                      <div className="w-2.5 h-2.5 rounded-full bg-emerald-400/60" />
+                      <div className="w-3 h-3 rounded-full bg-red-400" />
+                      <div className="w-3 h-3 rounded-full bg-amber-400" />
+                      <div className="w-3 h-3 rounded-full bg-emerald-400" />
                     </div>
-                    <span className="text-xs font-bold uppercase tracking-wider text-primary">
+                    <span className="text-xs font-extrabold uppercase tracking-wider text-primary">
                       {project.proofLabel}
                     </span>
                   </div>
-                  <img
-                    src={project.proofImage}
-                    alt={`${project.fullTitle} - proof`}
-                    className="w-full"
-                    loading="lazy"
-                  />
+                  <img src={project.proofImage} alt={`${project.fullTitle} - proof`} className="w-full" loading="lazy" />
                 </motion.div>
                 {project.extraImages.map((img) => (
                   <motion.div
                     key={img.label}
                     whileHover={{ scale: 1.01 }}
-                    className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm"
+                    className="overflow-hidden rounded-2xl border-2 border-accent/20 bg-card shadow-lg"
                   >
-                    <div className="border-b border-border bg-gradient-to-r from-accent/10 to-primary/5 px-5 py-3 flex items-center gap-3">
+                    <div className="border-b border-border bg-gradient-to-r from-accent/15 to-primary/10 px-5 py-3 flex items-center gap-3">
                       <div className="flex gap-1.5">
-                        <div className="w-2.5 h-2.5 rounded-full bg-red-400/60" />
-                        <div className="w-2.5 h-2.5 rounded-full bg-amber-400/60" />
-                        <div className="w-2.5 h-2.5 rounded-full bg-emerald-400/60" />
+                        <div className="w-3 h-3 rounded-full bg-red-400" />
+                        <div className="w-3 h-3 rounded-full bg-amber-400" />
+                        <div className="w-3 h-3 rounded-full bg-emerald-400" />
                       </div>
-                      <span className="text-xs font-bold uppercase tracking-wider text-accent">
+                      <span className="text-xs font-extrabold uppercase tracking-wider text-accent">
                         📎 {img.label}
                       </span>
                     </div>
@@ -648,24 +737,24 @@ const ProjectDetailPage = () => {
             <div className="mb-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Link
                 to={`/projects/${prevProject.slug}`}
-                className="group rounded-2xl border border-border bg-gradient-to-br from-card to-card/80 p-5 transition-all hover:border-primary/30 hover:shadow-md hover:shadow-primary/5"
+                className="group rounded-2xl border-2 border-border bg-gradient-to-br from-card to-card/80 p-5 transition-all hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10"
               >
-                <span className="text-xs text-muted-foreground flex items-center gap-1">
+                <span className="text-xs text-muted-foreground flex items-center gap-2">
                   <ArrowLeft className="h-3 w-3" /> Previous Project
                 </span>
                 <p className="text-sm font-display font-bold text-foreground mt-2 group-hover:text-primary transition-colors">
-                  {prevProject.fullTitle}
+                  ← {prevProject.fullTitle}
                 </p>
               </Link>
               <Link
                 to={`/projects/${nextProject.slug}`}
-                className="group rounded-2xl border border-border bg-gradient-to-br from-card to-card/80 p-5 transition-all hover:border-accent/30 hover:shadow-md hover:shadow-accent/5 text-right"
+                className="group rounded-2xl border-2 border-border bg-gradient-to-br from-card to-card/80 p-5 transition-all hover:border-accent/40 hover:shadow-lg hover:shadow-accent/10 text-right"
               >
-                <span className="text-xs text-muted-foreground flex items-center justify-end gap-1">
+                <span className="text-xs text-muted-foreground flex items-center justify-end gap-2">
                   Next Project <ChevronRight className="h-3 w-3" />
                 </span>
                 <p className="text-sm font-display font-bold text-foreground mt-2 group-hover:text-accent transition-colors">
-                  {nextProject.fullTitle}
+                  {nextProject.fullTitle} →
                 </p>
               </Link>
             </div>
@@ -675,9 +764,9 @@ const ProjectDetailPage = () => {
           <FadeInSection delay={900}>
             <div className="text-center pt-10 border-t border-border/50">
               <Link to="/#projects">
-                <Button variant="outline" className="border-primary/30 hover:bg-primary/10 hover:border-primary rounded-xl px-6">
+                <Button variant="outline" className="border-primary/30 hover:bg-primary/10 hover:border-primary rounded-xl px-8 py-5 text-base font-bold">
                   <ArrowLeft className="mr-2 h-4 w-4" />
-                  View All Projects
+                  View All Projects ✨
                 </Button>
               </Link>
             </div>
