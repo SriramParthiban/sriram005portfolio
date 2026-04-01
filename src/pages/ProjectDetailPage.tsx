@@ -271,6 +271,7 @@ const ProjectDetailPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const project = projects.find((p) => p.slug === slug);
   const containerRef = useRef<HTMLDivElement>(null);
+  const impactRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: containerRef });
   const parallaxY = useTransform(scrollYProgress, [0, 1], [0, -80]);
 
