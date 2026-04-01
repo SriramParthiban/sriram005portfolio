@@ -8,8 +8,8 @@ import ArchitectureDiagram from "@/components/case-study/ArchitectureDiagram";
 import ProjectTimeline from "@/components/case-study/ProjectTimeline";
 import BeforeAfterTable from "@/components/case-study/BeforeAfterTable";
 import ChallengesGrid from "@/components/case-study/ChallengesGrid";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { useRef, useState, useEffect, useCallback } from "react";
 import {
   ArrowLeft,
   AlertCircle,
@@ -79,6 +79,65 @@ const Sticker = ({
     <span className={`${size} drop-shadow-lg`}>{emoji}</span>
   </motion.div>
 );
+
+/* ─── Confetti burst on scroll ─── */
+const ConfettiBurst = ({ triggerRef }: { triggerRef: React.RefObject<HTMLDivElement> }) => {
+  const isInView = useInView(triggerRef, { once: true, margin: "-100px" });
+  const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number; color: string; size: number; rotation: number; delay: number }>>([]);
+
+  useEffect(() => {
+    if (isInView && particles.length === 0) {
+      const colors = [
+        "bg-emerald-400", "bg-amber-400", "bg-violet-400", "bg-rose-400",
+        "bg-cyan-400", "bg-pink-400", "bg-yellow-300", "bg-green-400",
+        "bg-blue-400", "bg-orange-400", "bg-fuchsia-400", "bg-teal-400",
+      ];
+      const newParticles = Array.from({ length: 50 }, (_, i) => ({
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        color: colors[i % colors.length],
+        size: 4 + Math.random() * 8,
+        rotation: Math.random() * 360,
+        delay: Math.random() * 0.5,
+      }));
+      setParticles(newParticles);
+    }
+  }, [isInView]);
+
+  if (!isInView) return null;
+
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden z-10">
+      {particles.map((p) => (
+        <motion.div
+          key={p.id}
+          className={`absolute ${p.color} rounded-sm`}
+          style={{
+            width: p.size,
+            height: p.size * (Math.random() > 0.5 ? 1 : 0.5),
+            left: `${p.x}%`,
+            top: "40%",
+            rotate: p.rotation,
+          }}
+          initial={{ opacity: 1, y: 0, x: 0, scale: 0 }}
+          animate={{
+            opacity: [1, 1, 0],
+            y: [0, -(80 + Math.random() * 200), 120 + Math.random() * 200],
+            x: [(Math.random() - 0.5) * 100, (Math.random() - 0.5) * 250],
+            scale: [0, 1.2, 0.6],
+            rotate: [p.rotation, p.rotation + (Math.random() - 0.5) * 720],
+          }}
+          transition={{
+            duration: 1.8 + Math.random() * 1.2,
+            delay: p.delay,
+            ease: [0.25, 0.46, 0.45, 0.94],
+          }}
+        />
+      ))}
+    </div>
+  );
+};
 
 /* ─── Colorful blob ─── */
 const ColorBlob = ({
@@ -212,6 +271,7 @@ const ProjectDetailPage = () => {
   const { slug } = useParams<{ slug: string }>();
   const project = projects.find((p) => p.slug === slug);
   const containerRef = useRef<HTMLDivElement>(null);
+  const impactRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: containerRef });
   const parallaxY = useTransform(scrollYProgress, [0, 1], [0, -80]);
 
@@ -517,7 +577,8 @@ const ProjectDetailPage = () => {
 
           {/* ═══════════════════ IMPACT ═══════════════════ */}
           <FadeInSection delay={600}>
-            <div className="relative mb-16 overflow-hidden rounded-3xl border-2 border-emerald-400/30 bg-gradient-to-br from-emerald-500/12 via-teal-500/8 to-cyan-500/12 p-8 sm:p-10 shadow-xl shadow-emerald-500/10">
+            <div ref={impactRef} className="relative mb-16 overflow-hidden rounded-3xl border-2 border-emerald-400/30 bg-gradient-to-br from-emerald-500/12 via-teal-500/8 to-cyan-500/12 p-8 sm:p-10 shadow-xl shadow-emerald-500/10">
+              <ConfettiBurst triggerRef={impactRef} />
               {/* Fun background emojis */}
               <span className="absolute top-4 right-6 text-4xl opacity-15">🚀</span>
               <span className="absolute bottom-6 left-6 text-3xl opacity-15">📈</span>
