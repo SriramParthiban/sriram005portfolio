@@ -577,7 +577,8 @@ const ProjectDetailPage = () => {
 
           {/* ═══════════════════ IMPACT ═══════════════════ */}
           <FadeInSection delay={600}>
-            <div className="relative mb-16 overflow-hidden rounded-3xl border-2 border-emerald-400/30 bg-gradient-to-br from-emerald-500/12 via-teal-500/8 to-cyan-500/12 p-8 sm:p-10 shadow-xl shadow-emerald-500/10">
+            <div ref={impactRef} className="relative mb-16 overflow-hidden rounded-3xl border-2 border-emerald-400/30 bg-gradient-to-br from-emerald-500/12 via-teal-500/8 to-cyan-500/12 p-8 sm:p-10 shadow-xl shadow-emerald-500/10">
+              <ConfettiBurst triggerRef={impactRef} />
               {/* Fun background emojis */}
               <span className="absolute top-4 right-6 text-4xl opacity-15">🚀</span>
               <span className="absolute bottom-6 left-6 text-3xl opacity-15">📈</span>
