@@ -15,6 +15,8 @@ const navLinks = [
 ];
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
