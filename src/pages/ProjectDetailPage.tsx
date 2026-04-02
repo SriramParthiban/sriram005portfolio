@@ -116,6 +116,53 @@ const ConfettiBurst = ({ triggerRef }: { triggerRef: React.RefObject<HTMLDivElem
   );
 };
 
+/* ─── Animated counter for metric numbers ─── */
+const AnimatedNumber = ({ value, duration = 1.8 }: { value: number; duration?: number }) => {
+  const [count, setCount] = useState(0);
+  const [started, setStarted] = useState(false);
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+  useEffect(() => {
+    if (isInView && !started) setStarted(true);
+  }, [isInView, started]);
+
+  useEffect(() => {
+    if (!started) return;
+    let start = 0;
+    const increment = value / (duration * 60);
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= value) {
+        setCount(value);
+        clearInterval(timer);
+      } else {
+        setCount(Math.floor(start));
+      }
+    }, 1000 / 60);
+    return () => clearInterval(timer);
+  }, [value, started, duration]);
+
+  return <span ref={ref}>{count.toLocaleString()}</span>;
+};
+
+/* ─── Parse label into parts with animated numbers ─── */
+const AnimatedLabel = ({ label }: { label: string }) => {
+  // Split label around numbers, animate each number
+  const parts = label.split(/(\d[\d,.]*)/g);
+  return (
+    <span className="text-sm font-semibold text-foreground leading-snug">
+      {parts.map((part, i) => {
+        const num = parseFloat(part.replace(/,/g, ""));
+        if (!isNaN(num) && part.match(/^\d[\d,.]*$/)) {
+          return <AnimatedNumber key={i} value={num} />;
+        }
+        return <span key={i}>{part}</span>;
+      })}
+    </span>
+  );
+};
+
 /* ─── Metric card ─── */
 const MetricCard = ({ label, idx }: { label: string; idx: number }) => {
   const colorSets = [
@@ -142,7 +189,7 @@ const MetricCard = ({ label, idx }: { label: string; idx: number }) => {
         <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-background/60 backdrop-blur-sm">
           <IconComp className={`h-4.5 w-4.5 ${c.icon}`} />
         </div>
-        <span className="text-sm font-semibold text-foreground leading-snug">{label}</span>
+        <AnimatedLabel label={label} />
       </div>
     </motion.div>
   );
