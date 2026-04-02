@@ -39,10 +39,7 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNav = (href: string) => {
-    setMobileOpen(false);
-    const id = href.replace("#", "");
-    // Delay scroll to let mobile menu close animation finish
+  const scrollToElement = (id: string) => {
     setTimeout(() => {
       const el = document.getElementById(id);
       if (el) {
@@ -53,9 +50,36 @@ const Navbar = () => {
     }, 350);
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  const handleNav = (href: string) => {
+    setMobileOpen(false);
+    const id = href.replace("#", "");
+    if (location.pathname !== "/") {
+      navigate("/?scrollTo=" + id);
+    } else {
+      scrollToElement(id);
+    }
   };
+
+  const scrollToTop = () => {
+    if (location.pathname !== "/") {
+      navigate("/");
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  // Handle scrollTo param after navigating back to home
+  useEffect(() => {
+    if (location.pathname === "/") {
+      const params = new URLSearchParams(location.search);
+      const scrollTo = params.get("scrollTo");
+      if (scrollTo) {
+        scrollToElement(scrollTo);
+        // Clean up the URL
+        window.history.replaceState({}, "", "/");
+      }
+    }
+  }, [location]);
 
   return (
     <motion.header
