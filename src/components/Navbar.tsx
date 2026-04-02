@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Download, Sun, Moon } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -14,6 +15,8 @@ const navLinks = [
 ];
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -36,10 +39,7 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNav = (href: string) => {
-    setMobileOpen(false);
-    const id = href.replace("#", "");
-    // Delay scroll to let mobile menu close animation finish
+  const scrollToElement = (id: string) => {
     setTimeout(() => {
       const el = document.getElementById(id);
       if (el) {
@@ -50,9 +50,36 @@ const Navbar = () => {
     }, 350);
   };
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  const handleNav = (href: string) => {
+    setMobileOpen(false);
+    const id = href.replace("#", "");
+    if (location.pathname !== "/") {
+      navigate("/?scrollTo=" + id);
+    } else {
+      scrollToElement(id);
+    }
   };
+
+  const scrollToTop = () => {
+    if (location.pathname !== "/") {
+      navigate("/");
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  // Handle scrollTo param after navigating back to home
+  useEffect(() => {
+    if (location.pathname === "/") {
+      const params = new URLSearchParams(location.search);
+      const scrollTo = params.get("scrollTo");
+      if (scrollTo) {
+        scrollToElement(scrollTo);
+        // Clean up the URL
+        window.history.replaceState({}, "", "/");
+      }
+    }
+  }, [location]);
 
   return (
     <motion.header
