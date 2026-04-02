@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Download, Sun, Moon } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
