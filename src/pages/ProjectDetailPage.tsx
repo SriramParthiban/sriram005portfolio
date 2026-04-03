@@ -49,15 +49,6 @@ const techLogos: Record<string, string> = {
 
 const getTechLogo = (tech: string) => techLogos[tech.toLowerCase()] || null;
 
-/* ─── Subtle ambient glow ─── */
-const AmbientGlow = ({ className, color, size = 300 }: { className?: string; color: string; size?: number }) => (
-  <div
-    className={`absolute pointer-events-none rounded-full ${className}`}
-    style={{ width: size, height: size }}
-  >
-    <div className={`w-full h-full rounded-full ${color} blur-[120px] opacity-20`} />
-  </div>
-);
 
 /* ─── Confetti burst on scroll ─── */
 const ConfettiBurst = ({ triggerRef }: { triggerRef: React.RefObject<HTMLDivElement> }) => {
