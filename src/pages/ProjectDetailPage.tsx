@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import FadeInSection from "@/components/FadeInSection";
 import PageLayout from "@/components/PageLayout";
+import heroBackground from "@/assets/hero-japanese-garden.webp";
 import ArchitectureDiagram from "@/components/case-study/ArchitectureDiagram";
 import ProjectTimeline from "@/components/case-study/ProjectTimeline";
 import BeforeAfterTable from "@/components/case-study/BeforeAfterTable";
@@ -281,7 +282,18 @@ const ProjectDetailPage = () => {
   return (
     <PageLayout>
       <div ref={containerRef} className="dark-section relative min-h-screen overflow-hidden">
-        {/* ─── Subtle ambient background ─── */}
+        {/* ─── Nature background matching hero ─── */}
+        <div className="absolute inset-0">
+          <img 
+            src={heroBackground} 
+            alt="" 
+            className="h-full w-full object-cover"
+            loading="eager"
+          />
+          <div className="absolute inset-0 bg-background/70" />
+        </div>
+
+        {/* ─── Subtle ambient glow overlay ─── */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <motion.div style={{ y: parallaxY }}>
             <AmbientGlow className="top-0 -left-32" color="bg-primary/40" size={600} />
