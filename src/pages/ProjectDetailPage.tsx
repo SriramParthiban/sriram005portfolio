@@ -248,7 +248,6 @@ const ProjectDetailPage = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const impactRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: containerRef });
-  const parallaxY = useTransform(scrollYProgress, [0, 1], [0, -60]);
 
   if (!project) {
     return (
