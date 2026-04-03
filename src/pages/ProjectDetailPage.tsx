@@ -9,7 +9,7 @@ import ArchitectureDiagram from "@/components/case-study/ArchitectureDiagram";
 import ProjectTimeline from "@/components/case-study/ProjectTimeline";
 import BeforeAfterTable from "@/components/case-study/BeforeAfterTable";
 import ChallengesGrid from "@/components/case-study/ChallengesGrid";
-import { motion, useScroll, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import {
   ArrowLeft,
