@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import FadeInSection from "@/components/FadeInSection";
 import PageLayout from "@/components/PageLayout";
+import heroBackground from "@/assets/hero-japanese-garden.webp";
 import ArchitectureDiagram from "@/components/case-study/ArchitectureDiagram";
 import ProjectTimeline from "@/components/case-study/ProjectTimeline";
 import BeforeAfterTable from "@/components/case-study/BeforeAfterTable";
