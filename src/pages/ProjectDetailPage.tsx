@@ -281,25 +281,15 @@ const ProjectDetailPage = () => {
 
   return (
     <PageLayout>
-      <div ref={containerRef} className="dark-section relative min-h-screen overflow-hidden">
-        {/* ─── Nature background matching hero ─── */}
-        <div className="absolute inset-0">
-          <img 
-            src={heroBackground} 
-            alt="" 
-            className="h-full w-full object-cover"
-            loading="eager"
-          />
-          <div className="absolute inset-0 bg-background/70" />
-        </div>
-
-        {/* ─── Subtle ambient glow overlay ─── */}
+      <div ref={containerRef} className="relative min-h-screen overflow-hidden">
+        {/* ─── Layered gradient background ─── */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(160_30%_96%)] via-[hsl(200_25%_95%)] to-[hsl(240_20%_96%)]" />
+        {/* Mesh-style accent blobs */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <motion.div style={{ y: parallaxY }}>
-            <AmbientGlow className="top-0 -left-32" color="bg-primary/40" size={600} />
-            <AmbientGlow className="top-[40%] -right-20" color="bg-accent/30" size={500} />
-            <AmbientGlow className="bottom-0 left-1/4" color="bg-primary/20" size={400} />
-          </motion.div>
+          <div className="absolute -top-40 -left-40 h-[600px] w-[600px] rounded-full bg-emerald-200/30 blur-[140px]" />
+          <div className="absolute top-[30%] -right-32 h-[500px] w-[500px] rounded-full bg-blue-200/25 blur-[120px]" />
+          <div className="absolute top-[60%] left-1/4 h-[450px] w-[450px] rounded-full bg-violet-200/20 blur-[130px]" />
+          <div className="absolute bottom-0 right-1/4 h-[400px] w-[400px] rounded-full bg-amber-200/20 blur-[110px]" />
         </div>
 
         <div className="relative mx-auto max-w-5xl px-4 sm:px-6 py-24 sm:py-32">
