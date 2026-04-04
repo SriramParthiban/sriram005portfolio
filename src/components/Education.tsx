@@ -7,7 +7,12 @@ const coursework = ["Machine Learning", "Supply Chain Operations", "Statistical 
 
 const Education = () => (
   <section id="education" className="relative px-6 py-20 sm:py-24 overflow-hidden">
-    <div className="absolute inset-0 bg-muted/40 dark:bg-muted/20" />
+    {/* Layered organic background */}
+    <div className="absolute inset-0 bg-gradient-to-br from-accent/5 via-muted/30 to-primary/5 dark:from-accent/10 dark:via-muted/20 dark:to-primary/10" />
+    <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      <div className="absolute -top-32 -left-32 h-[400px] w-[400px] rounded-full bg-accent/10 dark:bg-accent/15 blur-[120px]" />
+      <div className="absolute bottom-0 right-0 h-[350px] w-[350px] rounded-full bg-primary/8 dark:bg-primary/12 blur-[100px]" />
+    </div>
 
     <div className="relative mx-auto max-w-3xl">
       <FadeInSection>
