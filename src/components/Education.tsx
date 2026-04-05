@@ -12,20 +12,6 @@ const Education = () => (
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
       <div className="absolute -top-32 -left-32 h-[400px] w-[400px] rounded-full bg-accent/10 dark:bg-accent/15 blur-[120px]" />
       <div className="absolute bottom-0 right-0 h-[350px] w-[350px] rounded-full bg-primary/8 dark:bg-primary/12 blur-[100px]" />
-      {/* Top-left leaf */}
-      <svg className="absolute top-4 left-4 h-20 w-20 text-accent/10 dark:text-accent/15 rotate-[-20deg]" viewBox="0 0 100 100" fill="currentColor">
-        <path d="M10 90 Q10 10 90 10 Q50 30 30 50 Q10 70 10 90 Z" />
-        <path d="M10 90 Q30 50 90 10" fill="none" stroke="currentColor" strokeWidth="1.5" opacity="0.5" />
-      </svg>
-      {/* Bottom-right leaf */}
-      <svg className="absolute bottom-6 right-6 h-24 w-24 text-primary/8 dark:text-primary/15 rotate-[160deg]" viewBox="0 0 100 100" fill="currentColor">
-        <path d="M10 90 Q10 10 90 10 Q50 30 30 50 Q10 70 10 90 Z" />
-        <path d="M10 90 Q30 50 90 10" fill="none" stroke="currentColor" strokeWidth="1.5" opacity="0.5" />
-      </svg>
-      {/* Top-right small leaf */}
-      <svg className="absolute top-12 right-16 h-12 w-12 text-accent/6 dark:text-accent/10 rotate-[40deg]" viewBox="0 0 100 100" fill="currentColor">
-        <path d="M10 90 Q10 10 90 10 Q50 30 30 50 Q10 70 10 90 Z" />
-      </svg>
     </div>
 
     <div className="relative mx-auto max-w-3xl">
