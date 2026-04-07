@@ -18,7 +18,7 @@ const Certifications = lazy(() => import("@/components/Certifications"));
 const GitHubRepos = lazy(() => import("@/components/GitHubRepos"));
 const Contact = lazy(() => import("@/components/Contact"));
 const FinalCTA = lazy(() => import("@/components/FinalCTA"));
-const MagicCodeHint = lazy(() => import("@/components/MagicCodeHint"));
+
 const QuoteStrip = lazy(() => import("@/components/QuoteStrip"));
 const Footer = lazy(() => import("@/components/Footer"));
 const StickyMobileCTA = lazy(() => import("@/components/StickyMobileCTA"));
@@ -65,7 +65,7 @@ const Index = () => {
         <Contact />
         <QuoteStrip />
         <FinalCTA />
-        <MagicCodeHint />
+        
       </Suspense>
     </main>
     <Suspense fallback={null}>
