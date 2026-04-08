@@ -11,8 +11,8 @@ const Education = () => (
 
     <div className="relative mx-auto max-w-3xl">
       <FadeInSection>
-        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent mb-3 text-center">Education</p>
-        <h2 className="font-display text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl text-center">
+        <p className="text-xs font-semibold uppercase tracking-[0.25em] text-accent/80 mb-3 text-center">Education</p>
+        <h2 className="font-display text-3xl font-bold text-foreground/90 sm:text-4xl lg:text-5xl text-center">
           Academic Background
         </h2>
       </FadeInSection>
@@ -29,7 +29,7 @@ const Education = () => (
               <GraduationCap className="h-7 w-7 text-accent" />
             </div>
             <div className="flex-1 min-w-0">
-              <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground leading-snug">
+              <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground/90 leading-snug">
                 B.Tech in Artificial Intelligence &amp; Data Science
               </h3>
               <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-muted-foreground">
@@ -54,7 +54,7 @@ const Education = () => (
           {/* Coursework */}
           <div className="flex items-center gap-2 mb-3">
             <BookOpen className="h-4 w-4 text-accent" />
-            <span className="text-sm font-display font-semibold text-foreground">Relevant Coursework</span>
+            <span className="text-sm font-display font-semibold text-foreground/85">Relevant Coursework</span>
           </div>
           <div className="flex flex-wrap gap-2">
             {coursework.map((c) => (
