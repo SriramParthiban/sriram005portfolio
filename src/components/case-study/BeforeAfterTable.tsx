@@ -40,7 +40,7 @@ const BeforeAfterTable = ({ items }: { items: BeforeAfterItem[] }) => {
 
           {/* Before value */}
           <div className="flex items-center justify-center">
-            <span className="inline-flex items-center gap-1.5 rounded-lg bg-destructive/[0.06] border border-destructive/10 px-3 py-1.5 text-xs font-medium text-destructive/60 line-through decoration-destructive/30">
+            <span className="inline-flex items-center gap-1.5 rounded-lg bg-destructive/[0.06] border border-destructive/10 px-3 py-1.5 text-xs font-medium text-destructive/70 line-through decoration-destructive/30">
               <TrendingDown className="h-3 w-3 hidden sm:block" />
               {item.before}
             </span>
