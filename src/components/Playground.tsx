@@ -348,15 +348,15 @@ const Playground = () => {
           <div className="text-center mb-12 sm:mb-16">
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="h-1 w-10 rounded-full bg-gradient-to-r from-primary to-accent" />
-              <span className="text-sm font-display font-extrabold uppercase tracking-[0.2em] text-primary drop-shadow-[0_1px_4px_rgba(255,255,255,0.8)]">
+              <span className="text-sm font-display font-extrabold uppercase tracking-[0.2em] text-primary drop-shadow-[0_1px_3px_rgba(0,0,0,0.1)]">
                 Interactive Demo
               </span>
               <div className="h-1 w-10 rounded-full bg-gradient-to-r from-accent to-primary" />
             </div>
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground md:text-4xl lg:text-5xl drop-shadow-[0_2px_8px_rgba(255,255,255,0.9)]">
+            <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground md:text-4xl lg:text-5xl drop-shadow-[0_2px_6px_rgba(0,0,0,0.15)]">
               Automation <span className="gradient-text">Playground</span>
             </h2>
-            <p className="mt-4 max-w-2xl mx-auto text-sm sm:text-base font-bold text-foreground/90 drop-shadow-[0_1px_6px_rgba(255,255,255,0.8)]">
+            <p className="mt-4 max-w-2xl mx-auto text-sm sm:text-base font-semibold text-foreground/80 drop-shadow-[0_1px_4px_rgba(0,0,0,0.1)]">
               Watch how a single lead flows through an intelligent automation system — from submission to a happy client. No tech jargon, just results.
             </p>
           </div>
@@ -369,7 +369,7 @@ const Playground = () => {
               {/* ── Lead Form ── */}
               {stage === -1 && (
                 <div className="max-w-sm mx-auto mb-8 pg-fade-in">
-                  <p className="text-sm font-semibold text-muted-foreground mb-4 text-center">
+                  <p className="text-sm font-semibold text-foreground/70 mb-4 text-center">
                     ⚡ Submit a sample lead to trigger the automation
                   </p>
                   <div className="space-y-3">
