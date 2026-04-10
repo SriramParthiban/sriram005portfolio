@@ -58,8 +58,8 @@ const ConfettiBurst = ({ triggerRef }: { triggerRef: React.RefObject<HTMLDivElem
   useEffect(() => {
     if (isInView && particles.length === 0) {
       const colors = [
-        "bg-emerald-400", "bg-amber-400", "bg-violet-400", "bg-rose-400",
-        "bg-cyan-400", "bg-pink-400", "bg-yellow-300", "bg-green-400",
+        "bg-primary", "bg-accent", "bg-primary/70", "bg-accent/70",
+        "bg-primary/50", "bg-accent/50", "bg-primary/80", "bg-accent/80",
       ];
       const newParticles = Array.from({ length: 40 }, (_, i) => ({
         id: i,
@@ -158,11 +158,11 @@ const AnimatedLabel = ({ label }: { label: string }) => {
 /* ─── Metric card ─── */
 const MetricCard = ({ label, idx }: { label: string; idx: number }) => {
   const colorSets = [
-    { bg: "from-emerald-400/15 to-teal-500/10", border: "border-emerald-400/25", icon: "text-emerald-500" },
-    { bg: "from-amber-400/15 to-orange-500/10", border: "border-amber-400/25", icon: "text-amber-500" },
-    { bg: "from-violet-400/15 to-purple-500/10", border: "border-violet-400/25", icon: "text-violet-500" },
-    { bg: "from-rose-400/15 to-pink-500/10", border: "border-rose-400/25", icon: "text-rose-500" },
-    { bg: "from-cyan-400/15 to-blue-500/10", border: "border-cyan-400/25", icon: "text-cyan-500" },
+    { bg: "from-primary/15 to-primary/8", border: "border-primary/25", icon: "text-primary" },
+    { bg: "from-accent/15 to-accent/8", border: "border-accent/25", icon: "text-accent" },
+    { bg: "from-primary/12 to-primary/6", border: "border-primary/20", icon: "text-primary" },
+    { bg: "from-accent/12 to-accent/6", border: "border-accent/20", icon: "text-accent" },
+    { bg: "from-primary/10 to-accent/8", border: "border-primary/20", icon: "text-primary" },
   ];
   const icons = [CheckCircle2, Zap, Award, TrendingUp, Sparkles];
   const IconComp = icons[idx % icons.length];
@@ -272,13 +272,13 @@ const ProjectDetailPage = () => {
     <PageLayout>
       <div ref={containerRef} className="relative min-h-screen overflow-hidden">
         {/* ─── Layered gradient background ─── */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(160_30%_96%)] via-[hsl(200_25%_95%)] to-[hsl(240_20%_96%)]" />
-        {/* Mesh-style accent blobs */}
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-[hsl(90_15%_95%)] to-background" />
+        {/* Mesh-style accent blobs using site palette */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -left-40 h-[600px] w-[600px] rounded-full bg-emerald-200/30 blur-[140px]" />
-          <div className="absolute top-[30%] -right-32 h-[500px] w-[500px] rounded-full bg-blue-200/25 blur-[120px]" />
-          <div className="absolute top-[60%] left-1/4 h-[450px] w-[450px] rounded-full bg-violet-200/20 blur-[130px]" />
-          <div className="absolute bottom-0 right-1/4 h-[400px] w-[400px] rounded-full bg-amber-200/20 blur-[110px]" />
+          <div className="absolute -top-40 -left-40 h-[600px] w-[600px] rounded-full bg-primary/10 blur-[140px]" />
+          <div className="absolute top-[30%] -right-32 h-[500px] w-[500px] rounded-full bg-primary/8 blur-[120px]" />
+          <div className="absolute top-[60%] left-1/4 h-[450px] w-[450px] rounded-full bg-accent/8 blur-[130px]" />
+          <div className="absolute bottom-0 right-1/4 h-[400px] w-[400px] rounded-full bg-accent/6 blur-[110px]" />
         </div>
 
         <div className="relative mx-auto max-w-5xl px-4 sm:px-6 py-24 sm:py-32">
@@ -364,16 +364,16 @@ const ProjectDetailPage = () => {
                 icon={AlertCircle}
                 title="Problem Statement"
                 subtitle="The challenge we set out to solve"
-                gradientFrom="from-red-500"
-                gradientTo="to-orange-500"
+                gradientFrom="from-destructive"
+                gradientTo="to-destructive/80"
               />
               <motion.div
                 initial={{ opacity: 0, x: -16 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="relative ml-0 sm:ml-14 p-6 rounded-xl border border-red-400/15 bg-red-500/5"
+                className="relative ml-0 sm:ml-14 p-6 rounded-xl border border-destructive/15 bg-destructive/5"
               >
-                <div className="absolute left-0 top-0 bottom-0 w-1 rounded-full bg-gradient-to-b from-red-400 to-orange-400" />
+                <div className="absolute left-0 top-0 bottom-0 w-1 rounded-full bg-gradient-to-b from-destructive to-destructive/60" />
                 <p className="text-muted-foreground leading-relaxed text-base pl-4">{project.problemStatement}</p>
               </motion.div>
             </div>
@@ -386,8 +386,8 @@ const ProjectDetailPage = () => {
                 icon={AlertCircle}
                 title="Key Challenges"
                 subtitle="Obstacles encountered during the build"
-                gradientFrom="from-orange-500"
-                gradientTo="to-amber-500"
+                gradientFrom="from-accent"
+                gradientTo="to-accent/80"
               />
               <ChallengesGrid challenges={project.challenges} />
             </div>
@@ -402,14 +402,14 @@ const ProjectDetailPage = () => {
                 icon={Target}
                 title="Purpose & Goals"
                 subtitle="What we aimed to achieve"
-                gradientFrom="from-emerald-500"
-                gradientTo="to-teal-500"
+                gradientFrom="from-primary"
+                gradientTo="to-primary/80"
               />
               <motion.div
                 initial={{ opacity: 0, scale: 0.97 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="relative ml-0 sm:ml-14 p-6 rounded-xl border border-emerald-400/15 bg-emerald-500/5"
+                className="relative ml-0 sm:ml-14 p-6 rounded-xl border border-primary/15 bg-primary/5"
               >
                 <p className="text-muted-foreground leading-relaxed text-base">{project.purpose}</p>
               </motion.div>
@@ -423,10 +423,10 @@ const ProjectDetailPage = () => {
                 icon={Layers}
                 title="System Architecture"
                 subtitle="How everything connects"
-                gradientFrom="from-violet-500"
-                gradientTo="to-purple-500"
+                gradientFrom="from-primary/90"
+                gradientTo="to-accent/90"
               />
-              <div className="rounded-2xl border border-violet-400/15 bg-violet-500/5 backdrop-blur-sm p-6 sm:p-10">
+              <div className="rounded-2xl border border-primary/15 bg-primary/5 backdrop-blur-sm p-6 sm:p-10">
                 <ArchitectureDiagram steps={project.architectureSteps} color={project.color} />
               </div>
             </div>
@@ -441,18 +441,18 @@ const ProjectDetailPage = () => {
                 icon={Wrench}
                 title="Implementation Details"
                 subtitle="Step-by-step technical breakdown"
-                gradientFrom="from-blue-500"
-                gradientTo="to-cyan-500"
+                gradientFrom="from-primary"
+                gradientTo="to-primary/70"
               />
               <div className="ml-0 sm:ml-14 space-y-3">
                 {project.implementation.map((step, idx) => {
                   const stepColors = [
-                    "border-blue-400/15 bg-blue-500/5",
-                    "border-cyan-400/15 bg-cyan-500/5",
-                    "border-teal-400/15 bg-teal-500/5",
-                    "border-indigo-400/15 bg-indigo-500/5",
-                    "border-sky-400/15 bg-sky-500/5",
-                    "border-violet-400/15 bg-violet-500/5",
+                    "border-primary/15 bg-primary/5",
+                    "border-primary/12 bg-primary/4",
+                    "border-accent/15 bg-accent/5",
+                    "border-primary/10 bg-primary/3",
+                    "border-accent/12 bg-accent/4",
+                    "border-primary/15 bg-primary/5",
                   ];
                   return (
                     <motion.div
@@ -464,7 +464,7 @@ const ProjectDetailPage = () => {
                       whileHover={{ x: 4 }}
                       className={`flex items-start gap-4 p-4 rounded-lg border ${stepColors[idx % stepColors.length]} transition-all cursor-default`}
                     >
-                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-gradient-to-br from-blue-500 to-cyan-500 text-[10px] font-bold text-white shadow-sm">
+                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-gradient-to-br from-primary to-primary/70 text-[10px] font-bold text-primary-foreground shadow-sm">
                         {String(idx + 1).padStart(2, "0")}
                       </div>
                       <p className="text-muted-foreground leading-relaxed text-sm">{step}</p>
@@ -482,8 +482,8 @@ const ProjectDetailPage = () => {
                 icon={Calendar}
                 title="Project Timeline"
                 subtitle="From kickoff to launch"
-                gradientFrom="from-amber-500"
-                gradientTo="to-yellow-500"
+                gradientFrom="from-accent"
+                gradientTo="to-accent/70"
               />
               <ProjectTimeline items={project.timeline} color={project.color} />
             </div>
@@ -498,8 +498,8 @@ const ProjectDetailPage = () => {
                 icon={ArrowLeftRight}
                 title="Before vs After"
                 subtitle="Measurable transformation"
-                gradientFrom="from-teal-500"
-                gradientTo="to-emerald-500"
+                gradientFrom="from-primary"
+                gradientTo="to-accent"
               />
               <BeforeAfterTable items={project.beforeAfter} />
             </div>
@@ -507,24 +507,24 @@ const ProjectDetailPage = () => {
 
           {/* ═══════════════════ IMPACT ═══════════════════ */}
           <FadeInSection delay={600}>
-            <div ref={impactRef} className="relative mb-16 overflow-hidden rounded-2xl border border-emerald-400/20 bg-gradient-to-br from-emerald-500/8 via-teal-500/5 to-cyan-500/8 p-8 sm:p-10 shadow-lg">
+            <div ref={impactRef} className="relative mb-16 overflow-hidden rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/8 via-primary/4 to-accent/6 p-8 sm:p-10 shadow-lg">
               <ConfettiBurst triggerRef={impactRef} />
 
               <SectionHeader
                 icon={Award}
                 title="Impact & Results"
                 subtitle="The bottom-line difference"
-                gradientFrom="from-emerald-500"
-                gradientTo="to-green-500"
+                gradientFrom="from-primary"
+                gradientTo="to-primary/80"
               />
               <div className="pl-0 sm:pl-14">
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
-                  className="inline-flex items-center gap-3 rounded-xl bg-emerald-500/10 border border-emerald-400/20 px-5 py-3 mb-6"
+                  className="inline-flex items-center gap-3 rounded-xl bg-primary/10 border border-primary/20 px-5 py-3 mb-6"
                 >
-                  <Sparkles className="h-5 w-5 text-emerald-500" />
+                  <Sparkles className="h-5 w-5 text-primary" />
                   <p className="text-lg sm:text-xl font-display font-bold text-foreground">
                     {project.impact.headline}
                   </p>
@@ -537,10 +537,10 @@ const ProjectDetailPage = () => {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: idx * 0.08, type: "spring" }}
-                      className="flex items-center gap-3 p-2 rounded-lg hover:bg-emerald-500/5 transition-colors"
+                      className="flex items-center gap-3 p-2 rounded-lg hover:bg-primary/5 transition-colors"
                     >
-                      <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-emerald-500/15">
-                        <CheckCircle2 className="h-3.5 w-3.5 text-emerald-500" />
+                      <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/15">
+                        <CheckCircle2 className="h-3.5 w-3.5 text-primary" />
                       </div>
                       <span className="text-sm font-medium text-foreground">{detail}</span>
                     </motion.div>
@@ -557,20 +557,20 @@ const ProjectDetailPage = () => {
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="relative rounded-2xl border border-amber-400/20 bg-gradient-to-br from-amber-500/8 via-yellow-500/5 to-orange-500/5 p-8 sm:p-10 overflow-hidden"
+                className="relative rounded-2xl border border-accent/20 bg-gradient-to-br from-accent/8 via-accent/4 to-accent/3 p-8 sm:p-10 overflow-hidden"
               >
                 <div className="relative">
-                  <Quote className="h-10 w-10 text-amber-500/20 mb-4" />
+                  <Quote className="h-10 w-10 text-accent/20 mb-4" />
                   <p className="text-lg sm:text-xl font-display font-semibold text-foreground leading-relaxed italic mb-6">
                     "{project.keyTakeaway}"
                   </p>
                   <div className="flex items-center gap-3">
-                    <div className="h-px flex-1 bg-gradient-to-r from-amber-400/20 to-transparent" />
-                    <div className="flex items-center gap-2 bg-amber-500/10 rounded-full px-4 py-1.5 border border-amber-400/15">
-                      <Lightbulb className="h-3.5 w-3.5 text-amber-500" />
-                      <span className="text-xs font-bold uppercase tracking-widest text-amber-600 dark:text-amber-400">Key Takeaway</span>
+                    <div className="h-px flex-1 bg-gradient-to-r from-accent/20 to-transparent" />
+                    <div className="flex items-center gap-2 bg-accent/10 rounded-full px-4 py-1.5 border border-accent/15">
+                      <Lightbulb className="h-3.5 w-3.5 text-accent" />
+                      <span className="text-xs font-bold uppercase tracking-widest text-accent-foreground">Key Takeaway</span>
                     </div>
-                    <div className="h-px flex-1 bg-gradient-to-l from-amber-400/20 to-transparent" />
+                    <div className="h-px flex-1 bg-gradient-to-l from-accent/20 to-transparent" />
                   </div>
                 </div>
               </motion.div>
@@ -586,16 +586,16 @@ const ProjectDetailPage = () => {
                 icon={Briefcase}
                 title="Real Use Cases"
                 subtitle="How this works in practice"
-                gradientFrom="from-indigo-500"
-                gradientTo="to-blue-500"
+                gradientFrom="from-primary/80"
+                gradientTo="to-primary"
               />
               <div className="ml-0 sm:ml-14 grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {project.useCases.map((useCase, idx) => {
                   const caseColors = [
-                    "border-indigo-400/15 bg-indigo-500/5 hover:bg-indigo-500/10",
-                    "border-blue-400/15 bg-blue-500/5 hover:bg-blue-500/10",
-                    "border-violet-400/15 bg-violet-500/5 hover:bg-violet-500/10",
-                    "border-sky-400/15 bg-sky-500/5 hover:bg-sky-500/10",
+                    "border-primary/15 bg-primary/5 hover:bg-primary/10",
+                    "border-accent/15 bg-accent/5 hover:bg-accent/10",
+                    "border-primary/12 bg-primary/4 hover:bg-primary/8",
+                    "border-accent/12 bg-accent/4 hover:bg-accent/8",
                   ];
                   return (
                     <motion.div
@@ -608,8 +608,8 @@ const ProjectDetailPage = () => {
                       className={`p-4 rounded-lg border ${caseColors[idx % caseColors.length]} transition-all cursor-default`}
                     >
                       <div className="flex items-start gap-3">
-                        <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-indigo-500/15 mt-0.5">
-                          <ChevronRight className="h-3.5 w-3.5 text-indigo-500" />
+                        <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-primary/15 mt-0.5">
+                          <ChevronRight className="h-3.5 w-3.5 text-primary" />
                         </div>
                         <p className="text-muted-foreground leading-relaxed text-sm">{useCase}</p>
                       </div>
@@ -627,8 +627,8 @@ const ProjectDetailPage = () => {
                 icon={Rocket}
                 title="Possible Improvements"
                 subtitle="What's next on the roadmap"
-                gradientFrom="from-rose-500"
-                gradientTo="to-pink-500"
+                gradientFrom="from-accent"
+                gradientTo="to-accent/70"
               />
               <div className="ml-0 sm:ml-14 grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {project.improvements.map((improvement, idx) => (
@@ -639,10 +639,10 @@ const ProjectDetailPage = () => {
                     viewport={{ once: true }}
                     transition={{ delay: idx * 0.08, type: "spring" }}
                     whileHover={{ scale: 1.01 }}
-                    className="flex items-start gap-3 p-4 rounded-lg border border-rose-400/15 bg-rose-500/5 hover:bg-rose-500/8 transition-all cursor-default"
+                    className="flex items-start gap-3 p-4 rounded-lg border border-accent/15 bg-accent/5 hover:bg-accent/8 transition-all cursor-default"
                   >
-                    <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-rose-500/15 mt-0.5">
-                      <Rocket className="h-3.5 w-3.5 text-rose-500" />
+                    <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-accent/15 mt-0.5">
+                      <Rocket className="h-3.5 w-3.5 text-accent" />
                     </div>
                     <p className="text-muted-foreground leading-relaxed text-sm">{improvement}</p>
                   </motion.div>
