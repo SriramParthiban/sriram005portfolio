@@ -270,15 +270,16 @@ const ProjectDetailPage = () => {
 
   return (
     <PageLayout>
-      <div ref={containerRef} className="relative min-h-screen overflow-hidden">
-        {/* ─── Layered gradient background ─── */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-[hsl(90_15%_95%)] to-background" />
-        {/* Mesh-style accent blobs using site palette */}
+      <div ref={containerRef} className="noise relative min-h-screen overflow-hidden">
+        {/* ─── Layered gradient background matching main site ─── */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[hsl(90_20%_95%)] via-background to-[hsl(90_18%_94%)]" />
+        {/* Warm earthy accent blobs matching home page palette */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute -top-40 -left-40 h-[600px] w-[600px] rounded-full bg-primary/10 blur-[140px]" />
-          <div className="absolute top-[30%] -right-32 h-[500px] w-[500px] rounded-full bg-primary/8 blur-[120px]" />
-          <div className="absolute top-[60%] left-1/4 h-[450px] w-[450px] rounded-full bg-accent/8 blur-[130px]" />
-          <div className="absolute bottom-0 right-1/4 h-[400px] w-[400px] rounded-full bg-accent/6 blur-[110px]" />
+          <div className="absolute -top-40 -left-40 h-[700px] w-[700px] rounded-full bg-primary/12 blur-[160px]" />
+          <div className="absolute top-[20%] -right-32 h-[600px] w-[600px] rounded-full bg-[hsl(90_15%_85%)]/40 blur-[140px]" />
+          <div className="absolute top-[50%] left-1/4 h-[500px] w-[500px] rounded-full bg-accent/10 blur-[150px]" />
+          <div className="absolute top-[75%] right-1/3 h-[450px] w-[450px] rounded-full bg-primary/8 blur-[130px]" />
+          <div className="absolute bottom-0 left-1/3 h-[400px] w-[400px] rounded-full bg-[hsl(38_40%_85%)]/30 blur-[120px]" />
         </div>
 
         <div className="relative mx-auto max-w-5xl px-4 sm:px-6 py-24 sm:py-32">
