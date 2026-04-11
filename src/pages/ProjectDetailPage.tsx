@@ -203,15 +203,15 @@ const SectionHeader = ({
 }) => (
   <div className="mb-8">
     <div className="flex items-center gap-3 mb-3">
-      <div className={`p-3 rounded-xl bg-gradient-to-br ${gradientFrom} ${gradientTo} shadow-sm`}>
-        <Icon className="h-5 w-5 text-white" />
+      <div className="p-2.5 rounded-xl border border-border bg-card/80 backdrop-blur-sm shadow-sm">
+        <Icon className="h-5 w-5 text-primary" />
       </div>
       <div>
         <h2 className="text-xl sm:text-2xl font-display font-bold text-foreground">{title}</h2>
         {subtitle && <p className="text-xs text-muted-foreground mt-0.5">{subtitle}</p>}
       </div>
     </div>
-    <div className={`ml-14 h-1 w-20 rounded-full bg-gradient-to-r ${gradientFrom} ${gradientTo} opacity-40`} />
+    <div className="ml-[52px] h-1 w-20 rounded-full bg-primary/30" />
   </div>
 );
 
