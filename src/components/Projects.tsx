@@ -43,59 +43,38 @@ const Projects = () => {
           <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground md:text-4xl lg:text-5xl">
             Key Projects
           </h2>
+          <p className="mt-3 text-sm text-muted-foreground/70 max-w-md">
+            A few things I've built that I'm proud of — real problems, real impact.
+          </p>
         </FadeInSection>
 
         <div className="mt-10 sm:mt-14">
-          {/* Project selector */}
-          <div className="flex items-center gap-2 mb-8">
-            <button onClick={prev} className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-all hover:bg-primary hover:text-white hover:border-primary">
+          {/* Project selector — simple text tabs */}
+          <div className="flex items-center gap-2 mb-10">
+            <button onClick={prev} className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-muted-foreground/50 transition-colors hover:text-foreground">
               <ChevronLeft className="h-4 w-4" />
             </button>
-            <div className="flex-1 flex items-center justify-center gap-2 flex-wrap">
+            <div className="flex-1 flex items-center justify-center gap-1 flex-wrap">
               {projects.map((proj, idx) => {
                 const isActive = idx === active;
                 return (
                   <button
                     key={idx}
                     onClick={() => goTo(idx)}
-                    className={`relative px-4 py-2 rounded-full text-xs sm:text-sm font-display font-semibold transition-all duration-400 ${
+                    className={`relative px-3.5 py-1.5 rounded-md text-xs sm:text-sm font-medium transition-all duration-300 ${
                       isActive
-                        ? "bg-primary text-white shadow-[0_0_24px_-4px_hsl(var(--primary)/0.3)]"
-                        : "bg-card text-muted-foreground border border-border hover:bg-muted hover:text-foreground"
+                        ? "text-foreground bg-card/80 shadow-sm border border-border/50"
+                        : "text-muted-foreground/60 hover:text-foreground/80"
                     }`}
                   >
                     {proj.title}
-                    {isActive && (
-                      <motion.div
-                        layoutId="project-pill"
-                        className="absolute inset-0 rounded-full bg-primary -z-10"
-                        transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                      />
-                    )}
                   </button>
                 );
               })}
             </div>
-            <button onClick={next} className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-all hover:bg-primary hover:text-white hover:border-primary">
+            <button onClick={next} className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-muted-foreground/50 transition-colors hover:text-foreground">
               <ChevronRight className="h-4 w-4" />
             </button>
-          </div>
-
-          {/* Counter */}
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <span className="text-xs font-mono text-muted-foreground/50">
-              {String(active + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
-            </span>
-            <div className="flex gap-1.5">
-              {projects.map((_, idx) => (
-                <div
-                  key={idx}
-                  className={`h-1 rounded-full transition-all duration-500 ${
-                    idx === active ? "w-6 bg-primary" : "w-1.5 bg-border"
-                  }`}
-                />
-              ))}
-            </div>
           </div>
 
           {/* Card */}
