@@ -48,9 +48,9 @@ const Projects = () => {
         </FadeInSection>
 
         <div className="mt-10 sm:mt-14">
-          {/* Project selector — simple text tabs */}
-          <div className="flex items-center gap-2 mb-10">
-            <button onClick={prev} className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-muted-foreground/50 transition-colors hover:text-foreground">
+          {/* Project selector */}
+          <div className="flex items-center gap-3 mb-10 rounded-xl bg-card/90 backdrop-blur-sm border border-border/40 px-3 py-2 shadow-sm">
+            <button onClick={prev} className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-muted-foreground/60 transition-colors hover:text-foreground">
               <ChevronLeft className="h-4 w-4" />
             </button>
             <div className="flex-1 flex items-center justify-center gap-1 flex-wrap">
@@ -60,18 +60,21 @@ const Projects = () => {
                   <button
                     key={idx}
                     onClick={() => goTo(idx)}
-                    className={`relative px-3.5 py-1.5 rounded-md text-xs sm:text-sm font-medium transition-all duration-300 ${
+                    className={`relative px-4 py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 ${
                       isActive
-                        ? "text-foreground bg-card/80 shadow-sm border border-border/50"
+                        ? "text-primary font-semibold"
                         : "text-muted-foreground/60 hover:text-foreground/80"
                     }`}
                   >
                     {proj.title}
+                    {isActive && (
+                      <div className="absolute bottom-0.5 left-1/2 -translate-x-1/2 h-0.5 w-6 rounded-full bg-primary/60" />
+                    )}
                   </button>
                 );
               })}
             </div>
-            <button onClick={next} className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-muted-foreground/50 transition-colors hover:text-foreground">
+            <button onClick={next} className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-muted-foreground/60 transition-colors hover:text-foreground">
               <ChevronRight className="h-4 w-4" />
             </button>
           </div>
