@@ -88,60 +88,59 @@ const Projects = () => {
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.4, ease: [0.25, 0.4, 0.25, 1] }}
-                className="group relative overflow-hidden rounded-2xl border border-border bg-card shadow-sm"
+                className="group relative overflow-hidden rounded-xl border border-border/40 bg-card/95 backdrop-blur-sm"
               >
-                <div className={`h-1 bg-gradient-to-r ${p.color}`} />
-                <div className="p-5 sm:p-8">
-                  <div className="flex items-start gap-4 sm:gap-5">
-                    <div className={`flex h-12 w-12 sm:h-14 sm:w-14 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${p.color} p-[1px]`}>
-                      <div className="flex h-full w-full items-center justify-center rounded-[14px] bg-card transition-all duration-300 group-hover:bg-transparent">
-                        <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary transition-colors group-hover:text-white" />
-                      </div>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-base sm:text-lg font-display font-bold text-foreground leading-snug">{p.fullTitle}</h3>
-                      <p className="mt-2 text-xs sm:text-sm leading-relaxed text-muted-foreground">{p.description}</p>
-                    </div>
+                <div className="p-6 sm:p-8">
+                  {/* Simple icon + title */}
+                  <div className="flex items-center gap-3 mb-1">
+                    <Icon className="h-5 w-5 text-primary/70" />
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-muted-foreground/50">
+                      Project {String(active + 1).padStart(2, "0")}
+                    </span>
                   </div>
+                  <h3 className="text-lg sm:text-xl font-display font-bold text-foreground leading-snug mt-2">
+                    {p.fullTitle}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground/80 max-w-xl">
+                    {p.description}
+                  </p>
 
-                  <div className="mt-6 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                  {/* Divider */}
+                  <div className="my-5 h-px bg-border/40" />
+
+                  {/* Metrics as simple list */}
+                  <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-2">
                     {p.metrics.map((m) => (
-                      <div key={m} className="flex items-center gap-2.5 text-xs sm:text-sm text-muted-foreground">
-                        <CheckCircle2 className="h-3.5 w-3.5 shrink-0 text-accent" />
+                      <div key={m} className="flex items-center gap-2 text-sm text-foreground/70">
+                        <span className="text-primary/60">→</span>
                         <span>{m}</span>
                       </div>
                     ))}
                   </div>
 
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {p.tech.map((t) => (
-                      <Badge
-                        key={t}
-                        variant="secondary"
-                        className="border border-border bg-muted text-muted-foreground text-xs font-medium transition-all duration-300 hover:border-primary/30 hover:bg-primary/10 hover:text-foreground"
-                      >
-                        {t}
-                      </Badge>
-                    ))}
-                  </div>
+                  {/* Tech as plain text */}
+                  <p className="mt-5 text-xs text-muted-foreground/50">
+                    <span className="font-medium text-muted-foreground/70">Built with </span>
+                    {p.tech.join(" · ")}
+                  </p>
 
-                  <div className="mt-6 flex flex-wrap items-center gap-3">
+                  {/* Actions — understated */}
+                  <div className="mt-6 flex flex-wrap items-center gap-4">
+                    <Link
+                      to={`/projects/${p.slug}`}
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-primary/80 transition-colors group/link"
+                    >
+                      Read case study
+                      <ExternalLink className="h-3.5 w-3.5 transition-transform group-hover/link:translate-x-0.5" />
+                    </Link>
                     {p.proofImage && (
                       <button
                         onClick={() => setShowProof(!showProof)}
-                        className="inline-flex items-center gap-2 rounded-lg border-2 border-accent bg-accent/10 px-5 py-2.5 text-sm font-semibold text-accent transition-all duration-300 hover:bg-accent hover:text-white hover:shadow-md min-h-[44px]"
+                        className="inline-flex items-center gap-1.5 text-sm text-muted-foreground/60 hover:text-foreground/80 transition-colors"
                       >
-                        <CheckCircle2 className="h-4 w-4" />
-                        {showProof ? "Hide Output" : "See It in Action"}
+                        {showProof ? "Hide preview" : "See it in action"}
                       </button>
                     )}
-                    <Link
-                      to={`/projects/${p.slug}`}
-                      className="inline-flex items-center gap-2 rounded-lg border-2 border-primary bg-primary/10 px-5 py-2.5 text-sm font-semibold text-primary transition-all duration-300 hover:bg-primary hover:text-white hover:shadow-md min-h-[44px]"
-                    >
-                      <ExternalLink className="h-4 w-4" />
-                      Read Case Study
-                    </Link>
                   </div>
 
                   <AnimatePresence>
