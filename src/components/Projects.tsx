@@ -1,6 +1,6 @@
-import { Badge } from "@/components/ui/badge";
 import FadeInSection from "./FadeInSection";
-import { CheckCircle2, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Link } from "react-router-dom";
