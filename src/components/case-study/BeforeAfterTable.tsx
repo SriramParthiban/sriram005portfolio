@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { ArrowRight, TrendingDown, TrendingUp } from "lucide-react";
+import { useState } from "react";
+import { ThumbsDown, ThumbsUp, ArrowRight } from "lucide-react";
 
 interface BeforeAfterItem {
   metric: string;
@@ -7,61 +8,123 @@ interface BeforeAfterItem {
   after: string;
 }
 
+const stickyColors = {
+  before: [
+    "bg-red-50 border-red-200/60",
+    "bg-orange-50 border-orange-200/60",
+    "bg-amber-50 border-amber-200/60",
+    "bg-rose-50 border-rose-200/60",
+    "bg-yellow-50 border-yellow-200/60",
+  ],
+  after: [
+    "bg-emerald-50 border-emerald-200/60",
+    "bg-green-50 border-green-200/60",
+    "bg-teal-50 border-teal-200/60",
+    "bg-lime-50 border-lime-200/60",
+    "bg-cyan-50 border-cyan-200/60",
+  ],
+};
+
+const rotations = [-1.5, 1, -0.8, 1.5, -1.2];
+
 const BeforeAfterTable = ({ items }: { items: BeforeAfterItem[] }) => {
+  const [flipped, setFlipped] = useState<Set<number>>(new Set());
+
+  const toggleFlip = (idx: number) => {
+    setFlipped((prev) => {
+      const next = new Set(prev);
+      if (next.has(idx)) next.delete(idx);
+      else next.add(idx);
+      return next;
+    });
+  };
+
   return (
-    <div className="overflow-hidden rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm shadow-lg">
-      {/* Header */}
-      <div className="grid grid-cols-[1.2fr,1fr,auto,1fr] items-center bg-gradient-to-r from-muted/60 via-muted/40 to-muted/60 border-b border-border/50 px-5 sm:px-8 py-4">
-        <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground/70">Metric</span>
-        <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-destructive/70 text-center">Before</span>
-        <span className="w-8" />
-        <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-accent/80 text-center">After</span>
+    <div className="space-y-8">
+      {/* Column headers */}
+      <div className="grid grid-cols-[1fr,auto,1fr] items-end gap-4 sm:gap-8 px-2">
+        <div className="text-center">
+          <div className="inline-flex items-center gap-2 rounded-full bg-destructive/10 border border-destructive/15 px-4 py-1.5">
+            <ThumbsDown className="h-3.5 w-3.5 text-destructive/60" />
+            <span className="text-xs font-bold uppercase tracking-[0.15em] text-destructive/70">Before</span>
+          </div>
+        </div>
+        <div className="w-8" />
+        <div className="text-center">
+          <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 border border-primary/15 px-4 py-1.5">
+            <ThumbsUp className="h-3.5 w-3.5 text-primary/60" />
+            <span className="text-xs font-bold uppercase tracking-[0.15em] text-primary/70">After</span>
+          </div>
+        </div>
       </div>
 
-      {/* Rows */}
-      {items.map((item, idx) => (
-        <motion.div
-          key={idx}
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: idx * 0.08, duration: 0.45, ease: "easeOut" }}
-          className={`group grid grid-cols-[1.2fr,1fr,auto,1fr] items-center px-5 sm:px-8 py-4 sm:py-5 transition-all duration-300 hover:bg-primary/[0.03] ${
-            idx < items.length - 1 ? "border-b border-border/30" : ""
-          }`}
-        >
-          {/* Metric name */}
-          <div className="flex items-center gap-3">
-            <div className="hidden sm:flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-muted/60 text-muted-foreground/50 group-hover:bg-primary/10 group-hover:text-primary/60 transition-colors">
-              <TrendingUp className="h-3.5 w-3.5" />
+      {/* Sticky note pairs */}
+      {items.map((item, idx) => {
+        const rot = rotations[idx % rotations.length];
+        const isRevealed = flipped.has(idx);
+        const beforeColor = stickyColors.before[idx % stickyColors.before.length];
+        const afterColor = stickyColors.after[idx % stickyColors.after.length];
+
+        return (
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: idx * 0.1, duration: 0.5 }}
+            className="grid grid-cols-[1fr,auto,1fr] items-center gap-4 sm:gap-8"
+          >
+            {/* Before sticky note */}
+            <motion.div
+              whileHover={{ scale: 1.03, rotate: rot * 0.5 }}
+              className={`relative p-4 sm:p-5 rounded-lg border shadow-[2px_3px_8px_rgba(0,0,0,0.06)] ${beforeColor} cursor-pointer transition-all`}
+              style={{ transform: `rotate(${rot * 0.6}deg)` }}
+              onClick={() => toggleFlip(idx)}
+            >
+              {/* Tape effect */}
+              <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-10 h-4 rounded-sm bg-amber-100/80 border border-amber-200/40 shadow-sm" />
+              <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground/50 mb-1.5 mt-1">
+                {item.metric}
+              </p>
+              <p className="text-sm sm:text-base font-bold text-destructive/70">
+                {item.before}
+              </p>
+            </motion.div>
+
+            {/* Arrow */}
+            <div className="flex flex-col items-center gap-1">
+              <motion.div
+                animate={isRevealed ? { scale: [1, 1.2, 1] } : {}}
+                className="flex h-8 w-8 items-center justify-center rounded-full bg-muted/60 border border-border/40"
+              >
+                <ArrowRight className="h-3.5 w-3.5 text-primary/50" />
+              </motion.div>
             </div>
-            <span className="text-sm font-semibold text-foreground/85">{item.metric}</span>
-          </div>
 
-          {/* Before value */}
-          <div className="flex items-center justify-center">
-            <span className="inline-flex items-center gap-1.5 rounded-lg bg-destructive/[0.06] border border-destructive/10 px-3 py-1.5 text-xs font-medium text-destructive/70 line-through decoration-destructive/30">
-              <TrendingDown className="h-3 w-3 hidden sm:block" />
-              {item.before}
-            </span>
-          </div>
+            {/* After sticky note */}
+            <motion.div
+              whileHover={{ scale: 1.03, rotate: -rot * 0.5 }}
+              className={`relative p-4 sm:p-5 rounded-lg border shadow-[2px_3px_8px_rgba(0,0,0,0.06)] ${afterColor} cursor-pointer transition-all`}
+              style={{ transform: `rotate(${-rot * 0.6}deg)` }}
+              onClick={() => toggleFlip(idx)}
+            >
+              {/* Tape effect */}
+              <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-10 h-4 rounded-sm bg-emerald-100/80 border border-emerald-200/40 shadow-sm" />
+              <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-muted-foreground/50 mb-1.5 mt-1">
+                {item.metric}
+              </p>
+              <p className="text-sm sm:text-base font-bold text-primary">
+                {item.after}
+              </p>
+            </motion.div>
+          </motion.div>
+        );
+      })}
 
-          {/* Arrow */}
-          <div className="flex items-center justify-center w-8">
-            <div className="flex h-6 w-6 items-center justify-center rounded-full bg-muted/50 group-hover:bg-accent/10 transition-colors">
-              <ArrowRight className="h-3 w-3 text-muted-foreground/40 group-hover:text-accent/60 transition-colors" />
-            </div>
-          </div>
-
-          {/* After value */}
-          <div className="flex items-center justify-center">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-accent/10 border border-accent/20 px-4 py-1.5 text-xs font-bold text-accent shadow-[0_0_12px_-3px_hsl(var(--accent)/0.15)]">
-              <TrendingUp className="h-3 w-3 hidden sm:block" />
-              {item.after}
-            </span>
-          </div>
-        </motion.div>
-      ))}
+      {/* Hint */}
+      <p className="text-center text-[10px] text-muted-foreground/40 italic mt-2">
+        Hover over the notes to peek closer
+      </p>
     </div>
   );
 };
