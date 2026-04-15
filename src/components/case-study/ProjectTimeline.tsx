@@ -21,11 +21,11 @@ const ProjectTimeline = ({ items, color }: { items: TimelineItem[]; color: strin
         >
           {/* Timeline connector */}
           <div className="relative flex flex-col items-center">
-            <div className={`z-10 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br ${color} shadow-md`}>
-              <Clock className="h-3.5 w-3.5 text-white" />
+            <div className="z-10 flex h-7 w-7 shrink-0 items-center justify-center rounded-full border-2 border-primary/40 bg-background">
+              <span className="text-xs font-bold text-primary/70">{String(idx + 1).padStart(2, '0')}</span>
             </div>
             {idx < items.length - 1 && (
-              <div className="w-px flex-1 bg-border mt-2" />
+              <div className="w-px flex-1 bg-border/60 mt-2" />
             )}
           </div>
 
