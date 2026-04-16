@@ -148,12 +148,17 @@ const Projects = () => {
                     <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent/70 mb-3">The Results</p>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                       {topMetrics.map((m, idx) => (
-                        <div key={idx} className="rounded-xl border border-border/60 bg-background/60 p-3.5">
-                          <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground/50 mb-2">{m.metric}</p>
-                          <div className="flex items-center gap-2">
-                            <span className="text-xs text-muted-foreground/40 line-through">{m.before}</span>
-                            <ArrowRight className="h-3 w-3 text-primary/50" />
-                            <span className="text-sm font-bold text-primary">{m.after}</span>
+                        <div key={idx} className="rounded-xl border border-border/60 bg-background/60 p-4 sm:p-5">
+                          <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground/60 mb-3">{m.metric}</p>
+                          <div className="flex flex-col gap-1">
+                            <div className="flex items-center gap-2">
+                              <span className="text-[10px] uppercase tracking-wide text-muted-foreground/40">Before</span>
+                              <span className="text-xs text-muted-foreground/50">{m.before}</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <span className="text-[10px] uppercase tracking-wide text-primary/60">After</span>
+                              <span className="text-base font-bold text-primary">{m.after}</span>
+                            </div>
                           </div>
                         </div>
                       ))}
