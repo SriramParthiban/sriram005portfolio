@@ -44,11 +44,10 @@ const FeaturedProjects = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.5, delay: idx * 0.1 }}
-                    whileHover={{ y: -4 }}
                   >
                     <Link
                       to={`/projects/${p.slug}`}
-                      className="group block h-full rounded-xl border border-border bg-card overflow-hidden shadow-md hover:shadow-xl hover:border-primary/40 transition-all"
+                      className="group block h-full rounded-xl border border-border bg-card overflow-hidden shadow-md hover:shadow-xl hover:border-primary/40 hover:-translate-y-1 transition-all duration-200 will-change-transform"
                     >
                       {/* Node header (n8n-style) */}
                       <div className="bg-gradient-to-r from-primary/15 to-accent/10 px-4 py-2.5 flex items-center justify-between border-b border-border">
