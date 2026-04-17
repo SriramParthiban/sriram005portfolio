@@ -90,8 +90,7 @@ const Services = () => {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, margin: "-50px" }}
                       transition={{ duration: 0.5, delay: idx * 0.1 }}
-                      whileHover={{ y: -4 }}
-                      className="relative z-10 rounded-xl border border-border bg-card shadow-md overflow-hidden group"
+                      className="relative z-10 rounded-xl border border-border bg-card shadow-md overflow-hidden group transition-transform duration-200 hover:-translate-y-1 will-change-transform"
                     >
                       {/* Header strip */}
                       <div className={`bg-gradient-to-r ${s.color} px-4 py-2.5 flex items-center justify-between`}>
