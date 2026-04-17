@@ -24,6 +24,11 @@ const Footer = lazy(() => import("@/components/Footer"));
 const StickyMobileCTA = lazy(() => import("@/components/StickyMobileCTA"));
 const ChatWidget = lazy(() => import("@/components/ChatWidget"));
 
+// New n8n-style homepage sections
+const Services = lazy(() => import("@/components/Services"));
+const ProcessFlow = lazy(() => import("@/components/ProcessFlow"));
+const FeaturedProjects = lazy(() => import("@/components/FeaturedProjects"));
+
 const SectionFallback = () => (
   <div className="flex items-center justify-center py-20">
     <div className="h-8 w-8 animate-spin rounded-full border-4 border-primary border-t-transparent" />
@@ -51,6 +56,9 @@ const Index = () => {
       <TrustStats />
       <SkillsTicker />
       <Suspense fallback={<SectionFallback />}>
+        <Services />
+        <ProcessFlow />
+        <FeaturedProjects />
         <About />
         <Experience />
         <div className="py-10 sm:py-14" />
