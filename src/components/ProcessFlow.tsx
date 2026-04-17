@@ -52,7 +52,7 @@ const ProcessFlow = () => {
           </div>
         </FadeInSection>
 
-        <FadeInSection delay={0.1}>
+        <FadeInSection delay={100}>
           <NodeCanvas className="p-6 sm:p-10">
             {/* Animated flow line (desktop) */}
             <div className="hidden lg:block absolute top-1/2 left-12 right-12 h-px -translate-y-1/2 pointer-events-none">

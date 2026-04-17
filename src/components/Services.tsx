@@ -61,7 +61,7 @@ const Services = () => {
           </div>
         </FadeInSection>
 
-        <FadeInSection delay={0.1}>
+        <FadeInSection delay={100}>
           <NodeCanvas className="p-6 sm:p-10">
             {/* Workflow row */}
             <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4">

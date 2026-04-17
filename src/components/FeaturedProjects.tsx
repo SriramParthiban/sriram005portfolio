@@ -31,7 +31,7 @@ const FeaturedProjects = () => {
           </div>
         </FadeInSection>
 
-        <FadeInSection delay={0.1}>
+        <FadeInSection delay={100}>
           <NodeCanvas className="p-6 sm:p-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {featured.map((p, idx) => {
