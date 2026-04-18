@@ -35,15 +35,17 @@ const Projects = () => {
     <section id="projects" className="dark-section relative px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
       <div className="absolute inset-0">
         <img src={coralSunlight} alt="" className="h-full w-full object-cover" loading="lazy" />
-        <div className="absolute inset-0 bg-background/40" />
+        {/* Stronger overlay + top gradient so the heading remains legible */}
+        <div className="absolute inset-0 bg-background/60" />
+        <div className="absolute inset-x-0 top-0 h-72 bg-gradient-to-b from-background/85 via-background/55 to-transparent" />
       </div>
       <div className="relative mx-auto max-w-4xl">
         <FadeInSection>
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary mb-3">Portfolio</p>
-          <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground md:text-4xl lg:text-5xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-primary mb-3 [text-shadow:0_1px_2px_hsl(var(--background)/0.6)]">Portfolio</p>
+          <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground md:text-4xl lg:text-5xl [text-shadow:0_2px_8px_hsl(var(--background)/0.7)]">
             Key Projects
           </h2>
-          <p className="mt-3 text-sm text-muted-foreground/70 max-w-md">
+          <p className="mt-3 text-sm sm:text-base text-foreground/85 max-w-md [text-shadow:0_1px_3px_hsl(var(--background)/0.7)]">
             A few things I've built that I'm proud of — real problems, real impact.
           </p>
         </FadeInSection>
