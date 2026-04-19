@@ -1,22 +1,15 @@
 import { motion } from "framer-motion";
-import { Search, PenTool, Code2, Rocket, CheckCircle2, ArrowRight, FlaskConical } from "lucide-react";
+import { Search, Code2, Rocket, CheckCircle2, ArrowRight, FlaskConical } from "lucide-react";
 import FadeInSection from "./FadeInSection";
 import NodeCanvas from "./n8n/NodeCanvas";
 
 const steps = [
   {
     icon: Search,
-    label: "Discover",
+    label: "Discover & Design",
     duration: "Week 1",
-    desc: "Audit current systems, map pain points, define success metrics.",
-    deliverable: "Strategy doc",
-  },
-  {
-    icon: PenTool,
-    label: "Design",
-    duration: "Week 1",
-    desc: "Architect the workflow, choose tools, prototype the flow.",
-    deliverable: "Visual blueprint",
+    desc: "Audit systems, map pain points, architect the workflow and prototype the flow.",
+    deliverable: "Strategy + blueprint",
   },
   {
     icon: Code2,
@@ -61,7 +54,7 @@ const ProcessFlow = () => {
 
         <FadeInSection delay={100}>
           <NodeCanvas className="p-6 sm:p-10">
-            <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+            <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {steps.map((step, idx) => {
                 const Icon = step.icon;
                 return (
