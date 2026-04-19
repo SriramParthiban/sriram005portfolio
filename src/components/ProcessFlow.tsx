@@ -6,7 +6,7 @@ import NodeCanvas from "./n8n/NodeCanvas";
 const steps = [
   {
     icon: Search,
-    label: "Discover & Design",
+    label: "Discover and Design",
     duration: "Week 1",
     desc: "Audit systems, map pain points, architect the workflow and prototype the flow.",
     deliverable: "Strategy + blueprint",
@@ -20,7 +20,7 @@ const steps = [
   },
   {
     icon: FlaskConical,
-    label: "Test & Evaluate",
+    label: "Test and Evaluate",
     duration: "Week 4",
     desc: "Run end-to-end tests, evaluate edge cases, refine until rock-solid.",
     deliverable: "QA sign-off",
