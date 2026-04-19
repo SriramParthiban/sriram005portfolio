@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Search, PenTool, Code2, Rocket, CheckCircle2 } from "lucide-react";
+import { Search, PenTool, Code2, Rocket, CheckCircle2, ArrowRight } from "lucide-react";
 import FadeInSection from "./FadeInSection";
 import NodeCanvas from "./n8n/NodeCanvas";
 
@@ -54,46 +54,6 @@ const ProcessFlow = () => {
 
         <FadeInSection delay={100}>
           <NodeCanvas className="p-6 sm:p-10">
-            {/* Hand-drawn flow line (desktop) */}
-            <div className="hidden lg:block absolute top-[38%] left-16 right-16 pointer-events-none" aria-hidden="true">
-              <svg
-                viewBox="0 0 1000 40"
-                preserveAspectRatio="none"
-                className="w-full h-10 overflow-visible"
-              >
-                <defs>
-                  <filter id="rough-ink" x="-5%" y="-50%" width="110%" height="200%">
-                    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="4" />
-                    <feDisplacementMap in="SourceGraphic" scale="2.2" />
-                  </filter>
-                </defs>
-                {/* Slightly wobbly hand-drawn path */}
-                <path
-                  d="M 5 22 C 130 14, 260 30, 380 19 S 640 11, 760 24 S 930 18, 995 21"
-                  fill="none"
-                  stroke="hsl(var(--primary) / 0.45)"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                  filter="url(#rough-ink)"
-                />
-                {/* Faint second pass for ink-bleed feel */}
-                <path
-                  d="M 5 23 C 130 15, 260 31, 380 20 S 640 12, 760 25 S 930 19, 995 22"
-                  fill="none"
-                  stroke="hsl(var(--primary) / 0.18)"
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  filter="url(#rough-ink)"
-                />
-              </svg>
-              {/* Traveling ink dot */}
-              <motion.div
-                className="absolute top-1/2 -translate-y-1/2 h-2 w-2 rounded-full bg-primary/80 shadow-[0_0_10px_hsl(var(--primary)/0.6)]"
-                animate={{ left: ["0%", "100%"] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-              />
-            </div>
-
             <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {steps.map((step, idx) => {
                 const Icon = step.icon;
