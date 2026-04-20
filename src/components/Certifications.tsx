@@ -8,7 +8,7 @@ const certs = [
   { name: "Full Stack Web Development Bootcamp", platform: "Udemy" },
   { name: "Supply Chain Operations", platform: "Udemy" },
   { name: "SQL for Data Science", platform: "UC Davis (Coursera)" },
-  { name: "Data Analytics & Power BI", platform: "PrepInsta" },
+  { name: "Data Analytics and Power BI", platform: "PrepInsta" },
   { name: "TensorFlow for Deep Learning", platform: "Udemy" },
 ];
 
