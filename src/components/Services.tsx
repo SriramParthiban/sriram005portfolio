@@ -28,7 +28,7 @@ const services = [
     tag: "Transform",
     color: "from-sky-500/80 to-blue-600/80",
     accent: "sky",
-    bullets: ["ETL & sync", "Warehouse setup", "Real-time dashboards"],
+    bullets: ["ETL and sync", "Warehouse setup", "Real-time dashboards"],
     output: "→ Single source of truth",
   },
   {

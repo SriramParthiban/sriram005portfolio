@@ -12,7 +12,7 @@ const experiences = [
     current: true,
     illustration: null,
     bullets: [
-      "Designed and deployed outbound & qualification automation systems using AI voice, chat, and SMS agents across multiple channels.",
+      "Designed and deployed outbound and qualification automation systems using AI voice, chat, and SMS agents across multiple channels.",
       "Built discovery logic that translates prospect signals into AE-ready handoffs, reducing manual qualification overhead significantly.",
       "Automated 1,000+ daily lead interactions with 99% operational accuracy through intelligent workflow orchestration.",
       "Developed real-time KPI dashboards providing visibility into pipeline health, conversion rates, and team performance.",

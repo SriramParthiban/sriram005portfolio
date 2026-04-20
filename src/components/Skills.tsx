@@ -15,10 +15,10 @@ const noteColors = [
 const rotations = [-1.5, 1, -0.5, 1.5, -1, 0.5];
 
 const categories = [
-  { title: "AI & Automation", icon: Cpu, skills: ["AI Voice Agents", "AI Chat Agents", "SMS Automation", "AI Workflows", "NLP/LLMs"] },
+  { title: "AI and Automation", icon: Cpu, skills: ["AI Voice Agents", "AI Chat Agents", "SMS Automation", "AI Workflows", "NLP/LLMs"] },
   { title: "Workflow Platforms", icon: Workflow, skills: ["n8n", "Make.com", "Zapier", "GoHighLevel"] },
-  { title: "APIs & Integrations", icon: Plug, skills: ["REST APIs", "Webhooks", "ETL Pipelines", "System Integrations"] },
-  { title: "Data & Analytics", icon: LineChart, skills: ["Python", "SQL", "Power BI", "Looker Studio", "BigQuery", "Advanced Excel"] },
+  { title: "APIs and Integrations", icon: Plug, skills: ["REST APIs", "Webhooks", "ETL Pipelines", "System Integrations"] },
+  { title: "Data and Analytics", icon: LineChart, skills: ["Python", "SQL", "Power BI", "Looker Studio", "BigQuery", "Advanced Excel"] },
   { title: "Programming", icon: Code, skills: ["Python", "JavaScript", "SQL"] },
   { title: "Consulting", icon: Users, skills: ["Requirements Gathering", "Solution Design", "Stakeholder Communication", "Documentation"] },
 ];
