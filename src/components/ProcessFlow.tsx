@@ -214,15 +214,15 @@ const ProcessFlow = () => {
 
           {/* Start label */}
           <div
-            className="absolute font-handwritten text-lg text-muted-foreground"
-            style={{ left: "1%", top: "92%", transform: "rotate(-4deg)" }}
+            className="absolute font-handwritten text-xl text-muted-foreground"
+            style={{ left: "1%", top: "94%", transform: "rotate(-4deg)" }}
           >
             ✱ you are here
           </div>
           {/* End flag */}
           <div
-            className="absolute font-handwritten text-lg text-primary"
-            style={{ right: "1%", top: "18%", transform: "rotate(4deg)" }}
+            className="absolute font-handwritten text-xl text-primary"
+            style={{ right: "1%", top: "26%", transform: "rotate(4deg)" }}
           >
             🏁 live system
           </div>
