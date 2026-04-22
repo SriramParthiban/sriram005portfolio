@@ -102,17 +102,17 @@ const ProcessFlow = () => {
         </FadeInSection>
 
         {/* === DESKTOP: trail map === */}
-        <div className="hidden lg:block relative h-[560px]">
+        <div className="hidden lg:block relative h-[720px]">
           {/* The winding path */}
           <svg
             aria-hidden
-            viewBox="0 0 1200 560"
+            viewBox="0 0 1200 720"
             className="absolute inset-0 w-full h-full"
             preserveAspectRatio="none"
           >
             {/* shadow path */}
             <path
-              d="M 60 460 Q 220 460, 320 320 T 600 280 Q 760 260, 880 380 T 1140 140"
+              d="M 60 600 Q 240 600, 340 420 T 620 360 Q 800 340, 900 500 T 1140 180"
               fill="none"
               stroke="hsl(var(--foreground))"
               strokeOpacity="0.08"
@@ -121,7 +121,7 @@ const ProcessFlow = () => {
             />
             {/* dashed trail */}
             <path
-              d="M 60 460 Q 220 460, 320 320 T 600 280 Q 760 260, 880 380 T 1140 140"
+              d="M 60 600 Q 240 600, 340 420 T 620 360 Q 800 340, 900 500 T 1140 180"
               fill="none"
               stroke="hsl(var(--primary))"
               strokeOpacity="0.7"
@@ -129,12 +129,11 @@ const ProcessFlow = () => {
               strokeLinecap="round"
               strokeDasharray="2 10"
             />
-            {/* footprints / dots along path */}
             {[0.12, 0.32, 0.55, 0.78, 0.92].map((t, i) => (
               <circle
                 key={i}
                 cx={60 + t * 1080}
-                cy={460 - Math.sin(t * Math.PI) * 280}
+                cy={600 - Math.sin(t * Math.PI) * 360}
                 r="3"
                 fill="hsl(var(--accent))"
                 opacity="0.6"
@@ -142,12 +141,12 @@ const ProcessFlow = () => {
             ))}
           </svg>
 
-          {/* Stops positioned along the trail */}
+          {/* Stops positioned along the trail — wider cards, more breathing room */}
           {[
-            { left: "4%", top: "62%", rotate: -3, tipDir: "down" },
-            { left: "26%", top: "8%", rotate: 2.2, tipDir: "down" },
-            { left: "52%", top: "44%", rotate: -1.8, tipDir: "up" },
-            { left: "78%", top: "4%", rotate: 2.6, tipDir: "down" },
+            { left: "1%", top: "58%", rotate: -2.4 },
+            { left: "26%", top: "4%", rotate: 1.8 },
+            { left: "51%", top: "48%", rotate: -1.6 },
+            { left: "75%", top: "2%", rotate: 2.2 },
           ].map((pos, idx) => {
             const stop = stops[idx];
             const Icon = stop.icon;
@@ -160,50 +159,50 @@ const ProcessFlow = () => {
                 transition={{ duration: 0.55, delay: idx * 0.18 }}
                 whileHover={{ rotate: 0, y: -4 }}
                 style={{ left: pos.left, top: pos.top, transform: `rotate(${pos.rotate}deg)` }}
-                className="absolute w-[230px]"
+                className="absolute w-[300px]"
               >
                 {/* push-pin */}
                 <div
                   aria-hidden
-                  className="absolute -top-2 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-accent shadow-[0_2px_4px_rgba(0,0,0,0.3)] z-10"
+                  className="absolute -top-2 left-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-accent shadow-[0_2px_4px_rgba(0,0,0,0.3)] z-10"
                 />
-                <div className="relative bg-card border border-border rounded-md p-4 shadow-[0_10px_24px_-12px_rgba(0,0,0,0.35)]">
+                <div className="relative bg-card border border-border rounded-md p-6 shadow-[0_12px_28px_-12px_rgba(0,0,0,0.35)]">
                   {/* stop number */}
                   <div
-                    className="absolute -top-3 -left-3 font-handwritten text-2xl text-accent bg-card px-2 leading-none"
+                    className="absolute -top-4 -left-3 font-handwritten text-3xl text-accent bg-card px-2 leading-none"
                     style={{ transform: "rotate(-8deg)" }}
                   >
                     stop 0{idx + 1}
                   </div>
 
-                  <div className="flex items-center gap-2 mb-2 mt-1">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-md border border-dashed border-primary/60 text-primary">
-                      <Icon className="h-4 w-4" />
+                  <div className="flex items-center gap-3 mb-3 mt-1">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-md border border-dashed border-primary/60 text-primary">
+                      <Icon className="h-5 w-5" />
                     </div>
                     <span
-                      className="font-handwritten text-base text-muted-foreground"
+                      className="font-handwritten text-lg text-muted-foreground"
                       style={{ transform: "rotate(-1deg)" }}
                     >
                       {stop.week}
                     </span>
                   </div>
 
-                  <h3 className="text-base font-display font-bold text-foreground mb-1.5 leading-tight">
+                  <h3 className="text-xl font-display font-bold text-foreground mb-2 leading-tight">
                     {stop.label}
                   </h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed mb-2">
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-3">
                     {stop.desc}
                   </p>
 
-                  <div className="flex items-baseline gap-1.5 pt-1.5 border-t border-dashed border-border">
-                    <span className="text-[9px] uppercase tracking-widest text-muted-foreground">you get</span>
-                    <span className="font-handwritten text-base text-primary leading-none">
+                  <div className="flex items-baseline gap-2 pt-2 border-t border-dashed border-border">
+                    <span className="text-[10px] uppercase tracking-widest text-muted-foreground">you get</span>
+                    <span className="font-handwritten text-lg text-primary leading-none">
                       {stop.deliverable}
                     </span>
                   </div>
 
                   <p
-                    className="font-handwritten text-sm text-muted-foreground/80 mt-1.5 italic"
+                    className="font-handwritten text-base text-muted-foreground/80 mt-2 italic"
                     style={{ transform: "rotate(-0.6deg)" }}
                   >
                     ↳ {stop.aside}
@@ -215,15 +214,15 @@ const ProcessFlow = () => {
 
           {/* Start label */}
           <div
-            className="absolute font-handwritten text-lg text-muted-foreground"
-            style={{ left: "1%", top: "92%", transform: "rotate(-4deg)" }}
+            className="absolute font-handwritten text-xl text-muted-foreground"
+            style={{ left: "1%", top: "94%", transform: "rotate(-4deg)" }}
           >
             ✱ you are here
           </div>
           {/* End flag */}
           <div
-            className="absolute font-handwritten text-lg text-primary"
-            style={{ right: "1%", top: "18%", transform: "rotate(4deg)" }}
+            className="absolute font-handwritten text-xl text-primary"
+            style={{ right: "1%", top: "26%", transform: "rotate(4deg)" }}
           >
             🏁 live system
           </div>
