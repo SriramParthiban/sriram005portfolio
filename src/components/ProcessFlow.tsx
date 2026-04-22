@@ -153,13 +153,13 @@ const ProcessFlow = () => {
             return (
               <motion.div
                 key={stop.label}
-                initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                initial={{ opacity: 0, y: 20, scale: 0.95 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.55, delay: idx * 0.18 }}
-                whileHover={{ rotate: 0, y: -4 }}
-                style={{ left: pos.left, top: pos.top, transform: `rotate(${pos.rotate}deg)` }}
-                className="absolute w-[300px]"
+                transition={{ duration: 0.5, delay: idx * 0.15, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ rotate: 0, y: -6, transition: { type: "spring", stiffness: 380, damping: 26, mass: 0.6 } }}
+                style={{ left: pos.left, top: pos.top, rotate: pos.rotate }}
+                className="absolute w-[300px] will-change-transform"
               >
                 {/* push-pin — top or bottom depending on where the trail meets it */}
                 <div
