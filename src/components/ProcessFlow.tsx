@@ -102,17 +102,26 @@ const ProcessFlow = () => {
         </FadeInSection>
 
         {/* === DESKTOP: trail map === */}
-        <div className="hidden lg:block relative h-[720px]">
-          {/* The winding path */}
+        <div className="hidden lg:block relative h-[760px]">
+          {/* The winding path — threaded through every pin */}
           <svg
             aria-hidden
-            viewBox="0 0 1200 720"
+            viewBox="0 0 1200 760"
             className="absolute inset-0 w-full h-full"
             preserveAspectRatio="none"
           >
+            {/*
+              Anchors (cx, cy) it must pass through:
+                start    ( 30, 700)
+                pin 1    (225, 410)  top of card 1
+                pin 2    (486, 320)  bottom of card 2
+                pin 3    (813, 410)  top of card 3
+                pin 4    (1074, 320) bottom of card 4
+                end      (1170, 60)
+            */}
             {/* shadow path */}
             <path
-              d="M 60 600 Q 240 600, 340 420 T 620 360 Q 800 340, 900 500 T 1140 180"
+              d="M 30 700 C 100 700, 160 560, 225 410 S 400 220, 486 320 S 700 520, 813 410 S 970 220, 1074 320 S 1150 140, 1170 60"
               fill="none"
               stroke="hsl(var(--foreground))"
               strokeOpacity="0.08"
@@ -121,35 +130,26 @@ const ProcessFlow = () => {
             />
             {/* dashed trail */}
             <path
-              d="M 60 600 Q 240 600, 340 420 T 620 360 Q 800 340, 900 500 T 1140 180"
+              d="M 30 700 C 100 700, 160 560, 225 410 S 400 220, 486 320 S 700 520, 813 410 S 970 220, 1074 320 S 1150 140, 1170 60"
               fill="none"
               stroke="hsl(var(--primary))"
-              strokeOpacity="0.7"
+              strokeOpacity="0.75"
               strokeWidth="3"
               strokeLinecap="round"
               strokeDasharray="2 10"
             />
-            {[0.12, 0.32, 0.55, 0.78, 0.92].map((t, i) => (
-              <circle
-                key={i}
-                cx={60 + t * 1080}
-                cy={600 - Math.sin(t * Math.PI) * 360}
-                r="3"
-                fill="hsl(var(--accent))"
-                opacity="0.6"
-              />
-            ))}
           </svg>
 
-          {/* Stops positioned along the trail — wider cards, more breathing room */}
+          {/* Stops — alternating bottom / top so the trail can weave through */}
           {[
-            { left: "1%", top: "58%", rotate: -2.4 },
-            { left: "26%", top: "4%", rotate: 1.8 },
-            { left: "51%", top: "48%", rotate: -1.6 },
-            { left: "75%", top: "2%", rotate: 2.2 },
+            { left: "4%", top: "56%", rotate: -2.4, pin: "top" },
+            { left: "28%", top: "4%", rotate: 1.8, pin: "bottom" },
+            { left: "52%", top: "56%", rotate: -1.6, pin: "top" },
+            { left: "76%", top: "4%", rotate: 2.2, pin: "bottom" },
           ].map((pos, idx) => {
             const stop = stops[idx];
             const Icon = stop.icon;
+            const pinTop = pos.pin === "top";
             return (
               <motion.div
                 key={stop.label}
@@ -161,10 +161,12 @@ const ProcessFlow = () => {
                 style={{ left: pos.left, top: pos.top, transform: `rotate(${pos.rotate}deg)` }}
                 className="absolute w-[300px]"
               >
-                {/* push-pin */}
+                {/* push-pin — top or bottom depending on where the trail meets it */}
                 <div
                   aria-hidden
-                  className="absolute -top-2 left-1/2 -translate-x-1/2 w-3.5 h-3.5 rounded-full bg-accent shadow-[0_2px_4px_rgba(0,0,0,0.3)] z-10"
+                  className={`absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-accent shadow-[0_2px_4px_rgba(0,0,0,0.4)] ring-2 ring-card z-10 ${
+                    pinTop ? "-top-2" : "-bottom-2"
+                  }`}
                 />
                 <div className="relative bg-card border border-border rounded-md p-6 shadow-[0_12px_28px_-12px_rgba(0,0,0,0.35)]">
                   {/* stop number */}
@@ -180,7 +182,7 @@ const ProcessFlow = () => {
                       <Icon className="h-5 w-5" />
                     </div>
                     <span
-                      className="font-handwritten text-lg text-muted-foreground"
+                      className="font-handwritten text-xl text-foreground/80"
                       style={{ transform: "rotate(-1deg)" }}
                     >
                       {stop.week}
@@ -190,19 +192,19 @@ const ProcessFlow = () => {
                   <h3 className="text-xl font-display font-bold text-foreground mb-2 leading-tight">
                     {stop.label}
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                  <p className="text-[15px] text-foreground/75 leading-relaxed mb-3">
                     {stop.desc}
                   </p>
 
                   <div className="flex items-baseline gap-2 pt-2 border-t border-dashed border-border">
-                    <span className="text-[10px] uppercase tracking-widest text-muted-foreground">you get</span>
-                    <span className="font-handwritten text-lg text-primary leading-none">
+                    <span className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">you get</span>
+                    <span className="font-handwritten text-xl text-primary leading-none">
                       {stop.deliverable}
                     </span>
                   </div>
 
                   <p
-                    className="font-handwritten text-base text-muted-foreground/80 mt-2 italic"
+                    className="font-handwritten text-lg text-foreground/70 mt-2 italic"
                     style={{ transform: "rotate(-0.6deg)" }}
                   >
                     ↳ {stop.aside}
