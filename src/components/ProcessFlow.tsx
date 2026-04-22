@@ -1,47 +1,39 @@
 import { motion } from "framer-motion";
-import { Search, Code2, Rocket, FlaskConical } from "lucide-react";
+import { Compass, Hammer, Bug, Flag } from "lucide-react";
 import FadeInSection from "./FadeInSection";
 
-const steps = [
+const stops = [
   {
-    icon: Search,
+    icon: Compass,
     label: "Discover and Design",
-    duration: "Week 1",
-    desc: "I sit with you, learn the mess, sketch the workflow on paper before touching any code.",
+    week: "week 1",
+    desc: "We sit down, untangle the mess, sketch the workflow on paper before any code shows up.",
     deliverable: "a clear blueprint",
-    note: "this is where we save weeks later",
-    rotate: -2.2,
-    accent: "hsl(152, 55%, 32%)",
+    aside: "this is where weeks get saved later",
   },
   {
-    icon: Code2,
+    icon: Hammer,
     label: "Build",
-    duration: "Week 1 to 3",
-    desc: "Wiring APIs, writing the logic, breaking things on purpose so they hold up in production.",
+    week: "week 1 to 3",
+    desc: "Wiring APIs, writing the logic, breaking things on purpose so they hold up in the wild.",
     deliverable: "a working system",
-    note: "coffee count: classified",
-    rotate: 1.8,
-    accent: "hsl(38, 75%, 48%)",
+    aside: "coffee count: classified",
   },
   {
-    icon: FlaskConical,
+    icon: Bug,
     label: "Test and Evaluate",
-    duration: "Week 4",
-    desc: "Edge cases, weird inputs, what-ifs. We try to break it before your users ever can.",
-    deliverable: "a tested, sturdy build",
-    note: "if it bends, we fix it now",
-    rotate: -1.4,
-    accent: "hsl(152, 55%, 32%)",
+    week: "week 4",
+    desc: "Edge cases, weird inputs, what-ifs. We try to break it before any of your users can.",
+    deliverable: "a sturdy, tested build",
+    aside: "if it bends, we fix it now",
   },
   {
-    icon: Rocket,
+    icon: Flag,
     label: "Deploy",
-    duration: "Week 4 and beyond",
-    desc: "Go live, watch the dashboards, train your team so they own it long after I'm gone.",
+    week: "week 4 and beyond",
+    desc: "Go live, watch the dashboards, train your team so they fully own it after I'm gone.",
     deliverable: "live + handover",
-    note: "the part everyone celebrates",
-    rotate: 2.4,
-    accent: "hsl(38, 75%, 48%)",
+    aside: "the part everyone celebrates",
   },
 ];
 
@@ -51,35 +43,41 @@ const ProcessFlow = () => {
       id="process"
       className="relative px-4 sm:px-6 py-20 sm:py-28 overflow-hidden bg-secondary/20"
     >
-      {/* Notebook paper texture */}
+      {/* Faint grid like surveyor paper */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-[0.18] dark:opacity-[0.08]"
+        className="pointer-events-none absolute inset-0 opacity-[0.10] dark:opacity-[0.06]"
         style={{
           backgroundImage:
-            "repeating-linear-gradient(0deg, transparent 0 31px, hsl(var(--border)) 31px 32px)",
+            "linear-gradient(hsl(var(--foreground)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)",
+          backgroundSize: "44px 44px",
         }}
       />
-      {/* Soft margin line, like a notebook */}
-      <div
+
+      {/* corner compass scribble */}
+      <svg
         aria-hidden
-        className="pointer-events-none absolute inset-y-0 left-12 w-px bg-accent/30 hidden md:block"
-      />
+        viewBox="0 0 80 80"
+        className="hidden md:block absolute top-10 right-10 w-20 h-20 text-accent/60"
+      >
+        <circle cx="40" cy="40" r="28" fill="none" stroke="currentColor" strokeWidth="1.4" strokeDasharray="3 4" />
+        <path d="M40 14 L44 40 L40 66 L36 40 Z" fill="currentColor" opacity="0.7" />
+        <text x="40" y="11" textAnchor="middle" fontSize="9" fill="currentColor" fontFamily="Caveat, cursive">N</text>
+      </svg>
 
       <div className="relative mx-auto max-w-6xl">
         <FadeInSection>
-          <div className="text-center mb-14">
+          <div className="text-center mb-16">
             <p
               className="font-handwritten text-2xl sm:text-3xl text-primary mb-1"
               style={{ transform: "rotate(-2deg)" }}
             >
-              how it actually goes
+              the route I take
             </p>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-foreground">
               From a messy idea
               <span className="relative inline-block mx-2">
                 <span className="relative z-10">to a live system</span>
-                {/* hand-drawn underline */}
                 <svg
                   aria-hidden
                   viewBox="0 0 220 12"
@@ -97,140 +95,212 @@ const ProcessFlow = () => {
               </span>
             </h2>
             <p className="mt-5 text-sm sm:text-base text-muted-foreground max-w-xl mx-auto">
-              No black boxes. No agency-speak. Just four honest weeks, drawn out
-              the way I'd explain it on a whiteboard.
+              Think of it less like a process diagram and more like a trail map —
+              four honest stops between "what if" and "it's live".
             </p>
           </div>
         </FadeInSection>
 
-        {/* Cards */}
-        <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
-          {steps.map((step, idx) => {
-            const Icon = step.icon;
+        {/* === DESKTOP: trail map === */}
+        <div className="hidden lg:block relative h-[560px]">
+          {/* The winding path */}
+          <svg
+            aria-hidden
+            viewBox="0 0 1200 560"
+            className="absolute inset-0 w-full h-full"
+            preserveAspectRatio="none"
+          >
+            {/* shadow path */}
+            <path
+              d="M 60 460 Q 220 460, 320 320 T 600 280 Q 760 260, 880 380 T 1140 140"
+              fill="none"
+              stroke="hsl(var(--foreground))"
+              strokeOpacity="0.08"
+              strokeWidth="14"
+              strokeLinecap="round"
+            />
+            {/* dashed trail */}
+            <path
+              d="M 60 460 Q 220 460, 320 320 T 600 280 Q 760 260, 880 380 T 1140 140"
+              fill="none"
+              stroke="hsl(var(--primary))"
+              strokeOpacity="0.7"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeDasharray="2 10"
+            />
+            {/* footprints / dots along path */}
+            {[0.12, 0.32, 0.55, 0.78, 0.92].map((t, i) => (
+              <circle
+                key={i}
+                cx={60 + t * 1080}
+                cy={460 - Math.sin(t * Math.PI) * 280}
+                r="3"
+                fill="hsl(var(--accent))"
+                opacity="0.6"
+              />
+            ))}
+          </svg>
+
+          {/* Stops positioned along the trail */}
+          {[
+            { left: "4%", top: "62%", rotate: -3, tipDir: "down" },
+            { left: "26%", top: "8%", rotate: 2.2, tipDir: "down" },
+            { left: "52%", top: "44%", rotate: -1.8, tipDir: "up" },
+            { left: "78%", top: "4%", rotate: 2.6, tipDir: "down" },
+          ].map((pos, idx) => {
+            const stop = stops[idx];
+            const Icon = stop.icon;
             return (
-              <FadeInSection key={step.label} delay={idx * 90}>
-                <motion.div
-                  whileHover={{ rotate: 0, y: -6 }}
-                  transition={{ type: "spring", stiffness: 220, damping: 18 }}
-                  style={{ transform: `rotate(${step.rotate}deg)` }}
-                  className="relative"
-                >
-                  {/* Tape */}
+              <motion.div
+                key={stop.label}
+                initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.55, delay: idx * 0.18 }}
+                whileHover={{ rotate: 0, y: -4 }}
+                style={{ left: pos.left, top: pos.top, transform: `rotate(${pos.rotate}deg)` }}
+                className="absolute w-[230px]"
+              >
+                {/* push-pin */}
+                <div
+                  aria-hidden
+                  className="absolute -top-2 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-accent shadow-[0_2px_4px_rgba(0,0,0,0.3)] z-10"
+                />
+                <div className="relative bg-card border border-border rounded-md p-4 shadow-[0_10px_24px_-12px_rgba(0,0,0,0.35)]">
+                  {/* stop number */}
                   <div
-                    aria-hidden
-                    className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-5 bg-accent/40 backdrop-blur-sm rounded-sm shadow-sm"
-                    style={{ transform: "translateX(-50%) rotate(-3deg)" }}
-                  />
-
-                  {/* Card */}
-                  <div className="relative bg-card border border-border/70 rounded-md p-5 pt-7 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.25)]">
-                    {/* Step number, scribbled */}
-                    <div
-                      className="absolute -top-4 -right-3 font-handwritten text-3xl text-accent"
-                      style={{ transform: "rotate(8deg)" }}
-                    >
-                      {`0${idx + 1}.`}
-                    </div>
-
-                    {/* Icon + week */}
-                    <div className="flex items-center gap-3 mb-3">
-                      <div
-                        className="flex h-10 w-10 items-center justify-center rounded-md border border-dashed"
-                        style={{
-                          borderColor: step.accent,
-                          color: step.accent,
-                          backgroundColor: "hsl(var(--background))",
-                        }}
-                      >
-                        <Icon className="h-5 w-5" />
-                      </div>
-                      <span
-                        className="font-handwritten text-lg text-muted-foreground"
-                        style={{ transform: "rotate(-1deg)" }}
-                      >
-                        {step.duration}
-                      </span>
-                    </div>
-
-                    <h3 className="text-lg font-display font-bold text-foreground mb-2">
-                      {step.label}
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                      {step.desc}
-                    </p>
-
-                    {/* Hand-drawn divider */}
-                    <svg
-                      aria-hidden
-                      viewBox="0 0 200 6"
-                      className="w-full h-2 text-border mb-3"
-                      preserveAspectRatio="none"
-                    >
-                      <path
-                        d="M2 3 Q 50 0, 100 3 T 198 3"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-
-                    {/* Deliverable */}
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-[10px] uppercase tracking-widest text-muted-foreground">
-                        you get
-                      </span>
-                      <span
-                        className="font-handwritten text-lg leading-none"
-                        style={{ color: step.accent }}
-                      >
-                        {step.deliverable}
-                      </span>
-                    </div>
-
-                    {/* Margin note */}
-                    <p
-                      className="font-handwritten text-sm text-muted-foreground/80 mt-3 italic"
-                      style={{ transform: "rotate(-0.8deg)" }}
-                    >
-                      ↳ {step.note}
-                    </p>
+                    className="absolute -top-3 -left-3 font-handwritten text-2xl text-accent bg-card px-2 leading-none"
+                    style={{ transform: "rotate(-8deg)" }}
+                  >
+                    stop 0{idx + 1}
                   </div>
-                </motion.div>
-              </FadeInSection>
+
+                  <div className="flex items-center gap-2 mb-2 mt-1">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-md border border-dashed border-primary/60 text-primary">
+                      <Icon className="h-4 w-4" />
+                    </div>
+                    <span
+                      className="font-handwritten text-base text-muted-foreground"
+                      style={{ transform: "rotate(-1deg)" }}
+                    >
+                      {stop.week}
+                    </span>
+                  </div>
+
+                  <h3 className="text-base font-display font-bold text-foreground mb-1.5 leading-tight">
+                    {stop.label}
+                  </h3>
+                  <p className="text-xs text-muted-foreground leading-relaxed mb-2">
+                    {stop.desc}
+                  </p>
+
+                  <div className="flex items-baseline gap-1.5 pt-1.5 border-t border-dashed border-border">
+                    <span className="text-[9px] uppercase tracking-widest text-muted-foreground">you get</span>
+                    <span className="font-handwritten text-base text-primary leading-none">
+                      {stop.deliverable}
+                    </span>
+                  </div>
+
+                  <p
+                    className="font-handwritten text-sm text-muted-foreground/80 mt-1.5 italic"
+                    style={{ transform: "rotate(-0.6deg)" }}
+                  >
+                    ↳ {stop.aside}
+                  </p>
+                </div>
+              </motion.div>
             );
           })}
+
+          {/* Start label */}
+          <div
+            className="absolute font-handwritten text-lg text-muted-foreground"
+            style={{ left: "1%", top: "92%", transform: "rotate(-4deg)" }}
+          >
+            ✱ you are here
+          </div>
+          {/* End flag */}
+          <div
+            className="absolute font-handwritten text-lg text-primary"
+            style={{ right: "1%", top: "18%", transform: "rotate(4deg)" }}
+          >
+            🏁 live system
+          </div>
+        </div>
+
+        {/* === MOBILE / TABLET: vertical trail === */}
+        <div className="lg:hidden relative">
+          {/* vertical dashed trail */}
+          <div
+            aria-hidden
+            className="absolute left-7 top-4 bottom-4 w-px"
+            style={{
+              backgroundImage:
+                "repeating-linear-gradient(to bottom, hsl(var(--primary) / 0.7) 0 6px, transparent 6px 14px)",
+            }}
+          />
+          <div className="space-y-8">
+            {stops.map((stop, idx) => {
+              const Icon = stop.icon;
+              const rot = idx % 2 === 0 ? -1.6 : 1.8;
+              return (
+                <FadeInSection key={stop.label} delay={idx * 90}>
+                  <div className="relative pl-16">
+                    {/* trail node */}
+                    <div className="absolute left-4 top-3 flex h-7 w-7 items-center justify-center rounded-full bg-card border-2 border-primary shadow-md">
+                      <Icon className="h-3.5 w-3.5 text-primary" />
+                    </div>
+                    <motion.div
+                      whileHover={{ rotate: 0 }}
+                      style={{ transform: `rotate(${rot}deg)` }}
+                      className="relative bg-card border border-border rounded-md p-4 shadow-[0_8px_20px_-12px_rgba(0,0,0,0.3)]"
+                    >
+                      <div
+                        className="absolute -top-3 right-3 font-handwritten text-xl text-accent bg-card px-1.5 leading-none"
+                        style={{ transform: "rotate(6deg)" }}
+                      >
+                        stop 0{idx + 1}
+                      </div>
+                      <div className="flex items-baseline justify-between mb-1">
+                        <h3 className="text-base font-display font-bold text-foreground">
+                          {stop.label}
+                        </h3>
+                        <span className="font-handwritten text-sm text-muted-foreground">
+                          {stop.week}
+                        </span>
+                      </div>
+                      <p className="text-xs text-muted-foreground leading-relaxed mb-2">
+                        {stop.desc}
+                      </p>
+                      <div className="flex items-baseline gap-1.5 pt-1.5 border-t border-dashed border-border">
+                        <span className="text-[9px] uppercase tracking-widest text-muted-foreground">you get</span>
+                        <span className="font-handwritten text-base text-primary leading-none">
+                          {stop.deliverable}
+                        </span>
+                      </div>
+                      <p
+                        className="font-handwritten text-sm text-muted-foreground/80 mt-1.5 italic"
+                      >
+                        ↳ {stop.aside}
+                      </p>
+                    </motion.div>
+                  </div>
+                </FadeInSection>
+              );
+            })}
+          </div>
         </div>
 
         {/* Closing handwritten note */}
         <FadeInSection delay={400}>
-          <div className="mt-14 flex justify-center">
-            <div className="relative max-w-md text-center">
-              <svg
-                aria-hidden
-                viewBox="0 0 60 40"
-                className="absolute -left-12 top-2 w-10 h-8 text-accent hidden sm:block"
-              >
-                <path
-                  d="M5 35 Q 25 30, 40 15 L 38 22 M 40 15 L 33 13"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.6"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-              <p
-                className="font-handwritten text-2xl text-foreground"
-                style={{ transform: "rotate(-1.2deg)" }}
-              >
-                that's it. four weeks, no fluff.
-              </p>
-              <p className="text-sm text-muted-foreground mt-2">
-                Most projects ship in this window. Bigger ones get the same
-                rhythm, just a couple more loops.
-              </p>
-            </div>
+          <div className="mt-14 lg:mt-10 flex justify-center">
+            <p
+              className="font-handwritten text-2xl text-foreground text-center"
+              style={{ transform: "rotate(-1deg)" }}
+            >
+              that's the whole trail. four weeks, no fluff.
+            </p>
           </div>
         </FadeInSection>
       </div>
