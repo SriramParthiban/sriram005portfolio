@@ -267,21 +267,21 @@ const ProcessFlow = () => {
                         <h3 className="text-lg font-display font-bold text-foreground">
                           {stop.label}
                         </h3>
-                        <span className="font-handwritten text-base text-foreground/70 shrink-0">
+                        <span className="font-handwritten font-bold text-base text-foreground shrink-0">
                           {stop.week}
                         </span>
                       </div>
-                      <p className="text-sm text-foreground/75 leading-relaxed mb-2">
+                      <p className="text-sm font-medium text-foreground/85 leading-relaxed mb-2">
                         {stop.desc}
                       </p>
                       <div className="flex items-baseline gap-1.5 pt-1.5 border-t border-dashed border-border">
-                        <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">you get</span>
-                        <span className="font-handwritten text-lg text-primary leading-none">
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-foreground/70">you get</span>
+                        <span className="font-handwritten font-bold text-lg text-primary leading-none">
                           {stop.deliverable}
                         </span>
                       </div>
                       <p
-                        className="font-handwritten text-base text-foreground/70 mt-1.5 italic"
+                        className="font-handwritten font-semibold text-base text-foreground/85 mt-1.5 italic"
                       >
                         ↳ {stop.aside}
                       </p>
