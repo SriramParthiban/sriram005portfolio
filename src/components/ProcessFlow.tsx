@@ -70,7 +70,7 @@ const ProcessFlow = () => {
         <FadeInSection>
           <div className="text-center mb-14">
             <p
-              className="font-handwriting text-2xl sm:text-3xl text-primary mb-1"
+              className="font-handwritten text-2xl sm:text-3xl text-primary mb-1"
               style={{ transform: "rotate(-2deg)" }}
             >
               how it actually goes
@@ -126,7 +126,7 @@ const ProcessFlow = () => {
                   <div className="relative bg-card border border-border/70 rounded-md p-5 pt-7 shadow-[0_8px_24px_-12px_rgba(0,0,0,0.25)]">
                     {/* Step number, scribbled */}
                     <div
-                      className="absolute -top-4 -right-3 font-handwriting text-3xl text-accent"
+                      className="absolute -top-4 -right-3 font-handwritten text-3xl text-accent"
                       style={{ transform: "rotate(8deg)" }}
                     >
                       {`0${idx + 1}.`}
@@ -145,7 +145,7 @@ const ProcessFlow = () => {
                         <Icon className="h-5 w-5" />
                       </div>
                       <span
-                        className="font-handwriting text-lg text-muted-foreground"
+                        className="font-handwritten text-lg text-muted-foreground"
                         style={{ transform: "rotate(-1deg)" }}
                       >
                         {step.duration}
@@ -181,7 +181,7 @@ const ProcessFlow = () => {
                         you get
                       </span>
                       <span
-                        className="font-handwriting text-lg leading-none"
+                        className="font-handwritten text-lg leading-none"
                         style={{ color: step.accent }}
                       >
                         {step.deliverable}
@@ -190,7 +190,7 @@ const ProcessFlow = () => {
 
                     {/* Margin note */}
                     <p
-                      className="font-handwriting text-sm text-muted-foreground/80 mt-3 italic"
+                      className="font-handwritten text-sm text-muted-foreground/80 mt-3 italic"
                       style={{ transform: "rotate(-0.8deg)" }}
                     >
                       ↳ {step.note}
@@ -221,7 +221,7 @@ const ProcessFlow = () => {
                 />
               </svg>
               <p
-                className="font-handwriting text-2xl text-foreground"
+                className="font-handwritten text-2xl text-foreground"
                 style={{ transform: "rotate(-1.2deg)" }}
               >
                 that's it. four weeks, no fluff.
