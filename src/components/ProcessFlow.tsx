@@ -121,7 +121,7 @@ const ProcessFlow = () => {
             */}
             {/* shadow path */}
             <path
-              d="M 30 700 C 100 700, 160 560, 225 410 S 400 220, 486 320 S 700 520, 813 410 S 970 220, 1074 320 S 1150 140, 1170 60"
+              d="M 30 700 C 100 700, 160 560, 225 410 S 400 220, 486 320 S 700 520, 813 410 S 990 250, 1074 320"
               fill="none"
               stroke="hsl(var(--foreground))"
               strokeOpacity="0.08"
@@ -130,7 +130,7 @@ const ProcessFlow = () => {
             />
             {/* dashed trail */}
             <path
-              d="M 30 700 C 100 700, 160 560, 225 410 S 400 220, 486 320 S 700 520, 813 410 S 970 220, 1074 320 S 1150 140, 1170 60"
+              d="M 30 700 C 100 700, 160 560, 225 410 S 400 220, 486 320 S 700 520, 813 410 S 990 250, 1074 320"
               fill="none"
               stroke="hsl(var(--primary))"
               strokeOpacity="0.75"
@@ -153,13 +153,13 @@ const ProcessFlow = () => {
             return (
               <motion.div
                 key={stop.label}
-                initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                initial={{ opacity: 0, y: 20, scale: 0.95 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.55, delay: idx * 0.18 }}
-                whileHover={{ rotate: 0, y: -4 }}
-                style={{ left: pos.left, top: pos.top, transform: `rotate(${pos.rotate}deg)` }}
-                className="absolute w-[300px]"
+                transition={{ duration: 0.5, delay: idx * 0.15, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ rotate: 0, y: -6, transition: { type: "spring", stiffness: 380, damping: 26, mass: 0.6 } }}
+                style={{ left: pos.left, top: pos.top, rotate: pos.rotate }}
+                className="absolute w-[300px] will-change-transform"
               >
                 {/* push-pin — top or bottom depending on where the trail meets it */}
                 <div
@@ -207,7 +207,7 @@ const ProcessFlow = () => {
                     className="font-handwritten font-semibold text-lg text-foreground/85 mt-2 italic"
                     style={{ transform: "rotate(-0.6deg)" }}
                   >
-                    ↳ {stop.aside}
+                    — {stop.aside}
                   </p>
                 </div>
               </motion.div>
@@ -216,17 +216,10 @@ const ProcessFlow = () => {
 
           {/* Start label */}
           <div
-            className="absolute font-handwritten text-2xl text-foreground/80"
+            className="absolute font-handwritten font-bold text-2xl text-foreground"
             style={{ left: "0%", top: "95%", transform: "rotate(-4deg)" }}
           >
             ✱ you are here
-          </div>
-          {/* End flag */}
-          <div
-            className="absolute font-handwritten text-2xl text-primary"
-            style={{ right: "0%", top: "1%", transform: "rotate(4deg)" }}
-          >
-            🏁 live system
           </div>
         </div>
 
@@ -283,7 +276,7 @@ const ProcessFlow = () => {
                       <p
                         className="font-handwritten font-semibold text-base text-foreground/85 mt-1.5 italic"
                       >
-                        ↳ {stop.aside}
+                        — {stop.aside}
                       </p>
                     </motion.div>
                   </div>
