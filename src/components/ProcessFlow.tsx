@@ -207,7 +207,7 @@ const ProcessFlow = () => {
                     className="font-handwritten font-semibold text-lg text-foreground/85 mt-2 italic"
                     style={{ transform: "rotate(-0.6deg)" }}
                   >
-                    ↳ {stop.aside}
+                    — {stop.aside}
                   </p>
                 </div>
               </motion.div>
@@ -283,7 +283,7 @@ const ProcessFlow = () => {
                       <p
                         className="font-handwritten font-semibold text-base text-foreground/85 mt-1.5 italic"
                       >
-                        ↳ {stop.aside}
+                        — {stop.aside}
                       </p>
                     </motion.div>
                   </div>
