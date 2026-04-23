@@ -121,7 +121,7 @@ const ProcessFlow = () => {
             */}
             {/* shadow path */}
             <path
-              d="M 30 700 C 100 700, 160 560, 225 410 S 400 220, 486 320 S 700 520, 813 410 S 990 250, 1074 320"
+              d="M 30 700 C 100 700, 160 560, 225 410 S 400 220, 486 320 S 700 520, 813 410 S 1010 240, 1074 318"
               fill="none"
               stroke="hsl(var(--foreground))"
               strokeOpacity="0.08"
@@ -130,7 +130,7 @@ const ProcessFlow = () => {
             />
             {/* dashed trail */}
             <path
-              d="M 30 700 C 100 700, 160 560, 225 410 S 400 220, 486 320 S 700 520, 813 410 S 990 250, 1074 320"
+              d="M 30 700 C 100 700, 160 560, 225 410 S 400 220, 486 320 S 700 520, 813 410 S 1010 240, 1074 318"
               fill="none"
               stroke="hsl(var(--primary))"
               strokeOpacity="0.75"
