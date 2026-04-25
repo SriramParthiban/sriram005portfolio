@@ -91,7 +91,7 @@ const GitHubRepos = () => {
               <TerminalHeader />
 
               <div className="p-4 sm:p-6 font-mono text-sm space-y-1">
-                <div className="text-[hsl(120,40%,45%)] text-xs mb-4">
+                <div className="text-[hsl(120,70%,70%)] text-sm sm:text-base font-semibold mb-4 tracking-wide">
                   <TypewriterText text="$ ls -la ~/repos --sort=updated" />
                   <TypingCursor />
                 </div>
