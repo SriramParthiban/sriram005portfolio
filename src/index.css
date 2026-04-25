@@ -138,6 +138,13 @@ input[type="number"] {
     background: hsl(var(--primary) / 0.2);
     color: hsl(150 20% 12%);
   }
+
+  .terminal-selectable ::selection,
+  .terminal-selectable *::selection {
+    background: hsl(45 95% 60%);
+    color: hsl(0 0% 0%);
+    text-shadow: none;
+  }
 }
 
 @layer utilities {
