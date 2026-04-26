@@ -3,13 +3,15 @@ import {
   Lock, LogOut, Search, MessageCircle, Mail, Phone, User, Tag, Clock,
   ChevronDown, ChevronUp, Eye, Users, CalendarCheck,
   TrendingUp, BarChart3, MessageSquare, UserCheck, RefreshCw, FileText, ClipboardList, PenLine,
-  Trash2, MoreVertical, Zap
+  Trash2, MoreVertical, Zap, Wallet, ListTodo
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import InvoiceGenerator from "@/components/admin/InvoiceGenerator";
 import ProjectPlanGenerator from "@/components/admin/ProjectPlanGenerator";
 import ContentPlanner from "@/components/admin/ContentPlanner";
 import PerformanceMonitor from "@/components/admin/PerformanceMonitor";
+import FinanceTracker from "@/components/admin/FinanceTracker";
+import ProductivityTracker from "@/components/admin/ProductivityTracker";
 
 const VERIFY_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/verify-admin`;
 const LEADS_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/admin-leads`;
@@ -211,7 +213,7 @@ const AdminPage = () => {
   const [error, setError] = useState("");
   const [search, setSearch] = useState("");
   const [expandedId, setExpandedId] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<"stats" | "leads" | "bookings" | "invoice" | "plan" | "content" | "performance">("stats");
+  const [activeTab, setActiveTab] = useState<"stats" | "leads" | "bookings" | "invoice" | "plan" | "content" | "performance" | "finance" | "productivity">("stats");
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -406,7 +408,7 @@ const AdminPage = () => {
           className="flex gap-1 p-1 rounded-xl w-fit flex-wrap"
           style={{ background: ADM.inputBg, border: `1px solid ${ADM.surfaceBorder}` }}
         >
-          {(["stats", "leads", "bookings", "invoice", "plan", "content", "performance"] as const).map((tab) => (
+          {(["stats", "leads", "bookings", "invoice", "plan", "content", "performance", "finance", "productivity"] as const).map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
@@ -426,7 +428,9 @@ const AdminPage = () => {
               {tab === "plan" && <ClipboardList className="h-4 w-4" />}
               {tab === "content" && <PenLine className="h-4 w-4" />}
               {tab === "performance" && <Zap className="h-4 w-4" />}
-              {tab === "performance" ? "Performance" : tab === "content" ? "Content" : tab === "plan" ? "Plan" : tab === "invoice" ? "Invoice" : tab.charAt(0).toUpperCase() + tab.slice(1)}
+              {tab === "finance" && <Wallet className="h-4 w-4" />}
+              {tab === "productivity" && <ListTodo className="h-4 w-4" />}
+              {tab === "performance" ? "Performance" : tab === "content" ? "Content" : tab === "plan" ? "Plan" : tab === "invoice" ? "Invoice" : tab === "finance" ? "Finance" : tab === "productivity" ? "Productivity" : tab.charAt(0).toUpperCase() + tab.slice(1)}
             </button>
           ))}
         </div>
@@ -735,6 +739,12 @@ const AdminPage = () => {
 
         {/* ─── Performance Tab ───────────────────────────── */}
         {activeTab === "performance" && <PerformanceMonitor />}
+
+        {/* ─── Finance Tab ───────────────────────────────── */}
+        {activeTab === "finance" && <FinanceTracker adminPassword={storedPassword} />}
+
+        {/* ─── Productivity Tab ──────────────────────────── */}
+        {activeTab === "productivity" && <ProductivityTracker adminPassword={storedPassword} />}
       </div>
     </div>
   );
