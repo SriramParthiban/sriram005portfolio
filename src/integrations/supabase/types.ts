@@ -50,6 +50,39 @@ export type Database = {
         }
         Relationships: []
       }
+      budget_transactions: {
+        Row: {
+          amount: number
+          category: string
+          created_at: string
+          currency: string
+          id: string
+          note: string | null
+          transaction_date: string
+          type: string
+        }
+        Insert: {
+          amount: number
+          category: string
+          created_at?: string
+          currency?: string
+          id?: string
+          note?: string | null
+          transaction_date?: string
+          type: string
+        }
+        Update: {
+          amount?: number
+          category?: string
+          created_at?: string
+          currency?: string
+          id?: string
+          note?: string | null
+          transaction_date?: string
+          type?: string
+        }
+        Relationships: []
+      }
       chat_leads: {
         Row: {
           ai_response_summary: string | null
@@ -215,6 +248,117 @@ export type Database = {
           referrer?: string | null
           session_id?: string | null
           user_agent?: string | null
+        }
+        Relationships: []
+      }
+      personal_tasks: {
+        Row: {
+          completed_at: string | null
+          created_at: string
+          description: string | null
+          due_date: string | null
+          id: string
+          priority: string
+          status: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          completed_at?: string | null
+          created_at?: string
+          description?: string | null
+          due_date?: string | null
+          id?: string
+          priority?: string
+          status?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          completed_at?: string | null
+          created_at?: string
+          description?: string | null
+          due_date?: string | null
+          id?: string
+          priority?: string
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      savings_goals: {
+        Row: {
+          created_at: string
+          currency: string
+          deadline: string | null
+          id: string
+          notes: string | null
+          saved_amount: number
+          status: string
+          target_amount: number
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          currency?: string
+          deadline?: string | null
+          id?: string
+          notes?: string | null
+          saved_amount?: number
+          status?: string
+          target_amount: number
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          currency?: string
+          deadline?: string | null
+          id?: string
+          notes?: string | null
+          saved_amount?: number
+          status?: string
+          target_amount?: number
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      time_entries: {
+        Row: {
+          billable: boolean
+          client: string | null
+          created_at: string
+          description: string | null
+          duration_minutes: number
+          entry_date: string
+          hourly_rate: number | null
+          id: string
+          project: string
+        }
+        Insert: {
+          billable?: boolean
+          client?: string | null
+          created_at?: string
+          description?: string | null
+          duration_minutes: number
+          entry_date?: string
+          hourly_rate?: number | null
+          id?: string
+          project: string
+        }
+        Update: {
+          billable?: boolean
+          client?: string | null
+          created_at?: string
+          description?: string | null
+          duration_minutes?: number
+          entry_date?: string
+          hourly_rate?: number | null
+          id?: string
+          project?: string
         }
         Relationships: []
       }
