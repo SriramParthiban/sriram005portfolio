@@ -70,20 +70,20 @@ const Hero = () => {
           {/* LEFT: Profile photo */}
           <motion.div variants={item} className="flex shrink-0 justify-center">
             <div className="relative">
-              <div className="absolute -inset-3 rounded-full bg-gradient-to-br from-primary/20 via-accent/15 to-primary/10 blur-xl" />
+              <div className="absolute -inset-3 rounded-full bg-gradient-to-br from-primary/30 via-accent/20 to-primary/10 blur-2xl" />
               <img
                 src={profilePhoto}
                 alt="Sriram Parthiban"
-                className="relative h-36 w-36 sm:h-40 sm:w-40 md:h-48 md:w-48 lg:h-56 lg:w-56 rounded-full object-cover ring-4 ring-primary/20 shadow-[0_0_60px_-10px_hsl(var(--primary)/0.2)]"
+                className="relative h-36 w-36 sm:h-40 sm:w-40 md:h-48 md:w-48 lg:h-56 lg:w-56 rounded-full object-cover ring-4 ring-primary/40 shadow-[0_0_60px_-10px_hsl(var(--primary)/0.4)]"
               />
             </div>
           </motion.div>
 
           {/* RIGHT: Content */}
-          <div className="flex flex-1 flex-col items-center text-center md:items-start md:text-left rounded-2xl bg-white/40 backdrop-blur-md p-6 sm:p-8 shadow-lg">
-            <motion.h1 variants={item} className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-balance" style={{ color: '#1a1a1a', textShadow: '0 0 20px rgba(255,255,255,0.9), 0 0 40px rgba(255,255,255,0.5)' }}>
+          <div className="flex flex-1 flex-col items-center text-center md:items-start md:text-left rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10 p-6 sm:p-8 shadow-2xl">
+            <motion.h1 variants={item} className="font-display text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-balance text-white">
               Sriram{" "}
-              <span className="gradient-text-warm" style={{ textShadow: '0 0 20px rgba(255,255,255,0.9), 0 0 40px rgba(255,255,255,0.5)' }}>Parthiban</span>
+              <span className="gradient-text-warm">Parthiban</span>
             </motion.h1>
 
             {/* Role animation */}
@@ -95,14 +95,14 @@ const Hero = () => {
                   animate={{ y: 0, opacity: 1 }}
                   exit={{ y: -30, opacity: 0 }}
                   transition={{ duration: 0.4, ease: "easeInOut" }}
-                  className="text-base sm:text-lg md:text-xl font-bold font-display italic" style={{ color: '#2a2a2a', textShadow: '0 0 16px rgba(255,255,255,0.9), 0 0 30px rgba(255,255,255,0.5)' }}
+                  className="text-base sm:text-lg md:text-xl font-bold font-display italic text-primary"
                 >
                   {roles[roleIdx]}
                 </motion.p>
               </AnimatePresence>
             </motion.div>
 
-            <motion.p variants={item} className="mt-5 max-w-xl text-sm sm:text-base leading-[1.8] font-semibold" style={{ color: '#1a1a1a', textShadow: '0 0 14px rgba(255,255,255,0.9), 0 0 28px rgba(255,255,255,0.5)' }}>
+            <motion.p variants={item} className="mt-5 max-w-xl text-sm sm:text-base leading-[1.8] text-white/80">
               Designing intelligent automation systems that generate qualified pipeline,
               optimize GTM workflows, and build scalable AI-driven operations.
             </motion.p>
@@ -114,7 +114,7 @@ const Hero = () => {
                   View Experience
                 </a>
               </Button>
-              <Button size="lg" variant="outline" className="border-primary/40 text-primary hover:bg-primary/10 font-semibold text-[0.9rem] px-6 sm:px-7 py-6 transition-all duration-300 min-h-[44px]" asChild>
+              <Button size="lg" variant="outline" className="border-white/30 bg-white/5 text-white hover:bg-white/10 font-semibold text-[0.9rem] px-6 sm:px-7 py-6 transition-all duration-300 min-h-[44px]" asChild>
                 <a href="#contact">
                   <Mail className="mr-2 h-4 w-4" />
                   Contact Me
@@ -122,7 +122,7 @@ const Hero = () => {
               </Button>
             </motion.div>
 
-            <motion.p variants={item} className="mt-6 text-xs font-bold tracking-wide" style={{ color: '#333', textShadow: '0 0 12px rgba(255,255,255,0.9)' }}>
+            <motion.p variants={item} className="mt-6 text-xs font-bold tracking-wide text-white/60">
               AI-First · Data-Driven · Results-Oriented
             </motion.p>
           </div>
